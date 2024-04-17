@@ -55,11 +55,13 @@
           <input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색">
             <input type="text" id="sample5_address"  placeholder="주소" name="address">
             <input type="text" id="sample5_detailAddress" placeholder="상세주소" name="de_address">
+            <input type="hidden" name="latitude" id="latitude">
+            <input type="hidden" name="longitude" id="longitude">
 
         </div>
         <div id="map"></div>
         <div id="submit_Area">
-          <input style="float: right;" type="submit" value="게시하기">
+            <button style="float: right;" type="submit" id="submitButton" >게시하기</button>
         </div>
       </form>
     </div>

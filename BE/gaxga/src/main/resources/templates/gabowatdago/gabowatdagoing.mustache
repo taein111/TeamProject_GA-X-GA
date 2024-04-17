@@ -127,15 +127,16 @@
                 이 게시글은 명에게 추천받았습니다.
               </div>
               <div>
-                <input type="button" value="수정">
-                <input type="button" value="삭제">
+                  <input type="button" value="목록 보기" onclick="window.location.href='/gabowatdago'" style="width: 15%">
+                  <input type="button" value="수정" onclick="window.location.href='/gabowatdago/{{gabowatdago.id}}/edit'">
+                  <input type="button" value="삭제">
               </div>
             </div>
           </div> 
           <div class="main-box">  
             <div class="image-box">
               <div class="slider__wrap">
-                <div class="slider__img"></div>
+                <div class="slider__img">{{image}}</div>
                 <div class="slider__thumb"></div>
                 <div class="slider__btn">
                     <a href="#" class="prev" title="이전이미지">&lang;</a>
@@ -176,14 +177,36 @@
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6d7e2f086ffa97eb8f4b35fa8cc12439"></script>
     <script>
       //----------------------------------------------------------------------지도
-    var mapContainer = document.getElementById('maps'), //
-            mapOption = {
-                center: new kakao.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
-                level: 6 // 지도의 확대 레벨
-            };
+    var mapContainer = document.getElementById('maps'); //
+            // mapOption = {
+            //     center: new kakao.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
+            //     level: 5 // 지도의 확대 레벨
+            // };
+    //url에서 폼데이터로 전달된 좌표 값을 가져오는 함수
+      function getCoordinatesFromFormData(){
+          var latitudeInput = document.getElementById('latitude');
+          var longitudeInput = document.getElementById('longitude');
+
+          var latitude = parseFloat(latitudeInput.value);
+          var longitude = parseFloat(longitudeInput.value);
+
+          return { latitude: latitude, longitude: longitude };
+      }
+      //폼 데이터로부터 좌표 값을 가져옴
+      var coordinates = getCoordinatesFromFormData();
+
+      //좌표로 지도를 생성하고 마커 표시
+      var map = new daum.maps.Map(mapContainer,{
+          center: new daum.maps.LatLng(coordinates.latitude, coordinates.longitude)
+          level: 3
+      });
+      var marker = new daum.maps.Martker({
+          map: map,
+          position: new daum.maps.LatLng(coordinates.longitude, coordinates.longitude)
+      });
     //----------------------------------------------------------------------지도
         //지도를 미리 생성
-        var map = new kakao.maps.Map(mapContainer, mapOption);
+        // var map = new kakao.maps.Map(mapContainer, mapOption);
         // 주소-좌표 변환 객체를 생성
         // var geocoder = new daum.maps.services.Geocoder();
         // 마커를 미리 생성
@@ -192,5 +215,7 @@
         //     map: map
         // });
     </script>
+    <script src="../js/menu.js"></script>
+
 </body>
 </html>

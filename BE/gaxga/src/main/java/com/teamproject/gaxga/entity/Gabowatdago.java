@@ -25,9 +25,9 @@ public class Gabowatdago extends BaseEntity {
     @Column
     private String tema;
     @Column
-    private String content;
-    @Column
     private String image;
+    @Column
+    private String content;
     @Column
     private String address;
     @Column

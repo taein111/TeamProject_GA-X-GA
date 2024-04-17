@@ -1,27 +1,4 @@
 
-  const fileInput = document.getElementById('fileInput');
-        const previewArea = document.getElementById('previewArea');
-
-        fileInput.addEventListener('change', function() {
-            previewArea.innerHTML = ''; // 이전에 미리보기한 파일들을 모두 지움
-
-            const files = this.files;
-            for (const file of files) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const img = document.createElement('img');
-                    img.src = e.target.result;
-                    img.style.maxWidth = '200px'; // 미리보기 이미지 크기 조절
-                    previewArea.appendChild(img);
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-        var mapContainer = document.getElementById('map'), // 지도를 표시할 div
-        mapOption = {
-            center: new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
-            level: 5 // 지도의 확대 레벨
-        };
 //----------------------------------------------------------------------지도
     //지도를 미리 생성
     var map = new daum.maps.Map(mapContainer, mapOption);
@@ -61,6 +38,15 @@
                         map.setCenter(coords);
                         // 마커를 결과값으로 받은 위치로 옮긴다.
                         marker.setPosition(coords)
+
+                        //입력 폼으로 전송 보낼 좌표 생성
+                        function setMarkerPosition(coords) {
+                            marker.setPosition(coords);
+                            document.getElementById("latitude").value = coords.getLat();
+                            document.getElementById("longitude").value = coords.getLng();
+                        }
+                        //좌표를 폼에 전송
+                        setMarkerPosition(coords);
                     }
                     // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
                     if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
@@ -85,7 +71,9 @@
             }
         
         }).open();
+
     }
+
     // 날짜 스크립트
   var today = new Date();
   const date = document.querySelector(".date");

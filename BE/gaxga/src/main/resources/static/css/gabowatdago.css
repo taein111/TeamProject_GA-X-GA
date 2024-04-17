@@ -318,7 +318,6 @@ header{
     .subject .left a {
       width: 100%;
       text-align: center;
-      flex-grow: 1;
       text-decoration-line: none;
       color: #adadad;
       align-content: center;
