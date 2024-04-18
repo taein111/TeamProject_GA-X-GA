@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="../css/post_edit.css">
+<link rel="stylesheet" href="/css/post2.css">
 {{>layouts/header}}
 
 <div class="wrap">
@@ -8,7 +8,7 @@
             <p>후기 게시글 작성</p>
         </div>
         {{#gabowatdago}}
-        <form action="/gabowatdago/create" method="POST">
+        <form action="/gabowatdago/create" method="POST" id="myForm">
             <div class="review-name">
                 <input name="title" type ="text" maxlength="40" value="{{title}}">
             </div>
@@ -69,8 +69,8 @@
 </div>
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6d7e2f086ffa97eb8f4b35fa8cc12439&libraries=services"></script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src="../js/post.js"></script>
-<script src="../js/menu.js"></script>
+<script src="/js/post.js"></script>
+<script src="/js/menu.js"></script>
 <script>
     var today = new Date();
     const date = document.querySelector(".date");

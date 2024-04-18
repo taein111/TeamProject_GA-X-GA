@@ -14,12 +14,25 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @Getter
-public class Login {
+public class JoinMembership {
     @Id
     @GeneratedValue
-    private Long id;
+    private Long userCode;
     @Column
     private String gaId;
     @Column
     private String gaPass;
+    @Column
+    private String gaNick;
+    @Column
+    private String gaPhone;
+    @Column
+    private String gaAddress;
+    @Column
+    private String gaDetailAddress;
+    @Column
+    private String gaEmail;
+    @Column
+    private String gaP_Image;
+
 }

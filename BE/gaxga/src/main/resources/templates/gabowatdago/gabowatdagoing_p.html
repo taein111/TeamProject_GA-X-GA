@@ -1,5 +1,6 @@
-<link rel="stylesheet" href="../css/post2.css">
-{{>layouts/header}}
+
+<div th:include="layouts/header"></div>.
+<link rel="stylesheet" th:href="@{/css/post2.css}">
 
   <div class="wrap">
     <div class="post-result">
@@ -7,7 +8,7 @@
         <h2>가봤다고</h2>
         <p>후기 게시글 작성</p>
       </div>
-      <form action="/gabowatdago/create" method="POST">
+      <form action="/gabowatdago/create" method="POST" id="myForm">
         <div class="review-name">
           <input name="title" type ="text" maxlength="40" placeholder="제목을 입력하세요">
         </div>
@@ -40,7 +41,7 @@
         </div>
         <div class="file-area">
           <div class="file-input" style="width: 50%;">
-          <label for="image">사진 첨부 :</label>
+          <label>사진 첨부 :</label>
         <input type="file" id="fileInput" multiple accept="image/*" name=image>
           </div>
           <div class="writer" style="width: 50%; text-align: right;" >
@@ -51,33 +52,34 @@
           <textarea name="content" id="content" cols="130" rows="20" placeholder="내용을 입력해주세요"></textarea>
         </div>
         <div id="address_Area">
-          <label for="address">여행지 주소:</label>
+          <label>여행지 주소:</label>
           <input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색">
             <input type="text" id="sample5_address"  placeholder="주소" name="address">
             <input type="text" id="sample5_detailAddress" placeholder="상세주소" name="de_address">
-            <input type="hidden" name="latitude" id="latitude">
-            <input type="hidden" name="longitude" id="longitude">
-
         </div>
-        <div id="map"></div>
+
+          <div id="map"></div>
+          <input type="hidden" name="latitude" id="latitude">
+          <input type="hidden" name="longitude" id="longitude">
         <div id="submit_Area">
             <button style="float: right;" type="submit" id="submitButton" >게시하기</button>
         </div>
       </form>
     </div>
   </div>
-<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6d7e2f086ffa97eb8f4b35fa8cc12439&libraries=services"></script>
-<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src="../js/post.js"></script>
-<script src="../js/menu.js"></script>
+<script th:src="@{'//dapi.kakao.com/v2/maps/sdk.js?appkey=6d7e2f086ffa97eb8f4b35fa8cc12439&libraries=services'}"></script>
+<script th:src="@{https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js}"></script>
+<script th:src="@{/js/post.js}"></script>
+<script th:src="@{/js/menu.js}"></script>
 <script>
+
     var today = new Date();
     const date = document.querySelector(".date");
     var year = today.getFullYear();
     var month = ('0' + (today.getMonth() + 1)).slice(-2);
     var day = ('0' + today.getDate()).slice(-2);
 
-    var dateString = year + '-' + month  + '-' + day;
+    var dateString = year + '-' + month + '-' + day;
 
     date.innerText = `${dateString}`;
 </script>
