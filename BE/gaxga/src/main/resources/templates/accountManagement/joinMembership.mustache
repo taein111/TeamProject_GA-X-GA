@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -72,21 +73,22 @@
                             <i class="fa-solid fa-envelope"></i>
                         </div>
                         <div id="inputEmail">
-                            <input type="email" name="gaEmail" id="userEmail" placeholder="이메일을 입력하세요">
+                            <input type="text" name="" id="userEmail" placeholder="이메일을 입력하세요">
                         </div>
                         <div id="selectEmail">
                             <span>@</span>
                             <select name="emailType" id="emailType">
-                                <option value="naver">naver.com</option>
-                                <option value="google">google.com</option>
-                                <option value="google">nate.com</option>
+                                <option value="naver.com">naver.com</option>
+                                <option value="google.com">google.com</option>
+                                <option value="nate.com">nate.com</option>
                             </select>
+                            <input type="hidden" name="gaEmail" id="combinedInput">
                         </div>
                     </div>
                 </div>
                 <div id="btn_submit">
-                    <input type="submit" value="확인" class="submit">
-                    <input type="submit" value="취소" class="submit">
+                    <input type="submit" value="확인" class="submit" id="submitBtn">
+                    <input type="button" value="취소" class="submit">
                 </div>
             </form>
         </div>

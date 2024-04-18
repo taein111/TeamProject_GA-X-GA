@@ -24,3 +24,11 @@ function sample6_execDaumPostcode() {
         }
     }).open();
 }
+
+
+document.getElementById("submitBtn").addEventListener("click", function (){
+    const userEmail = document.getElementById("userEmail").value;
+    const emailType = document.getElementById("emailType").value;
+    document.getElementById("combinedInput").value = userEmail + "@" + emailType;
+    console.log(userEmail + "@" + emailType);
+});
