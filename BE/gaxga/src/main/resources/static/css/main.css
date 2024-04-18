@@ -5,7 +5,7 @@ html{
 
 *{
   margin: 0px;
-  padding: 0px;  
+  padding: 0px;
 }
 
 video {
@@ -25,27 +25,41 @@ video {
 }
 
 .page {
-  width: 100%;;
+  width: 100%;
   height: 1080px; /* 화면 크기만큼 */
   position: relative;
   background-color: black;
 }
-
-
-.page #insertP{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
+.page #insertP {
+  width: 1300px;
   font-family: 'GmarketSans';
   font-weight: 600;
   font-size: 160px;
-  /*text-shadow: 0px 5px 8px rgb(53, 49, 49);*/
-  color:rgba(54,141,252,.8);
-  text-shadow:1px 1px 0px BLACK,0 0 0 #000}
-  /*color: white;*/
+  color: white;
+  text-shadow: 0px 5px 8px rgb(53, 49, 49);
+}
+.slide-in-out-text1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: lightSpeedInLeft 1s ease-out;
+}
 
-
+@keyframes lightSpeedInLeft {
+  0% {
+    transform: translate(150%,-50%);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-50%,-50%);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-150%,-50%); /* 요소를 오른쪽으로 이동하는 키프레임 추가 */
+    opacity: 0;
+  }
+}
 
 .page #pageContent1{
   margin: 0 auto;
@@ -74,34 +88,24 @@ video {
   border-radius: 20px;
 }
 
-.page .contentBar1{
-  position: absolute;
-}
-
 .page #bar1{
   width: 875px;
   height: 12px;
   background-color: #1F3E0B;
-  top: 60px;
-  left: 110px;
   border-radius: 3px;
 }
 .page #bar2{
   width: 765px;
   height: 7px;
   background-color: #162B09;
-  top: 80px;
-  left: 110px;;
   border-radius: 3px;
-  
 }
+
 .page #bar3{
   width: 420px;
-  height: 10px;
+  height: 12px;
   background-color: #1F3E0B;
   border-radius: 3px;
-  top: 700px;
-  left: 1580px;
   transform: rotate(90deg);
 
 }
@@ -110,10 +114,201 @@ video {
   height: 7px;
   background-color: #162B09;
   border-radius: 3px;
-  top: 724px;
-  left: 1620px;
   transform: rotate(90deg);
 }
+
+
+.page .contentBar1{
+  position: absolute;
+  animation: slideIn1 1s ease;
+  top: 60px;
+  left: 110px;
+}
+
+@keyframes slideIn1 {
+  0%{
+    transform: translate(-50%,2%);
+    opacity: 0;
+  }
+  100%{
+    transform: translate(0.2%,2%);
+    opacity: 1;
+  }
+}
+
+.page .contentBar2 {
+  position: absolute;
+  animation: slideIn2 1s ease;
+  top: 80px;
+  left: 110px;
+}
+
+@keyframes slideIn2 {
+  0%{
+    transform: translate(-50%,2%);
+    opacity: 0;
+  }
+  100%{
+    transform: translate(0.2%,2%);
+    opacity: 1;
+  }
+}
+
+.page .contentBar3 {
+  position: absolute;
+  animation: slideIn3 3s ease;
+  top: 700px;
+  left: 1580px;
+}
+
+@keyframes slideIn3 {
+  0%{
+    transform: translate(90%,-50%);
+    opacity: 0;
+  }
+  100%{
+    transform: translate(90%,11.1%);
+    opacity: 1;
+  }
+}
+
+.page .contentBar4 {
+  position: absolute;
+  animation: slideIn 1s ease;
+  top: 724px;
+  left: 1620px;
+}
+
+@keyframes slideIn4 {
+  0% {
+    transform: translate(90.1%, -50%);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(90.1%, 1.5%);
+    opacity: 1;
+  }
+}
+
+
+/*.p1-slide1{*/
+/*  animation: slideIn1 1s ease;*/
+/*}*/
+
+/*@keyframes slideIn1 {*/
+/*  0%{*/
+/*    transform: translate(-50%,2%);*/
+/*    opacity: 0;*/
+/*  }*/
+/*  100%{*/
+/*    transform: translate(0.2%,2%);*/
+/*    opacity: 1;*/
+/*  }*/
+/*}*/
+
+
+/*.p1-slide2{*/
+/*  animation: slideIn2 1.3s ease;*/
+/*}*/
+
+/*@keyframes slideIn2 {*/
+/*  0%{*/
+/*    transform: translate(-50%,2%);*/
+/*    opacity: 0;*/
+/*  }*/
+/*  100%{*/
+/*    transform: translate(0.2%,2%);*/
+/*    opacity: 1;*/
+/*  }*/
+/*}*/
+
+
+/*.p1-slide3{*/
+/*  animation: slideIn3 0.8s ease;*/
+/*}*/
+
+/*@keyframes slideIn3 {*/
+/*  0%{*/
+/*    transform: translate(90.1%,70%);*/
+/*    opacity: 0;*/
+/*  }*/
+/*  100%{*/
+/*    transform: translate(90.1%,11.1%);*/
+/*    opacity: 1;*/
+/*  }*/
+/*}*/
+
+
+
+/*.p1-slide4{*/
+/*  animation: slideIn4 1s ease;*/
+/*}*/
+
+/*@keyframes slideIn4 {*/
+/*  0% {*/
+/*    transform: translate(-50%, -1.5%);*/
+/*    opacity: 0;*/
+/*  }*/
+/*  100% {*/
+/*    transform: translate(90.1%, 1.5%);*/
+/*    opacity: 1;*/
+/*  }*/
+/*}*/
+
+
+.p1-slide5{
+  animation: slideIn5 1.3s ease;
+}
+
+@keyframes slideIn5 {
+  0% {
+    transform: translate(-50%, 0.2%);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0.2%, 0.2%);
+    opacity: 1;
+  }
+}
+
+
+
+
+.p1-slide6{
+  animation: slideIn6 1.3s ease;
+}
+
+@keyframes slideIn6 {
+  0% {
+    transform: translate(50%, 0.2%);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0.2%, 0.2%);
+    opacity: 1;
+  }
+}
+
+.p1-slide7{
+  position: absolute;
+  top : 600px;
+  right: 0px;
+  animation: slideIn7 1.5s ease;
+}
+
+@keyframes slideIn7 {
+  0% {
+    transform: translate(50%, 0.2%);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0.2%, 0.2%);
+    opacity: 1;
+  }
+}
+
+
+
 .page #pageinfo1 p{
   font-family: 'GmarketSans';
   font-weight: 600;
@@ -128,10 +323,8 @@ video {
   line-height: 150%;
   color: #FFFFFF;
 }
-.page #GaInfo1{
-  position: absolute;
-  top : 600px;
-  right: 100px;
+.page #GaInfo1 {
+  margin-right : 500px;
 }
 .page #GaInfo1 p{
   font-family: 'GmarketSans';
@@ -139,9 +332,10 @@ video {
   font-size: 130px;
   line-height: 30%;
   color: #FFFFFF;
+
 }
 .page #GaInfo1 p:not(:first-child){
-padding-left: 180px;
+  padding-left: 180px;
 }
 .page #GaInfo1 p span{
   font-family: 'GmarketSans';
@@ -155,29 +349,46 @@ padding-left: 180px;
   font-size: 25px;
   color: #FFFFFF;
   float: left;
+  margin-left: 24px;
 }
 .page #imgInfo1 p{
-width: 400px;
-height: 20px;
-top: 80px;
-left: 90px;
+  width: 334px;
+  height: 20px;
+  top: 80px;
+  left: 90px;
 }
 
 .page #insertP2{
-position: absolute;
-width: 1300px;
-/* height: 150px; */
-top: 50%;
-left: 50%;
-transform: translate(-50%,-50%);
-
-font-family: 'GmarketSans';
-font-weight: 600;
-font-size: 150px;
-text-shadow: 0px 5px 8px rgb(53, 49, 49);
-color: white;
+  width: 1300px;
+  font-family: 'GmarketSans';
+  font-weight: 600;
+  font-size: 150px;
+  text-shadow: 0px 5px 8px rgb(53, 49, 49);
+  color: white;
 }
 
+.slide-out-in-text2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: slideOutIn 4s ease-out infinite;
+}
+
+@keyframes slideOutIn {
+  0% {
+    transform: translate(150%,-50%);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-50%,-50%);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-150%,-50%); /* 요소를 오른쪽으로 이동하는 키프레임 추가 */
+    opacity: 0;
+  }
+}
 .page #pageContent2{
   margin: 0 auto;
   display: flex;
@@ -227,7 +438,7 @@ color: white;
   top: 80px;
   right: 110px;;
   border-radius: 3px;
-  
+
 }
 .page #bar7{
   width: 420px;
@@ -263,10 +474,11 @@ color: white;
   color: #FFFFFF;
 }
 .page #GaInfo2{
+  margin-right:600px;
   position: absolute;
   top : 600px;
   right: 250px;
-  
+
 }
 .page #GaInfo2 p{
   font-family: 'GmarketSans';
@@ -276,7 +488,7 @@ color: white;
   color: #FFFFFF;
 }
 .page #GaInfo2 p:not(:first-child){
-padding-left: 180px;
+  padding-left: 180px;
 }
 .page #GaInfo2 p span{
   font-family: 'GmarketSans';
@@ -290,12 +502,13 @@ padding-left: 180px;
   font-size: 25px;
   color: #FFFFFF;
   float: right;
+  margin-right: 24px;
 }
 .page #imgInfo2 p{
-width: 400px;
-height: 20px;
-top: 80px;
-right: 90px;
+  width: 334px;
+  height: 20px;
+  top: 80px;
+  right: 90px;
 }
 
 footer{
@@ -345,23 +558,23 @@ footer Img{
   justify-content: center;
 }
 
- #area-No2-3{
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 10vh;
-  }
-  #icons{
-    display: flex;
-    align-items: end;
-    list-style: none;
-    padding-left: 0;
-    font-size: 30px;
-    padding: 8px 12px;
-    color: #fff;
-    width: 100%;
-    justify-content: end;
-  }
+#area-No2-3{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 10vh;
+}
+#icons{
+  display: flex;
+  align-items: end;
+  list-style: none;
+  padding-left: 0;
+  font-size: 30px;
+  padding: 8px 12px;
+  color: #fff;
+  width: 100%;
+  justify-content: end;
+}
 #icons a{
   color: #fff;
 }
