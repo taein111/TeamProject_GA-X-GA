@@ -20,7 +20,7 @@ public class GabowatdagoController {
     private GabowatdagoRepository gabowatdagoRepository;
     @GetMapping("/gabowatdago/gabowatdagoing_p")
     public String newForm(){
-        return "gabowatdago/gabowatdagoing_p";
+        return "/gabowatdago/gabowatdagoing_p";
     }
 
     @PostMapping("/gabowatdago/create")
