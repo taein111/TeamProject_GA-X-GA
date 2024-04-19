@@ -7,10 +7,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @EnableJpaAuditing
 @SpringBootApplication
-public class DreamProjectApplication {
+public class GaxgaApplication {
 	public static void main(String[] args) {
 
-		SpringApplication.run(DreamProjectApplication.class, args);
+		SpringApplication.run(GaxgaApplication.class, args);
 	}
 
 }

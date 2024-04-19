@@ -127,8 +127,8 @@
                 이 게시글은 명에게 추천받았습니다.
               </div>
               <div>
-                <input type="button" value="목록 보기" th:onclick="'/gabowatdago'" style="width: 15%">
-                <input type="button" value="수정" th:onclick="'/gabowatdago/' + ${gabowatdago.id} + '/edit'">
+                <input type="button" value="목록 보기" style="width: 15%" onclick="window.location.href='/gabowatdago'">
+                <a th:href="@{'/gabowatdago/' + ${id} + '/edit'}"><input type="button" value="수정" ></a>
                 <input type="button" value="삭제">
               </div>
             </div>
