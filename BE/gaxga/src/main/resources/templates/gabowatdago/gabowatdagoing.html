@@ -1,6 +1,7 @@
-<link rel="stylesheet" href="../css/post_result_.css">
-{{>layouts/header}}
-{{#gabowatdago}}
+<div th:include="layouts/header"></div>
+<link rel="stylesheet" th:href="@{/css/post_result_.css}">
+
+<div th:object="${gabowatdago}">
     <div class="Waarea">
       <div class="Waleft">
         <div class="Waname">가봤다고</div>
@@ -101,17 +102,16 @@
       <div class="Waright">
         <div class="post-result">
           <div class="title-box" style="height: 15%">
-            <div class="post-title">{{title}}</div>
-          </div>      
+            <div class="post-title" th:text="*{title}"></div>
+          </div>
           <div class="intro-area">
           <div class="post-info">
               <div class="date">
-                게시날짜: 
-                <span>{{regDate}}</span>
+                게시날짜:
+                <span>0418</span>
               </div>
               <div class="loctag">
-                <div class="loc">
-                  지역: {{local}}
+                <div class="loc" th:text="*{local}">
                 </div>
                 <div class="tag">
                   여행 태그:<span>
@@ -127,13 +127,13 @@
                 이 게시글은 명에게 추천받았습니다.
               </div>
               <div>
-                  <input type="button" value="목록 보기" onclick="window.location.href='/gabowatdago'" style="width: 15%">
-                  <input type="button" value="수정" onclick="window.location.href='/gabowatdago/{{gabowatdago.id}}/edit'">
-                  <input type="button" value="삭제">
+                <input type="button" value="목록 보기" style="width: 15%" onclick="window.location.href='/gabowatdago'">
+                <a th:href="@{'/gabowatdago/' + ${id} + '/edit'}"><input type="button" value="수정" ></a>
+                <input type="button" value="삭제">
               </div>
             </div>
-          </div> 
-          <div class="main-box">  
+          </div>
+          <div class="main-box">
             <div class="image-box">
               <div class="slider__wrap">
                 <div class="slider__img">{{image}}</div>
@@ -143,13 +143,14 @@
                     <a href="#" class="next" title="다음이미지">&rang;</a>
                 </div>
             </div>
-            </div>    
-            <div class="text-box">
-                {{content}}
             </div>
-              <div style="font-family: GmarketSans; color:#6A6A6A" ><h3>여행지 주소</h3><br> {{address}}&nbsp;{{de_address}}</div>
+            <div class="text-box" th:text="*{content}">
+            </div>
+               <h3>여행지 주소</h3><br>
+              <div style="font-family: GmarketSans; color:#6A6A6A" th:text="*{address}"> </div>
+              <div style="font-family: GmarketSans; color:#6A6A6A" th:text="*{de_address}"></div>
             <div id="maps"></div>
-    
+
             <div class="comment-container">
               <div class="input-box">
               <form class="comment-input">
@@ -163,7 +164,6 @@
               <div class="comment-list-box">
               <!-- <ul class="comment-list">
               </ul> -->
-            
             </div>
           </div>
       </div>
@@ -172,9 +172,9 @@
       </div>
     </div>
   </div>
-{{/gabowatdago}}
-    <script src="../js/post_result.js"></script>
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6d7e2f086ffa97eb8f4b35fa8cc12439"></script>
+</div>
+<script th:src="@{/js/post_result.js}"></script>
+<script th:src="@{'//dapi.kakao.com/v2/maps/sdk.js?appkey=6d7e2f086ffa97eb8f4b35fa8cc12439&libraries=services'}"></script>
 <script>
     // 지도를 표시할 div 요소
     var mapContainer = document.getElementById('maps');

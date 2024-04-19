@@ -1,5 +1,6 @@
-<link rel="stylesheet" href="/css/post2.css">
-{{>layouts/header}}
+
+<div th:include="layouts/header"></div>
+<link rel="stylesheet" th:href="@{/css/post2.css}">
 
 <div class="wrap">
     <div class="post-result">
@@ -7,10 +8,10 @@
             <h2>가봤다고</h2>
             <p>후기 게시글 작성</p>
         </div>
-        {{#gabowatdago}}
+        <div th:object="${gabowatdago}">
         <form action="/gabowatdago/create" method="POST" id="myForm">
             <div class="review-name">
-                <input name="title" type ="text" maxlength="40" value="{{title}}">
+                <input name="title" type ="text" maxlength="40" th:value="*{title}">
             </div>
             <div id="line"></div>
             <div class="select">
@@ -49,13 +50,13 @@
                 </div>
             </div>
             <div id="textContent">
-                <textarea name="content" id="content" cols="130" rows="20" class="form-control">{{content}}</textarea>
+                <textarea name="content" id="content" cols="130" rows="20" class="form-control" th:text="*{content}"></textarea>
             </div>
             <div id="address_Area">
                 <label for="address">여행지 주소:</label>
                 <input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색">
-                <input type="text" id="sample5_address"  placeholder="주소" name="address" value="{{address}}">
-                <input type="text" id="sample5_detailAddress" placeholder="상세주소" name="de_address" value="{{de_address}}">
+                <input type="text" id="sample5_address"  placeholder="주소" name="address" th:value="*{address}">
+                <input type="text" id="sample5_detailAddress" placeholder="상세주소" name="de_address" th:value="*{de_address}">
 
             </div>
             <div id="map"></div>
@@ -64,7 +65,7 @@
             </div>
             <a href="/gabowatdago/{{id}}">돌아가기</a>
         </form>
-        {{/gabowatdago}}
+        </div>
     </div>
 </div>
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6d7e2f086ffa97eb8f4b35fa8cc12439&libraries=services"></script>
