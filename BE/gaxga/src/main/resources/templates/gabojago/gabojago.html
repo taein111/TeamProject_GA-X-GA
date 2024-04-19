@@ -10,7 +10,7 @@
                 <span>산</span>
             </a>
             <div id="border"> </div>
-            <a href="" onclick="showMarket()">
+            <a href="">
                 <span>시장</span>
             </a>
             <div id="border"> </div>
@@ -30,24 +30,9 @@
     <div class="center">
         <button class="prev-btn" onclick="prevCategory()">&lang;&nbsp;</button>
         <div class="cate" id="cate">
-            <div class="list"><a href="">지역</a></div>
-            <div class="list">강원</div>
-            <div class="list">경기</div>
-            <div class="list">경남</div>
-            <div class="list">경북</div>
-            <div class="list">광주</div>
-            <div class="list">대구</div>
-            <div class="list">대전</div>
-            <div class="list">부산</div>
-            <div class="list">서울</div>
-            <div class="list">세종</div>
-            <div class="list">울산</div>
-            <div class="list">인천</div>
-            <div class="list">전남</div>
-            <div class="list">전북</div>
-            <div class="list">제주</div>
-            <div class="list">충남</div>
-            <div class="list">충북</div>
+            <div class="list" th:each="locations :${locations}">
+                <a href="" th:text="${locations}"></a>
+            </div>
         </div>
         <button class="next-btn" onclick="nextCategory()">&nbsp;&rang;</button>
     </div>
@@ -128,7 +113,8 @@
             <span>도봉산</span>
         </a>
     </div>
-    <div class="right"><img id="image" src="../img/loc/강원/강원-BTS버스정류장.jpg" alt=""></div>
+    <div class="right">
+        <img id="image" src="../img/loc/강원/강원-BTS버스정류장.jpg" alt=""></div>
 </div>
 <script th:src="@{/js/GAXGA.js}"></script>
 <script th:src="@{/js/menu2.js}"></script>

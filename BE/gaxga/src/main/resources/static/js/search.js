@@ -22,21 +22,4 @@ function filterSubjects() {
     });
 }
 
-function showMarket() {
-    // 모든 subject 요소를 가져옵니다.
-    var allSubjects = document.querySelectorAll('.subject');
-
-    // 모든 subject 요소를 숨깁니다.
-    allSubjects.forEach(function(subject) {
-        subject.style.display = 'none';
-    });
-
-    // 시장이 포함된 요소들만 보이도록 설정합니다.
-    var marketSubjects = document.querySelectorAll('.subject ');
-    marketSubjects.forEach(function(marketSpan) {
-        // 시장이 포함된 subject 요소의 부모 요소로 이동하여 보이도록 설정합니다.
-        marketSpan.closest('.subject').style.display = 'block';
-    });
-}
-
 
