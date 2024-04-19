@@ -10,7 +10,7 @@
       position: sticky;
       display: flex;
       top: 0px;
-      height: 10vh;
+      height: 12vh;
       align-items: center;
       z-index: 100;
       /* background-color: black; */
@@ -53,7 +53,6 @@
     }
     .element #menutap {
       text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
-    
     }
     
     #menutap{
@@ -280,9 +279,12 @@
       font-weight: 600;
       text-rendering: optimizeLegibility;
     }
-    .intro .center .list {
-        text-decoration-line: none;
-
+    .intro .center .list a{
+      text-decoration-line: none;
+      color: #ffffff;
+    }
+    .intro .center .list a:hover {
+      color: #063F3B;
     }
     .intro .center button {
       text-decoration-line: none;

@@ -37,8 +37,6 @@ public class JoinMembershipController {
             log.info(joinMembership.toString());
             log.info(savedJoinMembership.toString());
             model.addAttribute("message", "회원가입이 완료되었습니다.");
-
-
             return "accountManagement/passCreate";
         }
     }
