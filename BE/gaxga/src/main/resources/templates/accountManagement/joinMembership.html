@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/fonts.css">
-    <link rel="stylesheet" href="css/joinMembership.css">
+    <link rel="stylesheet" th:href="@{css/fonts.css}">
+    <link rel="stylesheet" th:href="@{css/joinMembership.css}">
     <title>GAXGA_JOINMEMBERSHIP</title>
 </head>
 <body>
 <div id="container">
     <div id="inner">
         <div id="membershipLogo">
-            <a href="../html/header.html"><h2>GA X GA</h2></a>
+            <a th:href="@{/main.html}"><h2>GA X GA</h2></a>
         </div>
         <div id="content">
             <h3>Sign Up</h3>
