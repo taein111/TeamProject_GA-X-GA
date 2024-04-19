@@ -1,6 +1,5 @@
-package com.teamproject.gaxga.controller;
+package com.teamproject.gaxga.controller.gabojago;
 
-import com.teamproject.gaxga.entity.gabojago.GI;
 import com.teamproject.gaxga.repository.gabojago.GiRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

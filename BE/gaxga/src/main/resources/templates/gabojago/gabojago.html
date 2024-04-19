@@ -1,8 +1,7 @@
-{{>layouts/header}}
-<link rel="stylesheet" href="../css/gabojago.css">
-<link rel="stylesheet" href="../css/Fonts.css">
-<link rel="stylesheet" href="../css/menupage.css">
-<link rel="stylesheet" href="../css/header.css">
+<div th:include="layouts/header"></div>
+<link rel="stylesheet" th:href="@{/css/gabojago.css}">
+<!--<link rel="stylesheet" th:href="@{/css/menupage.css}">-->
+
 <div class="intro">
     <div class="left">
         <div class="pagename">가보자고</div>
@@ -11,7 +10,7 @@
                 <span>산</span>
             </a>
             <div id="border"> </div>
-            <a href="">
+            <a href="" onclick="showMarket()">
                 <span>시장</span>
             </a>
             <div id="border"> </div>
@@ -53,7 +52,7 @@
         <button class="next-btn" onclick="nextCategory()">&nbsp;&rang;</button>
     </div>
     <div class="right">
-        <input type="search" placeholder="search" autocomplete="on">
+        <input type="search" placeholder="search">
     </div>
 </div>
 <div class="subject">
@@ -61,7 +60,7 @@
         <a href="" id = "text1">
             <span>서울</span>
             <div id="border"></div>
-            <span>산</span>
+            <span>시장</span>
             <div id="border"></div>
             <span>도봉산</span>
         </a>
@@ -82,7 +81,7 @@
         <a href="" id = "text4">
             <span>서울</span>
             <div id="border"></div>
-            <span>테마파크</span>
+            <span>시장</span>
             <div id="border"></div>
             <span>도봉산</span>
         </a>
@@ -131,8 +130,9 @@
     </div>
     <div class="right"><img id="image" src="../img/loc/강원/강원-BTS버스정류장.jpg" alt=""></div>
 </div>
-<script src="../js/GAXGA.js"></script>
-<script src="../js/menu2.js"></script>
-<script src="../js/carousel.js"></script>
+<script th:src="@{/js/GAXGA.js}"></script>
+<script th:src="@{/js/menu2.js}"></script>
+<script th:src="@{/js/carousel.js}"></script>
+<script th:src="@{/js/search.js}"></script>
 </body>
 </html>
