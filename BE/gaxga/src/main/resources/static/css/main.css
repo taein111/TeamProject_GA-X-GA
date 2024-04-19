@@ -70,7 +70,6 @@ video {
 .page #pageinfo1{
   padding-top: 150px;
   float: left;
-  width: 50%;
   width: 647px;
   height: 345px;
 }
@@ -117,6 +116,10 @@ video {
   transform: rotate(90deg);
 }
 
+<!-- -->
+<!-- -->
+<!-- -->
+<!-- -->
 
 .page .contentBar1{
   position: absolute;
@@ -126,134 +129,69 @@ video {
 }
 
 @keyframes slideIn1 {
-  0%{
-    transform: translate(-50%,2%);
+  from{
+    left: -110px;
     opacity: 0;
   }
-  100%{
-    transform: translate(0.2%,2%);
+  to{
+    left: 110px;
     opacity: 1;
   }
 }
 
 .page .contentBar2 {
   position: absolute;
-  animation: slideIn2 1s ease;
+  animation: slideIn2 1.3s ease;
   top: 80px;
   left: 110px;
 }
 
 @keyframes slideIn2 {
-  0%{
-    transform: translate(-50%,2%);
+  from{
+    left: -110px;
     opacity: 0;
   }
-  100%{
-    transform: translate(0.2%,2%);
+  to{
+    left: 110px;
     opacity: 1;
   }
 }
 
 .page .contentBar3 {
   position: absolute;
-  animation: slideIn3 3s ease;
+  animation: slideIn3 0.8s ease;
   top: 700px;
   left: 1580px;
 }
 
 @keyframes slideIn3 {
-  0%{
-    transform: translate(90%,-50%);
+  from{
+    top: 800px;
     opacity: 0;
   }
-  100%{
-    transform: translate(90%,11.1%);
+  to{
+    top: 700px;
     opacity: 1;
   }
 }
 
 .page .contentBar4 {
   position: absolute;
-  animation: slideIn 1s ease;
+  animation: slideIn4 1.3s ease;
   top: 724px;
   left: 1620px;
 }
 
 @keyframes slideIn4 {
-  0% {
-    transform: translate(90.1%, -50%);
+  from{
+    top: 800px;
     opacity: 0;
   }
-  100% {
-    transform: translate(90.1%, 1.5%);
+  to{
+    top: 724px;
     opacity: 1;
   }
 }
-
-
-/*.p1-slide1{*/
-/*  animation: slideIn1 1s ease;*/
-/*}*/
-
-/*@keyframes slideIn1 {*/
-/*  0%{*/
-/*    transform: translate(-50%,2%);*/
-/*    opacity: 0;*/
-/*  }*/
-/*  100%{*/
-/*    transform: translate(0.2%,2%);*/
-/*    opacity: 1;*/
-/*  }*/
-/*}*/
-
-
-/*.p1-slide2{*/
-/*  animation: slideIn2 1.3s ease;*/
-/*}*/
-
-/*@keyframes slideIn2 {*/
-/*  0%{*/
-/*    transform: translate(-50%,2%);*/
-/*    opacity: 0;*/
-/*  }*/
-/*  100%{*/
-/*    transform: translate(0.2%,2%);*/
-/*    opacity: 1;*/
-/*  }*/
-/*}*/
-
-
-/*.p1-slide3{*/
-/*  animation: slideIn3 0.8s ease;*/
-/*}*/
-
-/*@keyframes slideIn3 {*/
-/*  0%{*/
-/*    transform: translate(90.1%,70%);*/
-/*    opacity: 0;*/
-/*  }*/
-/*  100%{*/
-/*    transform: translate(90.1%,11.1%);*/
-/*    opacity: 1;*/
-/*  }*/
-/*}*/
-
-
-
-/*.p1-slide4{*/
-/*  animation: slideIn4 1s ease;*/
-/*}*/
-
-/*@keyframes slideIn4 {*/
-/*  0% {*/
-/*    transform: translate(-50%, -1.5%);*/
-/*    opacity: 0;*/
-/*  }*/
-/*  100% {*/
-/*    transform: translate(90.1%, 1.5%);*/
-/*    opacity: 1;*/
-/*  }*/
-/*}*/
 
 
 .p1-slide5{
@@ -261,11 +199,11 @@ video {
 }
 
 @keyframes slideIn5 {
-  0% {
-    transform: translate(-50%, 0.2%);
+  from {
+    transform: translate(-30%, 0.2%);
     opacity: 0;
   }
-  100% {
+  to {
     transform: translate(0.2%, 0.2%);
     opacity: 1;
   }
@@ -279,11 +217,11 @@ video {
 }
 
 @keyframes slideIn6 {
-  0% {
-    transform: translate(50%, 0.2%);
+  from {
+    transform: translate(30%, 0.2%);
     opacity: 0;
   }
-  100% {
+  to {
     transform: translate(0.2%, 0.2%);
     opacity: 1;
   }
@@ -292,17 +230,17 @@ video {
 .p1-slide7{
   position: absolute;
   top : 600px;
-  right: 0px;
+  right: 0;
   animation: slideIn7 1.5s ease;
 }
 
 @keyframes slideIn7 {
   0% {
-    transform: translate(50%, 0.2%);
+    top: 1080px;
     opacity: 0;
   }
   100% {
-    transform: translate(0.2%, 0.2%);
+    top : 600px;
     opacity: 1;
   }
 }
