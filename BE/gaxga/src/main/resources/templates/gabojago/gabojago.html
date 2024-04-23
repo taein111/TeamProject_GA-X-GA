@@ -1,29 +1,11 @@
 <div th:include="layouts/header"></div>
 <link rel="stylesheet" th:href="@{/css/gabojago.css}">
-<!--<link rel="stylesheet" th:href="@{/css/menupage.css}">-->
-
 <div class="intro">
     <div class="left">
         <div class="pagename">가보자고</div>
         <div class="thema">
-            <a href="">
-                <span>산</span>
-            </a>
-            <div id="border"> </div>
-            <a href="">
-                <span>시장</span>
-            </a>
-            <div id="border"> </div>
-            <a href="">
-                <span>테마파크</span>
-            </a>
-            <div id="border"> </div>
-            <a href="">
-                <span>카페</span>
-            </a>
-            <div id="border"> </div>
-            <a href="">
-                <span>문화</span>
+            <a href="" th:each="themas :${themas}">
+                <span th:text="${themas}"></span>
             </a>
         </div>
     </div>
@@ -42,6 +24,66 @@
 </div>
 <div class="subject">
     <div class="left">
+<!--        <div id="All_loc">-->
+
+<!--        </div>-->
+<!--        <div id="Gangwon">-->
+        <a href="" id = "text1">
+            <span th:text=""></span>
+            <div id="border"></div>
+            <span>시장</span>
+            <div id="border"></div>
+            <span>도봉산</span>
+        </a>
+<!--        </div>-->
+<!--        <div id="Gyeonggi">-->
+
+<!--        </div>-->
+<!--        <div id="Gyeongnam">-->
+
+<!--        </div>-->
+<!--        <div id="Gyeongbuk">-->
+
+<!--        </div>-->
+<!--        <div id="Gwangju">-->
+
+<!--        </div>-->
+<!--        <div id="Daegu">-->
+
+<!--        </div>-->
+<!--        <div id="Daejeon">-->
+
+<!--        </div>-->
+<!--        <div id="Busan">-->
+
+<!--        </div>-->
+<!--        <div id="Seoul">-->
+
+<!--        </div>-->
+<!--        <div id="Sejong">-->
+
+<!--        </div>-->
+<!--        <div id="Ulsan">-->
+
+<!--        </div>-->
+<!--        <div id="Incheon">-->
+
+<!--        </div>-->
+<!--        <div id="Jeonnam">-->
+
+<!--        </div>-->
+<!--        <div id="Jeonbuk">-->
+
+<!--        </div>-->
+<!--        <div id="Jeju">-->
+
+<!--        </div>-->
+<!--        <div id="Chungnam">-->
+
+<!--        </div>-->
+<!--        <div id="Chungbuk">-->
+
+<!--        </div>-->
         <a href="" id = "text1">
             <span>서울</span>
             <div id="border"></div>

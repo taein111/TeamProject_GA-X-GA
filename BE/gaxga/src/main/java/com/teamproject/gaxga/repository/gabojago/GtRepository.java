@@ -1,15 +1,12 @@
 package com.teamproject.gaxga.repository.gabojago;
 
-import com.teamproject.gaxga.entity.gabojago.GR;
+import com.teamproject.gaxga.entity.gabojago.GT;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface GrRepository extends JpaRepository<GR, Long> {
-    @Query("SELECT name FROM GR")
+public interface GtRepository extends JpaRepository<GT, Long> {
+    @Query("SELECT name FROM GT")
     List<String> findAllNames();
-
-    @Query("SELECT name FROM GR WHERE id = 2")
-    List<String> findById();
 }
