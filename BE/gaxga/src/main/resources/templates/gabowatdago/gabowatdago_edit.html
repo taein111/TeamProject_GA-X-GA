@@ -9,7 +9,8 @@
             <p>후기 게시글 작성</p>
         </div>
         <div th:object="${gabowatdago}">
-        <form action="/gabowatdago/create" method="POST" id="myForm">
+        <form action="/gabowatdago/update" method="POST" id="myForm">
+            <input name="id" type="hidden" th:value="*{id}">
             <div class="review-name">
                 <input name="title" type ="text" maxlength="40" th:value="*{title}">
             </div>

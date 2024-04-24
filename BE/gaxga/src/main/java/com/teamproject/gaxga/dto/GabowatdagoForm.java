@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 @ToString
 public class GabowatdagoForm {
 
+    private Long id;
     private String title;
     private String local;
     private String thema;
@@ -21,6 +22,6 @@ public class GabowatdagoForm {
 
 
     public Gabowatdago toEntity() {
-        return new Gabowatdago(null, title, local, thema, image, content, address, de_address);
+        return new Gabowatdago(id, title, local, thema, image, content, address, de_address);
     }
 }

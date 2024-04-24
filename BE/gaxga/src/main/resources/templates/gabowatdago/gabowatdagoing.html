@@ -129,7 +129,7 @@
               <div>
                 <input type="button" value="목록 보기" style="width: 15%" onclick="window.location.href='/gabowatdago'">
                 <a th:href="@{'/gabowatdago/' + ${id} + '/edit'}"><input type="button" value="수정" ></a>
-                <input type="button" value="삭제">
+                <a th:href="@{'/gabowatdago/' + ${id} + '/delete'}"><input type="button" value="삭제"></a>
               </div>
             </div>
           </div>
