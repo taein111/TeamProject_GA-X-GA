@@ -51,8 +51,8 @@
       </div>
     </div>
     <div class="subject">
-      <div class="left">
-        <a th:href="@{/gabowatdago/id}" th:each="name :${gabowatdagoList}">
+      <div class="left" >
+        <a th:href="@{'/gabowatdago/'+${name.id}}" th:each="name :${gabowatdagoList}">
 <!--        <span style="display: none" th:text:="${name.id}"></span>-->
           <span th:text="${name.local}"></span>
           <div></div>
