@@ -16,11 +16,9 @@ public class GP {
     @Column(name= "name")
     private String name;
 
-
     @ManyToOne
     @JoinColumn(name = "GRid")
     private GR region;
-
 
     @ManyToOne
     @JoinColumn(name="GTid")

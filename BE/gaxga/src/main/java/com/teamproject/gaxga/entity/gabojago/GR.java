@@ -11,6 +11,7 @@ public class GR {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JoinColumn(name="GRid")
+    @Column(name="GRid")
     private Long id;
 
     @Column(name="name")

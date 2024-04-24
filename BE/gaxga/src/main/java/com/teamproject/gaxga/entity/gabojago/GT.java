@@ -11,6 +11,7 @@ public class GT {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JoinColumn(name="GTid")
+    @Column(name="GTid")
     private Long id;
 
     @Column(name="name")
