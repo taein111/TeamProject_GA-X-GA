@@ -1,9 +1,5 @@
 <div th:include="layouts/header"></div>
 <link rel="stylesheet" th:href="@{/css/gabojago.css}">
-<<<<<<< HEAD
-=======
-
->>>>>>> 76aec31a943065534c5cfd456e6234e4ed1b582f
 <div class="intro">
     <div class="left">
         <div class="pagename">가보자고</div>
@@ -16,6 +12,9 @@
     <div class="center">
         <button class="prev-btn" onclick="prevCategory()">&lang;&nbsp;</button>
         <div class="cate" id="cate">
+            <div class="list">
+                <a href="#">지역</a>
+            </div>
             <div class="list" th:each="locations :${locations}">
                 <a href="#" th:text="${locations}"></a>
             </div>
@@ -28,18 +27,6 @@
 </div>
 <div class="subject">
     <div class="left">
-<!--        <div id="All_loc">-->
-
-<!--        </div>-->
-<!--        <div id="Gangwon">-->
-<!--        <a href="" id = "text1">-->
-<!--            <span th:text=""></span>-->
-<!--            <div id="border"></div>-->
-<!--            <span>시장</span>-->
-<!--            <div id="border"></div>-->
-<!--            <span>도봉산</span>-->
-<!--        </a>-->
-<!--        </div>-->
 <!--        <div id="Gyeonggi">-->
 
 <!--        </div>-->
@@ -88,13 +75,7 @@
 <!--        <div id="Chungbuk">-->
 
 <!--        </div>-->
-        <a href="" id = "text1">
-            <span>서울</span>
-            <div id="border"></div>
-            <span>시장</span>
-            <div id="border"></div>
-            <span>도봉산</span>
-        </a>
+
         <a href="" id = "text2">
             <span>인천</span>
             <div id="border"></div>
