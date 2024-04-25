@@ -1,5 +1,5 @@
-{{>layouts/header}}
-<link rel="stylesheet" href="../css/gabojagoing.css">
+<div th:include="layouts/header"></div>
+<link rel="stylesheet" th:href="@{/css/gabojagoing.css}">
 <script src="https://kit.fontawesome.com/c6fa23bdd7.js"
         crossorigin="anonymous"></script>
 <!DOCTYPE html>
@@ -85,6 +85,6 @@
         </div>
     </div>
 </div>
-<script src="../js/menu2.js"></script>
+<script th:src="@{/js/menu2.js}"></script>
 </body>
 </html>

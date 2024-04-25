@@ -13,9 +13,6 @@ public class GP {
     @Column(name = "GPid")
     private Long id;
 
-    @Column(name= "name")
-    private String name;
-
     @ManyToOne
     @JoinColumn(name = "GRid")
     private GR region;
@@ -23,4 +20,11 @@ public class GP {
     @ManyToOne
     @JoinColumn(name="GTid")
     private GT thema;
+
+    @Column(name= "name")
+    private String name;
+
+    @Column(name="img")
+    private String img;
+
 }
