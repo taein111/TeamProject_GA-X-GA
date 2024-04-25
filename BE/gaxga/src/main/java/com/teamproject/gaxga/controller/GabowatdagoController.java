@@ -21,7 +21,7 @@ public class GabowatdagoController {
     private GabowatdagoRepository gabowatdagoRepository;
     @Autowired
     private GabowatdagoService gabowatdagoService;
-    @GetMapping("/gabowatdago/gabowatdagoing_p")
+    @GetMapping("/gabowatdagoing_p")
     public String newForm(){
         return "/gabowatdago/gabowatdagoing_p";
     }
