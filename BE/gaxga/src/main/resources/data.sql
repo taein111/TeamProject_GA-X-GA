@@ -109,4 +109,18 @@ INSERT INTO GP(GRID, GTID, NAME)VALUES(17,3,'충북_테마파크');
 INSERT INTO GP(GRID, GTID, NAME)VALUES(17,4,'충북_카페');
 INSERT INTO GP(GRID, GTID, NAME)VALUES(17,5,'충북_문화');
 
+-- 가봤다고 후기 게시판 더미데이터
+INSERT INTO GABOWATDAGO(title, local, thema, image, content, address, de_address)
+VALUES('후기1','서울','축제','이미지1','1번후기게시글','서울시','서울시 강남구');
+INSERT INTO GABOWATDAGO(title, local, thema, image, content, address, de_address)
+VALUES('후기2','경기','시장','이미지2','2번후기게시글','경기','안산시 상록구');
+INSERT INTO GABOWATDAGO(title, local, thema, image, content, address, de_address)
+VALUES('후기3','인천','문화','이미지3','3번후기게시글','인천','인천 연수구');
 
+-- 가봤다고 후기 게시판 댓글 더미데이터
+INSERT INTO CMT(gabowatdago_id, nickname, body)VALUES(1,'KIM', '후기 너무 좋아요');
+INSERT INTO CMT(gabowatdago_id, nickname, body)VALUES(1,'JANG', '가보고싶어요');
+INSERT INTO CMT(gabowatdago_id, nickname, body)VALUES(2,'KIM', '후기 너무 좋아요2');
+INSERT INTO CMT(gabowatdago_id, nickname, body)VALUES(2,'JANG', '가보고싶어요2');
+INSERT INTO CMT(gabowatdago_id, nickname, body)VALUES(3,'KIM', '후기 너무 좋아요3');
+INSERT INTO CMT(gabowatdago_id, nickname, body)VALUES(3,'JANG', '가보고싶어요3');
