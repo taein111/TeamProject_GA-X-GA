@@ -333,13 +333,6 @@ input[type="button"]{
   border: 1px solid;
   margin-left: 5px;
 }
-.comment-input textarea[type="text"]{
-  padding: 5px;
-  border-radius: 5px;
-  width: 80%;
-  border: 1px solid;
-  margin-left: 5px;
-}
 ::placeholder{
   color: #6A6A6A;
 }
@@ -396,22 +389,4 @@ input[type="button"]{
   height: 40vh; /* 지도의 높이 설정 */
   margin-left: 113px;
   margin-right: 74px;
-}
-.header-box{
-  display: flex;
-  flex-direction: column;
-  width: 20%;
-}
-
-.cmt_header{
-  width: 100%;
-
-}
-
-.cmt_date{
-  width: 100%;
-}
-
-.cmt_body{
-  width: 80%;
 }

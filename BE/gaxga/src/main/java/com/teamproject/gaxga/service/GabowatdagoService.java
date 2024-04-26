@@ -1,6 +1,5 @@
 package com.teamproject.gaxga.service;
 
-import com.teamproject.gaxga.dto.CmtDto;
 import com.teamproject.gaxga.dto.GabowatdagoForm;
 import com.teamproject.gaxga.entity.Gabowatdago;
 import com.teamproject.gaxga.repository.GabowatdagoRepository;
@@ -17,8 +16,6 @@ import java.util.List;
 public class GabowatdagoService {
     @Autowired
     private GabowatdagoRepository gabowatdagoRepository;
-    @Autowired
-    private CmtService cmtService;
 
     @Transactional
     public String create(GabowatdagoForm form) {
@@ -32,10 +29,8 @@ public class GabowatdagoService {
     public String show(Long id, Model model) {
         //1. id를 조회해 데이터 가져오기
         Gabowatdago gabowatdagoEntity = gabowatdagoRepository.findById(id).orElse(null);
-        List<CmtDto> cmtDtos = cmtService.comments(id);
         //2. 가져온 데이터를 모델에 등록하기
         model.addAttribute("gabowatdago", gabowatdagoEntity);
-        model.addAttribute("cmtDtos", cmtDtos);
         //3. 조회한 데이터를 사용자에게 보여주기 위한 뷰 페이지 만들고 반환하기
         return "gabowatdago/gabowatdagoing";
     }

@@ -13,17 +13,16 @@ video {
   top : 0;
   left: 0;
   width : 100%;
-  height: 100%;
+  /* height: 100vh; */
   object-fit : cover;
   z-index: 0;
 }
-
 .video-container {
-  width: 100%;
-  height: 100vh;
-  background-color: red;
+  /* position: relative; */
+  width : 100%;
+  height : 100vh;
+  overflow : hidden;
 }
-
 
 .page {
   width: 100%;
@@ -31,7 +30,6 @@ video {
   position: relative;
   background-color: black;
 }
-
 .page #insertP {
   width: 1300px;
   font-family: 'GmarketSans';
@@ -40,18 +38,17 @@ video {
   color: white;
   text-shadow: 0px 5px 8px rgb(53, 49, 49);
 }
-.goText{
+.slide-in-out-text1 {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  text-align: center;
-  /*animation: lightSpeedInLeft 5s ease-out;*/
+  animation: lightSpeedInLeft 1s ease-out;
 }
 
 @keyframes lightSpeedInLeft {
   0% {
-    transform: translate(50%,-50%);
+    transform: translate(150%,-50%);
     opacity: 0;
   }
   50% {
@@ -59,7 +56,7 @@ video {
     opacity: 1;
   }
   100% {
-    transform: translate(-100%,-50%); /* 요소를 오른쪽으로 이동하는 키프레임 추가 */
+    transform: translate(-150%,-50%); /* 요소를 오른쪽으로 이동하는 키프레임 추가 */
     opacity: 0;
   }
 }
@@ -72,16 +69,14 @@ video {
 
 .page #pageinfo1{
   padding-top: 150px;
-  padding-left: 150px;
   float: left;
   width: 647px;
   height: 345px;
 }
-
 .page #pageImg1{
   padding-top: 120px;
-  padding-right: 150px;
   float: left;
+  width: 50%;
   width: 611px;
   height: 730px;
 }
@@ -91,7 +86,6 @@ video {
   object-fit: fill;
   border-radius: 20px;
 }
-
 
 .page #bar1{
   width: 875px;
@@ -172,7 +166,7 @@ video {
 
 @keyframes slideIn3 {
   from{
-    top: 900px;
+    top: 800px;
     opacity: 0;
   }
   to{
@@ -183,14 +177,14 @@ video {
 
 .page .contentBar4 {
   position: absolute;
-  animation: slideIn4 1.2s ease;
+  animation: slideIn4 1.3s ease;
   top: 724px;
   left: 1620px;
 }
 
 @keyframes slideIn4 {
   from{
-    top: 900px;
+    top: 800px;
     opacity: 0;
   }
   to{
@@ -201,12 +195,12 @@ video {
 
 
 .p1-slide5{
-  animation: slideIn5 1.5s ease;
+  animation: slideIn5 1.3s ease;
 }
 
 @keyframes slideIn5 {
   from {
-    transform: translate(0.2%, -20%);
+    transform: translate(-30%, 0.2%);
     opacity: 0;
   }
   to {
@@ -237,7 +231,7 @@ video {
   position: absolute;
   top : 600px;
   right: 0;
-  animation: slideIn7 1.2s ease;
+  animation: slideIn7 1.5s ease;
 }
 
 @keyframes slideIn7 {
@@ -293,8 +287,7 @@ video {
   font-size: 25px;
   color: #FFFFFF;
   float: left;
-  margin-left: 120px;
-  margin-top: 25px;
+  margin-left: 24px;
 }
 .page #imgInfo1 p{
   width: 334px;
@@ -312,12 +305,12 @@ video {
   color: white;
 }
 
-.comeText {
+.slide-out-in-text2 {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  /*animation: slideOutIn 4s ease-out infinite;*/
+  animation: slideOutIn 4s ease-out infinite;
 }
 
 @keyframes slideOutIn {
@@ -344,6 +337,7 @@ video {
   padding-top: 120px;
   padding-left: 150px;
   float: right;
+  width: 50%;
   width: 611px;
   height: 730px;
 }
@@ -358,96 +352,29 @@ video {
   padding-right: 150px;
   text-align: right;
   float: right;
+  width: 50%;
   width: 660px;
   height: 345px;
 }
 
-
-.page .contentBar5 {
+.page .contentBar2{
   position: absolute;
-  animation: slideIn25 1s ease;
-  top: 60px;
-  right: 110px;
 }
-
-@keyframes slideIn25 {
-  from{
-    right: 20px;
-    opacity: 0;
-  }
-  to{
-    right: 110px;
-    opacity: 1;
-  }
-}
-
-
-.page .contentBar6 {
-  position: absolute;
-  animation: slideIn26 1.5s ease;
-  top: 80px;
-  right: 110px;
-}
-
-@keyframes slideIn26 {
-  from{
-    right: 20px;
-    opacity: 0;
-  }
-  to{
-    right: 110px;
-    opacity: 1;
-  }
-}
-
-
-.page .contentBar7 {
-  position: absolute;
-  animation: slideIn27 1s ease;
-  top: 700px;
-  right: 1620px;
-}
-
-@keyframes slideIn27 {
-  from{
-    top: 950px;
-    opacity: 0;
-  }
-  to{
-    top: 700px;
-    opacity: 1;
-  }
-}
-
-.page .contentBar8 {
-  position: absolute;
-  animation: slideIn28 0.8s ease;
-  top: 724px;
-  right: 1620px;
-}
-
-@keyframes slideIn28 {
-  from{
-    top: 950px;
-    opacity: 0;
-  }
-  to{
-    top: 724px;
-    opacity: 1;
-  }
-}
-
 
 .page #bar5{
   width: 875px;
   height: 12px;
   background-color: #A8C9FF;
+  top: 60px;
+  right: 110px;
   border-radius: 3px;
 }
 .page #bar6{
   width: 765px;
   height: 7px;
   background-color: #5284C3;
+  top: 80px;
+  right: 110px;;
   border-radius: 3px;
 
 }
@@ -456,6 +383,8 @@ video {
   height: 10px;
   background-color: #A8C9FF;
   border-radius: 3px;
+  top: 700px;
+  right: 1580px;
   transform: rotate(90deg);
 
 }
@@ -464,6 +393,8 @@ video {
   height: 7px;
   background-color: #5284C3;
   border-radius: 3px;
+  top: 724px;
+  right: 1620px;
   transform: rotate(90deg);
 }
 .page #pageinfo2 p{
@@ -482,6 +413,9 @@ video {
 }
 .page #GaInfo2{
   margin-right:600px;
+  position: absolute;
+  top : 600px;
+  right: 250px;
 
 }
 .page #GaInfo2 p{
@@ -500,36 +434,13 @@ video {
   line-height: 120%;
   color: #BDE3FF;
 }
-
-.p2-slide7{
-  position: absolute;
-  top : 600px;
-  right: 0;
-  animation: slideIn27 1.2s ease;
-}
-
-
-@keyframes slideIn27 {
-  0% {
-    top: 1080px;
-    opacity: 0;
-  }
-  100% {
-    top : 600px;
-    opacity: 1;
-  }
-}
-
-
-
 .page #imgInfo2 {
   font-family: 'GmarketSans';
   font-weight: 400;
   font-size: 25px;
   color: #FFFFFF;
   float: right;
-  margin-right: 120px;
-  margin-top: 25px;
+  margin-right: 24px;
 }
 .page #imgInfo2 p{
   width: 334px;

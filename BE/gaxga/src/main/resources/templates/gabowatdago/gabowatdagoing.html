@@ -155,23 +155,15 @@
               <div class="input-box">
               <form class="comment-input">
                 <input style ="width: 20%;" id="client" type ="text" maxlength="10" placeholder="닉네임">
-                <textarea style ="width: 80%;" id="comment" type ="text" placeholder="작성자에게 댓글을 남겨주세요"></textarea>
-                <input type="hidden" id="new-comment-gabowatdago_id" th:value="*{id}">
+                <input style ="width: 80%;" id="comment" type ="text" placeholder="작성자에게 댓글을 남겨주세요">
                 <input id="comment-save" type="submit" value="댓글 작성">
               </form>
               </div>
-              <div class="comment-list-box">
-                <div class="comment-list" th:each="cmt :${cmtDtos}">
-                  <div class="header-box">
-                    <div class="cmt_header" th:text="${cmt.nickname}">
-                    홍길동
-                    </div>
-                    <div class="cmt_date">
-                      20240425
-                    </div>
-                  </div>
-                  <div class="cmt_body" th:text="${cmt.body}">
+                <div class="comment-list">
                 </div>
+              <div class="comment-list-box">
+              <!-- <ul class="comment-list">
+              </ul> -->
             </div>
           </div>
       </div>
@@ -180,7 +172,7 @@
       </div>
     </div>
   </div>
-
+</div>
 <script th:src="@{/js/post_result.js}"></script>
 <script th:src="@{'//dapi.kakao.com/v2/maps/sdk.js?appkey=6d7e2f086ffa97eb8f4b35fa8cc12439&libraries=services'}"></script>
 <script>
@@ -217,7 +209,6 @@
   // 마커가 지도 위에 표시되도록 설정합니다
   marker.setMap(map);
 
-  // 삭제버튼 클릭 알림창
     function delOk(){
     if(!confirm('삭제하시면 복구할수 없습니다. \n 정말로 삭제하시겠습니까??')){
     return false;
