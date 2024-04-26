@@ -5,33 +5,33 @@
     const comment_save= document.querySelector("#comment-save");
     const comment_list= document.querySelector(".comment-list");
 
-    comment_save.addEventListener("click", function(e){
-      e.preventDefault();
-
-      const cmt = document.createElement("h1");
-      cmt.innerHTML = `
-      <pre>
-      ${client.value}                           ${comment.value}
-      <pre><button class="delButton">삭제</button>
-      `;
-      comment_list.appendChild(cmt);
-
-      comment.value ="";
-      client.value="";
-      
-      //댓글 삭제하기
-      //삭제 버튼 가져오기
-      const delButtons = document.querySelectorAll(".delButton"); // '삭제' 버튼 모두 가져오기
-
-for (let delButton of delButtons) {
-  delButton.addEventListener("click", function () {
-    this.parentNode.parentNode.removeChild(this.parentNode);
-    // 아래와 같이 변수를 사용할 수도 있음
-    // let list = this.parentNode;
-    // list.parentNode.removeChild(list);
-  });
-}
-});
+//     comment_save.addEventListener("click", function(e){
+//       e.preventDefault();
+//
+//       const cmt = document.createElement("h1");
+//       cmt.innerHTML = `
+//       <pre>
+//       ${client.value}                           ${comment.value}
+//       <pre><button class="delButton">삭제</button>
+//       `;
+//       comment_list.appendChild(cmt);
+//
+//       comment.value ="";
+//       client.value="";
+//
+//       //댓글 삭제하기
+//       //삭제 버튼 가져오기
+//       const delButtons = document.querySelectorAll(".delButton"); // '삭제' 버튼 모두 가져오기
+//
+// for (let delButton of delButtons) {
+//   delButton.addEventListener("click", function () {
+//     this.parentNode.parentNode.removeChild(this.parentNode);
+//     // 아래와 같이 변수를 사용할 수도 있음
+//     // let list = this.parentNode;
+//     // list.parentNode.removeChild(list);
+//   });
+// }
+// });
 // 이미지 슬라이드
 
 let images = [

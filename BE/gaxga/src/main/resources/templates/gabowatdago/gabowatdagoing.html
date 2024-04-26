@@ -129,7 +129,7 @@
               <div>
                 <input type="button" value="목록 보기" style="width: 15%" onclick="window.location.href='/gabowatdago'">
                 <a th:href="@{'/gabowatdago/' + ${id} + '/edit'}"><input type="button" value="수정" ></a>
-                <a th:href="@{'/gabowatdago/' + ${id} + '/delete'}"><input type="button" value="삭제"></a>
+                <a th:href="@{'/gabowatdago/' + ${id} + '/delete'}"><input type="button" value="삭제" onclick="delOk()" ></a>
               </div>
             </div>
           </div>
@@ -155,15 +155,23 @@
               <div class="input-box">
               <form class="comment-input">
                 <input style ="width: 20%;" id="client" type ="text" maxlength="10" placeholder="닉네임">
-                <input style ="width: 80%;" id="comment" type ="text" placeholder="작성자에게 댓글을 남겨주세요">
+                <textarea style ="width: 80%;" id="comment" type ="text" placeholder="작성자에게 댓글을 남겨주세요"></textarea>
+                <input type="hidden" id="new-comment-gabowatdago_id" th:value="*{id}">
                 <input id="comment-save" type="submit" value="댓글 작성">
               </form>
               </div>
-                <div class="comment-list">
-                </div>
               <div class="comment-list-box">
-              <!-- <ul class="comment-list">
-              </ul> -->
+                <div class="comment-list" th:each="cmt :${cmtDtos}">
+                  <div class="header-box">
+                    <div class="cmt_header" th:text="${cmt.nickname}">
+                    홍길동
+                    </div>
+                    <div class="cmt_date">
+                      20240425
+                    </div>
+                  </div>
+                  <div class="cmt_body" th:text="${cmt.body}">
+                </div>
             </div>
           </div>
       </div>
@@ -172,42 +180,50 @@
       </div>
     </div>
   </div>
-</div>
+
 <script th:src="@{/js/post_result.js}"></script>
 <script th:src="@{'//dapi.kakao.com/v2/maps/sdk.js?appkey=6d7e2f086ffa97eb8f4b35fa8cc12439&libraries=services'}"></script>
 <script>
-    // 지도를 표시할 div 요소
-    var mapContainer = document.getElementById('maps');
+  // 지도를 표시할 div 요소
+  var mapContainer = document.getElementById('maps');
 
-    // URL에서 폼 데이터로 전달된 좌표 값을 가져오는 함수
-    function getCoordinatesFromFormData() {
-        var latitudeInput = document.getElementById('latitude');
-        var longitudeInput = document.getElementById('longitude');
+  // URL에서 폼 데이터로 전달된 좌표 값을 가져오는 함수
+  function getCoordinatesFromFormData() {
+    var latitudeInput = document.getElementById('latitude');
+    var longitudeInput = document.getElementById('longitude');
 
-        var latitude = parseFloat(latitudeInput.value);
-        var longitude = parseFloat(longitudeInput.value);
+    var latitude = parseFloat(latitudeInput.value);
+    var longitude = parseFloat(longitudeInput.value);
 
-        return { latitude: latitude, longitude: longitude };
-    }
+    return {latitude: latitude, longitude: longitude};
+  }
 
-    // 폼 데이터로부터 좌표 값을 가져옴
-    var coordinates = getCoordinatesFromFormData();
+  // 폼 데이터로부터 좌표 값을 가져옴
+  var coordinates = getCoordinatesFromFormData();
 
-    // 좌표로 지도를 생성하고 마커 표시
-    var map = new daum.maps.Map(mapContainer, {
-        center: new daum.maps.LatLng(coordinates.latitude, coordinates.longitude),
-        level: 3 // 지도의 확대 레벨
-    });
+  // 좌표로 지도를 생성하고 마커 표시
+  var map = new daum.maps.Map(mapContainer, {
+    center: new daum.maps.LatLng(coordinates.latitude, coordinates.longitude),
+    level: 3 // 지도의 확대 레벨
+  });
 
-    var markerPosition = new daum.maps.LatLng(coordinates.latitude, coordinates.longitude);
+  var markerPosition = new daum.maps.LatLng(coordinates.latitude, coordinates.longitude);
 
-    // 마커를 생성합니다
-    var marker = new daum.maps.Marker({
-        position: markerPosition
-    });
+  // 마커를 생성합니다
+  var marker = new daum.maps.Marker({
+    position: markerPosition
+  });
 
-    // 마커가 지도 위에 표시되도록 설정합니다
-    marker.setMap(map);
+  // 마커가 지도 위에 표시되도록 설정합니다
+  marker.setMap(map);
+
+  // 삭제버튼 클릭 알림창
+    function delOk(){
+    if(!confirm('삭제하시면 복구할수 없습니다. \n 정말로 삭제하시겠습니까??')){
+    return false;
+  }
+  }
+</script>
 </script>
 
 <script src="../js/menu.js"></script>
