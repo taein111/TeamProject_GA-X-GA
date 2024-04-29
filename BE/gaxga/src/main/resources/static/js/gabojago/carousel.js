@@ -17,14 +17,50 @@ function showCategory(index) {
 function prevCategory() {
     currentIndex = (currentIndex - 1 + totalItems) % totalItems;
     showCategory(currentIndex);
+    const listLeft= document.querySelectorAll('.locationAreaList');
+    listLeft.forEach(function (item){
+        item.style.display = 'flex';
+    });
 }
 
 function nextCategory() {
     currentIndex = (currentIndex + 1) % totalItems;
     showCategory(currentIndex);
+    const listRight= document.querySelectorAll('.locationAreaList');
+    listRight.forEach(function (item){
+        item.style.display = 'flex';
+    });
 }
 
 // 페이지 로드 시 첫 번째 카테고리 항목 보이기
 showCategory(currentIndex);
 
 
+
+// function prevCategory() {
+//     currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+//     showCategory(currentIndex);
+// }
+//
+// function nextCategory() {
+//     currentIndex = (currentIndex + 1) % totalItems;
+//     showCategory(currentIndex);
+// }
+//
+// function showCategory(index) {
+//     categoryItems.forEach((item, i) => {
+//         item.style.display = i === index ? 'inline-block' : 'none';
+//     });
+//
+//     locationItems.forEach((locations, i) => {
+//         locations.style.display = i === index ? 'inline-block' : 'none';
+//     });
+//
+//     const listLeft = locationItems[index].querySelectorAll('.locationAreaList');
+//     listLeft.forEach(item => {
+//         item.style.display = 'flex';
+//     });
+// }
+//
+// // 페이지 로드 시 첫 번째 카테고리 항목 보이기
+// showCategory(currentIndex)
