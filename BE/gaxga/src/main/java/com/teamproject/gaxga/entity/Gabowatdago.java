@@ -27,6 +27,10 @@ public class Gabowatdago extends BaseEntity {
     private String address;
     @Column
     private String de_address;
+    @Column
+    private String lat;
+    @Column
+    private String lng;
 
     //수정할 내용이 있는 경우에만 동작하는 메서드
     public void patch(Gabowatdago gabowatdago) {
@@ -44,5 +48,9 @@ public class Gabowatdago extends BaseEntity {
             this.address = gabowatdago.address;
         if (gabowatdago.de_address != null)
             this.de_address = gabowatdago.de_address;
+        if (gabowatdago.lat != null)
+            this.lat = gabowatdago.lat;
+        if (gabowatdago.lng != null)
+            this.lng = gabowatdago.lng;
     }
 }

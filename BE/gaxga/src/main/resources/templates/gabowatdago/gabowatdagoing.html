@@ -103,6 +103,8 @@
       <div class="Waright">
         <div class="post-result">
           <div class="title-box" style="height: 15%">
+            <input type="hidden" id="latitude" th:value="*{lat}">
+            <input type="hidden" id="longitude" th:value="*{lng}">
             <div class="post-title" th:text="*{title}"></div>
           </div>
           <div class="intro-area">
@@ -145,6 +147,7 @@
                 </div>
             </div>
             </div>
+            <button type="button" id="test">클릭테스트</button>
             <div class="text-box" th:text="*{content}">
             </div>
                <h3>여행지 주소</h3><br>
@@ -203,82 +206,8 @@
       </div>
     </div>
   </div>
-
-
-<script>
-  // 삭제버튼 클릭 알림창
-  function delOk(){
-    if(!confirm('삭제하시면 복구할수 없습니다. \n 정말로 삭제하시겠습니까??')){
-      return false;
-    }
-  }
-  // 댓글  작성 기능
-  const commentCreateBtn = document.querySelector("#comment-save")
-
-  commentCreateBtn.addEventListener("click",function (){
-    //새 댓글 객체 생성
-    const comment = {
-      nickname: document.querySelector("#client").value,
-      body: document.querySelector("#comment").value,
-      gabowatdagoId: document.querySelector("#new-comment-gabowatdago_id").value
-    };
-    //댓글 객체 출력해보기
-    console.log(comment);
-    const url = "/api/gabowatdago/"+ comment.gabowatdagoId+"/cmts";
-    fetch(url, {
-      method: "POST",
-      headers : {  //전송 본문의 데이터 타입 (json) 정보
-        "Content-Type" : "application/json"
-      },
-      body: JSON.stringify(comment) //comment 객체를 json 문자열로 변환해 전송
-    }).then(response =>{
-      //http 응답 코드에 따른 메시지 출력해주기
-      const msg = (response.ok) ? "댓글 등록 완료" : "댓글 등록 실패";
-      alert(msg);
-      // 새로고침
-      window.location.reload();
-    })
-  });
-  //댓글 수정
-  // const commentUpdateBtns = document.querySelector("#updateBtn")
-  // commentUpdateBtns.forEach(btn =>{
-  //   btn.addEventListener("click", (event)=>{
-  //     const commentUpdateBtn = event.target;
-  //     const commentId = commentUpdateBtn.getAttribute("data-bs-target");
-  //     console.log(`수정버튼 클릭 : ${commentId}번 댓글`)
-  //   })
-  // })
-  //댓글 삭제
-  const commentDeleteBtns = document.querySelectorAll("#deleteBtn")
-  //삭제 버튼 이벤트 처리
-  commentDeleteBtns.forEach(btn => {
-    btn.addEventListener("click", (event) =>{ //이벤트 객체 받아와서
-      // 이벤트 발생 요소 선택
-      const commentDeleteBtn = event.target; //삭제 버튼 변수화
-      //삭제 댓글 id 가져오기
-      const commentId = commentDeleteBtn.getAttribute("data-comment-id");
-      console.log(`삭제 버튼 클릭 : ${commentId}번 댓글`);
-      //삭제 REST API 호출
-      const url = `/api/cmts/${commentId}`
-      fetch(url, {
-        method: "DELETE"
-      }).then(response => {
-        //댓글 삭제 실패 처리
-        if(!response.ok){
-          alert("댓글 삭제 실패");
-          return;
-        }
-        const msg = "댓글 삭제 완료";
-        alert(msg);
-        window.location.reload();
-      })
-    });
-  });
-</script>
-<script th:src="@{/js/post_result.js}"></script>
 <script th:src="@{'//dapi.kakao.com/v2/maps/sdk.js?appkey=6d7e2f086ffa97eb8f4b35fa8cc12439&libraries=services'}"></script>
-
-<script src="/js/menu.js"></script>
-
+<script th:src="@{/js/post_result.js}"></script>
+<script th:src="@{/js/menu.js}"></script>
 </body>
 </html>

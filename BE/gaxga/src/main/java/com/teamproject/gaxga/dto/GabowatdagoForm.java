@@ -21,9 +21,11 @@ public class GabowatdagoForm {
     private String content;
     private String address;
     private String de_address;
+    private String lat;
+    private String lng;
 
 
     public Gabowatdago toEntity() {
-        return new Gabowatdago(id, title, local, thema, image, content, address, de_address);
+        return new Gabowatdago(id, title, local, thema, image, content, address, de_address, lat, lng);
     }
 }
