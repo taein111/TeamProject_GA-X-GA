@@ -10,6 +10,4 @@ public interface GrRepository extends JpaRepository<GR, Long> {
     @Query("SELECT name FROM GR")
     List<String> findAllNames();
 
-    @Query("SELECT name FROM GR WHERE id = 2")
-    List<String> findById();
 }

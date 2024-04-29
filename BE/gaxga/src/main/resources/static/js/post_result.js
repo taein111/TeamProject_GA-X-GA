@@ -1,38 +1,3 @@
-// 댓글 스크립트 --------------
-    //댓글 목록에 추가하기
-    const comment = document.querySelector("#comment");
-    const client = document.querySelector("#client");
-    const comment_save= document.querySelector("#comment-save");
-    const comment_list= document.querySelector(".comment-list");
-
-    comment_save.addEventListener("click", function(e){
-      e.preventDefault();
-
-      const cmt = document.createElement("h1");
-      cmt.innerHTML = `
-      <pre>
-      ${client.value}                           ${comment.value}
-      <pre><button class="delButton">삭제</button>
-      `;
-      comment_list.appendChild(cmt);
-
-      comment.value ="";
-      client.value="";
-      
-      //댓글 삭제하기
-      //삭제 버튼 가져오기
-      const delButtons = document.querySelectorAll(".delButton"); // '삭제' 버튼 모두 가져오기
-
-for (let delButton of delButtons) {
-  delButton.addEventListener("click", function () {
-    this.parentNode.parentNode.removeChild(this.parentNode);
-    // 아래와 같이 변수를 사용할 수도 있음
-    // let list = this.parentNode;
-    // list.parentNode.removeChild(list);
-  });
-}
-});
-// 이미지 슬라이드
 
 let images = [
   "../img/apsan.png",
@@ -120,12 +85,44 @@ function imageSlider(parent, images){
 
       imageNodes[currentIndex].classList.add("active");
       thumnailNodes[currentIndex].classList.add("active");
-
-      
   });
-
-  
 };
-
 imageSlider(document.querySelector(".slider__wrap"), images);
+
+// 지도를 표시할 div 요소
+var mapContainer = document.getElementById('maps');
+
+// URL에서 폼 데이터로 전달된 좌표 값을 가져오는 함수
+function getCoordinatesFromFormData() {
+    var latitudeInput = document.getElementById('latitude');
+    var longitudeInput = document.getElementById('longitude');
+
+    var latitude = parseFloat(latitudeInput.value);
+    var longitude = parseFloat(longitudeInput.value);
+
+    return {latitude: latitude, longitude: longitude};
+}
+
+// 폼 데이터로부터 좌표 값을 가져옴
+var coordinates = getCoordinatesFromFormData();
+
+// 좌표로 지도를 생성하고 마커 표시
+var map = new daum.maps.Map(mapContainer, {
+    center: new daum.maps.LatLng(coordinates.latitude, coordinates.longitude),
+    level: 3 // 지도의 확대 레벨
+});
+
+var markerPosition = new daum.maps.LatLng(coordinates.latitude, coordinates.longitude);
+
+// 마커를 생성합니다
+var marker = new daum.maps.Marker({
+    position: markerPosition
+});
+
+// 마커가 지도 위에 표시되도록 설정합니다
+marker.setMap(map);
+
+
+
+
 
