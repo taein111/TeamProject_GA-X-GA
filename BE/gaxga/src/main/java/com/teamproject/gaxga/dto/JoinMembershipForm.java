@@ -1,11 +1,12 @@
 package com.teamproject.gaxga.dto;
 
-import com.teamproject.gaxga.entity.JoinMembership;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.ToString;
 
 @AllArgsConstructor
 @ToString
+@Getter
 public class JoinMembershipForm {
     private Long userCode;
     private String gaId;
@@ -17,7 +18,7 @@ public class JoinMembershipForm {
     private String gaEmail;
     private String gaP_Image;
 
-    public JoinMembership toEntity(){
-        return new JoinMembership(null, gaId, gaPass, gaNick, gaPhone, gaAddress, gaDetailAddress, gaEmail, gaP_Image);
-    }
+//    public JoinMembership toEntity(){
+//        return new JoinMembership(null, gaId, gaPass, gaNick, gaPhone, gaAddress, gaDetailAddress, gaEmail, gaP_Image);
+//    }
 }
