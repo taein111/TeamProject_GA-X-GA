@@ -22,7 +22,7 @@ public class JoinMembershipController {
         return "accountManagement/joinMembership";
     }
 
-    @PostMapping("/joinMembership/create")
+    @PostMapping("/joinMembership")
     public String createJoinMembership(JoinMembershipForm joinMembershipForm, Model model){
         log.info("======joinMembershipForm={}", joinMembershipForm);
         if(joinMembershipForm.getGaP_Image() == null)
