@@ -1,5 +1,5 @@
 
-<div th:include="layouts/header"></div>
+<div th:include="public/layouts/header"></div>
 <link rel="stylesheet" th:href="@{/css/post2.css}">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
@@ -20,24 +20,14 @@
 <!--            <label>지역 선택 :</label>-->
         <select name="local" class="form-select">
           <option selected>지역</option>
-          <option>서울</option>
-          <option>경기</option>
-          <option>강원</option>
-          <option>충북</option>
-          <option>충남</option>
-          <option>경북</option>
-          <option>경남</option>
+          <option th:each ="locations: ${locList}" th:text="${locations}"></option>
         </select>
           </div>
           <div class="tema" style="width: 20%";>
 <!--            <label>테마 선택:</label>-->
         <select name="thema" class="form-select">
           <option selected>테마</option>
-          <option>산</option>
-          <option>축제</option>
-          <option>카페</option>
-          <option>맛집</option>
-          <option>바다</option>
+          <option th:each ="themas: ${themaList}" th:text="${themas}">산</option>
         </select>
           </div>
           <div class="date" style="width: 60%; text-align: right">

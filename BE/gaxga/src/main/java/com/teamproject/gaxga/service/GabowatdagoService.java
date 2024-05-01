@@ -4,6 +4,8 @@ import com.teamproject.gaxga.dto.CmtDto;
 import com.teamproject.gaxga.dto.GabowatdagoForm;
 import com.teamproject.gaxga.entity.Gabowatdago;
 import com.teamproject.gaxga.repository.GabowatdagoRepository;
+import com.teamproject.gaxga.repository.gabojago.GrRepository;
+import com.teamproject.gaxga.repository.gabojago.GtRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,9 +19,21 @@ import java.util.List;
 public class GabowatdagoService {
     @Autowired
     private GabowatdagoRepository gabowatdagoRepository;
-
     @Autowired
     private CmtService cmtService;
+    @Autowired
+    private GrRepository grRepository;
+    @Autowired
+    private GtRepository gtRepository;
+
+    public String newForm(Model model){
+        List<String> locList = grRepository.findAllNames();
+        List<String> themaList = gtRepository.findAllNames();
+        model.addAttribute("locList", locList);
+        model.addAttribute("themaList", themaList);
+        return "private/gabowatdago/gabowatdagoing_p";
+    }
+
     @Transactional
     public String create(GabowatdagoForm form) {
         //1. DTO를 엔티티로
