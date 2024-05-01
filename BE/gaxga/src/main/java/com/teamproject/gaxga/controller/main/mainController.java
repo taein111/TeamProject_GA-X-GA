@@ -15,8 +15,8 @@ public class mainController {
     @Autowired
     UserDetailService userDetailService;
 
-    @GetMapping("main")
-    public String main(Model model) {
+    @GetMapping("/main")
+    public String showMain(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         UserDetails userDetails = (UserDetails) auth.getPrincipal();
         model.addAttribute("userDetail", userDetails);

@@ -28,7 +28,9 @@ public class WebSecurityConfig {
     @ConditionalOnProperty(name = "spring.h2.console.enabled",havingValue = "true")
     public WebSecurityCustomizer configureH2ConsoleEnable() {
         return web -> web.ignoring()
-                .requestMatchers(PathRequest.toH2Console());
+                .requestMatchers(PathRequest.toH2Console())
+                .requestMatchers("/css/**", "/js/**", "/images/**", "/fonts/**",
+                        "terms.html", "privacy.html", "copyright.html");
     }
 
     @Bean
@@ -36,9 +38,8 @@ public class WebSecurityConfig {
 
         http
                 .authorizeHttpRequests((auth) -> auth
-                        .requestMatchers("/css/**", "/js/**", "/images/**", "/fonts/**",
-                                "terms.html", "privacy.html", "copyright.html",
-                                "/joinMembership", "/main", "/findInfo").permitAll()
+                        .requestMatchers("/findInfo","/joinMembership","/main", "/gabojago", "/gabojagoing"
+                                ).permitAll()
                         .anyRequest().authenticated()); // todo. 임시로 로그인 후에는 모든 요청에 접근을 허용하게 했으나 나중에 로그인 후에 보여줄거 같은거 수정필요
         http
                 .formLogin((auth) -> auth.loginPage("/login")
