@@ -20,7 +20,6 @@ public class mainController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         UserDetails userDetails = (UserDetails) auth.getPrincipal();
         model.addAttribute("userDetail", userDetails);
-
-        return "main/main2";
+        return "public/main/main2";
     }
 }

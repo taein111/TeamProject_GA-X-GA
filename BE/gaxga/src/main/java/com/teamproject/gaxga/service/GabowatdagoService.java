@@ -37,7 +37,7 @@ public class GabowatdagoService {
         model.addAttribute("gabowatdago", gabowatdagoEntity);
         model.addAttribute("cmtDtos", cmtDtos);
         //3. 조회한 데이터를 사용자에게 보여주기 위한 뷰 페이지 만들고 반환하기
-        return "gabowatdago/gabowatdagoing";
+        return "private/gabowatdago/gabowatdagoing";
     }
 
     public String index(Model model){
@@ -46,7 +46,7 @@ public class GabowatdagoService {
         //2. 모델에 데이터 등록하기
         model.addAttribute("gabowatdagoList", gabowatdagoEntityList);
         //3. 뷰 페이지 등록하기
-        return "gabowatdago/gabowatdago";
+        return "private/gabowatdago/gabowatdago";
     }
     public String edit(@PathVariable("id") Long id, Model model){
         //수정할 데이터 가져오기
@@ -54,7 +54,7 @@ public class GabowatdagoService {
         //모델에 데이터 등록하기
         model.addAttribute("gabowatdago", gabowatdagoEntity);
         //뷰 페이지 설정하기
-        return "gabowatdago/gabowatdago_edit";
+        return "private/gabowatdago/gabowatdago_edit";
     }
 
     @Transactional
