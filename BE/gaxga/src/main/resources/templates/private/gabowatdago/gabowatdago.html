@@ -5,38 +5,17 @@
       <div class="left">
         <div class="pagename">가봤다고</div>
         <div class="thema">
-          <a href="">
-            <span>산</span>
-          </a>
-          <div id="border1"> </div>
-          <a href="" id = "text1">
-            <span>시장</span>
-          </a>
-          <div id="border2"> </div>
-          <a href="" id = "text2">
-            <span>테마파크</span>
-          </a>
-          <div id="border3"> </div>
-          <a href="" id = "text3">
-            <span>카페</span>
-          </a>
-          <div id="border4"> </div>
-          <a href="">
-            <span>문화</span>
-          </a>
+            <a href="#" th:each="themas :${themaList}">
+                <span th:text="${themas}"></span>
+            </a>
         </div>
       </div>
       <div class="center">
         <button class="prev-btn" onclick="prevCategory()">&lang;&nbsp;</button>
         <div class="cate" id="cate">
-          <div class="list">강원</div>
-          <div class="list">서울</div>
-          <div class="list">인천</div>
-          <div class="list">충북</div>
-          <div class="list">충남</div>
-          <div class="list">경북</div>
-          <div class="list">경남</div>
-          <div class="list">제주</div>
+          <div class="list" th:each="locations : ${locList}">
+              <a href="#" th:text="${locations}"></a>
+          </div>
         </div>
         <button class="next-btn" onclick="nextCategory()">&nbsp;&rang;</button>
       </div>
@@ -51,14 +30,15 @@
       </div>
     </div>
     <div class="subject">
-      <div class="left" >
+      <div class="left" id="article">
         <a th:href="@{'/gabowatdago/'+${name.id}}" th:each="name :${gabowatdagoList}">
 <!--        <span style="display: none" th:text:="${name.id}"></span>-->
-          <span th:text="${name.local}"></span>
+          <span id="ga_loc" th:text="${name.local}"></span>
           <div></div>
           <span th:text="${name.thema}"></span>
           <div></div>
           <span th:text="${name.title}"></span>
+          <div id="gabowatdago_id" th:text="${name.image}"></div>
         </a>
       </div>
       <div class="right"><img id="image" src="../img/loc/강원/강원-갈미조개.jpg" alt=""></div>
@@ -67,5 +47,17 @@
     <script th:src="@{/js/gab_carousel.js}"></script>
     <script th:src="@{/js/menu2.js}"></script>
     <script th:src="@{/js/search.js}"></script>
+    <script>
+        let image_box = document.getElementById("image");
+        var article_box = document.querySelectorAll("#article a");
+        var change_box = document.getElementById("gabowatdago_id").innerText;
+
+        article_box.forEach(function(article_box) {
+            article_box.addEventListener("mouseover", function() {
+                change_box = this.querySelector("#gabowatdago_id").innerText;
+                image_box.src = change_box;
+            });
+        });
+    </script>
   </body>
   </html>
