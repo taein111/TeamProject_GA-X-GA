@@ -57,8 +57,12 @@ public class GabowatdagoService {
     public String index(Model model){
         //1. 모든 데이터 가져오기
         List<Gabowatdago> gabowatdagoEntityList = gabowatdagoRepository.findAll();
+        List<String> locList = grRepository.findAllNames();
+        List<String> themaList = gtRepository.findAllNames();
         //2. 모델에 데이터 등록하기
         model.addAttribute("gabowatdagoList", gabowatdagoEntityList);
+        model.addAttribute("locList", locList);
+        model.addAttribute("themaList", themaList);
         //3. 뷰 페이지 등록하기
         return "private/gabowatdago/gabowatdago";
     }

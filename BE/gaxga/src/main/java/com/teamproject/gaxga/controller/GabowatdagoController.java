@@ -20,13 +20,8 @@ import java.util.List;
 @Controller
 public class GabowatdagoController {
     @Autowired
-    private GabowatdagoRepository gabowatdagoRepository;
-    @Autowired
     private GabowatdagoService gabowatdagoService;
-    @Autowired
-    private GrRepository grRepository;
-    @Autowired
-    private GtRepository gtRepository;
+
     @GetMapping("/gabowatdagoing_p")
     public String newForm(Model model){
      return gabowatdagoService.newForm(model);

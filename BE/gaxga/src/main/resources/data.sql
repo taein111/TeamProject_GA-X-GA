@@ -111,12 +111,21 @@ INSERT INTO GP(GRID, GTID, NAME)VALUES(17,5,'충북_문화');
 
 -- 가봤다고 후기 게시판 더미데이터
 INSERT INTO GABOWATDAGO(title, local, thema, image, content, address, de_address)
-VALUES('후기1','서울','축제','이미지1','1번후기게시글','서울시','서울시 강남구');
+VALUES('후기1','서울','산','img/loc/강원/강원-설악산.jpg','1번후기게시글','서울시','서울시 강남구');
 INSERT INTO GABOWATDAGO(title, local, thema, image, content, address, de_address)
-VALUES('후기2','경기','시장','이미지2','2번후기게시글','경기','안산시 상록구');
+VALUES('후기2','경기','시장','img/loc/강원/강원-설악산.jpg','2번후기게시글','경기','안산시 상록구');
 INSERT INTO GABOWATDAGO(title, local, thema, image, content, address, de_address)
-VALUES('후기3','인천','문화','이미지3','3번후기게시글','인천','인천 연수구');
-
+VALUES('후기3','인천','테마파크','img/loc/강원/강원-돼통령.jpg','3번후기게시글','인천','인천 연수구');
+INSERT INTO GABOWATDAGO(title, local, thema, image, content, address, de_address)
+VALUES('후기4','강원','카페','img/loc/강원/강원-돼통령.jpg','4번후기게시글','인천','인천 연수구');
+INSERT INTO GABOWATDAGO(title, local, thema, image, content, address, de_address)
+VALUES('후기5','경북','문화','img/loc/강원/강원-돼통령.jpg','5번후기게시글','인천','인천 연수구');
+INSERT INTO GABOWATDAGO(title, local, thema, image, content, address, de_address)
+VALUES('후기6','광주','산','img/loc/강원/강원-돼통령.jpg','6번후기게시글','인천','인천 연수구');
+INSERT INTO GABOWATDAGO(title, local, thema, image, content, address, de_address)
+VALUES('후기7','대구','시장','img/loc/강원/강원-돼통령.jpg','7번후기게시글','인천','인천 연수구');
+INSERT INTO GABOWATDAGO(title, local, thema, image, content, address, de_address)
+VALUES('후기8','부산','테마파크','img/loc/강원/강원-돼통령.jpg','8번후기게시글','인천','인천 연수구');
 -- 가봤다고 후기 게시판 댓글 더미데이터
 INSERT INTO CMT(gabowatdago_id, nickname, body)VALUES(1,'KIM', '후기 너무 좋아요');
 INSERT INTO CMT(gabowatdago_id, nickname, body)VALUES(1,'JANG', '가보고싶어요');
