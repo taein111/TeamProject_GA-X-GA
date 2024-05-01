@@ -19,7 +19,7 @@ public class JoinMembershipController {
 
     @GetMapping("/joinMembership")
     public String showJoinMembership(){
-        return "accountManagement/joinMembership";
+        return "public/accountManagement/joinMembership";
     }
 
     @PostMapping("/joinMembership")

@@ -24,6 +24,6 @@ public class MyPageController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         UserDetail userDetail = (UserDetail) auth.getPrincipal();
         model.addAttribute("userDetail", userDetail);
-        return "accountManagement/myPage";
+        return "private/accountManagement/myPage";
     }
 }
