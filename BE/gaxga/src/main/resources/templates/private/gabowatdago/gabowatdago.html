@@ -22,9 +22,29 @@
       <div class="center">
         <button class="prev-btn" onclick="prevCategory()">&lang;&nbsp;</button>
         <div class="cate" id="cate">
-          <div class="list" th:each="locations : ${locList}">
-              <a href="#" style="text-decoration-line: none" th:text="${locations}"></a>
-          </div>
+            <div class="list">
+                <a href="#" style="text-decoration-line: none">지역</a>
+                <a href="#" style="text-decoration-line: none">강원</a>
+                <a href="#" style="text-decoration-line: none">경기</a>
+                <a href="#" style="text-decoration-line: none">경남</a>
+                <a href="#" style="text-decoration-line: none">경북</a>
+                <a href="#" style="text-decoration-line: none">광주</a>
+                <a href="#" style="text-decoration-line: none">대구</a>
+                <a href="#" style="text-decoration-line: none">대전</a>
+                <a href="#" style="text-decoration-line: none">부산</a>
+                <a href="#" style="text-decoration-line: none">서울</a>
+                <a href="#" style="text-decoration-line: none">세종</a>
+                <a href="#" style="text-decoration-line: none">울산</a>
+                <a href="#" style="text-decoration-line: none">인천</a>
+                <a href="#" style="text-decoration-line: none">전남</a>
+                <a href="#" style="text-decoration-line: none">전북</a>
+                <a href="#" style="text-decoration-line: none">제주</a>
+                <a href="#" style="text-decoration-line: none">충남</a>
+                <a href="#" style="text-decoration-line: none">충북</a>
+            </div>
+<!--                <div class="list" th:each="locations : ${locList}">-->
+<!--                    <a href="#" style="text-decoration-line: none" th:text="${locations}"></a>-->
+<!--                </div>-->
         </div>
         <button class="next-btn" onclick="nextCategory()">&nbsp;&rang;</button>
         <button type="button" class="newPostB"
@@ -46,7 +66,7 @@
           <div id="gabowatdago_id" th:text="${name.image}"></div>
         </a>
       </div>
-      <div class="right"><img id="image" src="../img/loc/강원/강원-갈미조개.jpg" alt=""></div>
+      <div class="right"><img id="image" src="/img/loc/강원/강원-갈미조개.jpg" alt=""></div>
     </div>
     <script th:src="@{/js/gab_GAXGA.js}"></script>
     <script th:src="@{/js/gab_carousel.js}"></script>
