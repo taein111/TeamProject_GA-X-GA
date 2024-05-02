@@ -1,21 +1,12 @@
 <!DOCTYPE>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-
 <header class="--header" th:fragment="header">
     <div class = "mainP" id="mainPColor">
         <div id="profile" class="element">
-            <th:block sec:authorize="isAnonymous()">
                 <a th:href="@{login}">
                     <img src="/img/profile.png" width=45px height=45px  alt="프로필">
                 </a>
-            </th:block>
-            <th:block sec:authorize="isAuthenticated()">
-                <a th:href="@{myPage}">
-                    <img th:if="${#authorization.expression('isAuthenticated()')}" th:src="${userDetail.getGaPImage()}" width=45px height=45px  alt="프로필">
-                    <img th:unless="${#authorization.expression('isAuthenticated()')}" src="/img/profile.png" width=45px height=45px  alt="프로필">
-                </a>
-            </th:block>
         </div>
         <div id="logo" class="element" width= 45px height=45px>
             <h1><a th:href="@{/main}">GAXGA</a></h1>
@@ -31,7 +22,7 @@
                                     <li><a th:href="@{/main}">HOME</a></li>
                                     <li><a th:href="@{/gabojago}">가보자고</a></li>
                                     <li><a th:href="@{/gabowatdago}">가봤다고</a></li>
-                                    <li><a th:href="@{event.html}">EVENT</a></li>
+                                    <li><a th:href="@{/event}">EVENT</a></li>
                                     <th:block sec:authorize="isAnonymous()">
                                         <li><a th:href="@{login}">MY PAGE</a></li>
                                     </th:block>

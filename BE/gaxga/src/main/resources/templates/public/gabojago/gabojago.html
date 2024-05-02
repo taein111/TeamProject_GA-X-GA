@@ -8,11 +8,15 @@
     <title>GAXGA</title>
 </head>
 <body>
+<<<<<<< HEAD
+=======
+<!--<th:block th:replace="~{public/layouts/header :: header}"></th:block>-->
+>>>>>>> 7f143ff5c589f1efe99408f8c5a5c8be2580df71
 <th:block th:replace="~{public/layouts/header2 :: header}"></th:block>
 <div class="gMain">
     <div class="intro">
         <div class="left">
-            <div class="pagename">가보자고</div>
+            <div class="pageName">가보자고</div>
             <div class="thema">
                 <a href="#" th:each="themas :${themas}">
                     <span th:text="${themas}" onclick="showList(this)"></span>

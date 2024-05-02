@@ -4,7 +4,7 @@ header{
   z-index: 100;
   height: 100px;
   top: 0px;
-  align-items: center;
+  /*align-items: center;*/
 
 }
 .element{
@@ -14,6 +14,7 @@ header{
 .mainP{
   display: flex;
   align-items: center;
+  height: 100%;
 }
 
 .mainP .element1{
@@ -29,7 +30,12 @@ header{
   font-weight: 500;
   font-size: 35px;
   text-align: center;
+  height: 100%;
 
+}
+.headerLogo{
+  text-align: center;
+  height: 100%;
 }
 #logo a {
   text-decoration-line: none;
@@ -57,6 +63,7 @@ header{
   background-color: transparent;
   border: none;
   cursor: pointer;
+  padding: 0;
 
 }
 
