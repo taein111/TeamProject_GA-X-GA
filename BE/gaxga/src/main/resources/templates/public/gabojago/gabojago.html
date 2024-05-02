@@ -8,7 +8,7 @@
     <title>GAXGA</title>
 </head>
 <body>
-<th:block th:replace="~{public/layouts/header :: header}"></th:block>
+<th:block th:replace="~{public/layouts/header2 :: header}"></th:block>
 <div class="gMain">
     <div class="intro">
         <div class="left">
@@ -39,185 +39,192 @@
         <div class="left">
             <div class="locationArea">
                 <div th:each="GP: ${GPList}" id="All_location" class="locationAreaList">
-                    <a href="#">
+                    <a href="http://localhost:8080/gabojagoing">
                         <span th:text="${GP.region.name}"></span>
                         <span th:text="${GP.thema.name}"></span>
                         <span th:text="${GP.name}"></span>
-                        <div id="gabojago_Id" style="display: none" th:text="${GP.img}"></div>
+                        <div class="changeImg" style="display: none" th:text="${GP.img}"></div>
                     </a>
                 </div>
             </div>
-<!--            <div class="locationArea">-->
-<!--                <div class="locationAreaList" id="Gangwon" th:each="GW: ${Gangwon}">-->
-<!--                    <a href="#Gangwon">-->
-<!--                        <span th:text="${GW.region.name}"></span>-->
-<!--                        <span th:text="${GW.thema.name}"></span>-->
-<!--                        <span th:text="${GW.name}"></span>-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="locationArea">-->
-<!--                <div class="locationAreaList" id="Gyeonggi" th:each="GG : ${Gyeonggi}">-->
-<!--                    <a href="#">-->
-<!--                        <span th:text="${GG.split(',')[0]}"></span>-->
-<!--                        <span th:text="${GG.split(',')[1]}"></span>-->
-<!--                        <span th:text="${GG.split(',')[2]}"></span>-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="locationArea">-->
-<!--                <div class="locationAreaList" id="Gyeongnam" th:each="GN : ${Gyeongnam}">-->
-<!--                    <a href="#">-->
-<!--                        <span th:text="${GN.split(',')[0]}"></span>-->
-<!--                        <span th:text="${GN.split(',')[1]}"></span>-->
-<!--                        <span th:text="${GN.split(',')[2]}"></span>-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="locationArea">-->
-<!--                <div class="locationAreaList" id="Gyeongbuk" th:each="GB : ${Gyeongbuk}">-->
-<!--                    <a href="#">-->
-<!--                        <span th:text="${GB.split(',')[0]}"></span>-->
-<!--                        <span th:text="${GB.split(',')[1]}"></span>-->
-<!--                        <span th:text="${GB.split(',')[2]}"></span>-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="locationArea">-->
-<!--                <div class="locationAreaList" id="Gwangju" th:each="GJ: ${Gwangju}">-->
-<!--                    <a href="#">-->
-<!--                        <span th:text="${GJ.split(',')[0]}"></span>-->
-<!--                        <span th:text="${GJ.split(',')[1]}"></span>-->
-<!--                        <span th:text="${GJ.split(',')[2]}"></span>-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="locationArea">-->
-<!--                <div class="locationAreaList" id="Daegu" th:each="DG : ${Daegu}">-->
-<!--                    <a href="#">-->
-<!--                        <span th:text="${DG.split(',')[0]}"></span>-->
-<!--                        <span th:text="${DG.split(',')[1]}"></span>-->
-<!--                        <span th:text="${DG.split(',')[2]}"></span>-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="locationArea">-->
-<!--                <div class="locationAreaList" id="Daejeon" th:each="DJ : ${Daejeon}">-->
-<!--                    <a href="#">-->
-<!--                        <span th:text="${DJ.split(',')[0]}"></span>-->
-<!--                        <span th:text="${DJ.split(',')[1]}"></span>-->
-<!--                        <span th:text="${DJ.split(',')[2]}"></span>-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="locationArea">-->
-<!--                <div class="locationAreaList" id="Busan" th:each="BS : ${Busan}">-->
-<!--                    <a href="#">-->
-<!--                        <span th:text="${BS.split(',')[0]}"></span>-->
-<!--                        <span th:text="${BS.split(',')[1]}"></span>-->
-<!--                        <span th:text="${BS.split(',')[2]}"></span>-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="locationArea">-->
-<!--                <div class="locationAreaList" id="Seoul" th:each="SU : ${Seoul}">-->
-<!--                    <a href="#">-->
-<!--                        <span th:text="${SU.split(',')[0]}"></span>-->
-<!--                        <span th:text="${SU.split(',')[1]}"></span>-->
-<!--                        <span th:text="${SU.split(',')[2]}"></span>-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="locationArea">-->
-<!--                <div class="locationAreaList" id="Sejong" th:each="SJ : ${Sejong}">-->
-<!--                    <a href="#">-->
-<!--                        <span th:text="${SJ.split(',')[0]}"></span>-->
-<!--                        <span th:text="${SJ.split(',')[1]}"></span>-->
-<!--                        <span th:text="${SJ.split(',')[2]}"></span>-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="locationArea">-->
-<!--                <div class="locationAreaList" id="Ulsan" th:each="US : ${Ulsan}">-->
-<!--                    <a href="#">-->
-<!--                        <span th:text="${US.split(',')[0]}"></span>-->
-<!--                        <span th:text="${US.split(',')[1]}"></span>-->
-<!--                        <span th:text="${US.split(',')[2]}"></span>-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="locationArea">-->
-<!--                <div class="locationAreaList" id="Incheon" th:each="IC : ${Incheon}">-->
-<!--                    <a href="#">-->
-<!--                        <span th:text="${IC.split(',')[0]}"></span>-->
-<!--                        <span th:text="${IC.split(',')[1]}"></span>-->
-<!--                        <span th:text="${IC.split(',')[2]}"></span>-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="locationArea">-->
-<!--                <div class="locationAreaList" id="Jeonnam" th:each="JN : ${Jeonnam}">-->
-<!--                    <a href="#">-->
-<!--                        <span th:text="${JN.split(',')[0]}"></span>-->
-<!--                        <span th:text="${JN.split(',')[1]}"></span>-->
-<!--                        <span th:text="${JN.split(',')[2]}"></span>-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="locationArea">-->
-<!--                <div class="locationAreaList" id="Jeonbuk" th:each="JB : ${Jeonbuk}">-->
-<!--                    <a href="#">-->
-<!--                        <span th:text="${JB.split(',')[0]}"></span>-->
-<!--                        <span th:text="${JB.split(',')[1]}"></span>-->
-<!--                        <span th:text="${JB.split(',')[2]}"></span>-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="locationArea">-->
-<!--                <div class="locationAreaList" id="Jeju" th:each="JJ : ${Jeju}">-->
-<!--                    <a href="#">-->
-<!--                        <span th:text="${JJ.split(',')[0]}"></span>-->
-<!--                        <span th:text="${JJ.split(',')[1]}"></span>-->
-<!--                        <span th:text="${JJ.split(',')[2]}"></span>-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="locationArea">-->
-<!--                <div class="locationAreaList" id="Chungnam" th:each="CN : ${Chungnam}">-->
-<!--                    <a href="#">-->
-<!--                        <span th:text="${CN.split(',')[0]}"></span>-->
-<!--                        <span th:text="${CN.split(',')[1]}"></span>-->
-<!--                        <span th:text="${CN.split(',')[2]}"></span>-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="locationArea">-->
-<!--                <div class="locationAreaList" id="Chungbuk" th:each="CB : ${Chungbuk}">-->
-<!--                    <a href="#">-->
-<!--                        <span th:text="${CB.split(',')[0]}"></span>-->
-<!--                        <span th:text="${CB.split(',')[1]}"></span>-->
-<!--                        <span th:text="${CB.split(',')[2]}"></span>-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--            </div>-->
+            <div class="locationArea">
+                <div class="locationAreaList" id="Gangwon" th:each="GW: ${Gangwon}">
+                    <a href="#">
+                        <span th:text="${GW.region.name}"></span>
+                        <span th:text="${GW.thema.name}"></span>
+                        <span th:text="${GW.name}"></span>
+                        <div class="changeImg" style="display: none" th:text="${GW.img}"></div>
+                    </a>
+                </div>
+            </div>
+            <div class="locationArea">
+                <div class="locationAreaList" id="Gyeonggi" th:each="GG : ${Gyeonggi}">
+                    <a href="#">
+                        <span th:text="${GG.region.name}"></span>
+                        <span th:text="${GG.thema.name}"></span>
+                        <span th:text="${GG.name}"></span>
+                        <div class="changeImg" style="display: none" th:text="${GG.img}"></div>
+                    </a>
+                </div>
+            </div>
+            <div class="locationArea">
+                <div class="locationAreaList" id="Gyeongnam" th:each="GN : ${Gyeongnam}">
+                    <a href="#">
+                        <span th:text="${GN.region.name}"></span>
+                        <span th:text="${GN.thema.name}"></span>
+                        <span th:text="${GN.name}"></span>
+                        <div class="changeImg" style="display: none" th:text="${GN.img}"></div>
+                    </a>
+                </div>
+            </div>
+            <div class="locationArea">
+                <div class="locationAreaList" id="Gyeongbuk" th:each="GB : ${Gyeongbuk}">
+                    <a href="#">
+                        <span th:text="${GB.region.name}"></span>
+                        <span th:text="${GB.thema.name}"></span>
+                        <span th:text="${GB.name}"></span>
+                        <div class="changeImg" style="display: none" th:text="${GB.img}"></div>
+                    </a>
+                </div>
+            </div>
+            <div class="locationArea">
+                <div class="locationAreaList" id="Gwangju" th:each="GJ: ${Gwangju}">
+                    <a href="#">
+                        <span th:text="${GJ.region.name}"></span>
+                        <span th:text="${GJ.thema.name}"></span>
+                        <span th:text="${GJ.name}"></span>
+                        <div class="changeImg" style="display: none" th:text="${GJ.img}"></div>
+                    </a>
+                </div>
+            </div>
+            <div class="locationArea">
+                <div class="locationAreaList" id="Daegu" th:each="DG : ${Daegu}">
+                    <a href="#">
+                        <span th:text="${DG.region.name}"></span>
+                        <span th:text="${DG.thema.name}"></span>
+                        <span th:text="${DG.name}"></span>
+                        <div class="changeImg" style="display: none" th:text="${DG.img}"></div>
+                    </a>
+                </div>
+            </div>
+            <div class="locationArea">
+                <div class="locationAreaList" id="Daejeon" th:each="DJ : ${Daejeon}">
+                    <a href="#">
+                        <span th:text="${DJ.region.name}"></span>
+                        <span th:text="${DJ.thema.name}"></span>
+                        <span th:text="${DJ.name}"></span>
+                        <div class="changeImg" style="display: none" th:text="${DJ.img}"></div>
+                    </a>
+                </div>
+            </div>
+            <div class="locationArea">
+                <div class="locationAreaList" id="Busan" th:each="BS : ${Busan}">
+                    <a href="#">
+                        <span th:text="${BS.region.name}"></span>
+                        <span th:text="${BS.thema.name}"></span>
+                        <span th:text="${BS.name}"></span>
+                        <div class="changeImg" style="display: none" th:text="${BS.img}"></div>
+                    </a>
+                </div>
+            </div>
+            <div class="locationArea">
+                <div class="locationAreaList" id="Seoul" th:each="SU : ${Seoul}">
+                    <a href="#">
+                        <span th:text="${SU.region.name}"></span>
+                        <span th:text="${SU.thema.name}"></span>
+                        <span th:text="${SU.name}"></span>
+                        <div class="changeImg" style="display: none" th:text="${SU.img}"></div>
+                    </a>
+                </div>
+            </div>
+            <div class="locationArea">
+                <div class="locationAreaList" id="Sejong" th:each="SJ : ${Sejong}">
+                    <a href="#">
+                        <span th:text="${SJ.region.name}"></span>
+                        <span th:text="${SJ.thema.name}"></span>
+                        <span th:text="${SJ.name}"></span>
+                        <div class="changeImg" style="display: none" th:text="${SJ.img}"></div>
+                    </a>
+                </div>
+            </div>
+            <div class="locationArea">
+                <div class="locationAreaList" id="Ulsan" th:each="US : ${Ulsan}">
+                    <a href="#">
+                        <span th:text="${US.region.name}"></span>
+                        <span th:text="${US.thema.name}"></span>
+                        <span th:text="${US.name}"></span>
+                        <div class="changeImg" style="display: none" th:text="${US.img}"></div>
+                    </a>
+                </div>
+            </div>
+            <div class="locationArea">
+                <div class="locationAreaList" id="Incheon" th:each="IC : ${Incheon}">
+                    <a href="#">
+                        <span th:text="${IC.region.name}"></span>
+                        <span th:text="${IC.thema.name}"></span>
+                        <span th:text="${IC.name}"></span>
+                        <div class="changeImg" style="display: none" th:text="${IC.img}"></div>
+                    </a>
+                </div>
+            </div>
+            <div class="locationArea">
+                <div class="locationAreaList" id="Jeonnam" th:each="JN : ${Jeonnam}">
+                    <a href="#">
+                        <span th:text="${JN.region.name}"></span>
+                        <span th:text="${JN.thema.name}"></span>
+                        <span th:text="${JN.name}"></span>
+                        <div class="changeImg" style="display: none" th:text="${JN.img}"></div>
+                    </a>
+                </div>
+            </div>
+            <div class="locationArea">
+                <div class="locationAreaList" id="Jeonbuk" th:each="JB : ${Jeonbuk}">
+                    <a href="#">
+                        <span th:text="${JB.region.name}"></span>
+                        <span th:text="${JB.thema.name}"></span>
+                        <span th:text="${JB.name}"></span>
+                        <div class="changeImg" style="display: none" th:text="${JB.img}"></div>
+                    </a>
+                </div>
+            </div>
+            <div class="locationArea">
+                <div class="locationAreaList" id="Jeju" th:each="JJ : ${Jeju}">
+                    <a href="#">
+                        <span th:text="${JJ.region.name}"></span>
+                        <span th:text="${JJ.thema.name}"></span>
+                        <span th:text="${JJ.name}"></span>
+                        <div class="changeImg" style="display: none" th:text="${JJ.img}"></div>
+                    </a>
+                </div>
+            </div>
+            <div class="locationArea">
+                <div class="locationAreaList" id="Chungnam" th:each="CN : ${Chungnam}">
+                    <a href="#">
+                        <span th:text="${CN.region.name}"></span>
+                        <span th:text="${CN.thema.name}"></span>
+                        <span th:text="${CN.name}"></span>
+                        <div class="changeImg" style="display: none" th:text="${CN.img}"></div>
+                    </a>
+                </div>
+            </div>
+            <div class="locationArea">
+                <div class="locationAreaList" id="Chungbuk" th:each="CB : ${Chungbuk}">
+                    <a href="#">
+                        <span th:text="${CB.region.name}"></span>
+                        <span th:text="${CB.thema.name}"></span>
+                        <span th:text="${CB.name}"></span>
+                        <div class="changeImg" style="display: none" th:text="${CB.img}"></div>
+                    </a>
+                </div>
+            </div>
         </div>
         <div class="right">
             <div class="imageArea">
-                <img id="image" th:each="imgs : ${GPList}" th:src="${imgs}" alt=""></div>
+                <img id="image" src="img/loc/강원/강원-갈미조개.jpg" alt="">
             </div>
+        </div>
     </div>
-    <script>
-        let image_BOX = document.getElementById("image");
-        let article_Box = document.querySelectorAll(".locationAreaList a");
-        let change_Box = document.getElementById("gabojago_Id");
-
-        article_Box.forEach(function(article_box){
-            article_box.addEventListener("mouseover", function(){
-                change_Box = this.querySelector("#gabojago_Id").innerText;
-                image_BOX.src = change_Box;
-            });
-        });
-    </script>
+    <script th:src="@{/js/gabojago/imageBox.js}"></script>
     <script th:src="@{/js/gabojago/GAXGA.js}"></script>
     <script th:src="@{/js/menu2.js}"></script>
     <script th:src="@{/js/gabojago/carousel.js}"></script>
