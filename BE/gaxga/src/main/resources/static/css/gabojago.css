@@ -355,10 +355,13 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 50%;
 }
+.subject .right .imageArea{
+    width: 100%;
+}
+
 .subject .right img{
     width: 100%;
-    /*height: 100%;*/
-    border-radius: 10px;
-    margin: 20px;
+    height: 100%;
 }
