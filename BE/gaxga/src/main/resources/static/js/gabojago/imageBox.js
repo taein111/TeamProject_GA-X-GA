@@ -1,10 +1,10 @@
-var image_BOX = document.getElementById("image");
-var article_Box = document.querySelectorAll(".locationAreaList a");
-var change_Box = document.querySelector(".changeImg").innerText;
+var ga_image_BOX = document.getElementById("image");
+var ga_article_Box = document.querySelectorAll(".locationAreaList a");
+var ga_change_Box = document.querySelector(".changeImg").innerText;
 
-article_Box.forEach(function(article_box){
-    article_box.addEventListener("mouseover", function(){
-        change_Box = this.querySelector(".changeImg").innerText;
-        image_BOX.src = change_Box;
+ga_article_Box.forEach(function(box){
+    box.addEventListener("mouseover", function(){
+        ga_change_Box = this.querySelector(".changeImg").innerText;
+        ga_image_BOX.src = ga_change_Box;
     });
 });

@@ -10,7 +10,7 @@ import org.springframework.ui.Model;
 
 import java.util.List;
 @Service
-public class gabojagoService{
+public class GabojagoService {
 
     @Autowired
     private GpRepository gpRepository;
