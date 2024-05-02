@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/fonts.css">
-    <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="/css/header.css">
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <link rel="stylesheet" href="/css/fonts.css">-->
+<!--    <link rel="stylesheet" href="/css/main.css">-->
+<!--    <link rel="stylesheet" href="/css/header.css">-->
 
-    <title>GAXGA</title>
-</head>
+<!--    <title>GAXGA</title>-->
+<!--</head>-->
 <body>
     <div class = "main">
         <header class = "mainP" id="mainPColor">
@@ -18,10 +18,10 @@
                 </a>
             </div>
             <div id="logo" class="element" width= 45px height=45px>
-                <h1><a th:href="@{/main.html}">GAXGA</a></h1>
+                <h1 class="headerLogo"><a th:href="@{main/main2.html}">GAXGA</a></h1>
             </div>
             <div class="element" id="elementMenu">
-                <button id="menutap" onclick="activeTab()" >MENU</button>
+                <button id="menuTap" onclick="activeTab()" >MENU</button>
                 <div id="menuTapPage">
                     <div class="menuPage">
                         <div class="companyContents">
@@ -56,3 +56,6 @@
                 </div>
             </div>
         </header>
+    </div>
+</body>
+</html>

@@ -70,7 +70,7 @@ video {
   justify-content: space-around;
 }
 
-.page #pageinfo1{
+.page #pageInfo1{
   padding-top: 150px;
   padding-left: 150px;
   float: left;
@@ -253,14 +253,14 @@ video {
 
 
 
-.page #pageinfo1 p{
+.page #pageInfo1 p{
   font-family: 'GmarketSans';
   font-weight: 600;
   font-size: 60px;
   line-height: 150%;
   color: #929090;
 }
-.page #pageinfo1 p span{
+.page #pageInfo1 p span{
   font-family: 'GmarketSans';
   font-weight: 600;
   font-size: 60px;
@@ -353,7 +353,7 @@ video {
   object-fit: fill;
   border-radius: 20px;
 }
-.page #pageinfo2{
+.page #pageInfo2{
   padding-top: 150px;
   padding-right: 150px;
   text-align: right;
@@ -466,14 +466,14 @@ video {
   border-radius: 3px;
   transform: rotate(90deg);
 }
-.page #pageinfo2 p{
+.page #pageInfo2 p{
   font-family: 'GmarketSans';
   font-weight: 600;
   font-size: 60px;
   line-height: 150%;
   color: #929090;
 }
-.page #pageinfo2 p span{
+.page #pageInfo2 p span{
   font-family: 'GmarketSans';
   font-weight: 600;
   font-size: 60px;
