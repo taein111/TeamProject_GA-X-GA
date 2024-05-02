@@ -1,6 +1,15 @@
-<div th:insert="public/layouts/header"></div>
-<link rel="stylesheet" th:href="@{/css/gabowatdago.css}">
-
+<!DOCTYPE>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/gabowatdago.css}">
+    <link rel="stylesheet" th:href="@{/css/fonts.css}">
+    <title>GAXGA</title>
+</head>
+<th:block th:replace="~{public/layouts/header2 :: header}"></th:block>
+<body>
+<div class = "gbMain">
     <div class="intro">
       <div class="left">
         <div class="pagename">가봤다고</div>
@@ -25,8 +34,6 @@
         <button type="button" style="margin-left: 20px; width: 15%; height: 30; margin-top: 10px"
                 onclick="window.location.href='/gabowatdagoing_p'"> 새 글 쓰기</button>
           </div>
-        <!-- <ul hidden style="list-style: none"></ul>
-        <div id="result"></div> -->
       </div>
     </div>
     <div class="subject">
@@ -43,6 +50,7 @@
       </div>
       <div class="right"><img id="image" src="../img/loc/강원/강원-갈미조개.jpg" alt=""></div>
     </div>
+</div>
     <script th:src="@{/js/gab_GAXGA.js}"></script>
     <script th:src="@{/js/gab_carousel.js}"></script>
     <script th:src="@{/js/menu2.js}"></script>

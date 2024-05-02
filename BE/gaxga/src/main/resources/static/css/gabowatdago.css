@@ -163,7 +163,7 @@ header{
       height: 20vh;
       background-color: #000;
       color: #d8d8d8;
-      
+
     }
     .intro .left, .center, .right {
       flex: 1;
@@ -210,11 +210,11 @@ header{
       height: 30px;
       margin: 0px 5px;
       align-self: center;
-      
+
     } */
     .intro .left .thema a:hover {
       color: #969696;
-      
+
     }
     .intro .left .thema pre{
       font-size: 30px;
