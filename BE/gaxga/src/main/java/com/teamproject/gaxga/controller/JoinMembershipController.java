@@ -1,6 +1,7 @@
 package com.teamproject.gaxga.controller;
 
 import com.teamproject.gaxga.dto.JoinMembershipForm;
+import com.teamproject.gaxga.entity.User;
 import com.teamproject.gaxga.service.JoinMembershipService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +19,18 @@ public class JoinMembershipController {
 
     @GetMapping("/joinMembership")
     public String showJoinMembership(){
-        return "accountManagement/joinMembership";
+        return "public/accountManagement/joinMembership";
     }
 
-    @PostMapping("/joinMembership/create")
+    @PostMapping("/joinMembership")
     public String createJoinMembership(JoinMembershipForm joinMembershipForm, Model model){
         log.info("======joinMembershipForm={}", joinMembershipForm);
+        if(joinMembershipForm.getGaP_Image() == null)
+        {
+            User user = new User();
+            user.setGaP_Image("/img/profile.png");
+
+        }
         boolean success = joinMembershipService.joinPutData(joinMembershipForm);
         if(success){
             return "redirect:/login";

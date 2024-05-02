@@ -5,7 +5,6 @@ const textElement1 = document.getElementById("text1");
 textElement1.addEventListener("mouseover", function() {
   imageElement.src = "img/loc/강원/강원-BTS버스정류장.jpg";
 });
-
 const textElement2 = document.getElementById("text2");
 
 textElement2.addEventListener("mouseover", function() {
