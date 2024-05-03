@@ -30,7 +30,7 @@ function filterByLocal(filter) {
 
 function filterBythema(filter){
     article.forEach((themas)=> {
-        if(filter === "*" || filter === themas.getAttribute("data-type")){
+        if(filter === "*" || filter === themas.getAttribute("data-type2")){
             themas.style.display = "flex";
         }else{
             themas.style.display = "none";
@@ -56,9 +56,9 @@ function nextCategory() {
 
 
 themaItmes.forEach((thema)=>{
-    addEventListener("click", ()=>{
-        const filter = categoryItems[currentIndex].getAttribute("data-filter"); // 다음 카테고리의 data-filter 속성 값
-        filterBythema(filter); // 필터링 함수 호출
+    thema.addEventListener("click", ()=>{
+        const filter2 = themaItmes.getAttribute("data-filter"); // 다음 카테고리의 data-filter 속성 값
+        filterBythema(filter2); // 필터링 함수 호출
     })
 });
 

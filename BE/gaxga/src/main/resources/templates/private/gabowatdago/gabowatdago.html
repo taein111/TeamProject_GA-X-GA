@@ -56,7 +56,7 @@
      </div>
     <div class="subject">
       <div class="left" id="article">
-        <a th:href="@{'/gabowatdago/'+${name.id}}" th:each="name :${gabowatdagoList}" th:attr="data-type=${name.local}">
+        <a th:href="@{'/gabowatdago/'+${name.id}}" th:each="name :${gabowatdagoList}" th:attr="data-type=${name.local}, data-type2=${name.thema}">
 <!--        <span style="display: none" th:text:="${name.id}"></span>-->
           <span id="ga_loc" th:text="${name.local}" ></span>
           <div></div>

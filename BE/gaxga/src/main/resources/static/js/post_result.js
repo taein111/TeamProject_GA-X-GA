@@ -88,20 +88,20 @@ document.getElementById("test").addEventListener("click", function (){
 // 좌표로 지도를 생성하고 마커 표시
 let mapContainer = document.getElementById('maps'),
     mapOption = {
-    center: new daum.maps.LatLng(lat,lng),
+    center: new daum.maps.LatLng(lng,lat),
     level: 2 // 지도의 확대 레벨
 };
 
 let map = new daum.maps.Map(mapContainer, mapOption);
 
-let markerPosition = new daum.maps.LatLng(lat,lng);
+let markerPosition = new daum.maps.LatLng(lng,lat);
 
 // 마커 생성
 let marker = new daum.maps.Marker({
     position: markerPosition
 });
 
-// 마커가 지도 위에 표시되도록 설정합니다
+// 마커가 지도 위에 표시되도록 설정
 marker.setMap(map);
 
 
