@@ -14,8 +14,8 @@
       <div class="left">
         <div class="pageName">가봤다고</div>
         <div class="thema">
-            <a href="#" th:each="themas :${themaList}">
-                <span th:text="${themas}" th:attr="data-filter=${themas}"></span>
+            <a href="#" th:each="themas :${themaList}" onclick="themaClick()" th:attr="data-filter=${themas}" >
+                <span th:text="${themas}" ></span>
             </a>
         </div>
       </div>
