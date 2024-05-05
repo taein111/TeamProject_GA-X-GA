@@ -413,3 +413,12 @@ input[type="button"]{
 .cmt_body{
   width: 80%;
 }
+
+#like{
+  width: 30px;
+  fill: #ddd;
+}
+
+#like.active{
+  fill: red;
+}
