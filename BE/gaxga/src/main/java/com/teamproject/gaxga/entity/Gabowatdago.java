@@ -12,7 +12,6 @@ public class Gabowatdago extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column
     private String title;
     @Column
@@ -31,6 +30,9 @@ public class Gabowatdago extends BaseEntity {
     private String lat;
     @Column
     private String lng;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "userCode")
+    private User userCode;
 
     //수정할 내용이 있는 경우에만 동작하는 메서드
     public void patch(Gabowatdago gabowatdago) {

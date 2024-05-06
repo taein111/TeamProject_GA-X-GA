@@ -2,10 +2,8 @@
 <link rel="stylesheet" th:href="@{/css/post_result_.css}">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-<div id="userId" style="display: none" th:text="${user.userCode}"></div>
 <div th:object="${gabowatdago}">
-  <div id="gabowatdagoId" style="display: none" th:text="${id}"></div>
-  <div class="Waarea">
+    <div class="Waarea">
       <div class="Waleft">
         <div class="Waname">가봤다고</div>
         <div class="Waprofile">
@@ -153,6 +151,7 @@
                 </div>
             </div>
             </div>
+            <button type="button" id="test">클릭테스트</button>
             <div class="text-box" th:text="*{content}">
             </div>
                <h3>여행지 주소</h3><br>
@@ -213,7 +212,6 @@
   </div>
 <script th:src="@{'//dapi.kakao.com/v2/maps/sdk.js?appkey=6d7e2f086ffa97eb8f4b35fa8cc12439&libraries=services'}"></script>
 <script th:src="@{/js/post_result.js}"></script>
-<script th:src="@{/js/like.js}"></script>
 <script th:src="@{/js/menu.js}"></script>
 </body>
 </html>

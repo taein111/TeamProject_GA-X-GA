@@ -47,3 +47,5 @@ function nextCategory() {
 
 // 페이지 로드 시 첫 번째 카테고리 항목 보이기
 showCategory(currentIndex);
+
+

@@ -39,9 +39,12 @@ public class GabowatdagoService {
     }
 
     @Transactional
-    public String create(GabowatdagoForm form) {
+    public String create(String userId, GabowatdagoForm form) {
         //1. DTO를 엔티티로
         Gabowatdago gabowatdago = form.toEntity();
+        User user = userRepository.findByGaId(userId);
+        form.setUser(user);
+        System.out.println(user);
         //2. 레퍼지토리로 엔티티를 DB에 저장
         Gabowatdago saved = gabowatdagoRepository.save(gabowatdago);
         return "redirect:/gabowatdago/" + saved.getId();
