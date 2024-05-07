@@ -9,7 +9,7 @@
 </head>
 <body>
 <th:block th:replace="~{public/layouts/header2:: header}"></th:block>
-<div id="area-No0">
+<div id="area-No0" th:if="${gabojagoing != null}" th:object="${gabojagoing}">
     <div id="area-No1">
         <div id="area-No1-1">
             <div id="pageNameGabojago">
@@ -27,7 +27,7 @@
         </div>
         <div id="area-No1-2">
             <div id="relo">
-                <div id="region"><p>청량산</p></div>
+                <div id="region" th:text="*{state}"></div>
                 <div id="location">인천광역시 연수구 옥련동</div>
             </div>
             <div id="GabojagoTag">

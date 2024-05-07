@@ -27,4 +27,7 @@ public class GP {
     @Column(name="img")
     private String img;
 
+    @Column
+    private String state;
+
 }
