@@ -15,6 +15,9 @@ public class Like {
     @Column(name = "like_id")
     private Long id;
 
+    @Column
+    private String name;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;

@@ -18,6 +18,7 @@ public class GabowatdagoApiController {
     @Autowired
     private GabowatdagoRepository gabowatdagoRepository;
 
+
     //GET
     @GetMapping("/api/gabowatdago")
     public List<Gabowatdago> index() {
@@ -29,14 +30,12 @@ public class GabowatdagoApiController {
         return gabowatdagoRepository.findById(id).orElse(null);
     }
 
-
     //POST
     @PostMapping("/api/gabowatdago")
     public Gabowatdago create(@RequestBody GabowatdagoForm dto){ //요청 시 본문(body)에 실어 보내는 데이터를 create() 메서드의 매개변수로 받아올 수 있다.
         Gabowatdago gabowatdago = dto.toEntity(); //엔티티로 변환
         return gabowatdagoRepository.save(gabowatdago);
     }
-
 
     //PATCH
     @PatchMapping("/api/gabowatdago/{id}")
@@ -57,6 +56,7 @@ public class GabowatdagoApiController {
         Gabowatdago updated = gabowatdagoRepository.save(target);//  수정 내용gabowatdago 엔티티 db에 저장
         return ResponseEntity.status(HttpStatus.OK).body(updated);
     }
+
 
     //DELETE
     @DeleteMapping("/api/gabowatdago/{id}")

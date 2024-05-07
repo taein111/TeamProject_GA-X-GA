@@ -1,11 +1,9 @@
 package com.teamproject.gaxga.dto;
 
 
-//import com.teamproject.gaxga.entity.Gabowatdago;
 import com.teamproject.gaxga.entity.Gabowatdago;
 import com.teamproject.gaxga.entity.User;
 import lombok.*;
-import org.springframework.web.multipart.MultipartFile;
 
 @AllArgsConstructor
 @ToString
@@ -24,9 +22,10 @@ public class GabowatdagoForm {
     private String de_address;
     private String lat;
     private String lng;
-    private User user;
+    private User userCode;
 
     public Gabowatdago toEntity() {
-        return new Gabowatdago(id, title, local, thema, image, content, address, de_address, lat, lng, user);
+        return new Gabowatdago(id, title, local, thema, image, content, address, de_address, lat, lng, userCode);
     }
+
 }

@@ -2,14 +2,18 @@ package com.teamproject.gaxga.service;
 
 import com.teamproject.gaxga.dto.CmtDto;
 import com.teamproject.gaxga.dto.GabowatdagoForm;
+import com.teamproject.gaxga.dto.LikeDto;
 import com.teamproject.gaxga.entity.Gabowatdago;
 import com.teamproject.gaxga.entity.User;
+import com.teamproject.gaxga.entity.UserDetail;
 import com.teamproject.gaxga.repository.GabowatdagoRepository;
 import com.teamproject.gaxga.repository.UserRepository;
 import com.teamproject.gaxga.repository.gabojago.GrRepository;
 import com.teamproject.gaxga.repository.gabojago.GtRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,27 +43,27 @@ public class GabowatdagoService {
     }
 
     @Transactional
-    public String create(String userId, GabowatdagoForm form) {
+    public String create(GabowatdagoForm form) {
+        System.out.println(form.toString());
         //1. DTO를 엔티티로
         Gabowatdago gabowatdago = form.toEntity();
-        User user = userRepository.findByGaId(userId);
-        form.setUser(user);
-        System.out.println(user);
         //2. 레퍼지토리로 엔티티를 DB에 저장
         Gabowatdago saved = gabowatdagoRepository.save(gabowatdago);
         return "redirect:/gabowatdago/" + saved.getId();
     }
-
     public String show(Long id, Model model) {
         //1. id를 조회해 데이터 가져오기
         Gabowatdago gabowatdagoEntity = gabowatdagoRepository.findById(id).orElse(null);
         List<CmtDto> cmtDtos = cmtService.comments(id);
-        User user = userRepository.findById(id).orElse(null);
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        UserDetail userDetail = (UserDetail) auth.getPrincipal();
+        Long likeDtos = userDetail.getUser().getUserCode();
+        System.out.println(likeDtos);
 //        User userEntity = userRepository.findByGaId()
         //2. 가져온 데이터를 모델에 등록하기
         model.addAttribute("gabowatdago", gabowatdagoEntity);
         model.addAttribute("cmtDtos", cmtDtos);
-        model.addAttribute("user", user);
+        model.addAttribute("user", likeDtos);
         //3. 조회한 데이터를 사용자에게 보여주기 위한 뷰 페이지 만들고 반환하기
         return "private/gabowatdago/gabowatdagoing";
     }
@@ -99,6 +103,7 @@ public class GabowatdagoService {
         //3. 수정 결과 페이지로 리다이렉트하기
         return "redirect:/gabowatdago/"+gabowatdagoEntity.getId();
     }
+
     @Transactional
     public String delete(@PathVariable("id") Long id){
         //1. 삭제 대상 가져오기

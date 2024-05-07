@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class LikeDto {
     private Long userId;
+    private String name;
     private Long gabowatdagoId;
 
 

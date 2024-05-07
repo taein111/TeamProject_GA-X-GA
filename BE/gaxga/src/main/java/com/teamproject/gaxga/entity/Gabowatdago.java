@@ -30,6 +30,7 @@ public class Gabowatdago extends BaseEntity {
     private String lat;
     @Column
     private String lng;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userCode")
     private User userCode;

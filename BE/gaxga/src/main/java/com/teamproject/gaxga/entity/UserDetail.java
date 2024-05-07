@@ -15,7 +15,7 @@ public class UserDetail implements UserDetails {
     private User user;
     public UserDetail(User user) {
         this.user = user;
-        log.info("=========1" + user.getGaP_Image());
+        log.info("=========" + user.getUserCode());
     }
     public String getGaPImage(){
         log.info("=========2" + user.getGaP_Image());

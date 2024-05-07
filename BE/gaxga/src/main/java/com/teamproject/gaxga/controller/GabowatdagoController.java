@@ -27,8 +27,8 @@ public class GabowatdagoController {
      return gabowatdagoService.newForm(model);
     }
     @PostMapping("/gabowatdago/create")
-    public String create(String userId, GabowatdagoForm form) {
-        return gabowatdagoService.create(userId, form);
+    public String create(GabowatdagoForm form) {
+        return gabowatdagoService.create(form);
     }
 
     @GetMapping("/gabowatdago/{id}")
