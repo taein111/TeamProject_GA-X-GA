@@ -10,5 +10,4 @@ import java.util.List;
 public interface GabowatdagoRepository extends JpaRepository<Gabowatdago, Long> {
     @Override
     ArrayList<Gabowatdago> findAll();
-
 }
