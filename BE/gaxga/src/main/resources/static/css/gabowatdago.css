@@ -44,7 +44,7 @@ header{
     font-weight: 500;
     font-size: 35px;
     text-align: center;
-    height: 79px;
+    height: 79%;
 
 }
 .headerLogo{
@@ -83,7 +83,6 @@ header{
 
 #menuTapPage{
     display: none;
-    background-color: black;
     width: 100%;
     height: 1080px;
     position :absolute;
@@ -137,7 +136,7 @@ header{
     color: #CDCBCB;
 
 }
-#rightContent {
+#hRightContent {
     width: 50%;
     text-align: right;
     margin-right: 60px;
@@ -248,8 +247,8 @@ header{
 .intro .center .cate{
     overflow: hidden;
       /* white-space: nowrap; */
-    padding: 30px;
-    margin-top: 33px;
+    padding: 29.5px;
+    margin-top: 18px;
 }
 .intro .center .list {
     display: inline-block;

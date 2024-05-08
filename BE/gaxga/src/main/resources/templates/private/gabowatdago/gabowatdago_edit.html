@@ -1,9 +1,14 @@
-
-<div th:include="public/layouts/header"></div>
-<link rel="stylesheet" th:href="@{/css/post2.css}">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/fonts.css}">
+    <link rel="stylesheet" th:href="@{/css/post2.css}">
+    <title>GAXGA</title>
+</head>
+<body>
+<th:block th:replace="~{public/layouts/header2 :: header}"></th:block>
 <div class="wrap">
     <div class="post-result">
         <div class="review-title">
@@ -58,8 +63,8 @@
                 <textarea name="content" id="content" cols="130" rows="20" class="form-control" th:text="*{content}"></textarea>
             </div>
             <div id="address_Area">
-                <label for="address"><h5>여행지 주소</h5></label>
-                <div class="input-group mb-3">
+                <label for="address"><a id="addressA">여행지 주소</a></label>
+                <div class="input-group mb-3" style="margin: 0 0 10px 10px;">
                     <button class="btn btn-outline-secondary" type="button" id="button-addon1" onclick="sample5_execDaumPostcode()">주소 검색</button>
                     <input type="text" name="address"  id="sample5_address" class="form-control" placeholder="주소" aria-label="Example text with button addon" aria-describedby="button-addon1" th:value="*{address}">
                     <input type="text" name="de_address" id="sample5_detailAddress" class="form-control" placeholder="상세주소를 입력해주세요!" aria-label="Example text with button addon" aria-describedby="button-addon1" th:value="*{de_address}">

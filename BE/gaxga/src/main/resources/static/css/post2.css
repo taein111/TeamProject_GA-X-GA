@@ -1,18 +1,33 @@
 *{
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+}
+*, ::after, ::before {
+  box-sizing: content-box !important;
 }
 
-/* header */
+body {
+   margin: 0 !important;
+   font-family: var(--bs-font-sans-serif) !important;
+  line-height: normal !important;
+   font-size: 1rem !important;
+   font-weight: 400 !important;
+   color: #212529 !important;
+   background-color: #fff !important;
+   -webkit-text-size-adjust: 100% !important;
+   -webkit-tap-highlight-color: transparent !important;
+}
+
 header{
   position: sticky;
-  display: flex;
-  top: 0px;
-  height: 100px;
-  align-items: center;
   z-index: 100;
-  /* background-color: black; */
+  height: 100px;
+  top: 0px;
+  /*align-items: center;*/
+}
+h1 {
+  margin: 0;
+  padding: 0;
 }
 .element{
   width: 33%;
@@ -20,40 +35,49 @@ header{
 
 .mainP{
   display: flex;
+  align-items: center;
+  height: 100%;
 }
 
 .mainP .element1{
   width: 100%;
 }
 .mainP #profile {
-  height: 50px; 
+  height: 50px;
   padding-left: 30px;
 }
 
 .mainP #logo{
-  font-family: 'DMSerif';
-  font-weight: 500;
   font-size: 35px;
   text-align: center;
+  height: 107%;
 
 }
+.headerLogo{
+  text-align: center;
+  height: 100%;
+}
 #logo a {
+  font-family: 'DMSerif';
+  font-weight: 600;
   text-decoration-line: none;
   color: #FFFFFF;
   font-size: 60px;
   text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+  margin: 0;
 }
 
 #elementMenu {
   text-align: right;
   padding-right: 30px;
+  box-sizing: content-box;
 }
-.element #menutap {
+.element #menuTap {
   text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
 
 }
 
-#menutap{
+#menuTap{
   font-family: 'DMSerif';
   font-weight: 500;
   font-size: 30px;
@@ -63,18 +87,18 @@ header{
   background-color: transparent;
   border: none;
   cursor: pointer;
+  padding: 0;
 
 }
 
 #menuTapPage{
-  background-color: black;
-  
-  width: 1920px;
-  height: 1080px;
-  position :absolute;
-  top : 100px;
-  left: 0;
   display: none;
+  background-color: black;
+  width: 100%;
+  height: 100%;
+  position :absolute;
+  top : 96px;
+  left: 0;
 }
 .menuPage{
   display: flex;
@@ -96,11 +120,6 @@ header{
   font-size: 25px;
   color: #CDCBCB;
 }
-.companyContents #socialShare img {
-  width: 376PX;
-  height: 55px;
-  margin: 10px;
-}
 .menu {
   font-family: 'GmarketSans';
   font-weight: 400;
@@ -113,24 +132,27 @@ header{
 }
 .menu ul {
   list-style-type: none;
-  
 }
+ol, ul {
+  padding-left: 0 !important;
+}
+
 .menu ul li {
   margin: 20px 0px;
+
 }
 .menu ul li a {
   text-decoration-line: none;
-  
+
 }
-.menu ul li a:visited{
+.menu ul li a:visited, a:link{
   color: #CDCBCB;
-  
 }
-#rightContent {
+#hRightContent {
   width: 50%;
   text-align: right;
   margin-right: 60px;
-  margin-top: 320px;
+  margin-top: 391px;
 }
 
 #policy {
@@ -144,18 +166,18 @@ header{
 #policy ul li {
   list-style-type: none;
   display: inline;
-  
+
 }
 #policy ul li a {
   color: #CDCBCB;
   text-decoration-line: none;
-  
+
 }
 #policy ul li a:visited{
   color: #CDCBCB;
 
 }
-/* header fin */
+
 
 .wrap{
   display: flex;
@@ -227,6 +249,7 @@ input[type="button"]{
   font-weight: 500;
   font-size: 60px;
   padding-left: 20px;
+  margin: 0;
 }
 
 form{
@@ -255,14 +278,24 @@ form{
   background-color: black;
 }
 .select{
-  margin-top: 15px;
-  margin-bottom: 15px;
-  /* height: 3%; */
   display: flex;
   flex-direction: row;
-  font-size: 20px;
+  font-family: 'GmarketSans';
+  font-weight: 400;
+  font-size: 26px;
   width: 97%;
   margin: 13px auto 20px;
+}
+
+.form-select {
+  width: 92%;
+  height: 34px;
+  border-radius: 10px;
+  font-family: 'GmarketSans';
+  font-weight: 400;
+  font-size: 18px;
+
+
 }
 
 .file-area{
@@ -273,9 +306,9 @@ form{
 }
 
 #textContent textarea{
-  width: 100%;
-  box-sizing: border-box;
+  width: 92%;
   padding: 50px;
+  margin-left: 4px;
   background-color: #f1f1f1;
   border: none;
   outline: none;
@@ -290,9 +323,14 @@ form{
   margin-top: 45px;
   flex-direction: column;
 }
-#address_Area label{
+#addressA{
   font-family: 'GmarketSans';
-  font-weight: 500;
+  font-weight: 400;
+  margin-left: 10px;
+  font-size: 24px;
+}
+#address_Area label{
+ margin-bottom: 10px;
 }
 #address_Area input:first-child{
   width: 20%;

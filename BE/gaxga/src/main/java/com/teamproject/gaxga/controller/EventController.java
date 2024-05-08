@@ -8,7 +8,7 @@ public class EventController {
 
     @GetMapping("event")
     public String event() {
-        return "event/event";
+        return "public/event/event";
     }
 }
 
