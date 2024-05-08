@@ -30,8 +30,8 @@
             </div>
             <div id="area-No1-2">
                 <div id="relo">
-                    <div id="region" th:text="*{state}"></div>
-                    <div id="location">인천광역시 연수구 옥련동</div>
+                    <div id="region" th:text="*{name}"></div>
+                    <div id="location" th:text="*{state}"></div>
                 </div>
                 <div id="GabojagoTag">
                     <a href="#">#인천</a>
@@ -42,51 +42,28 @@
             <div id="area-No1-3">
                 <div id="TextInfo">
                     <hr>
-                        <div>
-                            <span>
-                              여기는 강원도인지 어딘지 모를 바다
-                              와 이쁘다 근데 너무 멀기도 하고 색은 이쁜데 노을 지니까 어 모르겠다
-                              배가 조금 드럽네 제주도 가서 저런 배 타고 낚시도 해보고싶다
-                              여기는 부산인지 어딘지 모를 바다
-                              와 이쁘데 노을 지니까 어 모르겠다
-                              배가 조금 드럽네 제주도 가서 저런 배 타고
-                              여기는 강원도인지 어딘지 모를 바다
-                              와 이쁘다 근데 너무 멀기도 하고 색은 이쁜데 노을 지니까 어 모르겠다
-                              배가 조금 드럽네 제주도 가서 저런 배 타고 낚시도 해보고싶다
-                              여기는 강원도인지 어딘지 모를 바다
-                              와 이쁘다 근데 너무 멀기도 하고 색은 이쁜데 노을 지니까 어 모르겠다
-                              배가 조금 드럽네 제주도 가서 저런 배 타고 낚시도 해보고싶다
-                              여기는 부산인지 어딘지 모를 바다
-                              와 이쁘데 노을 지니까 어 모르겠다
-                              배가 조금 드럽네 제주도 가서 저런 배 타고
-                              여기는 강원도인지 어딘지 모를 바다
-                              와 이쁘다 근데 너무 멀기도 하고 색은 이쁜데 노을 지니까 어 모르겠다
-                              배가 조금 드럽네 제주도 가서 저런 배 타고 낚시도 해보고싶다
-                              여기는 강원도인지 어딘지 모를 바다
-                              와 이쁘다 근데 너무 멀기도 하고 색은 이쁜데 노을 지니까 어 모르겠다
-                              배가 조금 드럽네 제주도 가서 저런 배 타고 낚시도 해보고싶다
-                              여기는 부산인지 어딘지 모를 바다
-                              와 이쁘데 노을 지니까 어 모르겠다
-                              배가 조금 드럽네 제주도 가서 저런 배 타고
-                              여기는 강원도인지 어딘지 모를 바다
-                              와 이쁘다 근데 너무 멀기도 하고 색은 이쁜데 노을 지니까 어 모르겠다
-                              배가 조금 드럽네 제주도 가서 저런 배 타고 낚시도 해보고싶다
-                            </span>
-                        </div>
+                    <div>
+                        <span th:text="*{text}"></span>
+                    </div>
                     <hr>
                 </div>
             </div>
         </div>
         <div id="area-No2">
             <div id="area-No2-1">
-                <img src="../img/인천/cheonglyangsan1.png" alt="">
+                <img th:src="@{'/' + *{img}}" alt="">
             </div>
             <div id="area-No2-2">
-                <p>총 19명의 사용자가 저장한 여행지에요.</p>
+                <p>총 count명의 사용자가 저장한 여행지에요.</p>
             </div>
             <div id="area-No2-3">
                 <ul id="icons">
-                    <li><a href=""><i class="fa-solid fa-bookmark"></i></a></i></li>
+                    <input type="hidden" id="jjim_input" th:value="${user}">
+                    <input type="hidden" id="gabojago_id" th:value="*{id}">
+                    <li>
+                        <a href="#"><i class="fa-solid fa-bookmark" id="jjim_before"></i></a>
+                        <a href="#"><i class="fa-solid fa-bookmark" style="color: #ff0033; display: none" id="jjim_after"></i></a>
+                    </li>
                     <li><a href="https://twitter.com/?lang=ko" target="_blank"><i class="fa-brands fa-square-twitter"></i></a></i></li>
                     <li><a href="https://www.facebook.com/?locale=ko_KR" target="_blank"><i class="fa-brands fa-square-facebook"></a></i></li>
                     <li><a href="https://www.instagram.com/" target="_blank" id="instagram"><i class="fa-brands fa-instagram"></i></a></i></li>
@@ -96,5 +73,6 @@
     </div>
 </div>
 <script th:src="@{/js/menu2.js}"></script>
+<script th:src="@{/js/gabojago/jjim.js}"></script>
 </body>
 </html>

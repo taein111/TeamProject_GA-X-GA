@@ -8,9 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Slf4j
 @Service
 public class JoinMembershipService {
@@ -41,8 +38,7 @@ public class JoinMembershipService {
         return true;
     }
 
-//    public JoinMembershipForm findUserInfo() {
-//        User data = userRepository.findByGaId();
-//        List<JoinMembershipForm> userInfoList = new ArrayList<>();
-//    }
+    public boolean checkId(String userId) {
+        return userRepository.existsByGaId(userId);
+    }
 }

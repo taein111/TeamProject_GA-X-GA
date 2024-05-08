@@ -1,11 +1,14 @@
 package com.teamproject.gaxga.service.gabojago;
 
 import com.teamproject.gaxga.entity.Gabowatdago;
+import com.teamproject.gaxga.entity.UserDetail;
 import com.teamproject.gaxga.entity.gabojago.GP;
 import com.teamproject.gaxga.repository.gabojago.GpRepository;
 import com.teamproject.gaxga.repository.gabojago.GrRepository;
 import com.teamproject.gaxga.repository.gabojago.GtRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
@@ -20,7 +23,12 @@ public class GabojagoingService {
 
     public String show(Long id, Model model) {
         GP gabojagoingEntity = gpRepository.findById(id).orElse(null);
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        UserDetail userDetail = (UserDetail) auth.getPrincipal();
+        Long JjimDtos = userDetail.getUser().getUserCode();
+        System.out.println(JjimDtos);
         model.addAttribute("gabojagoing", gabojagoingEntity);
+        model.addAttribute("user", JjimDtos);
         return "public/gabojagoing/gabojagoing";
     }
 
@@ -33,6 +41,7 @@ public class GabojagoingService {
         model.addAttribute("gabojagoingList", gabojagoingEntityList);
         model.addAttribute("locList", locList);
         model.addAttribute("themaList", themaList);
+
         //3. 뷰 페이지 등록하기
         return "private/gabojagoing/gabojagoing";
     }
