@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,14 +15,14 @@
             <p>ID / PASSWORD 찾기</p>
         </div>
         <div id="middle">
-            <form action="" id="find_Id" class="form_Area">
+            <form action="/findInfo" id="find_Id" class="form_Area" method="post">
                 <div class="input_Area">
                     <div class="first_Area">
                         <div>
                             <label for="user_Name">이름</label>
                         </div>
                         <div>
-                            <input type="text" id="user_Name" placeholder="이름을 입력하세요">
+                            <input type="text" id="user_Name" name="user_Name" placeholder="이름을 입력하세요">
                         </div>
                     </div>
                     <div class="second_Area">
@@ -30,15 +30,16 @@
                             <label for="userId_PhoneNumber">전화번호</label>
                         </div>
                         <div>
-                            <input type="tel" id="userId_PhoneNumber" placeholder="전화번호를 입력하세요" oninput="AutoHyphen(this)" maxlength="13" minlength="13">
+                            <input type="tel" id="userId_PhoneNumber" name="userId_PhoneNumber" placeholder="전화번호를 입력하세요" oninput="AutoHyphen(this)" maxlength="13" minlength="13">
                         </div>
                     </div>
                 </div>
+                <input type="hidden" th:value="${userId}" id="userId">
                 <div class="btn_Area">
-                    <input type="submit" value="아이디 찾기">
+                    <input type="submit" value="아이디 찾기" id="findIdBtn" onclick="findId()">
                 </div>
             </form>
-            <form action="" id="find_Password" class="form_Area">
+            <form action="/find_Pass" id="find_Password" class="form_Area" method="post">
                 <div class="input_Area">
                     <div class="first_Area"
                          id="user_Id_Area">
@@ -78,6 +79,7 @@
         </div>
     </div>
 </div>
-<script src="../js/basicSetting.js"></script>
+<script src="/js/basicSetting.js" th:src="@{/js/basicSettings.js}"></script>
+<script src="js/findInfo.js" th:src="@{js/findInfo.js}"></script>
 </body>
 </html>
