@@ -7,7 +7,6 @@
 }
 
 body {
-<<<<<<< HEAD
   margin: 0 !important;
   font-family: var(--bs-font-sans-serif) !important;
   line-height: normal !important;
@@ -17,17 +16,6 @@ body {
   background-color: #fff !important;
   -webkit-text-size-adjust: 100% !important;
   -webkit-tap-highlight-color: transparent !important;
-=======
-   margin: 0 !important;
-   font-family: var(--bs-font-sans-serif) !important;
-  line-height: normal !important;
-   font-size: 1rem !important;
-   font-weight: 400 !important;
-   color: #212529 !important;
-   background-color: #fff !important;
-   -webkit-text-size-adjust: 100% !important;
-   -webkit-tap-highlight-color: transparent !important;
->>>>>>> 91c6ef8aa27d4bd0e4dca1c40b542b545f96dd7b
 }
 
 header{
@@ -342,11 +330,7 @@ form{
   font-size: 24px;
 }
 #address_Area label{
-<<<<<<< HEAD
   margin-bottom: 10px;
-=======
- margin-bottom: 10px;
->>>>>>> 91c6ef8aa27d4bd0e4dca1c40b542b545f96dd7b
 }
 #address_Area input:first-child{
   width: 20%;

@@ -37,6 +37,9 @@ public class Gabowatdago extends BaseEntity {
     @JoinColumn(name = "userCode")
     private User userCode;
 
+    @Column
+    private Long likeCount;
+
     //수정할 내용이 있는 경우에만 동작하는 메서드
     public void patch(Gabowatdago gabowatdago) {
         if(gabowatdago.title != null)

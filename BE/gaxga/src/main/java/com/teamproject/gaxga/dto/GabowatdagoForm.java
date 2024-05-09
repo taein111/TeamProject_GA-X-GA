@@ -24,9 +24,12 @@ public class GabowatdagoForm {
     private String lat;
     private String lng;
     private User userCode;
+    private Long likeCount;
+
+
 
     public Gabowatdago toEntity() {
-        return new Gabowatdago(id, title, gaId, local, thema, image, content, address, de_address, lat, lng, userCode);
+        return new Gabowatdago(id, title, gaId, local, thema, image, content, address, de_address, lat, lng, userCode, likeCount);
     }
 
 }

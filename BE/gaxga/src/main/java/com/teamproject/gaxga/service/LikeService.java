@@ -38,6 +38,7 @@ public class LikeService {
                 .user(user)
                 .build();
         likeRepository.save(like);
+        likeRepository.likeCountAdd();
     }
 
     @Transactional
