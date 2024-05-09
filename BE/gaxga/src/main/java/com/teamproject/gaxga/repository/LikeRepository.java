@@ -16,7 +16,7 @@ import java.util.Optional;
 public interface LikeRepository extends JpaRepository<Like, Long> {
     Optional<Like> findByGabowatdagoAndUser(Gabowatdago gabowatdago, User user);
 
-    @Modifying//update쿼리를 주기 위해서는 Modifying 필요
-    @Query(value = "update Gabowatdago g set g.likeCount=g.likeCount+1 where g.likeCount>=0", nativeQuery = true )
-    void likeCountAdd();
+//    @Modifying//update쿼리를 주기 위해서는 Modifying 필요
+//    @Query(value = "update Gabowatdago g set g.likeCount=g.likeCount+1", nativeQuery = true )
+//    void likeCountAdd();
 }

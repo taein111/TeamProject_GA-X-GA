@@ -45,7 +45,7 @@
                         <input type="file" class="form-control" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload" multiple accept="image/*" name=image>
                     </div>
                 </div>
-                <input class="writer" style="width: 50%; text-align: right;" th:placeholder="${userNick}" readonly>
+                <input class="writer" style="width: 50%; text-align: right; border: none" th:placeholder="${userNick}" readonly>
                 <input name="gaId" th:value="${gaId}" style="display: none">
             </div>
             <div id="textContent">
@@ -63,6 +63,7 @@
             <div id="map"></div>
             <input type="hidden" name="lat" id="latitude">
             <input type="hidden" name="lng" id="longitude">
+            <input type="hidden" name="likeCount" th:value="0">
             <div id="submit_Area">
                 <button style="float: right; margin-top: 5px; margin-bottom: 20px" type="submit" id="submitButton" class="btn btn-secondary" >게시하기</button>
             </div>

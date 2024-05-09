@@ -132,14 +132,14 @@
               <img id="like_before" src="/img/빈하트.png">
               <img id="like_after" src="/img/빨간하트.png" style="display: none">
             </div>
-            <div class="like">
-              이 게시글은 명에게 추천받았습니다.
+            <div>
+              <span class="likeCount" th:text="*{likeCount} + '명이 좋아요 한 게시글 입니다'"></span>
             </div>
 
             <div>
               <!--            <--로그인한사람의 nickname과 게시글상의 nickname을 비교하여 일치하면 수정 삭제 버튼을 출력한다.-->
               <a th:if="${gaId == gabowatdago.gaId}" th:href="@{'/gabowatdago/' + ${id} + '/edit'}"><input type="button" value="수정" style="line-height: 0.6;" class="btn btn-outline-success"></a>
-              <a th:if="${gaId == gabowatdago.gaId}" th:href="@{'/gabowatdago/' + ${id} + '/delete'}"><input type="button" value="삭제" style="line-height: 0.6;" class="btn btn-outline-danger" onclick="delOk()" ></a>
+              <a th:if="${gaId == gabowatdago.gaId}" th:href="@{'/gabowatdago/' + ${id} + '/delete'}"><input type="button" value="삭제" style="line-height: 0.6;" class="btn btn-outline-danger" onclick="return delOk()" ></a>
               <input type="button" class="btn btn-outline-success" value="목록 보기" style="width: 15%; line-height: 0.6;" onclick="window.location.href='/gabowatdago'">
             </div>
           </div>
@@ -158,6 +158,7 @@
           <button style="display: none" type="button" id="test">클릭테스트</button>
           <div class="text-box" th:text="*{content}">
           </div>
+          <button id="deleteStorage">스토리지삭제</button>
           <h3>여행지 주소</h3><br>
           <div style="font-family: GmarketSans; color:#6A6A6A" th:text="*{address}"> </div>
           <div style="font-family: GmarketSans; color:#6A6A6A" th:text="*{de_address}"></div>
@@ -186,7 +187,7 @@
 <!--                            data-bs-toggle="modal"-->
 <!--                            th:data-bs-target="${cmt.id}"-->
 <!--                    >수정</button>-->
-                    <button type="button" id="deleteBtn"
+                    <button th:if="${gaId == gabowatdago.gaId}" type="button" id="deleteBtn"
                             th:data-comment-id="${cmt.id}">삭제</button>
                   </div>
                 </h5>
@@ -218,6 +219,12 @@
 <script th:src="@{/js/post_result.js}"></script>
 <script th:src="@{/js/menu.js}"></script>
 <script th:src="@{/js/like.js}"></script>
-
+<script>
+  //오라클 연동 전에 사용하는 임시 스토리지 삭제 버튼
+  const deleteStorage = document.querySelector("#deleteStorage")
+  deleteStorage.addEventListener("click",function (){
+     localStorage.clear();
+  })
+</script>
 </body>
 </html>

@@ -38,7 +38,9 @@ public class Gabowatdago extends BaseEntity {
     private User userCode;
 
     @Column
-    private Long likeCount;
+    private Integer likeCount;
+
+
 
     //수정할 내용이 있는 경우에만 동작하는 메서드
     public void patch(Gabowatdago gabowatdago) {
@@ -61,4 +63,14 @@ public class Gabowatdago extends BaseEntity {
         if (gabowatdago.lng != null)
             this.lng = gabowatdago.lng;
     }
+
+    public void likeCountAdd() {
+        this.likeCount = likeCount + 1;
+    }
+
+    public void likeCountDelete() {
+        this.likeCount = likeCount - 1;
+    }
+
+
 }

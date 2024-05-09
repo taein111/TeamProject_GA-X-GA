@@ -24,7 +24,7 @@ public class GabowatdagoForm {
     private String lat;
     private String lng;
     private User userCode;
-    private Long likeCount;
+    private Integer likeCount;
 
 
 

@@ -1,15 +1,12 @@
 package com.teamproject.gaxga.dto;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
+@Setter
 public class LikeDto {
     private Long userId;
-    private String name;
     private Long gabowatdagoId;
 
 
