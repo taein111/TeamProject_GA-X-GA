@@ -16,9 +16,6 @@ public class Jjim {
     @Column(name="Jjim_id")
     private Long id;
 
-    @Column
-    private String name;
-
     @ManyToOne
     @JoinColumn(name="user_id")
     private User user;

@@ -16,7 +16,7 @@
         </div>
         <div id="content">
             <h3>Sign Up</h3>
-            <form action="/joinMembership">
+            <form action="/joinMembership/create" method="post">
                 <div id="form_content">
                     <div id="form_id" class="inputs">
                         <div class="icon">
@@ -89,7 +89,7 @@
                     <input type="hidden" name="gaP_Image" value="/img/maingabwatdago.png">
                 </div>
                 <div id="btn_submit">
-                    <input type="button" value="확인" class="submit" id="submitBtn"  onclick="joinState()">
+                    <input type="submit" value="확인" class="submit" id="submitBtn">
                     <input type="button" value="취소" class="submit">
                 </div>
             </form>

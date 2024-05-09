@@ -22,10 +22,9 @@ public class JoinMembershipController {
         return "public/accountManagement/joinMembership";
     }
 
-    @PostMapping("/joinMembership")
-    @ResponseBody
-    public String createJoinMembership(@RequestBody JoinMembershipForm joinMembershipForm, Model model){
-        log.info("======joinMembershipForm=11{}", joinMembershipForm);
+    @PostMapping("/joinMembership/create")
+    public String createJoinMembership(JoinMembershipForm joinMembershipForm, Model model){
+        log.info("======" + joinMembershipForm);
         if(joinMembershipForm.getGaP_Image() == null)
         {
             User user = new User();
@@ -42,11 +41,11 @@ public class JoinMembershipController {
             return "redirect:/joinMembership";
         }
     }
-
-    @GetMapping("/joinMembership/checkId")
-    @ResponseBody
-    public boolean checkIdDuplication(@RequestParam("userId") String userId) {
-        log.info("======checkIdDuplication={}", userId);
-        return joinMembershipService.checkId(userId);
-    }
+//
+//    @GetMapping("/joinMembership/checkId")
+//    @ResponseBody
+//    public boolean checkIdDuplication(@RequestParam("userId") String userId) {
+//        log.info("======checkIdDuplication={}", userId);
+//        return joinMembershipService.checkId(userId);
+//    }
 }

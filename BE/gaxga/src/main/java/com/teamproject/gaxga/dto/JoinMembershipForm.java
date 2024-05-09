@@ -1,14 +1,12 @@
 package com.teamproject.gaxga.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
 @Getter
+@Setter
 public class JoinMembershipForm {
     private Long userCode;
     private String gaId;

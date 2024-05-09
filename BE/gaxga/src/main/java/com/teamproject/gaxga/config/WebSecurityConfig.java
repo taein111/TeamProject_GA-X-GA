@@ -37,7 +37,7 @@ public class WebSecurityConfig {
         http
                 .authorizeHttpRequests((auth) -> auth
                         .requestMatchers("/css/**", "/js/**", "/images/**", "/fonts/**","terms.html", "privacy.html", "copyright.html",
-                                "/api/**", "/findInfo","/joinMembership","/main", "/gabojago", "/gabojagoing"
+                                "/api/**", "/findInfo","/joinMembership/**","/main", "/gabojago", "/gabojagoing"
                                 ).permitAll()
                         .anyRequest().authenticated()); // todo. 임시로 로그인 후에는 모든 요청에 접근을 허용하게 했으나 나중에 로그인 후에 보여줄거 같은거 수정필요
         http
