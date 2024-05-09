@@ -37,6 +37,16 @@ public class GP {
 
     @Column
     private String text;
+
+    @Column(nullable = false)
+    private Long jjimcount;
+
+    public void increaseJjimCount() {
+        this.jjimcount++;
+    }
+    public void decreseJjimCount() {
+        this.jjimcount--;
+    }
 //
 //    @ManyToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "userCode")

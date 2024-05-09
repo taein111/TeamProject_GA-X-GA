@@ -1,5 +1,6 @@
 package com.teamproject.gaxga.controller;
 
+import com.teamproject.gaxga.entity.gabojago.Jjim;
 import com.teamproject.gaxga.service.gabojago.GabojagoingService;
 import lombok.ToString;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,9 @@ public class GabojagoingController {
 
     @GetMapping("/gabojagoing/{id}")
     public String show(@PathVariable("id") Long id, Model model){
+        Jjim jjim = new Jjim();
+//        jjim.getJjimCountWithDefault();
+
         return gabojagoingService.show(id, model);
     }
 }

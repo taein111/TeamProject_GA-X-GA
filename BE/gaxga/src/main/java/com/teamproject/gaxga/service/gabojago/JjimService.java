@@ -10,7 +10,10 @@ import com.teamproject.gaxga.repository.gabojago.GpRepository;
 import com.teamproject.gaxga.repository.gabojago.JjimRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -23,18 +26,22 @@ public class JjimService {
     public void insert(JjimDto jjimDto) throws Exception {
         GP gp = gpRepository.findById(jjimDto.getGabojagoId())
                 .orElseThrow(() -> new Exception("not found: " + jjimDto.getGabojagoId()));
-       User user = userRepository.findById(jjimDto.getUserId())
-               .orElseThrow(() -> new Exception("User not found: " + jjimDto.getUserId()));
-       if(jjimRepository.findByGpidAndUser(gp, user).isPresent()){
-           throw new DuplicateRequestException("already exist data my user id :" + user.getGaId()
-           + " ," + "gabojago id : " + gp.getId());
-       }
-       Jjim jjim = Jjim.builder()
-               .gp(gp)
-               .user(user)
-               .build();
-       jjimRepository.save(jjim);
+        User user = userRepository.findById(jjimDto.getUserId())
+                .orElseThrow(() -> new Exception("User not found: " + jjimDto.getUserId()));
+
+        if(jjimRepository.findByGpidAndUser(gp, user).isPresent()){
+            throw new DuplicateRequestException("already exist data my user id :" + user.getGaId()
+                    + " ," + "gabojago id : " + gp.getId());
+        }
+        Jjim jjim = Jjim.builder()
+                .gp(gp)
+                .user(user)
+                .build();
+        gp.increaseJjimCount();
+        gpRepository.save(gp);
+        jjimRepository.save(jjim);
     }
+
 
     @Transactional
     public void delete(JjimDto jjimDto) throws Exception {
@@ -46,6 +53,19 @@ public class JjimService {
 
         Jjim jjim = jjimRepository.findByGpidAndUser(gp, user)
                 .orElseThrow(() -> new Exception("Could not found jjim id"));
+        gp.decreseJjimCount();
+        gpRepository.save(gp);
         jjimRepository.delete(jjim);
     }
+
+//    public Jjim jjimPost(Long jjimId) throws Exception {
+//        Jjim jjim = jjimRepository.findById(jjimId).orElseThrow(() -> new Exception("Could not found Jjim id: " + jjimId));
+//        jjim.increaseJjimCount();
+//        return jjimRepository.save(jjim);
+//    }
+//    public Jjim unjjimPost(Long jjimId) throws Exception {
+//        Jjim jjim = jjimRepository.findById(jjimId).orElseThrow(() -> new Exception("Could not found Jjim id: " + jjimId));
+//        jjim.decreseJjimCount();
+//        return jjimRepository.save(jjim);
+//    }
 }

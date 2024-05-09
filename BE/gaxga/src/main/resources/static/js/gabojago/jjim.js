@@ -24,10 +24,18 @@ jjimBefore.addEventListener("click",function(){
     jjimBefore.style.display ="none";
     jjimAfter.style.display="inline-block";
 
+
     const jjim ={
         userId : document.querySelector("#jjim_input").value,
-        gabojagoId: document.querySelector("#gabojago_id").value
+        gabojagoId: document.querySelector("#gabojago_id").value,
     };
+
+    const likeCountElement = document.querySelector(".jjim");
+    const currentLikeCountText = likeCountElement.textContent;
+    const currentLikeCount = parseInt(currentLikeCountText); // 문자열을 정수로 변환
+
+// 현재 좋아요 수에 1을 더하고 다시 문자열로 변환하여 설정
+    likeCountElement.innerText = (currentLikeCount + 1) + "명이 저장한 게시글입니다";
 
     console.log(jjim);
     const url = "/api/gabojagoing/jjim"
@@ -52,10 +60,19 @@ jjimAfter.addEventListener("click", function(){
     // 버튼 표시 변경
     jjimBefore.style.display="inline-block";
     jjimAfter.style.display="none";
+
+
     const jjim = {
         userId: document.querySelector("#jjim_input").value,
         gabojagoId: document.querySelector("#gabojago_id").value
     };
+    const likeCountElement = document.querySelector(".jjim");
+    const currentLikeCountText = likeCountElement.textContent;
+    const currentLikeCount = parseInt(currentLikeCountText); // 문자열을 정수로 변환
+
+// 현재 좋아요 수에 1을 더하고 다시 문자열로 변환하여 설정
+    likeCountElement.innerText = (currentLikeCount - 1) + "명이 저장한 게시글입니다";
+
     console.log(jjim);
     const url = "/api/gabojagoing/jjim"
     fetch(url, {

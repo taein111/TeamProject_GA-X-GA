@@ -1,6 +1,7 @@
 package com.teamproject.gaxga.controller.gabojago;
 
 import com.teamproject.gaxga.dto.gabojago.JjimDto;
+import com.teamproject.gaxga.entity.gabojago.Jjim;
 import com.teamproject.gaxga.service.gabojago.JjimService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

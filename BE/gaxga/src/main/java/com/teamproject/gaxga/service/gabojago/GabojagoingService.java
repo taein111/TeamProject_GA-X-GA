@@ -3,9 +3,11 @@ package com.teamproject.gaxga.service.gabojago;
 import com.teamproject.gaxga.entity.Gabowatdago;
 import com.teamproject.gaxga.entity.UserDetail;
 import com.teamproject.gaxga.entity.gabojago.GP;
+import com.teamproject.gaxga.entity.gabojago.Jjim;
 import com.teamproject.gaxga.repository.gabojago.GpRepository;
 import com.teamproject.gaxga.repository.gabojago.GrRepository;
 import com.teamproject.gaxga.repository.gabojago.GtRepository;
+import com.teamproject.gaxga.repository.gabojago.JjimRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -20,13 +22,18 @@ public class GabojagoingService {
     private GpRepository gpRepository;
     private GrRepository grRepository;
     private GtRepository gtRepository;
+    @Autowired
+    private JjimRepository jjimRepository;
 
     public String show(Long id, Model model) {
         GP gabojagoingEntity = gpRepository.findById(id).orElse(null);
+        Jjim jjim = jjimRepository.findById(id).orElse(null);
+        System.out.println("==============="+jjim);
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         UserDetail userDetail = (UserDetail) auth.getPrincipal();
         Long JjimDtos = userDetail.getUser().getUserCode();
         System.out.println(JjimDtos);
+        model.addAttribute("jjim", jjim);
         model.addAttribute("gabojagoing", gabojagoingEntity);
         model.addAttribute("user", JjimDtos);
         return "public/gabojagoing/gabojagoing";
