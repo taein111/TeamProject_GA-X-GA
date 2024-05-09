@@ -21,9 +21,11 @@ public class UserDetailService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        log.info("username : " + username);
         User userData = userRepository.findByGaId(username);
 
         if (userData != null) {
+            log.info("======userData.toString()) : "+userData.toString());
             return new UserDetail(userData);
         }
         return null;

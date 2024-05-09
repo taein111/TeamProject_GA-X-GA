@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Slf4j
 @Controller
@@ -23,7 +24,8 @@ public class JoinMembershipController {
     }
 
     @PostMapping("/joinMembership/create")
-    public String createJoinMembership(JoinMembershipForm joinMembershipForm, Model model){
+    public String createJoinMembership(JoinMembershipForm joinMembershipForm,
+                                       RedirectAttributes redirectAttributes){
         log.info("======" + joinMembershipForm);
         if(joinMembershipForm.getGaP_Image() == null)
         {
@@ -34,10 +36,11 @@ public class JoinMembershipController {
         boolean success = joinMembershipService.joinPutData(joinMembershipForm);
         log.info(success ? "success" : "fail");
         if(success){
+            redirectAttributes.addFlashAttribute("msg", "회원가입에 성공했습니다");
             return "redirect:/login";
 
         } else {
-            log.info("회원가입 성공 여부 : " + success);
+            redirectAttributes.addFlashAttribute("msg", "회원가입에 실패했습니다");
             return "redirect:/joinMembership";
         }
     }

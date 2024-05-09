@@ -9,6 +9,12 @@
     <title>GAXGA_JOINMEMBERSHIP</title>
 </head>
 <body>
+<script>
+    let message = "[[${msg}]]";
+    if(message != ""){
+        alert(message);
+    }
+</script>
 <div id="container">
     <div id="inner">
         <div id="membershipLogo">
@@ -90,7 +96,7 @@
                 </div>
                 <div id="btn_submit">
                     <input type="submit" value="확인" class="submit" id="submitBtn">
-                    <input type="button" value="취소" class="submit">
+                    <input type="button" value="취소" class="submit" onclick="location.href='login.html'">
                 </div>
             </form>
         </div>

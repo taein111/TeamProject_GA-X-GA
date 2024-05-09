@@ -13,14 +13,14 @@ public class FindInfoService {
     @Autowired
     private UserRepository userRepository;
 
-    public User findUserInfo(String Nickname, String PhoneNum){
-        User user = userRepository.findByGaNickAndGaPhone(Nickname, PhoneNum);
-        if(user == null){
+    public User findUserInfo(User user){
+        User data = userRepository.findByGaNickAndGaPhone(user.getGaNick(), user.getGaPhone());
+        if(data == null){
             System.out.println("회원정보가 없습니다.");
             return null;
         }else{
-            System.out.println("회원정보 ID : " + user.getGaId());
-            return user;
+            System.out.println("회원정보 ID : " + data.getGaId());
+            return data;
         }
     }
 
