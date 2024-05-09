@@ -11,6 +11,7 @@ import com.teamproject.gaxga.repository.UserRepository;
 import com.teamproject.gaxga.repository.gabojago.GrRepository;
 import com.teamproject.gaxga.repository.gabojago.GtRepository;
 import jakarta.transaction.Transactional;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -20,7 +21,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
-
+@Slf4j
 @Service
 public class GabowatdagoService {
     @Autowired
@@ -48,7 +49,7 @@ public class GabowatdagoService {
 
     @Transactional
     public String create(GabowatdagoForm form) {
-        System.out.println(form.toString());
+        log.info("=========="+ form.toString());
         //1. DTO를 엔티티로
         Gabowatdago gabowatdago = form.toEntity();
         //2. 레퍼지토리로 엔티티를 DB에 저장

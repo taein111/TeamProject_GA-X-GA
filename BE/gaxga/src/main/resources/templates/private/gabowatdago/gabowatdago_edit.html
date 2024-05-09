@@ -58,21 +58,8 @@
                     <input class="writer" style="width: 50%; text-align: right;" th:placeholder="${userNick}" readonly>
                     <input name="gaId" th:value="${gaId}" style="display: none">
                 </div>
-<<<<<<< HEAD
                 <div id="textContent">
                     <textarea name="content" id="content" cols="130" rows="20" class="form-control" th:text="*{content}"></textarea>
-=======
-            </div>
-            <div id="textContent">
-                <textarea name="content" id="content" cols="130" rows="20" class="form-control" th:text="*{content}"></textarea>
-            </div>
-            <div id="address_Area">
-                <label for="address"><a id="addressA">여행지 주소</a></label>
-                <div class="input-group mb-3" style="margin: 0 0 10px 10px;">
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon1" onclick="sample5_execDaumPostcode()">주소 검색</button>
-                    <input type="text" name="address"  id="sample5_address" class="form-control" placeholder="주소" aria-label="Example text with button addon" aria-describedby="button-addon1" th:value="*{address}">
-                    <input type="text" name="de_address" id="sample5_detailAddress" class="form-control" placeholder="상세주소를 입력해주세요!" aria-label="Example text with button addon" aria-describedby="button-addon1" th:value="*{de_address}">
->>>>>>> 91c6ef8aa27d4bd0e4dca1c40b542b545f96dd7b
                 </div>
                 <div id="address_Area">
                     <label for="address"><a id="addressA">여행지 주소</a></label>
@@ -85,6 +72,7 @@
                 <div id="map"></div>
                 <input type="hidden" name="lat" id="latitude">
                 <input type="hidden" name="lng" id="longitude">
+                <input type="hidden" name="likeCount" th:value="*{likeCount}">
                 <div id="submit_Area">
                     <button style="float: right; margin-top: 5px; margin-bottom: 20px" type="submit" id="submitButton" class="btn btn-secondary" >게시하기</button>
                 </div>

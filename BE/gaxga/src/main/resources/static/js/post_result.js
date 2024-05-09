@@ -109,36 +109,35 @@ marker.setMap(map);
 //-----------------------------------------------------------------------
 // 삭제버튼 클릭 알림창
 function delOk(){
-    if(!confirm('삭제하시면 복구할수 없습니다. \n 정말로 삭제하시겠습니까??')){
-        return false;
-    }
+    return confirm('삭제하시면 복구할 수 없습니다.\n정말로 삭제하시겠습니까??');
 }
 // 댓글  작성 기능
-const commentCreateBtn = document.querySelector("#comment-save")
+const commentCreateBtn = document.querySelector("#comment-save");
 
-commentCreateBtn.addEventListener("click",function (){
-    //새 댓글 객체 생성
+commentCreateBtn.addEventListener("click", function () {
     const comment = {
         nickname: document.querySelector("#client").value,
         body: document.querySelector("#comment").value,
         gabowatdagoId: document.querySelector("#new-comment-gabowatdago_id").value
     };
-    //댓글 객체 출력해보기
+
     console.log(comment);
-    const url = "/api/gabowatdago/"+ comment.gabowatdagoId+"/cmts";
+    const url = "/api/gabowatdago/" + comment.gabowatdagoId + "/cmts";
     fetch(url, {
         method: "POST",
-        headers : {  //전송 본문의 데이터 타입 (json) 정보
-            "Content-Type" : "application/json"
+        headers: {
+            "Content-Type": "application/json"
         },
-        body: JSON.stringify(comment) //comment 객체를 json 문자열로 변환해 전송
-    }).then(response =>{
-        //http 응답 코드에 따른 메시지 출력해주기
-        const msg = (response.ok) ? "댓글 등록 완료" : "댓글 등록 실패";
-        alert(msg);
-        // 새로고침
-        window.location.reload();
-    })
+        body: JSON.stringify(comment)
+    }).then(response => {
+        if (response.ok) {
+            alert("댓글 등록 완료");
+            // 댓글이 성공적으로 등록되었을 때 페이지를 새로 고침
+            window.location.reload();
+        } else {
+            alert("댓글 등록 실패");
+        }
+    });
 });
 //댓글 수정
 // const commentUpdateBtns = document.querySelector("#updateBtn")

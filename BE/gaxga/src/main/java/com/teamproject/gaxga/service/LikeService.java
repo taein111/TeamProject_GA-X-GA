@@ -10,9 +10,11 @@ import com.teamproject.gaxga.repository.LikeRepository;
 import com.teamproject.gaxga.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class LikeService {
@@ -37,7 +39,12 @@ public class LikeService {
                 .gabowatdago(gabowatdago)
                 .user(user)
                 .build();
+
+        gabowatdago.likeCountAdd();
+        gabowatdagoRepository.save(gabowatdago);
+        System.out.println("================"+gabowatdago.getLikeCount());
         likeRepository.save(like);
+
     }
 
     @Transactional
@@ -51,6 +58,9 @@ public class LikeService {
         Like like = likeRepository.findByGabowatdagoAndUser(gabowatdago, user)
                         .orElseThrow(() -> new Exception("Could not found like id"));
 
+        gabowatdago.likeCountDelete();
+        gabowatdagoRepository.save(gabowatdago);
         likeRepository.delete(like);
+
     }
 }

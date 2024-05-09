@@ -120,46 +120,26 @@
           <div class="post-info">
             <div class="date">
               게시날짜:
-<<<<<<< HEAD
               <span th:text="${#temporals.format(regDate, 'yyyy-MM-dd HH:mm:ss')}"></span>
             </div>
             <div class="locTag">
               <div class="loc" th:text="*{local}">
-=======
-              <span>0418</span>
-            </div>
-            <div class="locTag">
-              <div class="loc" th:text="*{local}">
-              </div>
-              <div class="tag">
-                여행 태그:<span>
-                    <a href="">#인천</a>
-                    <a href="">#테마파크</a>
-                    <a href="">#월미도</a>
-                  </span>
->>>>>>> 91c6ef8aa27d4bd0e4dca1c40b542b545f96dd7b
               </div>
             </div>
           </div>
           <div class="delete">
             <div>
-<<<<<<< HEAD
               <img id="like_before" src="/img/빈하트.png">
               <img id="like_after" src="/img/빨간하트.png" style="display: none">
-=======
-              <svg id="like" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                <path d="M225.8 468.2l-2.5-2.3L48.1 303.2C17.4 274.7 0 234.7 0 192.8v-3.3c0-70.4 50-130.8 119.2-144C158.6 37.9 198.9 47 231 69.6c9 6.4 17.4 13.8 25 22.3c4.2-4.8 8.7-9.2 13.5-13.3c3.7-3.2 7.5-6.2 11.5-9c0 0 0 0 0 0C313.1 47 353.4 37.9 392.8 45.4C462 58.6 512 119.1 512 189.5v3.3c0 41.9-17.4 81.9-48.1 110.4L288.7 465.9l-2.5 2.3c-8.2 7.6-19 11.9-30.2 11.9s-22-4.2-30.2-11.9zM239.1 145c-.4-.3-.7-.7-1-1.1l-17.8-20c0 0-.1-.1-.1-.1c0 0 0 0 0 0c-23.1-25.9-58-37.7-92-31.2C81.6 101.5 48 142.1 48 189.5v3.3c0 28.5 11.9 55.8 32.8 75.2L256 430.7 431.2 268c20.9-19.4 32.8-46.7 32.8-75.2v-3.3c0-47.3-33.6-88-80.1-96.9c-34-6.5-69 5.4-92 31.2c0 0 0 0-.1 .1s0 0-.1 .1l-17.8 20c-.3 .4-.7 .7-1 1.1c-4.5 4.5-10.6 7-16.9 7s-12.4-2.5-16.9-7z"/></svg>
->>>>>>> 91c6ef8aa27d4bd0e4dca1c40b542b545f96dd7b
             </div>
-            <div class="like">
-              이 게시글은 명에게 추천받았습니다.
+            <div>
+              <span class="likeCount" th:text="*{likeCount} + '명이 좋아요 한 게시글 입니다'"></span>
             </div>
-<<<<<<< HEAD
 
             <div>
               <!--            <--로그인한사람의 nickname과 게시글상의 nickname을 비교하여 일치하면 수정 삭제 버튼을 출력한다.-->
               <a th:if="${gaId == gabowatdago.gaId}" th:href="@{'/gabowatdago/' + ${id} + '/edit'}"><input type="button" value="수정" style="line-height: 0.6;" class="btn btn-outline-success"></a>
-              <a th:if="${gaId == gabowatdago.gaId}" th:href="@{'/gabowatdago/' + ${id} + '/delete'}"><input type="button" value="삭제" style="line-height: 0.6;" class="btn btn-outline-danger" onclick="delOk()" ></a>
+              <a th:if="${gaId == gabowatdago.gaId}" th:href="@{'/gabowatdago/' + ${id} + '/delete'}"><input type="button" value="삭제" style="line-height: 0.6;" class="btn btn-outline-danger" onclick="return delOk()" ></a>
               <input type="button" class="btn btn-outline-success" value="목록 보기" style="width: 15%; line-height: 0.6;" onclick="window.location.href='/gabowatdago'">
             </div>
           </div>
@@ -178,50 +158,23 @@
           <button style="display: none" type="button" id="test">클릭테스트</button>
           <div class="text-box" th:text="*{content}">
           </div>
+          <button id="deleteStorage">스토리지삭제</button>
           <h3>여행지 주소</h3><br>
           <div style="font-family: GmarketSans; color:#6A6A6A" th:text="*{address}"> </div>
           <div style="font-family: GmarketSans; color:#6A6A6A" th:text="*{de_address}"></div>
           <div id="maps"></div>
 
-=======
-            <div>
-              <input type="button" class="btn btn-outline-success" value="목록 보기" style="width: 15%; line-height: 0.6;" onclick="window.location.href='/gabowatdago'">
-              <a th:href="@{'/gabowatdago/' + ${id} + '/edit'}"><input type="button" value="수정" style="line-height: 0.6;" class="btn btn-outline-success"></a>
-              <a th:href="@{'/gabowatdago/' + ${id} + '/delete'}"><input type="button" value="삭제" style="line-height: 0.6;" class="btn btn-outline-danger" onclick="delOk()" ></a>
-            </div>
-          </div>
-        </div>
-        <div class="main-box">
-          <div class="image-box">
-            <div class="slider__wrap">
-              <div class="slider__img" th:text="*{image}"></div>
-              <div class="slider__thumb"></div>
-              <div class="slider__btn">
-                <a href="#" class="prev" title="이전이미지">&lang;</a>
-                <a href="#" class="next" title="다음이미지">&rang;</a>
-              </div>
-            </div>
-          </div>
-          <button style="display: none" type="button" id="test">클릭테스트</button>
-          <div class="text-box" th:text="*{content}">
-          </div>
-          <h3>여행지 주소</h3><br>
-          <div style="font-family: GmarketSans; color:#6A6A6A" th:text="*{address}"> </div>
-          <div style="font-family: GmarketSans; color:#6A6A6A" th:text="*{de_address}"></div>
-          <div id="maps"></div>
-
->>>>>>> 91c6ef8aa27d4bd0e4dca1c40b542b545f96dd7b
           <div class="comment-container">
             <div class="input-box">
               <form class="comment-input">
                 <input style ="width: 20%;" id="client" type ="text" maxlength="10" placeholder="닉네임">
                 <textarea style ="width: 80%;" id="comment" type ="text" placeholder="작성자에게 댓글을 남겨주세요"></textarea>
                 <input type="hidden" id="new-comment-gabowatdago_id" th:value="*{id}">
+                <input type="hidden" id="like_input" th:value="${user}">
                 <input id="comment-save" type="submit" value="댓글 작성">
               </form>
             </div>
             <div class="comment-list-box">
-<<<<<<< HEAD
               <div class="cmt_container" th:each="cmt :${cmtDtos}" style="margin: 10px">
                 <h5 class="cmt_title"  style="display: flex;">
                   <span th:text="${cmt.nickname}"></span>
@@ -234,47 +187,13 @@
 <!--                            data-bs-toggle="modal"-->
 <!--                            th:data-bs-target="${cmt.id}"-->
 <!--                    >수정</button>-->
-                    <button type="button" id="deleteBtn"
+                    <button th:if="${gaId == gabowatdago.gaId}" type="button" id="deleteBtn"
                             th:data-comment-id="${cmt.id}">삭제</button>
-=======
-              <div class="card" th:each="cmt :${cmtDtos}" style="margin: 10px">
-                <h5 class="card-header"  style="display: flex;">
-                  <span th:text="${cmt.nickname}"></span>
-                  <div>
-                    <!-- Button trigger modal -->
-                    <button type="button"
-                            style="line-height: 0.5;"
-                            id="updateBtn"
-                            class="btn btn-outline-success"
-                            data-bs-toggle="modal"
-                            th:data-bs-target="${cmt.id}"
-                    >수정</button>
-                    <button type="button" style="line-height: 0.5;" class="btn btn-outline-danger" id="deleteBtn"
-                            th:data-comment-id="${cmt.id}">삭제</button>
-                  </div>
-                </h5>
-                <div class="card-body">
-                  <p class="card-title" th:text="${cmt.body}"></p>
-                </div>
-                <!-- Modal -->
-                <div class="modal fade" th:id="${cmt.id}" tabindex="-1">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body">
-                        ...
-                      </div>
-                    </div>
->>>>>>> 91c6ef8aa27d4bd0e4dca1c40b542b545f96dd7b
                   </div>
                 </h5>
                 <div class="cmt-body">
                   <p class="card-title" th:text="${cmt.body}"></p>
                 </div>
-<<<<<<< HEAD
                 <!-- Modal -->
 <!--                <div class="modal fade" th:id="${cmt.id}" tabindex="-1">-->
 <!--                  <div class="modal-dialog">-->
@@ -288,8 +207,6 @@
 <!--                    </div>-->
 <!--                  </div>-->
 <!--                </div>-->
-=======
->>>>>>> 91c6ef8aa27d4bd0e4dca1c40b542b545f96dd7b
               </div>
             </div>
           </div>
@@ -301,10 +218,13 @@
 <script th:src="@{'//dapi.kakao.com/v2/maps/sdk.js?appkey=6d7e2f086ffa97eb8f4b35fa8cc12439&libraries=services'}"></script>
 <script th:src="@{/js/post_result.js}"></script>
 <script th:src="@{/js/menu.js}"></script>
-<<<<<<< HEAD
 <script th:src="@{/js/like.js}"></script>
-
-=======
->>>>>>> 91c6ef8aa27d4bd0e4dca1c40b542b545f96dd7b
+<script>
+  //오라클 연동 전에 사용하는 임시 스토리지 삭제 버튼
+  const deleteStorage = document.querySelector("#deleteStorage")
+  deleteStorage.addEventListener("click",function (){
+     localStorage.clear();
+  })
+</script>
 </body>
 </html>

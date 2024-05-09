@@ -27,8 +27,14 @@ likeBefore.addEventListener("click",function(){
 
     const like ={
         userId : document.querySelector("#like_input").value,
-        gabowatdagoId: document.querySelector("#new-comment-gabowatdago_id").value
+        gabowatdagoId: document.querySelector("#new-comment-gabowatdago_id").value,
+
 };
+    // 좋아요 수를 가져와서 1을 더한 후에 엘리먼트에 적용
+    const likeCountElement = document.querySelector(".likeCount");
+    const currentLikeCount = parseInt(likeCountElement.innerText.split('명')[0]);
+    likeCountElement.innerText = (currentLikeCount + 1) + '명이 좋아요 한 게시글입니다';
+
     console.log(like);
     const url = "/api/gabowatdago/like"
     fetch(url, {
@@ -56,6 +62,9 @@ likeAfter.addEventListener("click", function(){
         userId: document.querySelector("#like_input").value,
         gabowatdagoId: document.querySelector("#new-comment-gabowatdago_id").value
     };
+    const likeCountElement = document.querySelector(".likeCount");
+    const currentLikeCount = parseInt(likeCountElement.innerText.split('명')[0]);
+    likeCountElement.innerText = (currentLikeCount - 1) + '명이 좋아요 한 게시글입니다';
     console.log(like);
     const url = "/api/gabowatdago/like"
     fetch(url, {
