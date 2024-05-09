@@ -39,7 +39,7 @@
         <div class="left">
             <div class="locationArea">
                 <div th:each="GP: ${GPList}" id="All_location" class="locationAreaList">
-                    <a href="http://localhost:8080/gabojagoing">
+                    <a th:href="@{'/gabojagoing/'+${GP.id}}">
                         <span th:text="${GP.region.name}"></span>
                         <span th:text="${GP.thema.name}"></span>
                         <span th:text="${GP.name}"></span>

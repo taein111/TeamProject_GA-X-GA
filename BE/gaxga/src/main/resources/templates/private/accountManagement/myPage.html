@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/fonts.css">
-    <link rel="stylesheet" href="../css/myPaga.css">
+    <link rel="stylesheet" th:href="@{/css/myPaga.css}">
+    <link rel="stylesheet" th:href="@{/css/fonts.css}">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
     <title>GAXGA_MYPAGE</title>
 </head>
 <body>
+<th:block th:replace="~{public/layouts/header2 :: header}"></th:block>
 <div id="container">
     <div id="myPage_main">
         <div id="contents">
@@ -25,7 +27,7 @@
                     <li><button onclick="SelectedContent(3)" id="lastBtn">여행지 장바구니</button></li>
                 </ul>
                 <div id="logoutBtn">
-                   <button> <a href="/user/logout">로그아웃</a></button>
+                   <button> <a href="/user/logout">Logout</a></button>
                 </div>
             </aside>
             <section id="rightContent">
@@ -41,7 +43,7 @@
                         </div>
                         <!-- 프로필정보 수정부분에서 보여지는부분 하고 수정시 어떻게 보일지 생각필요 우선 임시로 작업 -->
                         <div id="profileInfo">
-                            <form action="">
+                            <form action="" style="height: 100%">
                                 <ul>
                                     <li>
                                         <label for="nickname">닉네임</label>
@@ -185,35 +187,35 @@
                 <div id="middle" class="content">
                     <div class="gaga" id="gabo">
                         <div class="gagaTitle">
-                            <h4>가보자고</h4>
+                            <h4 style="font-family: 'GmarketSans'; font-weight: 500; color: #454545;">가보자고</h4>
                         </div>
                         <p><i class="fa-regular fa-thumbs-up"></i>10</p>
-                        <div class="recentWriting">
-                            <div class="first">
-                                <span>춘천 - 남이섬</span>
-                                <span>2024-03-16</span>
-                            </div>
-                            <div class="second">
-                                <span>춘천 - 남이섬</span>
-                                <span>2024-03-16</span>
-                            </div>
-                        </div>
+<!--                        <div class="recentWriting">-->
+<!--                            <div class="first">-->
+<!--                                <span>춘천 - 남이섬</span>-->
+<!--                                <span>2024-03-16</span>-->
+<!--                            </div>-->
+<!--                            <div class="second">-->
+<!--                                <span>춘천 - 남이섬</span>-->
+<!--                                <span>2024-03-16</span>-->
+<!--                            </div>-->
+<!--                        </div>-->
                     </div>
                     <div class="gaga" id="gabowa">
                         <div class="gagaTitle">
-                            <h4>가봤다고</h4>
+                            <h4 style="font-family: 'GmarketSans'; font-weight: 500; color: #454545;">가봤다고</h4>
                         </div>
                         <p><i class="fa-regular fa-heart"></i>10</p>
-                        <div class="recentWriting">
-                            <div class="first">
-                                <span>춘천 - 남이섬</span>
-                                <span>2024-03-16</span>
-                            </div>
-                            <div class="second">
-                                <span>춘천 - 남이섬</span>
-                                <span>2024-03-16</span>
-                            </div>
-                        </div>
+<!--                        <div class="recentWriting">-->
+<!--                            <div class="first">-->
+<!--                                <span>춘천 - 남이섬</span>-->
+<!--                                <span>2024-03-16</span>-->
+<!--                            </div>-->
+<!--                            <div class="second">-->
+<!--                                <span>춘천 - 남이섬</span>-->
+<!--                                <span>2024-03-16</span>-->
+<!--                            </div>-->
+<!--                        </div>-->
                     </div>
                 </div>
                 <div id="bottom" class="content">
@@ -238,6 +240,7 @@
     </div>
 </div>
 <script src="https://kit.fontawesome.com/1e9b513c90.js" crossorigin="anonymous"></script>
-<script src="../js/myPage.js"></script>
+<script src="/js/myPage.js"></script>
+<script src="/js/menu.js"> </script>
 </body>
 </html>
