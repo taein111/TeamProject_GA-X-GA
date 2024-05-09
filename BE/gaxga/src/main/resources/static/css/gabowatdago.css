@@ -246,10 +246,9 @@ header{
     order: 2;
 }
 .intro .center .cate{
-    overflow: hidden;
-      /* white-space: nowrap; */
-    padding: 30px;
-    margin-top: 33px;
+        overflow: hidden;
+        padding: 29.5px;
+        margin-top: 31px;
 }
 .intro .center .list {
     display: inline-block;

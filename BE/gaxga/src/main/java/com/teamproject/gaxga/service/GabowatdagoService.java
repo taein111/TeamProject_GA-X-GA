@@ -31,14 +31,18 @@ public class GabowatdagoService {
     private GrRepository grRepository;
     @Autowired
     private GtRepository gtRepository;
-    @Autowired
-    private UserRepository userRepository;
 
     public String newForm(Model model){
         List<String> locList = grRepository.findAllNames();
         List<String> themaList = gtRepository.findAllNames();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        UserDetail userDetail = (UserDetail) auth.getPrincipal();
+        String gaId = userDetail.getUser().getGaId(); // 로그인한사람 gaId 가져오기
+        String userNick = userDetail.getUser().getGaNick(); // 로그인한 사람 ganick 가져오기
         model.addAttribute("locList", locList);
         model.addAttribute("themaList", themaList);
+        model.addAttribute("userNick", userNick);
+        model.addAttribute("gaId", gaId);
         return "private/gabowatdago/gabowatdagoing_p";
     }
 
@@ -57,13 +61,14 @@ public class GabowatdagoService {
         List<CmtDto> cmtDtos = cmtService.comments(id);
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         UserDetail userDetail = (UserDetail) auth.getPrincipal();
-        Long likeDtos = userDetail.getUser().getUserCode();
-        System.out.println(likeDtos);
-//        User userEntity = userRepository.findByGaId()
+        Long likeDtos = userDetail.getUser().getUserCode(); // 로그인한사람 userCode 가져오기
+        String gaId = userDetail.getUser().getGaId(); // 로그인한사람 gaId 가져오기
+
         //2. 가져온 데이터를 모델에 등록하기
         model.addAttribute("gabowatdago", gabowatdagoEntity);
         model.addAttribute("cmtDtos", cmtDtos);
         model.addAttribute("user", likeDtos);
+        model.addAttribute("gaId", gaId);
         //3. 조회한 데이터를 사용자에게 보여주기 위한 뷰 페이지 만들고 반환하기
         return "private/gabowatdago/gabowatdagoing";
     }
@@ -83,8 +88,14 @@ public class GabowatdagoService {
     public String edit(@PathVariable("id") Long id, Model model){
         //수정할 데이터 가져오기
         Gabowatdago gabowatdagoEntity = gabowatdagoRepository.findById(id).orElse(null);
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        UserDetail userDetail = (UserDetail) auth.getPrincipal();
+        String gaId = userDetail.getUser().getGaId(); // 로그인한사람 gaId 가져오기
+        String userNick = userDetail.getUser().getGaNick(); // 로그인한 사람 ganick 가져오기
         //모델에 데이터 등록하기
         model.addAttribute("gabowatdago", gabowatdagoEntity);
+        model.addAttribute("userNick", userNick);
+        model.addAttribute("gaId", gaId);
         //뷰 페이지 설정하기
         return "private/gabowatdago/gabowatdago_edit";
     }
@@ -96,6 +107,7 @@ public class GabowatdagoService {
         //2. 엔티티 db 저장하기
         //2-1 . db에서 기존 데이터 가져오기
         Gabowatdago target = gabowatdagoRepository.findById(gabowatdagoEntity.getId()).orElse(null);
+
         //2-2 . 기존 데이터 값 갱신하기
         if(target != null){
             gabowatdagoRepository.save(gabowatdagoEntity); //엔티티를 db에 저장(갱신)
@@ -115,4 +127,12 @@ public class GabowatdagoService {
         return "redirect:/gabowatdago";
     }
 
+
+//    public String getAuthorNickname(Long gabowatdagoId) {
+//        Gabowatdago gabowatdago = gabowatdagoRepository.findById(gabowatdagoId).orElse(null);
+//        if (gabowatdago != null && gabowatdago.getUserCode() != null) {
+//            return gabowatdago.getUserCode().getGaNick();
+//        }
+//        return null;
+//    }
 }

@@ -15,6 +15,8 @@ public class Gabowatdago extends BaseEntity {
     @Column
     private String title;
     @Column
+    private String gaId;
+    @Column
     private String local;
     @Column
     private String thema;
@@ -31,7 +33,7 @@ public class Gabowatdago extends BaseEntity {
     @Column
     private String lng;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "userCode")
     private User userCode;
 

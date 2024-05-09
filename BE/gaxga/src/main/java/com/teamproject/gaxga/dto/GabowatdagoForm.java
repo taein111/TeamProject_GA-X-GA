@@ -14,6 +14,7 @@ public class GabowatdagoForm {
 
     private Long id;
     private String title;
+    private String gaId;
     private String local;
     private String thema;
     private String image;
@@ -25,7 +26,7 @@ public class GabowatdagoForm {
     private User userCode;
 
     public Gabowatdago toEntity() {
-        return new Gabowatdago(id, title, local, thema, image, content, address, de_address, lat, lng, userCode);
+        return new Gabowatdago(id, title, gaId, local, thema, image, content, address, de_address, lat, lng, userCode);
     }
 
 }

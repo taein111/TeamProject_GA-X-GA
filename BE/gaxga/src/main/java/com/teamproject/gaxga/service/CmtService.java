@@ -19,7 +19,6 @@ public class CmtService {
     @Autowired
     private GabowatdagoRepository GabowatdagoRepository;
 
-
     public List<CmtDto> comments(Long gabowatdagoId) {
         //댓글 조회
         List<Cmt> cmts = cmtRepository.findByGabowatdagoId(gabowatdagoId);
