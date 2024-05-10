@@ -46,6 +46,10 @@ public class Gabowatdago extends BaseEntity {
     private Integer likeCount;
 
 
+    public LocalDateTime getRegDate() {
+        return super.getRegDate();
+    }
+
     //수정할 내용이 있는 경우에만 동작하는 메서드
     public void patch(Gabowatdago gabowatdago) {
         if(gabowatdago.title != null)
@@ -75,6 +79,7 @@ public class Gabowatdago extends BaseEntity {
     public void likeCountDelete() {
         this.likeCount = likeCount - 1;
     }
+
 
 
 }

@@ -6,8 +6,10 @@ import com.teamproject.gaxga.dto.LikeDto;
 import com.teamproject.gaxga.entity.Gabowatdago;
 import com.teamproject.gaxga.entity.User;
 import com.teamproject.gaxga.entity.UserDetail;
+import com.teamproject.gaxga.entity.gabojago.GP;
 import com.teamproject.gaxga.repository.GabowatdagoRepository;
 import com.teamproject.gaxga.repository.UserRepository;
+import com.teamproject.gaxga.repository.gabojago.GpRepository;
 import com.teamproject.gaxga.repository.gabojago.GrRepository;
 import com.teamproject.gaxga.repository.gabojago.GtRepository;
 import jakarta.transaction.Transactional;
@@ -20,6 +22,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.ArrayList;
 import java.util.List;
 @Slf4j
 @Service
@@ -32,6 +35,9 @@ public class GabowatdagoService {
     private GrRepository grRepository;
     @Autowired
     private GtRepository gtRepository;
+    @Autowired
+    private GpRepository gpRepository;
+
 
     public String newForm(Model model){
         List<String> locList = grRepository.findAllNames();
@@ -49,7 +55,6 @@ public class GabowatdagoService {
 
     @Transactional
     public String create(GabowatdagoForm form) {
-        log.info("=========="+ form.toString());
         //1. DTO를 엔티티로
         Gabowatdago gabowatdago = form.toEntity();
         //2. 레퍼지토리로 엔티티를 DB에 저장
@@ -58,18 +63,101 @@ public class GabowatdagoService {
     }
     public String show(Long id, Model model) {
         //1. id를 조회해 데이터 가져오기
+        //게시글 엔티티
         Gabowatdago gabowatdagoEntity = gabowatdagoRepository.findById(id).orElse(null);
+
+        //댓글 엔티티
         List<CmtDto> cmtDtos = cmtService.comments(id);
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        //로그인한 회원 정보
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();// 로그인한사람 userCode 가져오기
         UserDetail userDetail = (UserDetail) auth.getPrincipal();
-        Long likeDtos = userDetail.getUser().getUserCode(); // 로그인한사람 userCode 가져오기
+        Long likeDtos = userDetail.getUser().getUserCode();
         String gaId = userDetail.getUser().getGaId(); // 로그인한사람 gaId 가져오기
 
-        //2. 가져온 데이터를 모델에 등록하기
+        //데이터 모델에 등록하기
         model.addAttribute("gabowatdago", gabowatdagoEntity);
         model.addAttribute("cmtDtos", cmtDtos);
         model.addAttribute("user", likeDtos);
         model.addAttribute("gaId", gaId);
+
+
+        //--- 작성한 글의 지역 카테고리에 맞는 가보자고의 지역 맞춤 추천리스트 출력
+        List<GP> Gangwon = gpRepository.findByGangwon();
+        List<GP> Gyeonggi = gpRepository.findByGyeonggi();
+        List<GP> Gyeongnam = gpRepository.findByGyeongnam();
+        List<GP> Gyeongbuk = gpRepository.findByGyeongbuk();
+        List<GP> Gwangju = gpRepository.findByGwangju();
+        List<GP> Daejeon = gpRepository.findByDaejeon();
+        List<GP> Daegu = gpRepository.findByDaegu();
+        List<GP> Busan = gpRepository.findByBusan();
+        List<GP> Seoul = gpRepository.findBySeoul();
+        List<GP> Sejong = gpRepository.findBySejong();
+        List<GP> Ulsan  = gpRepository.findByUlsan();
+        List<GP> Incheon = gpRepository.findByIncheon();
+        List<GP> Jeonnam = gpRepository.findByJeonnam();
+        List<GP> Jeonbuk = gpRepository.findByJeonbuk();
+        List<GP> Jeju = gpRepository.findByJeju();
+        List<GP> Chungnam = gpRepository.findByChungnam();
+        List<GP> Chungbuk = gpRepository.findByChungbuk();
+
+        //자신이 조회한 게시글의 지역 카테고리와 일치하는 지역추천목록 출력
+        String boardLocal= gabowatdagoEntity.getLocal();
+        switch (boardLocal) {
+            case "강원":
+                model.addAttribute("Gangwon", Gangwon);
+                break;
+            case "경기":
+                model.addAttribute("Gyeonggi", Gyeonggi);
+                break;
+            case "경남":
+                model.addAttribute("Gyeongnam", Gyeongnam);
+                break;
+            case "경북":
+                model.addAttribute("Gyeongbuk", Gyeongbuk);
+                break;
+            case "광주":
+                model.addAttribute("Gwangju", Gwangju);
+                break;
+            case "대전":
+                model.addAttribute("Daejeon", Daejeon);
+                break;
+            case "대구":
+                model.addAttribute("Daegu", Daegu);
+                break;
+            case "부산":
+                model.addAttribute("Busan", Busan);
+                break;
+            case "서울":
+                model.addAttribute("Seoul", Seoul);
+                break;
+            case "세종":
+                model.addAttribute("Sejong", Sejong);
+                break;
+            case "울산":
+                model.addAttribute("Ulsan", Ulsan);
+                break;
+            case "인천":
+                model.addAttribute("Incheon", Incheon);
+                break;
+            case "전남":
+                model.addAttribute("Jeonnam", Jeonnam);
+                break;
+            case "전북":
+                model.addAttribute("Jeonbuk", Jeonbuk);
+                break;
+            case "제주":
+                model.addAttribute("Jeju", Jeju);
+                break;
+            case "충남":
+                model.addAttribute("Chungnam", Chungnam);
+                break;
+            case "충북":
+                model.addAttribute("Chungbuk", Chungbuk);
+                break;
+            default:
+                break;
+        }
+
         //3. 조회한 데이터를 사용자에게 보여주기 위한 뷰 페이지 만들고 반환하기
         return "private/gabowatdago/gabowatdagoing";
     }

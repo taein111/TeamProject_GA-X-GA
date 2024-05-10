@@ -11,7 +11,7 @@
 <th:block th:replace="~{public/layouts/header2 :: header}"></th:block>
 
 
-<div th:object="${gabowatdago}">
+<div>
   <div class="WaArea">
     <div class="WaLeft">
       <div class="WaName">가봤다고</div>
@@ -32,84 +32,168 @@
         </div>
       </div>
       <div class="intro">
-        <div>님! 비슷한 여행지를 추천드려요</div>
+        <div>님! 근처의 추천 여행지를 소개드려요.</div>
       </div>
       <div class="review-list-box">
-        <div class="review-list">
+
+        <div class="review-list" th:each="Gw :${Gangwon}" >
           <div class="review-image">
-            <img src="/img/wolmido.png">
+            <img th:src="@{'/' + ${Gw.img}}" alt="">
           </div>
           <div class="review-info">
-            <div class="review-name"><a href="#">월미도</a></div>
-            <div class="review-address"><a href="#">안산시 단원구 와동 황금길</a></div>
+            <div class="review-name"><a href="#"  th:text="${Gw.name}"></a></div>
+            <div class="review-address"><a href="#"  th:text="${Gw.state}"></a></div>
           </div>
         </div>
-        <div class="review-list">
+        <div class="review-list" th:each="Gg :${Gyeonggi}" >
           <div class="review-image">
-            <img src="/img/wolmido.png">
+            <img th:src="@{'/' + ${Gg.img}}" alt="">
           </div>
           <div class="review-info">
-            <div class="review-name"><a href="#">월미도</a></div>
-            <div class="review-address"><a href="#">안산시 단원구 와동 황금길</a></div>
+            <div class="review-name"><a href="#"  th:text="${Gg.name}"></a></div>
+            <div class="review-address"><a href="#"  th:text="${Gg.state}"></a></div>
           </div>
         </div>
-        <div class="review-list">
+        <div class="review-list" th:each="Gn :${Gyeongnam}" >
           <div class="review-image">
-            <img src="../img/wolmido.png">
+            <img th:src="@{'/' + ${Gn.img}}" alt="">
           </div>
           <div class="review-info">
-            <div class="review-name"><a href="#">월미도</a></div>
-            <div class="review-address"><a href="#">안산시 단원구 와동 황금길</a></div>
+            <div class="review-name"><a href="#"  th:text="${Gn.name}"></a></div>
+            <div class="review-address"><a href="#"  th:text="${Gn.state}"></a></div>
           </div>
         </div>
-        <div class="review-list">
+        <div class="review-list" th:each="Gb :${Gyeongbuk}" >
           <div class="review-image">
-            <img src="../img/wolmido.png">
+            <img th:src="@{'/' + ${Gb.img}}" alt="">
           </div>
           <div class="review-info">
-            <div class="review-name"><a href="#">월미도</a></div>
-            <div class="review-address"><a href="#">안산시 단원구 와동 황금길</a></div>
+            <div class="review-name"><a href="#"  th:text="${Gb.name}"></a></div>
+            <div class="review-address"><a href="#"  th:text="${Gb.state}"></a></div>
           </div>
         </div>
-        <div class="review-list">
+        <div class="review-list" th:each="Gj :${Gwangju}" >
           <div class="review-image">
-            <img src="../img/wolmido.png">
+            <img th:src="@{'/' + ${Gj.img}}" alt="">
           </div>
           <div class="review-info">
-            <div class="review-name"><a href="#">월미도</a></div>
-            <div class="review-address"><a href="#">안산시 단원구 와동 황금길</a></div>
+            <div class="review-name"><a href="#"  th:text="${Gj.name}"></a></div>
+            <div class="review-address"><a href="#"  th:text="${Gj.state}"></a></div>
           </div>
         </div>
-        <div class="review-list">
+        <div class="review-list" th:each="Dj :${Daejeon}" >
           <div class="review-image">
-            <img src="../img/wolmido.png">
+            <img th:src="@{'/' + ${Dj.img}}" alt="">
           </div>
           <div class="review-info">
-            <div class="review-name"><a href="#">월미도</a></div>
-            <div class="review-address"><a href="#">안산시 단원구 와동 황금길</a></div>
+            <div class="review-name"><a href="#"  th:text="${Dj.name}"></a></div>
+            <div class="review-address"><a href="#"  th:text="${Dj.state}"></a></div>
           </div>
         </div>
-        <div class="review-list">
+        <div class="review-list" th:each="Dg :${Daegu}" >
           <div class="review-image">
-            <img src="/img/wolmido.png">
+            <img th:src="@{'/' + ${Dg.img}}" alt="">
           </div>
           <div class="review-info">
-            <div class="review-name"><a href="#">월미도</a></div>
-            <div class="review-address"><a href="#">안산시 단원구 와동 황금길</a></div>
+            <div class="review-name"><a href="#"  th:text="${Dg.name}"></a></div>
+            <div class="review-address"><a href="#"  th:text="${Dg.state}"></a></div>
           </div>
         </div>
-        <div class="review-list">
+        <div class="review-list" th:each="Bs :${Busan}" >
           <div class="review-image">
-            <img src="/img/wolmido.png">
+            <img th:src="@{'/' + ${Bs.img}}" alt="">
           </div>
           <div class="review-info">
-            <div class="review-name"><a href="#">월미도</a></div>
-            <div class="review-address"><a href="#">안산시 단원구 와동 황금길</a></div>
+            <div class="review-name"><a href="#"  th:text="${Bs.name}"></a></div>
+            <div class="review-address"><a href="#"  th:text="${Bs.state}"></a></div>
           </div>
         </div>
+        <div class="review-list" th:each="So :${Seoul}" >
+          <div class="review-image">
+            <img th:src="@{'/' + ${So.img}}" alt="">
+          </div>
+          <div class="review-info">
+            <div class="review-name"><a href="#"  th:text="${So.name}"></a></div>
+            <div class="review-address"><a href="#"  th:text="${So.state}"></a></div>
+          </div>
+        </div>
+        <div class="review-list" th:each="Sj :${Sejong}" >
+          <div class="review-image">
+            <img th:src="@{'/' + ${Sj.img}}" alt="">
+          </div>
+          <div class="review-info">
+            <div class="review-name"><a href="#"  th:text="${Sj.name}"></a></div>
+            <div class="review-address"><a href="#"  th:text="${Sj.state}"></a></div>
+          </div>
+        </div>
+        <div class="review-list" th:each="Us :${Ulsan}" >
+          <div class="review-image">
+            <img th:src="@{'/' + ${Us.img}}" alt="">
+          </div>
+          <div class="review-info">
+            <div class="review-name"><a href="#"  th:text="${Us.name}"></a></div>
+            <div class="review-address"><a href="#"  th:text="${Us.state}"></a></div>
+          </div>
+        </div>
+        <div class="review-list" th:each="Ic :${Incheon}" >
+          <div class="review-image">
+            <img th:src="@{'/' + ${Ic.img}}" alt="">
+          </div>
+          <div class="review-info">
+            <div class="review-name"><a href="#"  th:text="${Ic.name}"></a></div>
+            <div class="review-address"><a href="#"  th:text="${Ic.state}"></a></div>
+          </div>
+        </div>
+        <div class="review-list" th:each="Jn :${Jeonnam}" >
+          <div class="review-image">
+            <img th:src="@{'/' + ${Jn.img}}" alt="">
+          </div>
+          <div class="review-info">
+            <div class="review-name"><a href="#"  th:text="${Jn.name}"></a></div>
+            <div class="review-address"><a href="#"  th:text="${Jn.state}"></a></div>
+          </div>
+        </div>
+        <div class="review-list" th:each="Jb :${Jeonbuk}" >
+          <div class="review-image">
+            <img th:src="@{'/' + ${Jb.img}}" alt="">
+          </div>
+          <div class="review-info">
+            <div class="review-name"><a href="#"  th:text="${Jb.name}"></a></div>
+            <div class="review-address"><a href="#"  th:text="${Jb.state}"></a></div>
+          </div>
+        </div>
+        <div class="review-list" th:each="Jj :${Jeju}" >
+          <div class="review-image">
+            <img th:src="@{'/' + ${Jj.img}}" alt="">
+          </div>
+          <div class="review-info">
+            <div class="review-name"><a href="#"  th:text="${Jj.name}"></a></div>
+            <div class="review-address"><a href="#"  th:text="${Jj.state}"></a></div>
+          </div>
+        </div>
+        <div class="review-list" th:each="Cn :${Chungnam}" >
+          <div class="review-image">
+            <img th:src="@{'/' + ${Cn.img}}" alt="">
+          </div>
+          <div class="review-info">
+            <div class="review-name"><a href="#"  th:text="${Cn.name}"></a></div>
+            <div class="review-address"><a href="#"  th:text="${Cn.state}"></a></div>
+          </div>
+        </div>
+        <div class="review-list" th:each="Cb :${Chungbuk}" >
+          <div class="review-image">
+            <img th:src="@{'/' + ${Cb.img}}" alt="">
+          </div>
+          <div class="review-info">
+            <div class="review-name"><a href="#"  th:text="${Cb.name}"></a></div>
+            <div class="review-address"><a href="#"  th:text="${Cb.state}"></a></div>
+          </div>
+        </div>
+
+
       </div>
     </div>
-    <div class="WaRight">
+    <div class="WaRight" th:object="${gabowatdago}">
       <div class="post-result">
         <div class="title-box" style="height: 15%">
           <input type="hidden" id="latitude" th:value="*{lat}">
@@ -120,7 +204,7 @@
           <div class="post-info">
             <div class="date">
               게시날짜:
-<!--              <span th:text="*{regDate}"></span>-->
+              <span th:text="*{#temporals.format(regDate, 'yyyy-MM-dd HH:mm:ss')}"></span>
             </div>
             <div class="locTag">
               <div class="loc" th:text="*{local}">
@@ -178,14 +262,6 @@
                 <h5 class="cmt_title"  style="display: flex;">
                   <span th:text="${cmt.nickname}"></span>
                   <div>
-                    <!-- Button trigger modal -->
-<!--                    <button type="button"-->
-<!--                            style="line-height: 0.5;"-->
-<!--                            id="updateBtn"-->
-<!--                            class="btn btn-outline-success"-->
-<!--                            data-bs-toggle="modal"-->
-<!--                            th:data-bs-target="${cmt.id}"-->
-<!--                    >수정</button>-->
                     <button th:if="${gaId == gabowatdago.gaId}" type="button" id="deleteBtn"
                             th:data-comment-id="${cmt.id}">삭제</button>
                   </div>
@@ -193,19 +269,6 @@
                 <div class="cmt-body">
                   <p class="card-title" th:text="${cmt.body}"></p>
                 </div>
-                <!-- Modal -->
-<!--                <div class="modal fade" th:id="${cmt.id}" tabindex="-1">-->
-<!--                  <div class="modal-dialog">-->
-<!--                    <div class="modal-content">-->
-<!--                      <div class="modal-header">-->
-<!--                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
-<!--                      </div>-->
-<!--                      <div class="modal-body">-->
-<!--                        ...-->
-<!--                      </div>-->
-<!--                    </div>-->
-<!--                  </div>-->
-<!--                </div>-->
               </div>
             </div>
           </div>
