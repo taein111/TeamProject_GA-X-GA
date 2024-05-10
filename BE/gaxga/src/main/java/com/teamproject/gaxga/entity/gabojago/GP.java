@@ -1,11 +1,14 @@
 package com.teamproject.gaxga.entity.gabojago;
 
+import com.teamproject.gaxga.entity.BaseEntity;
 import com.teamproject.gaxga.entity.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -47,7 +50,9 @@ public class GP {
     public void decreseJjimCount() {
         this.jjimcount--;
     }
-//
+
+
+    //
 //    @ManyToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "userCode")
 //    private User userCode;

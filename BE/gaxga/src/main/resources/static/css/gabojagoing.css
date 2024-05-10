@@ -229,7 +229,7 @@ header{
   justify-content: space-around;
 }
 #relo{
-  height: 10vh;
+  height: 15vh;
   display: flex;
   flex-direction: column;
   margin-top: 15px;
@@ -243,17 +243,17 @@ header{
 #region{
   width: 90%;
   height: 5vh;
+  font-size: 50px;
   margin-left: 12px;
   color: #FFFFFF;
 }
-#location{
+#location {
   width: 90%;
   margin-left: 12px;
   color: grey;
   font-size: 30px;
   font-family: 'GmarketSans';
   font-weight: 400;
-
 }
 #GabojagoTag a{
   color: #A1A1A1;
@@ -369,16 +369,15 @@ header{
   margin: 4px 6px;
 }
 
-@media (max-width: 770px){
-  #pageNameGabojago a{
+/*@media (max-width: 770px){*/
+/*  #pageNameGabojago a{*/
 
-    font-size: 70px;
-  }
-}
-@media (max-width: 368px){
-  #pageNameGabojago a{
+/*    font-size: 70px;*/
+/*  }*/
+/*}*/
+/*@media (max-width: 368px) {*/
+/*  #pageNameGabojago a {*/
 
-    font-size: 45px;
-
-  }
-}
+/*    font-size: 45px;*/
+/*  }*/
+/*}*/
