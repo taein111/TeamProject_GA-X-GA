@@ -2,6 +2,11 @@ package com.teamproject.gaxga.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+
+import java.time.LocalDateTime;
+
+import static org.hibernate.annotations.OnDeleteAction.CASCADE;
 
 @Entity
 @AllArgsConstructor
@@ -39,7 +44,6 @@ public class Gabowatdago extends BaseEntity {
 
     @Column
     private Integer likeCount;
-
 
 
     //수정할 내용이 있는 경우에만 동작하는 메서드
