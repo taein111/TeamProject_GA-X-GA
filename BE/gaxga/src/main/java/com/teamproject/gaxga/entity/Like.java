@@ -4,7 +4,10 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.OnDelete;
 import org.springframework.data.util.Lazy;
+
+import static org.hibernate.annotations.OnDeleteAction.CASCADE;
 
 @Getter
 @NoArgsConstructor
@@ -19,6 +22,7 @@ public class Like {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @OnDelete(action = CASCADE)
     @ManyToOne
     @JoinColumn(name = "gabowatdago_id")
     private Gabowatdago gabowatdago;

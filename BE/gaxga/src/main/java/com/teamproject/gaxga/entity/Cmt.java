@@ -6,6 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.hibernate.annotations.OnDelete;
+
+import static org.hibernate.annotations.OnDeleteAction.CASCADE;
 
 @Entity
 @Getter
@@ -16,9 +19,12 @@ public class Cmt extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @OnDelete(action = CASCADE)
     @ManyToOne
     @JoinColumn(name = "gabowatdago_id")
     private Gabowatdago gabowatdago;
+
     @Column
     private String nickname;
     @Column

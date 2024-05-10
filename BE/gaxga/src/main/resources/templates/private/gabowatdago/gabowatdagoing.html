@@ -120,7 +120,7 @@
           <div class="post-info">
             <div class="date">
               게시날짜:
-              <span th:text="${#temporals.format(regDate, 'yyyy-MM-dd HH:mm:ss')}"></span>
+<!--              <span th:text="*{regDate}"></span>-->
             </div>
             <div class="locTag">
               <div class="loc" th:text="*{local}">
@@ -135,7 +135,6 @@
             <div>
               <span class="likeCount" th:text="*{likeCount} + '명이 좋아요 한 게시글 입니다'"></span>
             </div>
-
             <div>
               <!--            <--로그인한사람의 nickname과 게시글상의 nickname을 비교하여 일치하면 수정 삭제 버튼을 출력한다.-->
               <a th:if="${gaId == gabowatdago.gaId}" th:href="@{'/gabowatdago/' + ${id} + '/edit'}"><input type="button" value="수정" style="line-height: 0.6;" class="btn btn-outline-success"></a>
