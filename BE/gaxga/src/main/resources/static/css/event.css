@@ -12,17 +12,10 @@ html,body{
     display: flex;
     flex-direction: column;
     overflow: hidden;
-
 }
-.header {
-/*  border: 1px #000000;*/
-/*  height: 65px;*/
-/*  text-align: center;*/
-/*  line-height: 70px;*/
-/*  font-size: 40px;*/
-/*  background-color: #000000;*/
-/*  color: #ffffff;*/
 
+ul {
+  padding: 0;
 }
 
 .eMain{
@@ -146,16 +139,26 @@ html,body{
 .exit_text_top{
   text-align: center;
   width: 100%;
-  height: 40%;
-  font-size: 40px;
+  height: 50%;
+  font-size: 50px;
   font-family: 'GmarketSans';
   font-weight: 500;
+  margin-top: 38px;
+}
+
+#top_p1{
+  font-size: 50px;
+  font-weight: 500;
+}
+
+#top_p2 {
+  font-size: 30px;
+  font-weight: 400;
 }
 .exit_text_bottom{
-  margin-top:70px;
   display: flex;
   width: 100%;
-  height: 41%;
+  height: 45%;
   font-size: 30px;
   text-align: center;
   font-family: 'GmarketSans';
