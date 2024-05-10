@@ -73,12 +73,14 @@ public class GabowatdagoService {
         UserDetail userDetail = (UserDetail) auth.getPrincipal();
         Long likeDtos = userDetail.getUser().getUserCode();
         String gaId = userDetail.getUser().getGaId(); // 로그인한사람 gaId 가져오기
+        String gaNick = userDetail.getUser().getGaNick(); // 로그인한사람 gaId 가져오기
 
         //데이터 모델에 등록하기
         model.addAttribute("gabowatdago", gabowatdagoEntity);
         model.addAttribute("cmtDtos", cmtDtos);
         model.addAttribute("user", likeDtos);
         model.addAttribute("gaId", gaId);
+        model.addAttribute("gaNick", gaNick);
 
 
         //--- 작성한 글의 지역 카테고리에 맞는 가보자고의 지역 맞춤 추천리스트 출력
@@ -176,12 +178,16 @@ public class GabowatdagoService {
     }
     public String edit(@PathVariable("id") Long id, Model model){
         //수정할 데이터 가져오기
+        List<String> locList = grRepository.findAllNames();
+        List<String> themaList = gtRepository.findAllNames();
         Gabowatdago gabowatdagoEntity = gabowatdagoRepository.findById(id).orElse(null);
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         UserDetail userDetail = (UserDetail) auth.getPrincipal();
         String gaId = userDetail.getUser().getGaId(); // 로그인한사람 gaId 가져오기
         String userNick = userDetail.getUser().getGaNick(); // 로그인한 사람 ganick 가져오기
         //모델에 데이터 등록하기
+        model.addAttribute("locList", locList);
+        model.addAttribute("themaList", themaList);
         model.addAttribute("gabowatdago", gabowatdagoEntity);
         model.addAttribute("userNick", userNick);
         model.addAttribute("gaId", gaId);

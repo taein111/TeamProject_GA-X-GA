@@ -23,14 +23,14 @@
             <div class="select">
                 <div class="local" style="width: 20%;">
                     <!--            <label>지역 선택 :</label>-->
-                    <select name="local" class="form-select">
+                    <select name="local" class="custom-select">
                         <option selected>지역</option>
                         <option th:each ="locations: ${locList}" th:text="${locations}"></option>
                     </select>
                 </div>
                 <div class="tema" style="width: 20%";>
                     <!--            <label>테마 선택:</label>-->
-                    <select name="thema" class="form-select">
+                    <select name="thema" class="custom-select">
                         <option selected>테마</option>
                         <option th:each ="themas: ${themaList}" th:text="${themas}">산</option>
                     </select>
@@ -65,7 +65,7 @@
             <input type="hidden" name="lng" id="longitude">
             <input type="hidden" name="likeCount" th:value="0">
             <div id="submit_Area">
-                <button style="float: right; margin-top: 5px; margin-bottom: 20px" type="submit" id="submitButton" class="btn btn-secondary" >게시하기</button>
+                <button type="submit" id="submitButton" class="btn btn-secondary" >게시하기</button>
             </div>
         </form>
     </div>

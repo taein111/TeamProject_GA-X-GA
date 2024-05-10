@@ -287,16 +287,9 @@ form{
   margin: 13px auto 20px;
 }
 
-.form-select {
-  width: 92%;
-  height: 34px;
-  border-radius: 10px;
-  font-family: 'GmarketSans';
-  font-weight: 400;
-  font-size: 18px;
 
 
-}
+
 
 .file-area{
   display: flex;
@@ -341,4 +334,100 @@ form{
 #submit_Area input{
   font-family: 'GmarketSans';
   font-weight: 500;
+}
+#submitButton{background-color: #4CAF50; /* 녹색 */
+  color: white; /* 흰색 */
+  padding: 10px 20px; /* 내부 여백 */
+  text-align: center; /* 텍스트 가운데 정렬 */
+  text-decoration: none; /* 텍스트 밑줄 제거 */
+  display: inline-block; /* 인라인 요소로 표시 */
+  font-size: 16px; /* 글꼴 크기 */
+  border-radius: 5px; /* 버튼 모서리 둥글게 */
+  border: none; /* 테두리 없음 */
+  cursor: pointer; /* 커서 포인터로 변경 */
+  float: right;
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+
+
+.custom-select{
+  width: 92%;
+  height: 34px;
+  border-radius: 10px;
+  font-family: 'GmarketSans';
+  font-weight: 400;
+  font-size: 18px;
+  position: relative;
+  display: inline-block;
+}
+.custom-select select {
+  display: none; /* 기본 select 요소 숨기기 */
+}
+/* 드롭다운 메뉴 스타일 */
+.custom-select .select-selected {
+  background-color: #4CAF50; /* 배경색 */
+  color: white; /* 글꼴 색상 */
+  padding: 10px 20px; /* 내부 여백 */
+  border: none; /* 테두리 없음 */
+  border-radius: 5px; /* 모서리 둥글게 */
+  cursor: pointer; /* 포인터 커서 */
+}
+
+/* 드롭다운 메뉴 애니메이션 */
+.custom-select .select-selected:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  margin-top: -3px;
+  border-width: 6px 6px 0 6px;
+  border-style: solid;
+  border-color: white transparent transparent transparent;
+  transition: border-width 0.3s ease-in-out;
+}
+
+/* 드롭다운 메뉴 펼치기 애니메이션 */
+.custom-select.select-open .select-selected:after {
+  border-width: 0 6px 6px 6px;
+}
+
+/* 드롭다운 옵션 스타일 */
+.custom-select .select-items {
+  position: absolute;
+  background-color: #f9f9f9; /* 드롭다운 배경색 */
+  width: 100%;
+  max-height: 200px; /* 최대 높이 */
+  overflow-y: auto; /* 스크롤 바 표시 */
+  border: 1px solid #ccc; /* 테두리 */
+  border-top: none;
+  border-radius: 0 0 5px 5px;
+  z-index: 99;
+}
+
+/* 드롭다운 옵션 스타일 - 호버 */
+.custom-select .select-items div:hover, .same-as-selected {
+  background-color: #4CAF50;
+  color: white;
+}
+
+/* 드롭다운 옵션 스타일 - 내부 여백 및 텍스트 정렬 */
+.custom-select .select-items div {
+  padding: 10px 20px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* 드롭다운 옵션 스크롤바 스타일 */
+.custom-select .select-items::-webkit-scrollbar {
+  width: 5px;
+}
+
+.custom-select .select-items::-webkit-scrollbar-thumb {
+  background-color: #888;
+}
+
+.custom-select .select-items::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
 }

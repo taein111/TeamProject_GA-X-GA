@@ -32,7 +32,7 @@
         </div>
       </div>
       <div class="intro">
-        <div>님! 근처의 추천 여행지를 소개드려요.</div>
+        <div th:text="${gaNick} + '님! 근처의 추천 여행지를 소개드려요.'"></div>
       </div>
       <div class="review-list-box">
 
@@ -41,8 +41,8 @@
             <img th:src="@{'/' + ${Gw.img}}" alt="">
           </div>
           <div class="review-info">
-            <div class="review-name"><a href="#"  th:text="${Gw.name}"></a></div>
-            <div class="review-address"><a href="#"  th:text="${Gw.state}"></a></div>
+            <div class="review-name"><a th:href="@{'/gabojagoing/'+${Gw.id}}" th:text="${Gw.name}"></a></div>
+            <div class="review-address"><a href="#" th:text="${Gw.state}"></a></div>
           </div>
         </div>
         <div class="review-list" th:each="Gg :${Gyeonggi}" >
@@ -50,7 +50,7 @@
             <img th:src="@{'/' + ${Gg.img}}" alt="">
           </div>
           <div class="review-info">
-            <div class="review-name"><a href="#"  th:text="${Gg.name}"></a></div>
+            <div class="review-name"><a th:href="@{'/gabojagoing/'+${Gg.id}}"  th:text="${Gg.name}"></a></div>
             <div class="review-address"><a href="#"  th:text="${Gg.state}"></a></div>
           </div>
         </div>
@@ -59,16 +59,16 @@
             <img th:src="@{'/' + ${Gn.img}}" alt="">
           </div>
           <div class="review-info">
-            <div class="review-name"><a href="#"  th:text="${Gn.name}"></a></div>
+            <div class="review-name"><a th:href="@{'/gabojagoing/'+${Gn.id}}"  th:text="${Gn.name}"></a></div>
             <div class="review-address"><a href="#"  th:text="${Gn.state}"></a></div>
           </div>
         </div>
-        <div class="review-list" th:each="Gb :${Gyeongbuk}" >
+        <div class="review-list" th:each="Gb :${Gyeongbuk}">
           <div class="review-image">
             <img th:src="@{'/' + ${Gb.img}}" alt="">
           </div>
           <div class="review-info">
-            <div class="review-name"><a href="#"  th:text="${Gb.name}"></a></div>
+            <div class="review-name"><a th:href="@{'/gabojagoing/'+${Gb.id}}"  th:text="${Gb.name}"></a></div>
             <div class="review-address"><a href="#"  th:text="${Gb.state}"></a></div>
           </div>
         </div>
@@ -77,7 +77,7 @@
             <img th:src="@{'/' + ${Gj.img}}" alt="">
           </div>
           <div class="review-info">
-            <div class="review-name"><a href="#"  th:text="${Gj.name}"></a></div>
+            <div class="review-name"><a th:href="@{'/gabojagoing/'+${Gj.id}}"  th:text="${Gj.name}"></a></div>
             <div class="review-address"><a href="#"  th:text="${Gj.state}"></a></div>
           </div>
         </div>
@@ -86,7 +86,7 @@
             <img th:src="@{'/' + ${Dj.img}}" alt="">
           </div>
           <div class="review-info">
-            <div class="review-name"><a href="#"  th:text="${Dj.name}"></a></div>
+            <div class="review-name"><a th:href="@{'/gabojagoing/'+${Dj.id}}"  th:text="${Dj.name}"></a></div>
             <div class="review-address"><a href="#"  th:text="${Dj.state}"></a></div>
           </div>
         </div>
@@ -95,7 +95,7 @@
             <img th:src="@{'/' + ${Dg.img}}" alt="">
           </div>
           <div class="review-info">
-            <div class="review-name"><a href="#"  th:text="${Dg.name}"></a></div>
+            <div class="review-name"><a th:href="@{'/gabojagoing/'+${Dg.id}}"  th:text="${Dg.name}"></a></div>
             <div class="review-address"><a href="#"  th:text="${Dg.state}"></a></div>
           </div>
         </div>
@@ -104,7 +104,7 @@
             <img th:src="@{'/' + ${Bs.img}}" alt="">
           </div>
           <div class="review-info">
-            <div class="review-name"><a href="#"  th:text="${Bs.name}"></a></div>
+            <div class="review-name"><a th:href="@{'/gabojagoing/'+${Bs.id}}"  th:text="${Bs.name}"></a></div>
             <div class="review-address"><a href="#"  th:text="${Bs.state}"></a></div>
           </div>
         </div>
@@ -113,7 +113,7 @@
             <img th:src="@{'/' + ${So.img}}" alt="">
           </div>
           <div class="review-info">
-            <div class="review-name"><a href="#"  th:text="${So.name}"></a></div>
+            <div class="review-name"><a th:href="@{'/gabojagoing/'+${So.id}}"  th:text="${So.name}"></a></div>
             <div class="review-address"><a href="#"  th:text="${So.state}"></a></div>
           </div>
         </div>
@@ -122,7 +122,7 @@
             <img th:src="@{'/' + ${Sj.img}}" alt="">
           </div>
           <div class="review-info">
-            <div class="review-name"><a href="#"  th:text="${Sj.name}"></a></div>
+            <div class="review-name"><a th:href="@{'/gabojagoing/'+${Sj.id}}"  th:text="${Sj.name}"></a></div>
             <div class="review-address"><a href="#"  th:text="${Sj.state}"></a></div>
           </div>
         </div>
@@ -131,7 +131,7 @@
             <img th:src="@{'/' + ${Us.img}}" alt="">
           </div>
           <div class="review-info">
-            <div class="review-name"><a href="#"  th:text="${Us.name}"></a></div>
+            <div class="review-name"><a th:href="@{'/gabojagoing/'+${Us.id}}"  th:text="${Us.name}"></a></div>
             <div class="review-address"><a href="#"  th:text="${Us.state}"></a></div>
           </div>
         </div>
@@ -140,7 +140,7 @@
             <img th:src="@{'/' + ${Ic.img}}" alt="">
           </div>
           <div class="review-info">
-            <div class="review-name"><a href="#"  th:text="${Ic.name}"></a></div>
+            <div class="review-name"><a th:href="@{'/gabojagoing/'+${Ic.id}}"  th:text="${Ic.name}"></a></div>
             <div class="review-address"><a href="#"  th:text="${Ic.state}"></a></div>
           </div>
         </div>
@@ -149,7 +149,7 @@
             <img th:src="@{'/' + ${Jn.img}}" alt="">
           </div>
           <div class="review-info">
-            <div class="review-name"><a href="#"  th:text="${Jn.name}"></a></div>
+            <div class="review-name"><a th:href="@{'/gabojagoing/'+${Jn.id}}"  th:text="${Jn.name}"></a></div>
             <div class="review-address"><a href="#"  th:text="${Jn.state}"></a></div>
           </div>
         </div>
@@ -158,7 +158,7 @@
             <img th:src="@{'/' + ${Jb.img}}" alt="">
           </div>
           <div class="review-info">
-            <div class="review-name"><a href="#"  th:text="${Jb.name}"></a></div>
+            <div class="review-name"><a th:href="@{'/gabojagoing/'+${Jb.id}}"  th:text="${Jb.name}"></a></div>
             <div class="review-address"><a href="#"  th:text="${Jb.state}"></a></div>
           </div>
         </div>
@@ -167,7 +167,7 @@
             <img th:src="@{'/' + ${Jj.img}}" alt="">
           </div>
           <div class="review-info">
-            <div class="review-name"><a href="#"  th:text="${Jj.name}"></a></div>
+            <div class="review-name"><a th:href="@{'/gabojagoing/'+${Jj.id}}"  th:text="${Jj.name}"></a></div>
             <div class="review-address"><a href="#"  th:text="${Jj.state}"></a></div>
           </div>
         </div>
@@ -176,7 +176,7 @@
             <img th:src="@{'/' + ${Cn.img}}" alt="">
           </div>
           <div class="review-info">
-            <div class="review-name"><a href="#"  th:text="${Cn.name}"></a></div>
+            <div class="review-name"><a th:href="@{'/gabojagoing/'+${Cn.id}}"  th:text="${Cn.name}"></a></div>
             <div class="review-address"><a href="#"  th:text="${Cn.state}"></a></div>
           </div>
         </div>
@@ -185,7 +185,7 @@
             <img th:src="@{'/' + ${Cb.img}}" alt="">
           </div>
           <div class="review-info">
-            <div class="review-name"><a href="#"  th:text="${Cb.name}"></a></div>
+            <div class="review-name"><a th:href="@{'/gabojagoing/'+${Cb.id}}"  th:text="${Cb.name}"></a></div>
             <div class="review-address"><a href="#"  th:text="${Cb.state}"></a></div>
           </div>
         </div>

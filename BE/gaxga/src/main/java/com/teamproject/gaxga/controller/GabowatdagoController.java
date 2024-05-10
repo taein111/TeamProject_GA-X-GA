@@ -55,6 +55,4 @@ public class GabowatdagoController {
     public String delete(@PathVariable("id") Long id){
         return gabowatdagoService.delete(id);
     }
-
-
 }
