@@ -49,7 +49,7 @@ public class WebSecurityConfig {
                         .loginProcessingUrl("/login")
                         .usernameParameter("gaId")
                         .passwordParameter("gaPass")
-                        .defaultSuccessUrl("/main")
+                        .defaultSuccessUrl("/main", true)
                         .failureUrl("/login?error=true")
                         .failureHandler(authenticationFailureHandler())
                 );
