@@ -11,7 +11,6 @@ import com.teamproject.gaxga.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -42,7 +41,6 @@ public class LikeService {
 
         gabowatdago.likeCountAdd();
         gabowatdagoRepository.save(gabowatdago);
-        System.out.println("================"+gabowatdago.getLikeCount());
         likeRepository.save(like);
 
     }

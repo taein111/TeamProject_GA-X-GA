@@ -139,16 +139,6 @@ commentCreateBtn.addEventListener("click", function () {
         }
     });
 });
-//댓글 수정
-// const commentUpdateBtns = document.querySelector("#updateBtn")
-// commentUpdateBtns.forEach(btn =>{
-//   btn.addEventListener("click", (event)=>{
-//     const commentUpdateBtn = event.target;
-//     const commentId = commentUpdateBtn.getAttribute("data-bs-target");
-//     console.log(`수정버튼 클릭 : ${commentId}번 댓글`)
-//   })
-// })
-//댓글 삭제
 const commentDeleteBtns = document.querySelectorAll("#deleteBtn")
 //삭제 버튼 이벤트 처리
 commentDeleteBtns.forEach(btn => {

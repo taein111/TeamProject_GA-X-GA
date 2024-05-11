@@ -223,11 +223,4 @@ public class GabowatdagoService {
     }
 
 
-//    public String getAuthorNickname(Long gabowatdagoId) {
-//        Gabowatdago gabowatdago = gabowatdagoRepository.findById(gabowatdagoId).orElse(null);
-//        if (gabowatdago != null && gabowatdago.getUserCode() != null) {
-//            return gabowatdago.getUserCode().getGaNick();
-//        }
-//        return null;
-//    }
 }
