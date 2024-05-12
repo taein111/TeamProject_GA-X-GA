@@ -13,6 +13,7 @@ import static org.hibernate.annotations.OnDeleteAction.CASCADE;
 @NoArgsConstructor
 @ToString
 @Getter
+@Setter
 public class Gabowatdago extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,6 +42,8 @@ public class Gabowatdago extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "userCode")
     private User userCode;
+
+
 
     @Column
     private Integer likeCount;

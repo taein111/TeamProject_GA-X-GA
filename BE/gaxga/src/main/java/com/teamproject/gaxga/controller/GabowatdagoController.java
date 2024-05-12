@@ -2,12 +2,16 @@ package com.teamproject.gaxga.controller;
 
 import com.teamproject.gaxga.dto.GabowatdagoForm;
 import com.teamproject.gaxga.entity.Gabowatdago;
+import com.teamproject.gaxga.entity.UserDetail;
 import com.teamproject.gaxga.repository.GabowatdagoRepository;
 import com.teamproject.gaxga.repository.gabojago.GrRepository;
 import com.teamproject.gaxga.repository.gabojago.GtRepository;
 import com.teamproject.gaxga.service.GabowatdagoService;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,7 +32,10 @@ public class GabowatdagoController {
     }
     @PostMapping("/gabowatdago/create")
     public String create(GabowatdagoForm form) {
-        return gabowatdagoService.create(form);
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        UserDetail userDetail = (UserDetail) auth.getPrincipal(); //로그인한사람 정보 가져오기
+        Long userCode = userDetail.getUser().getUserCode(); // 가져와서 userCode 추출
+        return gabowatdagoService.create(form, userCode); // 게시글 작성 메서드로 보내기
     }
 
     @GetMapping("/gabowatdago/{id}")
@@ -48,7 +55,10 @@ public class GabowatdagoController {
 
     @PostMapping("/gabowatdago/update")
     public String update(GabowatdagoForm form){
-        return gabowatdagoService.update(form);
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        UserDetail userDetail = (UserDetail) auth.getPrincipal(); //로그인한사람 정보 가져오기
+        Long userCode = userDetail.getUser().getUserCode(); // 가져와서 userCode 추출
+        return gabowatdagoService.update(form, userCode);
     }
 
     @GetMapping("gabowatdago/{id}/delete")

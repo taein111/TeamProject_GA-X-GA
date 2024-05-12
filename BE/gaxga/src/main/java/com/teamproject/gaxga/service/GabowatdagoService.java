@@ -37,26 +37,35 @@ public class GabowatdagoService {
     private GtRepository gtRepository;
     @Autowired
     private GpRepository gpRepository;
+    @Autowired
+    private UserRepository userRepository;
 
 
     public String newForm(Model model){
         List<String> locList = grRepository.findAllNames();
         List<String> themaList = gtRepository.findAllNames();
+        //로그인한 유저 정보
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         UserDetail userDetail = (UserDetail) auth.getPrincipal();
         String gaId = userDetail.getUser().getGaId(); // 로그인한사람 gaId 가져오기
         String userNick = userDetail.getUser().getGaNick(); // 로그인한 사람 ganick 가져오기
+        Long userCode = userDetail.getUser().getUserCode(); // 로그인한 사람 userCode 가져오기(게시글 작성할때 사용)
         model.addAttribute("locList", locList);
         model.addAttribute("themaList", themaList);
         model.addAttribute("userNick", userNick);
         model.addAttribute("gaId", gaId);
+        model.addAttribute("userCode", userCode);
         return "private/gabowatdago/gabowatdagoing_p";
     }
 
     @Transactional
-    public String create(GabowatdagoForm form) {
+    public String create(GabowatdagoForm form, Long userCode) {
         //1. DTO를 엔티티로
         Gabowatdago gabowatdago = form.toEntity();
+        //로그인한 사람의 userCode를 게시글 작성자 userCode로 변환해 저장
+        User user = new User();
+        user.setUserCode(userCode);
+        gabowatdago.setUserCode(user);
         //2. 레퍼지토리로 엔티티를 DB에 저장
         Gabowatdago saved = gabowatdagoRepository.save(gabowatdago);
         return "redirect:/gabowatdago/" + saved.getId();
@@ -74,6 +83,7 @@ public class GabowatdagoService {
         Long likeDtos = userDetail.getUser().getUserCode();
         String gaId = userDetail.getUser().getGaId(); // 로그인한사람 gaId 가져오기
         String gaNick = userDetail.getUser().getGaNick(); // 로그인한사람 gaId 가져오기
+
 
         //데이터 모델에 등록하기
         model.addAttribute("gabowatdago", gabowatdagoEntity);
@@ -185,20 +195,27 @@ public class GabowatdagoService {
         UserDetail userDetail = (UserDetail) auth.getPrincipal();
         String gaId = userDetail.getUser().getGaId(); // 로그인한사람 gaId 가져오기
         String userNick = userDetail.getUser().getGaNick(); // 로그인한 사람 ganick 가져오기
+        Long userCode = userDetail.getUser().getUserCode(); // 로그인한 사람 userCode 가져오기(게시글 작성할때 사용)
+
         //모델에 데이터 등록하기
         model.addAttribute("locList", locList);
         model.addAttribute("themaList", themaList);
         model.addAttribute("gabowatdago", gabowatdagoEntity);
         model.addAttribute("userNick", userNick);
         model.addAttribute("gaId", gaId);
+        model.addAttribute("userCode", userCode);
         //뷰 페이지 설정하기
         return "private/gabowatdago/gabowatdago_edit";
     }
 
     @Transactional
-    public String update(GabowatdagoForm form){
+    public String update(GabowatdagoForm form, Long userCode){
         //1. dto를 엔티티로 변환하기
         Gabowatdago gabowatdagoEntity = form.toEntity();
+        //로그인한 사람의 userCode를 게시글 작성자 userCode로 변환해 저장
+        User user = new User();
+        user.setUserCode(userCode);
+        gabowatdagoEntity.setUserCode(user);
         //2. 엔티티 db 저장하기
         //2-1 . db에서 기존 데이터 가져오기
         Gabowatdago target = gabowatdagoRepository.findById(gabowatdagoEntity.getId()).orElse(null);

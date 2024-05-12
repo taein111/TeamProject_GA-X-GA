@@ -238,7 +238,7 @@
               </div>
             </div>
           </div>
-          <button style="display: none" type="button" id="test">클릭테스트</button>
+          <button style="display: none" type="button" id="test"></button>
           <div class="text-box" th:text="*{content}">
           </div>
           <button id="deleteStorage">스토리지삭제</button>
@@ -246,13 +246,14 @@
           <div style="font-family: GmarketSans; color:#6A6A6A" th:text="*{address}"> </div>
           <div style="font-family: GmarketSans; color:#6A6A6A" th:text="*{de_address}"></div>
           <div id="maps"></div>
-
           <div class="comment-container">
             <div class="input-box">
               <form class="comment-input">
                 <input style ="width: 20%;" id="client" type ="text" maxlength="10" placeholder="닉네임">
                 <textarea style ="width: 80%;" id="comment" type ="text" placeholder="작성자에게 댓글을 남겨주세요"></textarea>
+                <!--현재 페이지의 게시글 id 정보 전송-->
                 <input type="hidden" id="new-comment-gabowatdago_id" th:value="*{id}">
+                <!-- 로그인한 유저의 userCode 전송-->
                 <input type="hidden" id="like_input" th:value="${user}">
                 <input id="comment-save" type="submit" value="댓글 작성">
               </form>
