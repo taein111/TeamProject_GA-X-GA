@@ -43,8 +43,6 @@ public class Gabowatdago extends BaseEntity {
     @JoinColumn(name = "userCode")
     private User userCode;
 
-
-
     @Column
     private Integer likeCount;
 

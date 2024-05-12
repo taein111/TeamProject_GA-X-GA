@@ -21,9 +21,10 @@
             <div><img src="/img/cata.png" class="WaImg" alt=""></div>
           </div>
           <div class="WaList">
-            <div>list1</div>
-            <div>list2</div>
-            <div>list3</div>
+<!--            왼쪽상단에 표시될 writercode와 본문 게시글의 gabowatdago usercode가 일치하면 해당 유저의 게시글 표시-->
+            <div><a th:if="gabowatdago.userCode == writerCode" th:text="${gabowatdago.title}"></a></div>
+            <div><a th:if="gabowatdago.userCode == writerCode" th:text="${gabowatdago.title}"></a></div>
+            <div><a th:if="gabowatdago.userCode == writerCode" th:text="${gabowatdago.title}"></a></div>
           </div>
         </div>
         <div class="WaProfileB">

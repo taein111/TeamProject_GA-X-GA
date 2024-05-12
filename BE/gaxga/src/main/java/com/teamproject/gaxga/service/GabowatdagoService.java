@@ -74,7 +74,8 @@ public class GabowatdagoService {
         //1. id를 조회해 데이터 가져오기
         //게시글 엔티티
         Gabowatdago gabowatdagoEntity = gabowatdagoRepository.findById(id).orElse(null);
-
+//        List<Gabowatdago> boardOrderByLike = gabowatdagoRepository.findByOrderByLikeCount();
+//        System.out.println("==============likeCount===== :" +boardOrderByLike);
         //댓글 엔티티
         List<CmtDto> cmtDtos = cmtService.comments(id);
         //로그인한 회원 정보
@@ -83,7 +84,8 @@ public class GabowatdagoService {
         Long likeDtos = userDetail.getUser().getUserCode();
         String gaId = userDetail.getUser().getGaId(); // 로그인한사람 gaId 가져오기
         String gaNick = userDetail.getUser().getGaNick(); // 로그인한사람 gaId 가져오기
-
+        User writerCode = gabowatdagoEntity.getUserCode(); // todo : 왜 주소값으로 나오는지 확인 후 Long / String으로 받아오기
+        System.out.println("================writerCode====: "+writerCode);
 
         //데이터 모델에 등록하기
         model.addAttribute("gabowatdago", gabowatdagoEntity);
@@ -91,6 +93,7 @@ public class GabowatdagoService {
         model.addAttribute("user", likeDtos);
         model.addAttribute("gaId", gaId);
         model.addAttribute("gaNick", gaNick);
+        model.addAttribute("writerCode", writerCode);
 
 
         //--- 작성한 글의 지역 카테고리에 맞는 가보자고의 지역 맞춤 추천리스트 출력
