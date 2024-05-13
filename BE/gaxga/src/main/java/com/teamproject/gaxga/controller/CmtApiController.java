@@ -39,8 +39,9 @@ public class CmtApiController {
         CmtDto updatedDto = cmtService.update(id, cmtDto);
         // 결과 응답
         return ResponseEntity.status(HttpStatus.OK).body(updatedDto);
-
     }
+
+
     //4. 댓글 삭제
     @DeleteMapping("/api/cmts/{id}")
     public ResponseEntity<CmtDto> deleteCmt(@PathVariable("id") Long id){
