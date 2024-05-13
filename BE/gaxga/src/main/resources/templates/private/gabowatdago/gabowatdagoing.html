@@ -37,12 +37,16 @@
       </div>
       <div class="review-list-box">
 
-        <div class="review-list" th:each="Gw :${Gangwon}" >
+        <div class="review-list" th:each="Gw:${Gangwon}">
           <div class="review-image">
             <img th:src="@{'/' + ${Gw.img}}" alt="">
           </div>
           <div class="review-info">
-            <div class="review-name"><a th:href="@{'/gabojagoing/'+${Gw.id}}" th:text="${Gw.name}"></a></div>
+            <div class="review-name">
+              <a th:href="@{'/gabojagoing/'+${Gw.id}}">
+                <span th:text="${Gw.name}"></span>
+              </a>
+            </div>
             <div class="review-address"><a href="#" th:text="${Gw.state}"></a></div>
           </div>
         </div>

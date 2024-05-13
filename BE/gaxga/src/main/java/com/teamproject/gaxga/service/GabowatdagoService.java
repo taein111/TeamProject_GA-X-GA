@@ -115,7 +115,7 @@ public class GabowatdagoService {
         List<GP> Chungnam = gpRepository.findByChungnam();
         List<GP> Chungbuk = gpRepository.findByChungbuk();
 
-        //자신이 조회한 게시글의 지역 카테고리와 일치하는 지역추천목록 출력
+//        자신이 조회한 게시글의 지역 카테고리와 일치하는 지역추천목록 출력
         String boardLocal= gabowatdagoEntity.getLocal();
         switch (boardLocal) {
             case "강원":
@@ -180,9 +180,11 @@ public class GabowatdagoService {
     public String index(Model model){
         //1. 모든 데이터 가져오기
         List<Gabowatdago> gabowatdagoEntityList = gabowatdagoRepository.findAll();
+        List<GP> gpEntityList = gpRepository.findAll();
         List<String> locList = grRepository.findAllNames();
         List<String> themaList = gtRepository.findAllNames();
         //2. 모델에 데이터 등록하기
+        model.addAttribute("gpList", gpEntityList);
         model.addAttribute("gabowatdagoList", gabowatdagoEntityList);
         model.addAttribute("locList", locList);
         model.addAttribute("themaList", themaList);
@@ -241,6 +243,4 @@ public class GabowatdagoService {
         }
         return "redirect:/gabowatdago";
     }
-
-
 }

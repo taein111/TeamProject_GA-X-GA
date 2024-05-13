@@ -29,7 +29,7 @@ public class GP {
     @JoinColumn(name="GTid")
     private GT thema;
 
-    @Column(name= "name")
+    @Column(name="name")
     private String name;
 
     @Column(name="img")
