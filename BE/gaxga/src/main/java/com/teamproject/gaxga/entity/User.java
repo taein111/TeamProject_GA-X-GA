@@ -10,7 +10,8 @@ import lombok.Setter;
 @Entity
 public class User{
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_id_seq")
+    @SequenceGenerator(name="user_id_seq", sequenceName = "user_id_seq", initialValue = 1, allocationSize = 1)
     @Column(updatable = false, nullable = false)
     private Long userCode;
 

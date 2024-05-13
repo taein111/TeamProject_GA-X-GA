@@ -17,7 +17,8 @@ import static org.hibernate.annotations.OnDeleteAction.CASCADE;
 @NoArgsConstructor
 public class Cmt extends BaseEntity{
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cmt_id_seq")
+    @SequenceGenerator(name="cmt_id_seq", sequenceName = "cmt_id_seq", initialValue = 1, allocationSize = 1)
     private Long id;
 
     @OnDelete(action = CASCADE)

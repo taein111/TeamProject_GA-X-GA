@@ -14,7 +14,8 @@ import java.util.Optional;
 @NoArgsConstructor
 public class Jjim {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Jjim_id_seq")
+    @SequenceGenerator(name="Jjim_id_seq", sequenceName = "Jjim_id_seq", initialValue = 1, allocationSize = 1)
     @Column(name="Jjim_id")
     private Long id;
 

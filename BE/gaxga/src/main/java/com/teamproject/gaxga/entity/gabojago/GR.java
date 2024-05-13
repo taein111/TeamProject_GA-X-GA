@@ -9,8 +9,8 @@ import lombok.Setter;
 @Setter
 public class GR {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JoinColumn(name="GRid")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GR_id_seq")
+    @SequenceGenerator(name="GR_id_seq", sequenceName = "GR_id_seq", initialValue = 1, allocationSize = 1)
     @Column(name="GRid")
     private Long id;
 

@@ -21,6 +21,4 @@ public class BaseEntity {
     private LocalDateTime regDate;
     @LastModifiedDate
     private LocalDateTime uptDate;
-
-
 }

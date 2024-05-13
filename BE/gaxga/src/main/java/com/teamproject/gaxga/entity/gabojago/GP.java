@@ -17,7 +17,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class GP {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GP_id_seq")
+    @SequenceGenerator(name="GP_id_seq", sequenceName = "GP_id_seq", initialValue = 1, allocationSize = 1)
     @Column(name = "GPid")
     private Long id;
 
