@@ -221,6 +221,13 @@ a:visited{
 #myPage_main #rightContent #profileInfo ul li span{
   width: 60%;
 }
+
+#myPage_main #rightContent #profileInfo ul li input{
+  width: 60%;
+  border: none;
+  font-size: 16px;
+  padding-left: 25px;
+}
 #myPage_main #rightContent #profileInfo ul li button{
   width: 20%;
   border: none;
@@ -228,12 +235,6 @@ a:visited{
   cursor: pointer;
   font-family: 'GmarketSans';
   font-weight: 600;
-}
-#myPage_main #rightContent #profileInfo ul li input{
-  width: 60%;
-  border: none;
-  font-size: 16px;
-  padding-left: 25px;
 }
 #myPage_main #rightContent #profileInfo ul li .hidden{
   display: none;
