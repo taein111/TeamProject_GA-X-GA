@@ -47,7 +47,6 @@ public class Gabowatdago extends BaseEntity {
     @Column
     private Integer likeCount;
 
-
     public LocalDateTime getRegDate() {
         return super.getRegDate();
     }

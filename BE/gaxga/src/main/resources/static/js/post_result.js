@@ -1,10 +1,11 @@
+const image1 = document.querySelector(".slider__img").innerText
 
-let images = [
-  "../img/apsan.png",
-  "../img/botanicgarden.png",
-  "../img/tteokbokkitown.png",
-  "../img/seongdangmos.png",
-  "../img/sinposijang.png"
+let images =[
+  `../${image1}`,
+  "../img/loc/서울/서울-도봉산.jpg",
+  "../img/loc/서울/서울-북한산.jpg",
+  "../img/loc/서울/서울-롯데월드.jpg",
+  "../img/loc/서울/서울-자팡이.jpg",
 ];
 
 function imageSlider(parent, images){

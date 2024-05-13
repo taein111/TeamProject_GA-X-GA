@@ -7,6 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public interface GabowatdagoRepository extends JpaRepository<Gabowatdago, Long> {
     @Override
