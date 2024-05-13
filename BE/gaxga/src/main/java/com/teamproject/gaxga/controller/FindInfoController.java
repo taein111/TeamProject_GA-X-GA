@@ -46,9 +46,10 @@ public class FindInfoController {
             redirectAttributes.addFlashAttribute("msg", "입력하신 정보가 틀립니다.");
             return "redirect:/findInfo";
         } else{
-            mailService.sendSimpleMail();
+            log.info("보내주는 패스워드 : " + data.getGaPass());
+            mailService.sendSimpleMail("[GA X GA] 임시 비밀번호 발송", "inseon0806@gmail.com", "임시 비밀번호입니다. 마이페이지에서 비밀번호 변경해주세요", data);
             redirectAttributes.addFlashAttribute("msg", "회원가입에 입력하신 이메일로 임시 비밀번호 보내드렸습니다.");
-            return "redirect:/findInfo";
+            return "redirect:/login";
         }
     }
 }

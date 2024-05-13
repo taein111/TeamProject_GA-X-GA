@@ -40,7 +40,7 @@ function modifySaveBtn(btnType) {
   const newText = inputElement.value;
   console.log(newText);
   fetch("/api/myPage",{
-    method: "PUT",
+    method: "POST",
     headers: {
       "Content-Type": "application/json"
     },

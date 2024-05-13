@@ -27,6 +27,7 @@ public class JoinMembershipService {
 
         data.setGaId(joinMembershipForm.getGaId());
         data.setGaPass(bCryptPasswordEncoder.encode(joinMembershipForm.getGaPass()));
+        log.info("joinMembershipForm.getGaPass()" + joinMembershipForm.getGaPass() +"   data.gaPass : " + data.getGaPass());
         data.setGaNick(joinMembershipForm.getGaNick());
         data.setGaPhone(joinMembershipForm.getGaPhone());
         data.setGaAddress(joinMembershipForm.getGaAddress());

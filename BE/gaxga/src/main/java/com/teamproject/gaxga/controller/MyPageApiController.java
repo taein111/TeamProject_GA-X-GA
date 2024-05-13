@@ -1,18 +1,16 @@
 package com.teamproject.gaxga.controller;
 
 import com.teamproject.gaxga.dto.JoinMembershipForm;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/myPage")
+@Slf4j
 public class MyPageApiController {
 
-    @PutMapping("/api/myPage")
+    @PostMapping("/api/myPage")
     public String updateUserInfo(@RequestBody JoinMembershipForm form){
-
+        log.info("myPage gaNick : " + form.getGaNick() + " gaPhone : " + form.getGaPhone() + " gaPassword : " + form.getGaPass() + " gaEmail : " + form.getGaEmail() );
         return "";
     }
 }

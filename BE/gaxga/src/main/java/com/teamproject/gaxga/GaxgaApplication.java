@@ -9,8 +9,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 @SpringBootApplication
 public class GaxgaApplication {
 	public static void main(String[] args) {
-
 		SpringApplication.run(GaxgaApplication.class, args);
 	}
-
 }

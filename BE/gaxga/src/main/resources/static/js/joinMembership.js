@@ -32,25 +32,3 @@ document.getElementById("submitBtn").addEventListener("click", function (){
     document.getElementById("combinedEmail").value = userEmail + "@" + emailType;
     console.log(userEmail + "@" + emailType);
 });
-
-// // 아이디 입력란에서 포커스를 잃을 때 중복 체크 요청을 보냄
-// document.getElementById("gaId").addEventListener("blur", function() {
-//     const userId = this.value;
-//     checkId(userId);
-// });
-// const checkId = (userId) => {
-//     $.ajax({
-//         type: "GET",
-//         url: "/joinMembership/checkId?userId=" + userId,
-//         success: function(response) {
-//             if (response === true) {
-//                 alert("사용 가능한 아이디입니다.");
-//             } else {
-//                 alert("이미 사용 중인 아이디입니다.");
-//             }
-//         },
-//         error: function() {
-//             alert("서버 오류가 발생했습니다.");
-//         }
-//     });
-// };

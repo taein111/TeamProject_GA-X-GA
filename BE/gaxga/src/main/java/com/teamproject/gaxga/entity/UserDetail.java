@@ -43,14 +43,12 @@ public class UserDetail implements UserDetails {
 
     @Override
     public String getPassword() {
-
         log.info("=========Pass" + user.getGaPass());
         return user.getGaPass();
     }
 
     @Override
     public String getUsername() {
-
         log.info("=========Id" + user.getGaId());
         return user.getGaId();
     }
