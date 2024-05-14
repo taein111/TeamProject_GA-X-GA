@@ -15,7 +15,7 @@
             <h2>가봤다고</h2>
             <p>후기 게시글 작성</p>
         </div>
-        <form action="/gabowatdago/create" method="POST" id="myForm">
+        <form action="/gabowatdago/create" method="POST" id="myForm" enctype="multipart/form-data">
             <div class="review-name">
                 <input name="title" type ="text" maxlength="40" placeholder="제목을 입력하세요">
             </div>
@@ -35,19 +35,22 @@
                         <option th:each ="themas: ${themaList}" th:text="${themas}">산</option>
                     </select>
                 </div>
-                <div class="date" style="width: 60%; text-align: right">
+                <div class="date" style="width: 60%; text-align: right; font-size: 20px">
                 </div>
             </div>
             <div class="file-area">
                 <div class="file-input" style="width: 50%;">
                     <label> 여행지 사진 첨부 </label>
                     <div class="input-group mb-3">
-                        <input type="file" class="form-control" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload" multiple accept="image/*" name=image>
+                        <input type="file" class="form-control" id="inputGroupFile03"
+                               aria-describedby="inputGroupFileAddon03" aria-label="Upload"
+                               multiple accept="image/*" name="image">
                     </div>
                 </div>
-                <input class="writer" style="width: 50%; text-align: right; border: none" th:placeholder="${userNick}" readonly>
+                <div class="writer" style="width: 50%; text-align: right; border: none; font-size: 20px" th:text="${userNick}"></div>
                 <input name="gaId" th:value="${gaId}" style="display: none">
             </div>
+            <div id="uploadedImages" style="margin-top: 20px;"></div>
             <div id="textContent">
                 <textarea name="content" id="content" cols="130" rows="20" placeholder="내용을 입력해주세요"></textarea>
             </div>
@@ -74,5 +77,64 @@
 <script th:src="@{https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js}"></script>
 <script th:src="@{/js/post.js}"></script>
 <script th:src="@{/js/menu.js}"></script>
+<script>
+    const filesArray = [];
+
+    document.getElementById('inputGroupFile03').addEventListener('change', function(event) {
+        const newFiles = Array.from(event.target.files);
+        const uploadedImagesDiv = document.getElementById('uploadedImages');
+        const fileInput = event.target;
+
+        newFiles.forEach((file, index) => {
+            filesArray.push(file);
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                const imgContainer = document.createElement('div');
+                imgContainer.style.display = 'inline-block';
+                imgContainer.style.position = 'relative';
+                imgContainer.style.margin = '10px';
+
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                img.style.maxWidth = '200px';
+
+                const deleteButton = document.createElement('button');
+                deleteButton.innerText = '삭제';
+                deleteButton.style.position = 'absolute';
+                deleteButton.style.top = '5px';
+                deleteButton.style.right = '5px';
+                deleteButton.style.backgroundColor = 'red';
+                deleteButton.style.color = 'white';
+                deleteButton.style.border = 'none';
+                deleteButton.style.borderRadius = '3px';
+                deleteButton.style.cursor = 'pointer';
+
+                deleteButton.addEventListener('click', function() {
+                    uploadedImagesDiv.removeChild(imgContainer);
+                    const fileIndex = filesArray.indexOf(file);
+                    if (fileIndex > -1) {
+                        filesArray.splice(fileIndex, 1);
+                    }
+                    updateFileInput(filesArray, fileInput);
+                });
+
+                imgContainer.appendChild(img);
+                imgContainer.appendChild(deleteButton);
+                uploadedImagesDiv.appendChild(imgContainer);
+            };
+
+            reader.readAsDataURL(file);
+        });
+
+        updateFileInput(filesArray, fileInput);
+    });
+
+    function updateFileInput(files, fileInput) {
+        const dataTransfer = new DataTransfer();
+        files.forEach(file => dataTransfer.items.add(file));
+        fileInput.files = dataTransfer.files;
+    }
+</script>
 </body>
 </html>

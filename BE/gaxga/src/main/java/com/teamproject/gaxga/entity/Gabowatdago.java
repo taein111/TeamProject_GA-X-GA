@@ -2,11 +2,7 @@ package com.teamproject.gaxga.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.OnDelete;
-
 import java.time.LocalDateTime;
-
-import static org.hibernate.annotations.OnDeleteAction.CASCADE;
 
 @Entity
 @AllArgsConstructor
