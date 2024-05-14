@@ -217,13 +217,15 @@ a:visited{
 }
 #myPage_main #rightContent #profileInfo ul li label{
   width: 20%;
+  line-height: 80px;
 }
 #myPage_main #rightContent #profileInfo ul li span{
   width: 60%;
+  line-height: 80px;
 }
 
 #myPage_main #rightContent #profileInfo ul li input{
-  width: 60%;
+  width: 50%;
   border: none;
   font-size: 16px;
   padding-left: 25px;

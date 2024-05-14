@@ -41,7 +41,6 @@
                         <div id="modify">
                             <p>정보 수정</p>
                         </div>
-                        <!-- 프로필정보 수정부분에서 보여지는부분 하고 수정시 어떻게 보일지 생각필요 우선 임시로 작업 -->
                         <div id="profileInfo">
                             <form action="/myPage" method="post" style="height: 100%">
                                 <ul>
@@ -55,16 +54,16 @@
                                     <li>
                                         <label for="phoneNumber">전화번호</label>
                                         <span id="showPhoneNumber" th:text="${userDetail.getGaPhone()}">010-0000-0000</span>
-                                        <input type="text" name="gaPhone" id="phoneNumber" class="hidden" placeholder="변경할 전화번호를 입력하세요">
+                                        <input type="text" name="gaPhone" id="phoneNumber" class="hidden" oninput="AutoHyphen(this)" placeholder="변경할 전화번호를 입력하세요">
                                         <button type="button" id="modifyPhoneNumber" onclick="ModifyProfileBtn(1)"><i class="fa-solid fa-pen"></i></button>
                                         <button type="submit" id="phoneNumberBtn" class="hidden" onclick="modifySaveBtn(1)">저장</button>
                                     </li>
                                     <li>
-                                        <label for="address">주소</label>
-                                        <span id="showAddress" th:text="${userDetail.getGaAddress()}">xx시 xx구 xx동</span>
-                                        <input type="text" name="gaAddress" id="address" class="hidden" placeholder="변경할 주소를 입력하세요">
-                                        <button type="button" id="modifyAddress" onclick="ModifyProfileBtn(2)"><i class="fa-solid fa-pen"></i></button>
-                                        <button type="submit" id="addressBtn" class="hidden" onclick="modifySaveBtn(2)">저장</button>
+                                        <label for="pass">비밀번호</label>
+                                        <span id="showPass" th:text="${userDetail.getGaPass()}">xx시 xx구 xx동</span>
+                                        <input type="password" name="gaPass" id="pass" class="hidden" placeholder="변경할 주소를 입력하세요">
+                                        <button type="button" id="modifyPass" onclick="ModifyProfileBtn(2)"><i class="fa-solid fa-pen"></i></button>
+                                        <button type="submit" id="passBtn" class="hidden" onclick="modifySaveBtn(2)">저장</button>
                                     </li>
                                     <li>
                                         <label for="email">이메일</label>
@@ -241,6 +240,7 @@
 </div>
 <script src="https://kit.fontawesome.com/1e9b513c90.js" crossorigin="anonymous"></script>
 <script src="/js/myPage.js"></script>
+<script src="/js/basicSetting.js" th:src="@{/js/basicSettings.js}"></script>
 <script src="/js/menu.js"> </script>
 </body>
 </html>

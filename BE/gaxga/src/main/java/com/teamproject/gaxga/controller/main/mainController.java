@@ -16,10 +16,7 @@ public class mainController {
     UserDetailService userDetailService;
 
     @GetMapping("/main")
-    public String showMain(Model model) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        UserDetails userDetails = (UserDetails) auth.getPrincipal();
-        model.addAttribute("userDetail", userDetails);
+    public String showMain() {
         return "public/main/main2";
     }
 }

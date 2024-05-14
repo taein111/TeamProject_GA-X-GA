@@ -15,10 +15,8 @@ public class UserDetail implements UserDetails {
     private User user;
     public UserDetail(User user) {
         this.user = user;
-        log.info("=========1" + user.getGaP_Image());
     }
     public String getGaPImage(){
-        log.info("=========2" + user.getGaP_Image());
         return user.getGaP_Image();
     }
 
@@ -28,14 +26,14 @@ public class UserDetail implements UserDetails {
     public String getGaPhone(){
         return user.getGaPhone();
     }
-    // todo : 이메일 변경시 @뒷주소 어떻게할지 얘기 필요
     public String getGaEmail(){
         return user.getGaEmail();
     }
-    // todo : 주소 변경시 디테일 주소등 어떻게 할지 얘기 필요
-    public String getGaAddress(){
-        return user.getGaAddress();
+    public String getGaPass(){
+        String gaPass = user.getGaPass();
+        return "*".repeat(gaPass.length());
     }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of();
@@ -43,13 +41,11 @@ public class UserDetail implements UserDetails {
 
     @Override
     public String getPassword() {
-        log.info("=========Pass" + user.getGaPass());
         return user.getGaPass();
     }
 
     @Override
     public String getUsername() {
-        log.info("=========Id" + user.getGaId());
         return user.getGaId();
     }
 

@@ -29,8 +29,9 @@ public class MyPageController {
     }
 
     @PostMapping("/myPage")
-    public String fixMyInfo(JoinMembershipForm joinMembershipForm, User user){
-        log.info("======join:"+joinMembershipForm.getGaNick() +"======user:"+user.getGaNick());
-        return myPageService.fixMyInfo(joinMembershipForm, user);
+    public String fixMyInfo(JoinMembershipForm joinMembershipForm){
+        log.info("======join:"+joinMembershipForm.getGaNick());
+        return myPageService.fixMyInfo(joinMembershipForm);
+        
     }
 }

@@ -1,8 +1,8 @@
 const contents = ["modifyProfile","myWrited","saved","receiveLike"];
-const profileInfos = ["showNickname", "showPhoneNumber","showAddress","showEmail"];
-const modifyType = ["nickname", "phoneNumber","address","email"];
-const modifyBtn =["modifyNickname","modifyPhoneNumber","modifyAddress","modifyEmail"];
-const saveBtn =["nicknameBtn","phoneNumberBtn","addressBtn","emailBtn"];
+const profileInfos = ["showNickname", "showPhoneNumber","showPass","showEmail"];
+const modifyType = ["nickname", "phoneNumber","pass","email"];
+const modifyBtn =["modifyNickname","modifyPhoneNumber","modifyPass","modifyEmail"];
+const saveBtn =["nicknameBtn","phoneNumberBtn","passBtn","emailBtn"];
 
 function SelectedContent(selectNum){
   for(let i = 0; i < contents.length; i++){
@@ -35,36 +35,3 @@ function ModifyProfileBtn(btnType) {
   }
 }
 //
-// function modifySaveBtn(btnType) {
-//   const inputElement = document.getElementById(modifyType[btnType]);
-//   const btn = document.getElementById(saveBtn[btnType]);
-//   const newText = inputElement.value;
-//   btn.addEventListener("click", function(){
-//     console.log(newText);
-//     fetch("/api/myPage",{
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json"
-//       },
-//       body: JSON.stringify(newText)
-//     })
-//         .then(response => {
-//           if(!response.ok){
-//             throw new Error("수정에 실패 햇습니다.");
-//           }
-//           return response.json();
-//         })
-//         .then(data => {
-//           const spanElement = document.getElementById(profileInfos[btnType]);
-//           spanElement.textContent = newValue; // 화면에 수정된 값 업데이트
-//           spanElement.classList.remove("hidden");
-//           inputElement.classList.add("hidden");
-//           document.getElementById(saveBtn[btnType]).classList.add("hidden");
-//           document.getElementById(modifyBtn[btnType]).classList.remove("hidden");
-//           console.log("프로필이 성공적으로 수정되었습니다.");
-//         })
-//         .catch(error => {
-//           console.error("프로필 수정에 실패했습니다.", error);
-//         });
-//   })
-// }

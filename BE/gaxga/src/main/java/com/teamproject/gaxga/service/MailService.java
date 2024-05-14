@@ -34,7 +34,8 @@ public class MailService {
 
             SimpleMailMessage message = new SimpleMailMessage();
             message.setSubject(mailTitle);
-            message.setTo(sender);
+            message.setFrom(sender);
+            message.setTo(user.getGaEmail());
             message.setText(content + newPass);
             log.info("첫번째 비밀번호 : " + user.getGaPass() + " 확인용 id : " + user.getGaId());
 
