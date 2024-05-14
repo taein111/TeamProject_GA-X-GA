@@ -277,15 +277,7 @@ form{
   height: 1px;
   background-color: black;
 }
-.select{
-  display: flex;
-  flex-direction: row;
-  font-family: 'GmarketSans';
-  font-weight: 400;
-  font-size: 26px;
-  width: 97%;
-  margin: 13px auto 20px;
-}
+
 
 
 
@@ -350,7 +342,15 @@ form{
   margin-bottom: 20px;
 }
 
-
+.select{
+  display: flex;
+  flex-direction: row;
+  font-family: 'GmarketSans';
+  font-weight: 400;
+  font-size: 26px;
+  width: 97%;
+  margin: 13px auto 20px;
+}
 
 .custom-select{
   width: 92%;

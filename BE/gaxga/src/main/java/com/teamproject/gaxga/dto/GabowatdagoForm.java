@@ -4,6 +4,9 @@ package com.teamproject.gaxga.dto;
 import com.teamproject.gaxga.entity.Gabowatdago;
 import com.teamproject.gaxga.entity.User;
 import lombok.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 @AllArgsConstructor
 @ToString
@@ -17,7 +20,7 @@ public class GabowatdagoForm {
     private String gaId;
     private String local;
     private String thema;
-    private String image;
+    private List<MultipartFile> image;
     private String content;
     private String address;
     private String de_address;
@@ -29,7 +32,7 @@ public class GabowatdagoForm {
 
 
     public Gabowatdago toEntity() {
-        return new Gabowatdago(id, title, gaId, local, thema, image, content, address, de_address, lat, lng, userCode, likeCount);
+        return new Gabowatdago(id, title, gaId, local, thema, image.toString(), content, address, de_address, lat, lng, userCode, likeCount);
     }
 
 }
