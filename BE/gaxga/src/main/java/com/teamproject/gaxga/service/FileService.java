@@ -3,7 +3,9 @@ package com.teamproject.gaxga.service;
 import com.teamproject.gaxga.entity.FileEntity;
 import com.teamproject.gaxga.entity.Gabowatdago;
 import com.teamproject.gaxga.repository.FileRepository;
+import com.teamproject.gaxga.repository.GabowatdagoRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,6 +23,8 @@ public class FileService {
     private String fileDir;
 
     private final FileRepository fileRepository;
+
+    private final GabowatdagoRepository gabowatdagoRepository;
 
 
 
@@ -54,6 +58,7 @@ public class FileService {
                     .savedfilename(savedName)
                     .savedPath(savedPath)
                     .build();
+
 
             //실제 로컬에 uuid를 파일명으로 저장
             file.transferTo(new File(savedPath));

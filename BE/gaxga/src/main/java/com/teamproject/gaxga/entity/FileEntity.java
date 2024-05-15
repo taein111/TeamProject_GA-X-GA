@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
 
 import static org.hibernate.annotations.OnDeleteAction.CASCADE;
@@ -11,6 +12,7 @@ import static org.hibernate.annotations.OnDeleteAction.CASCADE;
 @NoArgsConstructor
 @Entity
 @Getter
+@Setter
 public class FileEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "file_id_seq")
@@ -34,5 +36,8 @@ public class FileEntity {
         this.savedPath = savedPath;
     }
 
+    public void setGabowatdago(Gabowatdago gabowatdago) {
+        this.gabowatdagoId = gabowatdago;
+    }
 
 }

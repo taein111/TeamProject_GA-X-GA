@@ -3,6 +3,7 @@ package com.teamproject.gaxga.service;
 import com.teamproject.gaxga.dto.CmtDto;
 import com.teamproject.gaxga.dto.GabowatdagoForm;
 import com.teamproject.gaxga.dto.LikeDto;
+import com.teamproject.gaxga.entity.FileEntity;
 import com.teamproject.gaxga.entity.Gabowatdago;
 import com.teamproject.gaxga.entity.User;
 import com.teamproject.gaxga.entity.UserDetail;
@@ -68,8 +69,12 @@ public class GabowatdagoService {
         User user = new User();
         user.setUserCode(userCode);
         gabowatdago.setUserCode(user);
+
         //2. 레퍼지토리로 엔티티를 DB에 저장
         Gabowatdago saved = gabowatdagoRepository.save(gabowatdago);
+        //파일업로드한 이미지 파일들의 gabowatdagoId를 게시글id에 맞게 저장
+        FileEntity file = new FileEntity();
+        file.setGabowatdagoId(gabowatdago);
         return "redirect:/gabowatdago/" + saved.getId();
     }
     public String show(Long id, Model model) {
