@@ -51,7 +51,7 @@
                 <img th:src="@{'/' + *{img}}" alt="">
             </div>
             <div id="area-No2-2">
-                <p class="jjim" th:text="*{jjimcount} + '명 이 저장한 게시글 입니다'"></p>
+                <p class="jjim" th:if="${jjim != null}" th:text="${jjim.count} + '명 이 저장한 게시글 입니다'"></p>
             </div>
             <div id="area-No2-3">
                 <ul id="icons">
@@ -79,4 +79,5 @@
     });
 </script>
 </body>
+</html>
 </html>

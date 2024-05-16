@@ -29,7 +29,7 @@ public class JjimService {
         User user = userRepository.findById(jjimDto.getUserId())
                 .orElseThrow(() -> new Exception("User not found: " + jjimDto.getUserId()));
 
-        if(jjimRepository.findByGpidAndUser(gp, user).isPresent()){
+        if(jjimRepository.findByGpAndUser(gp, user).isPresent()){
             throw new DuplicateRequestException("already exist data my user id :" + user.getGaId()
                     + " ," + "gabojago id : " + gp.getId());
         }
@@ -37,7 +37,7 @@ public class JjimService {
                 .gp(gp)
                 .user(user)
                 .build();
-        gp.increaseJjimCount();
+        jjim.increaseCount();
         gpRepository.save(gp);
         jjimRepository.save(jjim);
     }
@@ -51,9 +51,9 @@ public class JjimService {
         GP gp = gpRepository.findById(jjimDto.getGabojagoId())
                 .orElseThrow(() -> new Exception("Could not found GP id: " + jjimDto.getGabojagoId()));
 
-        Jjim jjim = jjimRepository.findByGpidAndUser(gp, user)
+        Jjim jjim = jjimRepository.findByGpAndUser(gp, user)
                 .orElseThrow(() -> new Exception("Could not found jjim id"));
-        gp.decreseJjimCount();
+        jjim.decreaseCount();
         gpRepository.save(gp);
         jjimRepository.delete(jjim);
     }
