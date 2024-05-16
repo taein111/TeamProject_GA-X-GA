@@ -65,18 +65,22 @@
                     <li><a href="https://www.facebook.com/?locale=ko_KR" target="_blank"><i class="fa-brands fa-square-facebook"></a></i></li>
                     <li><a href="https://www.instagram.com/" target="_blank" id="instagram"><i class="fa-brands fa-instagram"></i></a></i></li>
                 </ul>
-                <button id="deleteStorage">스토리지 삭제</button>
             </div>
         </div>
     </div>
 </div>
 <script th:src="@{/js/menu2.js}"></script>
 <script th:src="@{/js/gabojago/jjim.js}"></script>
+<!-- 스토리지 삭제 방법
+
+                <button id="deleteStorage">스토리지 삭제</button>
 <script>
     const deleteStorage = document.getElementById("deleteStorage")
     deleteStorage.addEventListener("click", function(){
         localStorage.clear();
     });
 </script>
+-->
+
 </body>
 </html>
