@@ -43,8 +43,15 @@ public class FileService {
             // 파일 이름으로 쓸 uuid 생성
             String uuid = UUID.randomUUID().toString();
 
-            //확장자 추출(ex : .png)
-            String extension = origName.substring(origName.lastIndexOf("."));
+            String extension;
+            if (origName != null && !origName.isEmpty()) {
+                // 파일 이름이 있는 경우에는 확장자 추출
+                extension = origName.substring(origName.lastIndexOf("."));
+            } else {
+                // 파일 이름이 없는 경우에 대한 예외 처리 또는 기본값 설정
+                // 여기에 원하는 처리나 기본값을 설정하십시오.
+                extension = ""; // 예시로 확장자를 빈 문자열로 설정
+            }
 
             //uuid와 확장자 결합
             String savedName = uuid + extension;
@@ -73,4 +80,6 @@ public class FileService {
         // 여러 파일이 있을 경우 첫 번째 파일의 아이디 반환
         return savedFiles.isEmpty() ? null : savedFiles.get(0).getId();
     }
+
+
 }
