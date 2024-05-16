@@ -32,3 +32,29 @@ document.getElementById("submitBtn").addEventListener("click", function (){
     document.getElementById("combinedEmail").value = userEmail + "@" + emailType;
     console.log(userEmail + "@" + emailType);
 });
+
+function validateForm() {
+    const gaId = document.getElementById("gaId").value;
+    const gaPass = document.getElementById("gaPass").value;
+    const gaNick = document.getElementById("gaNick").value;
+    const gaPhone = document.getElementById("gaPhone").value;
+    if (gaId.length < 4 || gaId.length > 12) {
+        alert("아이디는 4~12글자여야 합니다.");
+        document.getElementById("gaId").focus();
+        return false;
+    }else if (gaPass.length < 8 || gaPass.length > 12) {
+        alert("비밀번호는 4~12글자여야 합니다.");
+        document.getElementById("gaPass").focus();
+        return false;
+    }else if (gaNick.length < 4 || gaNick.length > 12) {
+        alert("닉네임는 4~12글자여야 합니다.");
+        document.getElementById("gaNick").focus();
+        return false;
+    }else if (gaPhone.length !== 13) {
+        alert("핸드폰 입력이 잘못되었습니다.");
+        document.getElementById("gaPhone").focus();
+        return false;
+    }
+
+    return true;
+}

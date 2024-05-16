@@ -1,14 +1,19 @@
 package com.teamproject.gaxga.service.gabojago;
 
+import com.teamproject.gaxga.entity.User;
 import com.teamproject.gaxga.entity.gabojago.GP;
+import com.teamproject.gaxga.entity.gabojago.Jjim;
 import com.teamproject.gaxga.repository.gabojago.GpRepository;
 import com.teamproject.gaxga.repository.gabojago.GrRepository;
 import com.teamproject.gaxga.repository.gabojago.GtRepository;
+import com.teamproject.gaxga.repository.gabojago.JjimRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import java.util.List;
+import java.util.Optional;
 @Service
 public class GabojagoService {
 
@@ -20,6 +25,16 @@ public class GabojagoService {
 
     @Autowired
     private GrRepository grRepository;
+
+    @Autowired
+    private JjimRepository jjimRepository;
+
+    public Optional<GP>findById(Long id){
+        return gpRepository.findById(id);
+    }
+    public Optional<Jjim>findJjimById(GP gp, User user){
+        return jjimRepository.findByGpAndUser(gp, user);
+    }
 
     public String gaboShow(Model model){
         List<String> location = grRepository.findAllNames();

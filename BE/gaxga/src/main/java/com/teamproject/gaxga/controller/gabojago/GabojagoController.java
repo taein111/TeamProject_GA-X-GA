@@ -21,4 +21,5 @@ public class GabojagoController {
     public String loc(Model model){
         return gabojagoService.gaboShow(model);
     }
+    
 }
