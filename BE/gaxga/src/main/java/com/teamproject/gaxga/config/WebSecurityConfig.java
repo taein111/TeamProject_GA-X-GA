@@ -27,14 +27,6 @@ public class WebSecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    // h2-console 사용 위해서
-//    @Bean
-//    @ConditionalOnProperty(name = "spring.h2.console.enabled",havingValue = "true")
-//    public WebSecurityCustomizer configureH2ConsoleEnable() {
-//        return web -> web.ignoring()
-//                .requestMatchers(PathRequest.toH2Console());
-//    }
-
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
