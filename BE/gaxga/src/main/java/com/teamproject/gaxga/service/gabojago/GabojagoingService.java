@@ -15,26 +15,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class GabojagoingService {
     @Autowired
     private GpRepository gpRepository;
-    @Autowired
     private GrRepository grRepository;
-    @Autowired
     private GtRepository gtRepository;
     @Autowired
     private JjimRepository jjimRepository;
-
-    public Optional<GP> findById(Long id){
-        return gpRepository.findById(id);
-    }
-
-    public Optional<Jjim> findJjimByGp(GP gp, User user){
-        return jjimRepository.findByGpAndUser(gp, user);
-    }
 
     public String show(Long id, Model model) {
         GP gabojagoingEntity = gpRepository.findById(id).orElse(null);

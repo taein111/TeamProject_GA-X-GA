@@ -25,24 +25,12 @@ public class Jjim {
 
     @ManyToOne
     @JoinColumn(name="Gpid")
-    private GP gp;
-
-    @Column(nullable = false)
-    private Long count;
+    private GP gpid;
 
     @Builder
     public Jjim(GP gp, User user) {
-        this.gp = gp;
+        this.gpid = gp;
         this.user = user;
-        this.count = 0L;
-    }
-
-    public void increaseCount() {
-        this.count++;
-    }
-
-    public void decreaseCount() {
-        this.count--;
     }
 //    public void getJjimCountWithDefault() {
 //        // Optional 클래스를 사용하여 jjimCount 변수가 null인 경우 기본값을 설정

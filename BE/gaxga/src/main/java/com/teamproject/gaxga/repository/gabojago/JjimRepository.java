@@ -11,6 +11,6 @@ import java.util.Optional;
 @Repository
 public interface JjimRepository extends JpaRepository<Jjim, Long> {
 
-    Optional<Jjim> findByGpAndUser(GP gp,User user);
+    Optional<Jjim> findByGpidAndUser(GP gp,User user);
 
 }

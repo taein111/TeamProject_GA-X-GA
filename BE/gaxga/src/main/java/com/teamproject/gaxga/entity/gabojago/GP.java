@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 @Getter
@@ -43,11 +42,19 @@ public class GP {
     @Column
     private String text;
 
-    @OneToMany(mappedBy = "gp", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Jjim> jjims;
+    @Column(nullable = false)
+    private Long jjimcount;
 
-    // @ManyToOne(fetch = FetchType.LAZY)
-    // @JoinColumn(name = "userCode")
-    // private User userCode;
+    public void increaseJjimCount() {
+        this.jjimcount++;
+    }
+    public void decreseJjimCount() {
+        this.jjimcount--;
+    }
+
+
+    //
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "userCode")
+//    private User userCode;
 }
-
