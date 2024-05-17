@@ -2,7 +2,6 @@ package com.teamproject.gaxga.service;
 
 import com.teamproject.gaxga.dto.CmtDto;
 import com.teamproject.gaxga.dto.GabowatdagoForm;
-import com.teamproject.gaxga.dto.LikeDto;
 import com.teamproject.gaxga.entity.FileEntity;
 import com.teamproject.gaxga.entity.Gabowatdago;
 import com.teamproject.gaxga.entity.User;
@@ -16,20 +15,28 @@ import com.teamproject.gaxga.repository.gabojago.GtRepository;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+import java.util.UUID;
 
 @Slf4j
 @Service
+//@PropertySource("classpath:application.properties")
 public class GabowatdagoService {
     @Autowired
     private GabowatdagoRepository gabowatdagoRepository;
@@ -43,9 +50,9 @@ public class GabowatdagoService {
     private GpRepository gpRepository;
     @Autowired
     private UserRepository userRepository;
-    @Autowired
-    private FileService fileService;
 
+    @Value("D:\\TeamProject-GA X GA\\BE\\gaxga\\src\\main\\resources\\static\\upload\\")
+    private String fileDir;
 
     public String newForm(Model model){
         List<String> locList = grRepository.findAllNames();
@@ -65,30 +72,44 @@ public class GabowatdagoService {
     }
 
     @Transactional
-    public String create(GabowatdagoForm form, Long userCode) {
+    public String create(GabowatdagoForm form, Long userCode) throws IOException {
         //1. DTO를 엔티티로
         Gabowatdago gabowatdago = form.toEntity();
         //로그인한 사람의 userCode를 게시글 작성자 userCode로 변환해 저장
         User user = new User();
         user.setUserCode(userCode);
         gabowatdago.setUserCode(user);
-
         //2. 레퍼지토리로 엔티티를 DB에 저장
         Gabowatdago saved = gabowatdagoRepository.save(gabowatdago);
 
-        // FileService의 saveFile 메서드 호출
-        try {
-            // MultipartFile을 어떻게 얻어오는지에 따라서 인자를 넘겨주어야 합니다.
-            // 아래는 예시입니다. form.getFile()은 MultipartFile 객체를 리턴하는 것으로 가정합니다.
-            Long fileId = fileService.saveFile(form.getImage());
-            // 파일 저장에 성공한 경우 처리
-        } catch (IOException e) {
-            // 파일 저장에 실패한 경우 처리
+
+        Path directoryPath = Paths.get(fileDir);
+        boolean directoryExists = Files.exists(directoryPath) && Files.isDirectory(directoryPath);
+        if(!directoryExists){
+            Files.createDirectories(directoryPath);
         }
-        //파일업로드한 이미지 파일들의 gabowatdagoId를 게시글id에 맞게 저장
-        FileEntity file = new FileEntity();
-        file.setGabowatdagoId(gabowatdago);
+
+        List<String> fileNames = new ArrayList<>();
+        // 각 파일 처리
+        for (MultipartFile file : form.getImage()) {
+            if (!file.isEmpty()) {
+                String uniqueFileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
+                Path filePath = directoryPath.resolve(uniqueFileName);
+                Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
+                fileNames.add(uniqueFileName);
+                log.info("===================File uploaded:================= " + filePath.toString()); // 로그 추가
+
+            }
+        }
+
+        // 모든 파일 이름을 쉼표로 구분하여 하나의 문자열로 결합
+        String allFileNames = String.join(",", fileNames);
+        saved.setImage(allFileNames);
+        gabowatdagoRepository.save(saved); // 업데이트된 엔티티 저장
+
+
         return "redirect:/gabowatdago/" + saved.getId();
+
     }
     public String show(Long id, Model model) {
         //1. id를 조회해 데이터 가져오기

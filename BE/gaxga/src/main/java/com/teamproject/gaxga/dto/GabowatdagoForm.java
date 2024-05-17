@@ -14,7 +14,6 @@ import java.util.List;
 @Getter
 @Setter
 public class GabowatdagoForm {
-
     private Long id;
     private String title;
     private String gaId;
@@ -29,10 +28,7 @@ public class GabowatdagoForm {
     private User userCode;
     private Integer likeCount;
 
-
-
     public Gabowatdago toEntity() {
-        return new Gabowatdago(id, title, gaId, local, thema, image.toString(), content, address, de_address, lat, lng, userCode, likeCount);
+        return new Gabowatdago(id, title, gaId, local, thema, null, content, address, de_address, lat, lng, userCode, likeCount);
     }
-
 }

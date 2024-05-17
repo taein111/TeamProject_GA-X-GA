@@ -15,10 +15,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.List;
 
 @Slf4j
 @Controller
@@ -27,17 +25,22 @@ public class GabowatdagoController {
     @Autowired
     private GabowatdagoService gabowatdagoService;
 
+    private final FileService fileService;
+
+    @Autowired
+    public GabowatdagoController(FileService fileService) {
+        this.fileService = fileService;
+    }
 
     @GetMapping("/gabowatdagoing_p")
     public String newForm(Model model){
      return gabowatdagoService.newForm(model);
     }
     @PostMapping("/gabowatdago/create")
-    public String create(GabowatdagoForm form) {
+    public String create(GabowatdagoForm form) throws IOException {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         UserDetail userDetail = (UserDetail) auth.getPrincipal(); //로그인한사람 정보 가져오기
         Long userCode = userDetail.getUser().getUserCode(); // 가져와서 userCode 추출
-
 
         return gabowatdagoService.create(form, userCode); // 게시글 작성 메서드로 보내기
     }
