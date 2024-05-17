@@ -1,6 +1,6 @@
-var ga_image_BOX = document.getElementById("image");
-var ga_article_Box = document.querySelectorAll(".locationAreaList a");
-var ga_change_Box = document.querySelector(".changeImg").innerText;
+let ga_image_BOX = document.getElementById("image");
+let ga_article_Box = document.querySelectorAll(".locationAreaList a");
+let ga_change_Box = document.querySelector(".changeImg").innerText;
 
 ga_article_Box.forEach(function(box){
     box.addEventListener("mouseover", function(){
