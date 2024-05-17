@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
@@ -17,6 +18,8 @@ public class MyPageService {
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public String showMyPage(Model model){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -54,8 +57,10 @@ public class MyPageService {
                 log.info("joinInfo : " + joinMembershipForm.getGaPass());
             } else {
                 log.info("GaPass is after " + user.getGaPass());
-                user.setGaPass(joinMembershipForm.getGaPass());
-                log.info("GaPass is before " + user.getGaPass());
+                String changePass = joinMembershipForm.getGaPass();
+                String encodedPass = bCryptPasswordEncoder.encode(changePass);
+                user.setGaPass(encodedPass);
+                log.info("GaPass is before " + encodedPass);
             }
         }
         if (!joinMembershipForm.getGaEmail().equals(user.getGaEmail())){

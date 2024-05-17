@@ -27,12 +27,6 @@ public class GabowatdagoController {
     @Autowired
     private GabowatdagoService gabowatdagoService;
 
-    private final FileService fileService;
-
-    @Autowired
-    public GabowatdagoController(FileService fileService) {
-        this.fileService = fileService;
-    }
 
     @GetMapping("/gabowatdagoing_p")
     public String newForm(Model model){
@@ -44,16 +38,6 @@ public class GabowatdagoController {
         UserDetail userDetail = (UserDetail) auth.getPrincipal(); //로그인한사람 정보 가져오기
         Long userCode = userDetail.getUser().getUserCode(); // 가져와서 userCode 추출
 
-
-        // FileService의 saveFile 메서드 호출
-        try {
-            // MultipartFile을 어떻게 얻어오는지에 따라서 인자를 넘겨주어야 합니다.
-            // 아래는 예시입니다. form.getFile()은 MultipartFile 객체를 리턴하는 것으로 가정합니다.
-            Long fileId = fileService.saveFile(form.getImage());
-            // 파일 저장에 성공한 경우 처리
-        } catch (IOException e) {
-            // 파일 저장에 실패한 경우 처리
-        }
 
         return gabowatdagoService.create(form, userCode); // 게시글 작성 메서드로 보내기
     }
