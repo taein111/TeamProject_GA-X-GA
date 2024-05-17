@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.hibernate.annotations.OnDelete;
 
+import java.util.Objects;
+
 import static org.hibernate.annotations.OnDeleteAction.CASCADE;
 
 @Entity
@@ -36,7 +38,7 @@ public class Cmt extends BaseEntity{
         //예외 발생
         if(cmtDto.getId() != null)
             throw new IllegalArgumentException("댓글 생성 실패! 중복된 댓글입니다.");
-        if(cmtDto.getGabowatdagoId() != gabowatdago.getId())
+        if(!Objects.equals(cmtDto.getGabowatdagoId(), gabowatdago.getId()))
             throw new IllegalArgumentException("댓글 생성 실패, 해당 게시글이 존재하지 않습니다.");
         // 엔티티 생성 및 반환
         return new Cmt(
