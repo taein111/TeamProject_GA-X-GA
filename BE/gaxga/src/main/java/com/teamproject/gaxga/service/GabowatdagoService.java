@@ -51,7 +51,7 @@ public class GabowatdagoService {
     @Autowired
     private UserRepository userRepository;
 
-    @Value("D:\\TeamProject-GA X GA\\BE\\gaxga\\src\\main\\resources\\static\\upload\\")
+    @Value("C:\\Team_Project\\BE\\gaxga\\src\\main\\resources\\static\\upload")
     private String fileDir;
 
     public String newForm(Model model){
@@ -98,7 +98,6 @@ public class GabowatdagoService {
                 Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
                 fileNames.add(uniqueFileName);
                 log.info("===================File uploaded:================= " + filePath.toString()); // 로그 추가
-
             }
         }
 
