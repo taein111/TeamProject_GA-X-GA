@@ -3,7 +3,9 @@ package com.teamproject.gaxga.service;
 import com.teamproject.gaxga.dto.JoinMembershipForm;
 import com.teamproject.gaxga.entity.User;
 import com.teamproject.gaxga.entity.UserDetail;
+import com.teamproject.gaxga.entity.gabojago.Jjim;
 import com.teamproject.gaxga.repository.UserRepository;
+import com.teamproject.gaxga.repository.gabojago.JjimRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -11,6 +13,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+
+import java.util.List;
 
 @Service
 @Slf4j
@@ -20,11 +24,27 @@ public class MyPageService {
     private UserRepository userRepository;
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
+    @Autowired
+    private JjimRepository jjimRepository;
 
     public String showMyPage(Model model){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         UserDetail userDetail = (UserDetail) auth.getPrincipal();
         model.addAttribute("userDetail", userDetail);
+
+        //가보자고
+        User user = userDetail.getUser();
+        Long userId = user.getUserCode();
+        Long countOfJjim = jjimRepository.countByUserId(userId);
+        List<Jjim> myList = jjimRepository.findByJjim();
+        List<User> userCode = userRepository.findAll();
+        model.addAttribute("jjimCount", countOfJjim);
+        //로그인을 한 사람의 userCode
+        model.addAttribute("userCode", userCode);
+        model.addAttribute("myList", myList);
+        log.info("=====================================================userId = " + userId);
+        log.info("=====================================================================myList" + myList);
+
         return "private/accountManagement/myPage";
     }
 
