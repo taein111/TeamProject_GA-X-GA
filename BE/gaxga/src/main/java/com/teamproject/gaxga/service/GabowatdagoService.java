@@ -31,6 +31,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -97,7 +98,6 @@ public class GabowatdagoService {
                 Path filePath = directoryPath.resolve(uniqueFileName);
                 Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
                 fileNames.add(uniqueFileName);
-                log.info("===================File uploaded:================= " + filePath.toString()); // 로그 추가
             }
         }
 
@@ -250,7 +250,7 @@ public class GabowatdagoService {
     }
 
     @Transactional
-    public String update(GabowatdagoForm form, Long userCode){
+    public String update(GabowatdagoForm form, Long userCode) throws IOException {
         //1. dto를 엔티티로 변환하기
         Gabowatdago gabowatdagoEntity = form.toEntity();
         //로그인한 사람의 userCode를 게시글 작성자 userCode로 변환해 저장
@@ -263,8 +263,40 @@ public class GabowatdagoService {
 
         //2-2 . 기존 데이터 값 갱신하기
         if(target != null){
+            Path directoryPath = Paths.get(fileDir);
+            boolean directoryExists = Files.exists(directoryPath) && Files.isDirectory(directoryPath);
+            if(!directoryExists){
+                Files.createDirectories(directoryPath);
+            }
+            // 수정했으니 기존 서버에 업로드되어있던 파일 삭제
+            if (target.getImage() != null && !target.getImage().isEmpty()) {
+                Arrays.stream(target.getImage().split(","))
+                        .forEach(fileName -> {
+                            try {
+                                Files.deleteIfExists(directoryPath.resolve(fileName));
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        });
+            }
+            List<String> fileNames = new ArrayList<>();
+            // 각 파일 처리
+            for (MultipartFile file : form.getImage()) {
+                if (!file.isEmpty()) {
+                    String uniqueFileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
+                    Path filePath = directoryPath.resolve(uniqueFileName);
+                    Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
+                    fileNames.add(uniqueFileName);
+                }
+            }
+            // 모든 파일 이름을 쉼표로 구분하여 하나의 문자열로 결합
+            String allFileNames = String.join(",", fileNames);
+            gabowatdagoEntity.setImage(allFileNames);
             gabowatdagoRepository.save(gabowatdagoEntity); //엔티티를 db에 저장(갱신)
         }
+
+
+
         //3. 수정 결과 페이지로 리다이렉트하기
         return "redirect:/gabowatdago/"+gabowatdagoEntity.getId();
     }
