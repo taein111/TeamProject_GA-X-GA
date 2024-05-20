@@ -98,6 +98,7 @@ function delOk(){
 const commentCreateBtn = document.querySelector("#comment-save");
 
 commentCreateBtn.addEventListener("click", function () {
+    event.preventDefault();
     const comment = {
         nickname: document.querySelector("#client").value,
         body: document.querySelector("#comment").value,
