@@ -12,15 +12,22 @@ import com.teamproject.gaxga.repository.UserRepository;
 import com.teamproject.gaxga.repository.gabojago.JjimRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @Slf4j
@@ -36,11 +43,17 @@ public class MyPageService {
     private LikeRepository likeRepository;
     @Autowired
     private GabowatdagoRepository gabowatdagoRepository;
+    @Value("D:\\upload")
+    private String fileDir;
 
     public String showMyPage(@PathVariable Model model){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         UserDetail userDetail = (UserDetail) auth.getPrincipal();
         model.addAttribute("userDetail", userDetail);
+        String userName = userDetail.getUser().getGaId();
+        User userInfo = userRepository.findByGaId(userName);
+        model.addAttribute("userInfo", userInfo);
+        log.info("==============================userInfo = " + userInfo);
 
         //가보자고
         User user = userDetail.getUser();
@@ -105,4 +118,38 @@ public class MyPageService {
         userRepository.save(user);
         return "redirect:/myPage";
     }
-}
+
+    public void updateProfileImage(Long userCode, MultipartFile file) throws Exception {
+        User user = userRepository.findById(userCode).orElseThrow(() -> new Exception("User not found"));
+        String fileName = saveFile(file);
+        user.setGaP_Image(fileName);
+        userRepository.save(user);
+
+    }
+
+    private String saveFile(MultipartFile file) throws Exception {
+        if (file.isEmpty()) {
+            throw new Exception("Failed to store empty file.");
+        }
+
+        Path directoryPath = Paths.get(fileDir); // 'fileDir' should be defined as the directory you want to save the files in.
+        boolean directoryExists = Files.exists(directoryPath) && Files.isDirectory(directoryPath);
+        if (!directoryExists) {
+            Files.createDirectories(directoryPath);
+        }
+
+        String uniqueFileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
+        Path filePath = directoryPath.resolve(uniqueFileName);
+        Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
+        return uniqueFileName;
+    }
+
+        //        Path directoryPath = Paths.get("path/to/save/images");
+//        Files.createDirectories(directoryPath);
+//        String fileName = file.getOriginalFilename();
+//        Path filePath = directoryPath.resolve(fileName);
+//        file.transferTo(filePath);
+//        return filePath.toString();
+    }
+
+

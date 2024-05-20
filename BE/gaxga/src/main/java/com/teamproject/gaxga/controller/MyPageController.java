@@ -14,6 +14,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @Slf4j
@@ -34,5 +37,16 @@ public class MyPageController {
         log.info("======join:"+joinMembershipForm.getGaNick());
         return myPageService.fixMyInfo(joinMembershipForm);
         
+    }
+
+    @PostMapping("/updateProfileImage")
+    public String updateProfileImage(@RequestParam("userCode") Long userCode, @RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
+        try {
+            myPageService.updateProfileImage(userCode, file);
+            return "redirect:/myPage";
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("error", "Error updating profile image: " + e.getMessage());
+            return "redirect:/myPage?error=true";
+        }
     }
 }
