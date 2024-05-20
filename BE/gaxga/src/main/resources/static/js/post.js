@@ -87,9 +87,6 @@ function sample5_execDaumPostcode() {
     }).open();
 }
 
-// 좌표 값을 hidden input에 넣는다.
-document.getElementById("latitude").value = result.y;
-document.getElementById("longitude").value = result.x;
 
 
 

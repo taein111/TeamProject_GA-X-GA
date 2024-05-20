@@ -72,7 +72,7 @@ document.getElementById("test").addEventListener("click", function (){
 let mapContainer = document.getElementById('maps'),
     mapOption = {
     center: new daum.maps.LatLng(lng,lat),
-    level: 2 // 지도의 확대 레벨
+    level: 3 // 지도의 확대 레벨
 };
 
 let map = new daum.maps.Map(mapContainer, mapOption);

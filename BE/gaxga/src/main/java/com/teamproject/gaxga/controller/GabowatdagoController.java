@@ -61,7 +61,7 @@ public class GabowatdagoController {
     }
 
     @PostMapping("/gabowatdago/update")
-    public String update(GabowatdagoForm form){
+    public String update(GabowatdagoForm form) throws IOException {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         UserDetail userDetail = (UserDetail) auth.getPrincipal(); //로그인한사람 정보 가져오기
         Long userCode = userDetail.getUser().getUserCode(); // 가져와서 userCode 추출

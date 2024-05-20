@@ -50,6 +50,6 @@ public class GabojagoingService {
         model.addAttribute("themaList", themaList);
 
         //3. 뷰 페이지 등록하기
-        return "private/gabojagoing/gabojagoing";
+        return "public/gabojagoing/gabojagoing";
     }
 }
