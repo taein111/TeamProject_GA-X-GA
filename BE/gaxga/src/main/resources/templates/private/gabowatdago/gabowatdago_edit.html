@@ -36,7 +36,7 @@
                             <option th:each ="themas: ${themaList}" th:text="${themas}">산</option>
                         </select>
                     </div>
-                    <div class="date" style="width: 60%; text-align: right">
+                    <div class="date" style="width: 60%; text-align: right; font-size: 20px">
                     </div>
                 </div>
                 <div class="file-area">
@@ -47,7 +47,7 @@
                                    multiple accept="image/*" name="image">
                         </div>
                     </div>
-                    <input class="writer" style="width: 50%; text-align: right;" th:placeholder="${userNick}" readonly>
+                    <div class="writer" style="width: 50%; text-align: right; border: none; font-size: 20px" th:text="${userNick}"></div>
                     <input name="gaId" th:value="${gaId}" style="display: none">
                 </div>
                 <div id="uploadedImages" style="margin-top: 20px;"></div>
@@ -63,10 +63,8 @@
                     </div>
                 </div>
                 <div id="map"></div>
-                <input type="hidden" id="road_latitude" th:value="*{lat}">
-                <input type="hidden" id="road_longitude" th:value="*{lng}">
-                <input type="hidden" name="lat" id="latitude">
-                <input type="hidden" name="lng" id="longitude">
+                <input type="hidden" name="lat" id="road_latitude" th:value="*{lat}">
+                <input type="hidden" name="lng" id="road_longitude" th:value="*{lng}">
                 <input type="hidden" name="likeCount" th:value="*{likeCount}">
                 <div id="submit_Area">
                     <button style="float: right; margin-top: 5px; margin-bottom: 20px" type="submit" id="submitButton" class="btn btn-secondary" >게시하기</button>

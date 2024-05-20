@@ -20,6 +20,8 @@ public class Gabowatdago extends BaseEntity {
     @Column
     private String gaId;
     @Column
+    private String gaNick;
+    @Column
     private String local;
     @Column
     private String thema;

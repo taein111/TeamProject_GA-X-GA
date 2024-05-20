@@ -9,9 +9,13 @@ date.innerText = `${dateString}`;
 
 
 //----------------------------------------------------------------------지도
-// 지도를 미리 생성하는 코드
-var lat = parseFloat(document.getElementById('road_latitude').value);
-var lng = parseFloat(document.getElementById('road_longitude').value);
+// 기본 좌표 설정 (예: 서울 시청)
+var defaultLat = 37.5665;
+var defaultLng = 126.9780;
+
+// 입력된 위도와 경도 값을 가져오거나 기본값 사용
+var lat = parseFloat(document.getElementById('road_latitude').value)
+var lng = parseFloat(document.getElementById('road_longitude').value)
 
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div
     mapOption = {

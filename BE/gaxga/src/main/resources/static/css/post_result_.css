@@ -681,3 +681,8 @@ input[type="button"] {
 #like_after{
   width: 20px;
 }
+
+.slider__thumb img{
+  height: 100px;
+  border-radius: 20px;
+}

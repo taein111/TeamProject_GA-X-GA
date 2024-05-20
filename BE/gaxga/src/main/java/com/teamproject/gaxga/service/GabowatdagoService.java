@@ -120,7 +120,9 @@ public class GabowatdagoService {
         String gaId = userDetail.getUser().getGaId(); // 로그인한사람 gaId 가져오기 - 수정/삭제/댓글 등 버튼 출력을 위한
         String gaNick = userDetail.getUser().getGaNick(); // 로그인한사람 gaNick 가져오기 - 여행지 추천을 안내하기 위한
         String gaEmail = userDetail.getUser().getGaEmail(); //로그인한 회원의 email 가져오기 - 로그인한 사용자 정보 표시
-        String gabowatdagoWriter = gabowatdagoEntity.getGaId();
+        Long gabowatdagoWriter = gabowatdagoEntity.getUserCode().getUserCode();
+        List<Gabowatdago> boradList = gabowatdagoRepository.findByUserCode_UserCode(gabowatdagoWriter);
+        System.out.println("=================================" + boradList);
 
         //데이터 모델에 등록하기
         model.addAttribute("gabowatdago", gabowatdagoEntity);

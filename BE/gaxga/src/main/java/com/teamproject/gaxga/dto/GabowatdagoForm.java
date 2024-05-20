@@ -17,6 +17,7 @@ public class GabowatdagoForm {
     private Long id;
     private String title;
     private String gaId;
+    private String gaNick;
     private String local;
     private String thema;
     private List<MultipartFile> image;
@@ -29,6 +30,6 @@ public class GabowatdagoForm {
     private Integer likeCount;
 
     public Gabowatdago toEntity() {
-        return new Gabowatdago(id, title, gaId, local, thema, null, content, address, de_address, lat, lng, userCode, likeCount);
+        return new Gabowatdago(id, title, gaId,gaNick, local, thema, null, content, address, de_address, lat, lng, userCode, likeCount);
     }
 }
