@@ -22,11 +22,9 @@
           </div>
           <div class="WaList">
 <!--            왼쪽상단에 표시될 게시글 리스트 출력 -> 로그인한 사용자의 USERCODE와 일치하면 해당 유저의 게시글 표시-->
-            <div><a th:text="${gabowatdagoList}"></a></div>
-            <div><a th:text="${gabowatdagoList}"></a></div>
-            <div><a th:text="${gabowatdagoList}"></a></div>
-<!--            <div><a th:if="${gabowatdago.userCode == user}" th:text="${gabowatdago.title}"></a></div>-->
-<!--            <div><a th:if="${gabowatdago.userCode == user}" th:text="${gabowatdago.title}"></a></div>-->
+            <div style="height: 100px" th:each="myBoardList:${myBoardList}">
+              <a th:href="@{'/gabowatdago/'+*{myBoardList.id}}" th:text="*{myBoardList.title}"></a>
+            </div>
           </div>
         </div>
         <div class="WaProfileB">
@@ -226,9 +224,9 @@
             </div>
             <div>
               <!--            <--로그인한사람의 nickname과 게시글상의 nickname을 비교하여 일치하면 수정 삭제 버튼을 출력한다.-->
-              <a th:if="${gaId == gabowatdago.gaId}" th:href="@{'/gabowatdago/' + ${id} + '/edit'}"><input type="button" value="수정" style="line-height: 0.6;" class="btn btn-outline-success"></a>
-              <a th:if="${gaId == gabowatdago.gaId}" th:href="@{'/gabowatdago/' + ${id} + '/delete'}"><input type="button" value="삭제" style="line-height: 0.6;" class="btn btn-outline-danger" onclick="return delOk()" ></a>
-              <input type="button" class="btn btn-outline-success" value="목록 보기" style="width: 15%; line-height: 0.6;" onclick="window.location.href='/gabowatdago'">
+              <a th:if="${gaId == gabowatdago.gaId}" th:href="@{'/gabowatdago/' + ${id} + '/edit'}"><input type="button" value="수정" style="line-height: 0.6;" id="updateBtn"></a>
+              <a th:if="${gaId == gabowatdago.gaId}" th:href="@{'/gabowatdago/' + ${id} + '/delete'}"><input type="button" value="삭제" style="line-height: 0.6;" id="board_deleteBtn" onclick="return delOk()" ></a>
+              <input type="button" id="listBtn" value="목록 보기" style="width: 15%; line-height: 0.6;" onclick="window.location.href='/gabowatdago'">
             </div>
           </div>
         </div>
@@ -254,7 +252,7 @@
           <div class="comment-container">
             <div class="input-box">
               <form class="comment-input">
-                <input style ="width: 20%;" id="client" type ="text" maxlength="10" placeholder="닉네임">
+                <input style ="width: 20%; background-color: #cccccc"  id="client" type ="text" maxlength="10" th:value="${gaId}" readonly>
                 <textarea style ="width: 80%;" id="comment" type ="text" placeholder="작성자에게 댓글을 남겨주세요"></textarea>
                 <!--현재 페이지의 게시글 id 정보 전송-->
                 <input type="hidden" id="new-comment-gabowatdago_id" th:value="*{id}">
@@ -264,9 +262,9 @@
               </form>
             </div>
             <div class="comment-list-box">
-              <div class="cmt_container" th:each="cmt :${cmtDtos}" style="margin: 10px">
+              <div class="cmt_container" th:each="cmt :${cmtDtos}" style="margin: 10px; background-color: snow">
                 <h5 class="cmt_title"  style="display: flex;">
-                  <span th:text="${cmt.nickname}"></span>
+                  <span style="margin-right: auto" th:text="${cmt.nickname}"></span>
                   <div>
                     <button th:if="${gaId == gabowatdago.gaId}" type="button" id="deleteBtn"
                             th:data-comment-id="${cmt.id}">삭제</button>

@@ -153,6 +153,7 @@
                             <div class="receiveLikeList" th:if="${myList.user.userCode == userCode}" th:each="myList: ${myList}">
                                 <a th:href="@{'/gabojagoing/' + ${myList.gpid.id}}">
                                     <img th:src="'/'+${myList.gpid.img}" style="width: 20px; height: 20px;">
+                                    <span th:text="*{myList.gpid.name}"></span>
                                     <span th:text="*{myList.gpid.state}"></span>
                                 </a>
                                                                 <span>2024-03-01</span>
