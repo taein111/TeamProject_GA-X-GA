@@ -2,9 +2,12 @@ package com.teamproject.gaxga.service;
 
 import com.teamproject.gaxga.dto.JoinMembershipForm;
 import com.teamproject.gaxga.dto.gabojago.JjimDto;
+import com.teamproject.gaxga.entity.Gabowatdago;
 import com.teamproject.gaxga.entity.User;
 import com.teamproject.gaxga.entity.UserDetail;
 import com.teamproject.gaxga.entity.gabojago.Jjim;
+import com.teamproject.gaxga.repository.GabowatdagoRepository;
+import com.teamproject.gaxga.repository.LikeRepository;
 import com.teamproject.gaxga.repository.UserRepository;
 import com.teamproject.gaxga.repository.gabojago.JjimRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -29,6 +32,10 @@ public class MyPageService {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
     @Autowired
     private JjimRepository jjimRepository;
+    @Autowired
+    private LikeRepository likeRepository;
+    @Autowired
+    private GabowatdagoRepository gabowatdagoRepository;
 
     public String showMyPage(@PathVariable Model model){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -38,6 +45,7 @@ public class MyPageService {
         //가보자고
         User user = userDetail.getUser();
         Long userId = user.getUserCode();
+        String userGa = user.getGaId();
         Long countOfJjim = jjimRepository.countByUserId(userId);
         List<Jjim> myList = jjimRepository.findByJjim();
         model.addAttribute("jjimCount", countOfJjim);
