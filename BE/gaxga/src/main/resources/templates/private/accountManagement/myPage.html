@@ -151,40 +151,22 @@
                     <div id="receiveLike" class="selectedArea">
                         <div id="receiveLikeArea">
                             <div class="receiveLikeList" th:if="${myList.user.userCode == userCode}" th:each="myList: ${myList}">
+                                    <img th:src="'/'+${myList.gpid.img}">
                                 <a th:href="@{'/gabojagoing/' + ${myList.gpid.id}}">
-                                    <img th:src="'/'+${myList.gpid.img}" style="width: 20px; height: 20px;">
                                     <span th:text="*{myList.gpid.name}"></span>
                                     <span th:text="*{myList.gpid.state}"></span>
                                 </a>
                                                                 <span>2024-03-01</span>
-                                                                <button>제거</button>
+                        <input type="hidden" id="jjim_input" th:value="${myList.user.userCode}">
+                        <input type="hidden" id="gabojago_id" th:value="${myList.gpid.id}">
+                                <button type="button" id="deleteBtn">삭제</button>
                             </div>
-                            <!--                            <div class="receiveLikeList">-->
-                            <!--                                <p><a href="">춘천 남이섬</a></p>-->
-                            <!--                                <span>2024-03-01</span>-->
-                            <!--                                <button>제거</button>-->
-                            <!--                            </div>-->
-                            <!--                            <div class="receiveLikeList">-->
-                            <!--                                <p><a href="">춘천 남이섬</a></p>-->
-                            <!--                                <span>2024-03-01</span>-->
-                            <!--                                <button>제거</button>-->
-                            <!--                            </div>-->
-                            <!--                            <div class="receiveLikeList">-->
-                            <!--                                <p><a href="">춘천 남이섬</a></p>-->
-                            <!--                                <span>2024-03-01</span>-->
-                            <!--                                <button>제거</button>-->
-                            <!--                            </div>-->
-                            <!--                            <div class="receiveLikeList">-->
-                            <!--                                <p><a href="">춘천 남이섬</a></p>-->
-                            <!--                                <span>2024-03-01</span>-->
-                            <!--                                <button>제거</button>-->
-                            <!--                            </div>-->
                         </div>
-                        <div id="receiveLikePageList">
-                            <button>&lt;</button>
-                            <button>3</button>
-                            <button>&gt;</button>
-                        </div>
+<!--                        <div id="receiveLikePageList">-->
+<!--                            <button>&lt;</button>-->
+<!--                            <button>3</button>-->
+<!--                            <button>&gt;</button>-->
+<!--                        </div>-->
                     </div>
                 </div>
                 <div id="middle" class="content">
@@ -245,6 +227,7 @@
 <script src="https://kit.fontawesome.com/1e9b513c90.js" crossorigin="anonymous"></script>
 <script src="/js/myPage.js"></script>
 <script src="/js/basicSetting.js" th:src="@{/js/basicSettings.js}"></script>
-<script src="/js/menu.js"> </script>
+<script src="/js/menu.js"></script>
+<script th:src="@{/js/gabojago/deleteJjim.js}"></script>
 </body>
 </html>

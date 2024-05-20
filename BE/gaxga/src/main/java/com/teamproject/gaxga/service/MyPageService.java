@@ -1,14 +1,14 @@
 package com.teamproject.gaxga.service;
 
 import com.teamproject.gaxga.dto.JoinMembershipForm;
-import com.teamproject.gaxga.dto.gabojago.JjimDto;
-import com.teamproject.gaxga.entity.Gabowatdago;
 import com.teamproject.gaxga.entity.User;
 import com.teamproject.gaxga.entity.UserDetail;
+import com.teamproject.gaxga.entity.gabojago.GP;
 import com.teamproject.gaxga.entity.gabojago.Jjim;
 import com.teamproject.gaxga.repository.GabowatdagoRepository;
 import com.teamproject.gaxga.repository.LikeRepository;
 import com.teamproject.gaxga.repository.UserRepository;
+import com.teamproject.gaxga.repository.gabojago.GpRepository;
 import com.teamproject.gaxga.repository.gabojago.JjimRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +36,8 @@ public class MyPageService {
     private LikeRepository likeRepository;
     @Autowired
     private GabowatdagoRepository gabowatdagoRepository;
+    @Autowired
+    private GpRepository gpRepository;
 
     public String showMyPage(@PathVariable Model model){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
