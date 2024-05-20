@@ -17,7 +17,7 @@
                 <ul>
                     <li>
                         <div>
-                            <img th:src="${userDetail.getGaPImage()}" alt="">
+                            <img th:src="@{'/upload/'+${userInfo.gaP_Image}}" alt="">
                             <p th:text="${userDetail.getGaNick()}">홍길동 님</p>
                         </div>
                     </li>
@@ -35,8 +35,13 @@
                 <div id="top" class="content">
                     <div id="modifyProfile" class="selectedArea active">
                         <div id="profileImage">
-                            <img th:src="${userDetail.getGaPImage()}" alt="프로필 이미지">
-                            <button>프로필 사진 변경</button>
+                            <img id="myImage" th:src="@{'/upload/'+${userInfo.gaP_Image}}" alt="프로필 이미지">
+                            <form action="/updateProfileImage" method="post" enctype="multipart/form-data">
+                                <input type="button" value="프로필 사진 변경" onclick="document.getElementById('file').click();">
+                                <input type="file" name="file" id="file" style="display: none;" onchange="previewImage();">
+                                <input type="hidden" name="userCode" th:value="${userCode}">
+                                <button type="submit">저장하기</button>
+                            </form>
                         </div>
                         <div id="modify">
                             <p>정보 수정</p>
@@ -226,6 +231,20 @@
 </div>
 <script src="https://kit.fontawesome.com/1e9b513c90.js" crossorigin="anonymous"></script>
 <script src="/js/myPage.js"></script>
+<script>
+    function previewImage() {
+        var file = document.getElementById('file').files[0];
+        var reader = new FileReader();
+
+        reader.onloadend = function() {
+            document.getElementById('profileImage').src = reader.result;
+        }
+
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    }
+</script>
 <script src="/js/basicSetting.js" th:src="@{/js/basicSettings.js}"></script>
 <script src="/js/menu.js"></script>
 <script th:src="@{/js/gabojago/deleteJjim.js}"></script>
