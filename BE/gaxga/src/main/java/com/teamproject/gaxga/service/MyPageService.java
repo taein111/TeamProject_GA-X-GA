@@ -1,6 +1,7 @@
 package com.teamproject.gaxga.service;
 
 import com.teamproject.gaxga.dto.JoinMembershipForm;
+import com.teamproject.gaxga.dto.gabojago.JjimDto;
 import com.teamproject.gaxga.entity.User;
 import com.teamproject.gaxga.entity.UserDetail;
 import com.teamproject.gaxga.entity.gabojago.Jjim;
@@ -13,7 +14,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -27,7 +30,7 @@ public class MyPageService {
     @Autowired
     private JjimRepository jjimRepository;
 
-    public String showMyPage(Model model){
+    public String showMyPage(@PathVariable Model model){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         UserDetail userDetail = (UserDetail) auth.getPrincipal();
         model.addAttribute("userDetail", userDetail);
@@ -37,14 +40,13 @@ public class MyPageService {
         Long userId = user.getUserCode();
         Long countOfJjim = jjimRepository.countByUserId(userId);
         List<Jjim> myList = jjimRepository.findByJjim();
-        List<User> userCode = userRepository.findAll();
         model.addAttribute("jjimCount", countOfJjim);
         //로그인을 한 사람의 userCode
-        model.addAttribute("userCode", userCode);
+        model.addAttribute("userCode", userId);
         model.addAttribute("myList", myList);
+
         log.info("=====================================================userId = " + userId);
         log.info("=====================================================================myList" + myList);
-
         return "private/accountManagement/myPage";
     }
 
