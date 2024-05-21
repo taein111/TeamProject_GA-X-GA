@@ -38,9 +38,9 @@
                             <img id="myImage" th:src="@{'/upload/'+${userInfo.gaP_Image}}" alt="프로필 이미지">
                             <form action="/updateProfileImage" method="post" enctype="multipart/form-data">
                                 <input type="button" value="프로필 사진 변경" onclick="document.getElementById('file').click();">
-                                <input type="file" name="file" id="file" style="display: none;" onchange="previewImage();">
+                                <input type="file" name="file" id="file" style="display: none;" onchange="previewAndUpdateImage();">
                                 <input type="hidden" name="userCode" th:value="${userCode}">
-                                <button type="submit">저장하기</button>
+                                <button  id="imageSaveBtn" type="submit">저장하기</button>
                             </form>
                         </div>
                         <div id="modify">
@@ -83,35 +83,11 @@
                     </div>
                     <div id="myWrited" class="selectedArea">
                         <div id="myWritedArea">
-                            <div class="myWritedList">
-                                <p><a href="">용인 한옥마을에서 한복 체험!</a></p>
-                                <span>2024-03-15</span>
-                                <button>수정하기</button>
-                                <button>삭제하기</button>
+                            <div class="myWritedList" th:each="myBoardList: ${myBoardList}">
+                                <img th:src="${myBoardList.image != null ? '/upload/' + #strings.arraySplit(myBoardList.image, ',')[0] : '/upload/빈하트.png'}" alt="Board Image"/>
+                                <a th:href="@{'/gabowatdago/'+*{myBoardList.id}}" th:text="*{myBoardList.title}"></a>
+                                <span th:text="*{#temporals.format(myBoardList.regDate, 'yyyy-MM-dd HH:mm:ss')}"></span>
                             </div>
-                            <div class="myWritedList">
-                                <p><a href="">남편과 남이섬 여행기^^</a></p>
-                                <span>2024-02-18</span>
-                                <button>수정하기</button>
-                                <button>삭제하기</button>
-                            </div>
-                            <div class="myWritedList">
-                                <p><a href="">안산 대부도 고양이 실외 테마카페 방문 후기</a></p>
-                                <span>2024-01-24</span>
-                                <button>수정하기</button>
-                                <button>삭제하기</button>
-                            </div>
-                            <div class="myWritedList">
-                                <p><a href="">인천 청량산 새해맞이 등반완료!</a></p>
-                                <span>2024-01-02</span>
-                                <button>수정하기</button>
-                                <button>삭제하기</button>
-                            </div>
-                        </div>
-                        <div id="myWritedPageList">
-                            <button>&lt;</button>
-                            <button>1</button>
-                            <button>&gt;</button>
                         </div>
                     </div>
                     <!-- 베스트글 -->
@@ -124,32 +100,6 @@
                                 <button>수정하기</button>
                                 <button>삭제하기</button>
                             </div>
-                            <div class="savedList">
-                                <p><a href="">남편과 남이섬 여행기^^</a></p>
-                                <span>2024-02-18</span>
-                                <span>추천<em>25</em></span>
-                                <button>수정하기</button>
-                                <button>삭제하기</button>
-                            </div>
-                            <div class="savedList">
-                                <p><a href="">안산 대부도 고양이 실외 테마카페 방문 후기</a></p>
-                                <span>2024-01-24</span>
-                                <span>추천<em>20</em></span>
-                                <button>수정하기</button>
-                                <button>삭제하기</button>
-                            </div>
-                            <div class="savedList">
-                                <p><a href="">인천 청량산 새해맞이 등반완료!</a></p>
-                                <span>2024-01-02</span>
-                                <span>추천<em>12</em></span>
-                                <button>수정하기</button>
-                                <button>삭제하기</button>
-                            </div>
-                        </div>
-                        <div id="savedPageList">
-                            <button>&lt;</button>
-                            <button>2</button>
-                            <button>&gt;</button>
                         </div>
                     </div>
                     <!-- 여행지 -->
@@ -232,12 +182,13 @@
 <script src="https://kit.fontawesome.com/1e9b513c90.js" crossorigin="anonymous"></script>
 <script src="/js/myPage.js"></script>
 <script>
-    function previewImage() {
+    function previewAndUpdateImage() {
         var file = document.getElementById('file').files[0];
         var reader = new FileReader();
 
         reader.onloadend = function() {
-            document.getElementById('profileImage').src = reader.result;
+            // 업데이트된 이미지 URL로 myImage의 src 속성을 설정
+            document.getElementById('myImage').src = reader.result;
         }
 
         if (file) {
