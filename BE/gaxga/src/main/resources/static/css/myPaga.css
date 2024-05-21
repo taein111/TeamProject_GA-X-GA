@@ -286,7 +286,7 @@ height: 80%;
   font-weight: 400;
 }
 
-#myDeleteBtn{
+#BoardDeleteBtn{
   width: 10%;
   border: none;
   background-color: white;
@@ -334,11 +334,16 @@ height: 80%;
   font-weight: 400;
 }
 
-#myPage_main #rightContent #saved .savedList p{
-  width: 50%;
+#myPage_main #rightContent #saved .savedList a{
+  width: 100%;
+}
+#myPage_main #rightContent #saved .savedList img{
+  border-radius: 20px;
+  width: 15%;
+  height: 80%;
 }
 #myPage_main #rightContent #saved .savedList span{
-  width: 15%;
+  width: 40%;
 }
 #myPage_main #rightContent #saved #savedPageList{
   display: flex;

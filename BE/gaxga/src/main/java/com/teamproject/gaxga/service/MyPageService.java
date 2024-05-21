@@ -76,9 +76,15 @@ public class MyPageService {
         //가봤다고 리스트
         List<Gabowatdago> myBoardList = gabowatdagoRepository.findByUserCode_UserCode(userId);
         model.addAttribute("myBoardList", myBoardList);
+        List<Gabowatdago> bestBoardList = gabowatdagoRepository.findByUserCode_UserCodeOrderByLikeCountDesc(userId);
+        model.addAttribute("bestBoardList", bestBoardList);
+        Long likeCounts = gabowatdagoRepository.countLikeCountByUserCode_UserCode(userId);
+        model.addAttribute("likeCounts", likeCounts);
 
         log.info("=====================================================userId = " + userId);
         log.info("=====================================================================myList" + myList);
+        log.info("=====================================================================likeCounts" + likeCounts);
+
         return "private/accountManagement/myPage";
     }
 

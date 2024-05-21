@@ -87,18 +87,19 @@
                                 <img th:src="${myBoardList.image != null ? '/upload/' + #strings.arraySplit(myBoardList.image, ',')[0] : '/upload/빈하트.png'}" alt="Board Image"/>
                                 <a th:href="@{'/gabowatdago/'+*{myBoardList.id}}" th:text="*{myBoardList.title}"></a>
                                 <span th:text="*{#temporals.format(myBoardList.regDate, 'yyyy-MM-dd HH:mm:ss')}"></span>
+                                <button type="button" id="BoardDeleteBtn" th:data-Board-Id="${myBoardList.id}">삭제</button>
                             </div>
                         </div>
                     </div>
                     <!-- 베스트글 -->
                     <div id="saved" class="selectedArea">
                         <div id="savedListArea">
-                            <div class="savedList">
-                                <p><a href="">용인 한옥마을에서 한복 체험!</a></p>
-                                <span>2024-03-15</span>
-                                <span>추천<em>28</em></span>
-                                <button>수정하기</button>
-                                <button>삭제하기</button>
+                            <div class="savedList" th:each="best: ${bestBoardList}">
+                                <img th:src="${best.image != null ? '/upload/' + #strings.arraySplit(best.image, ',')[0] : '/upload/빈하트.png'}" alt="Board Image"/>
+                                <a th:href="@{'/gabowatdago/'+*{best.id}}" th:text="*{best.title}"></a>
+                                <span th:text="*{#temporals.format(best.regDate, 'yyyy-MM-dd HH:mm:ss')}"></span>
+                                <span th:text="'좋아요 ( '+ *{best.likeCount} + ' )'"></span>
+                                <button type="button" id="bestDeleteBtn" th:data-Board-Id="${best.id}">삭제</button>
                             </div>
                         </div>
                     </div>
@@ -145,7 +146,7 @@
                         <div class="gagaTitle">
                             <h4 style="font-family: 'GmarketSans'; font-weight: 500; color: #454545;">가봤다고</h4>
                         </div>
-                        <p><i class="fa-regular fa-heart"></i>10</p>
+                        <p><i class="fa-regular fa-heart" th:text="${likeCounts}"></i></p>
 <!--                        <div class="recentWriting">-->
 <!--                            <div class="first">-->
 <!--                                <span>춘천 - 남이섬</span>-->
@@ -199,5 +200,7 @@
 <script src="/js/basicSetting.js" th:src="@{/js/basicSettings.js}"></script>
 <script src="/js/menu.js"></script>
 <script th:src="@{/js/gabojago/deleteJjim.js}"></script>
+<script th:src="@{/js/deleteBoard.js}"></script>
+<script th:src="@{/js/deleteBest.js}"></script>
 </body>
 </html>

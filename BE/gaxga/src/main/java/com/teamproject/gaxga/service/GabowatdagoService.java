@@ -48,8 +48,9 @@ public class GabowatdagoService {
     private GpRepository gpRepository;
     @Autowired
     private UserRepository userRepository;
-    @Value("D:\\upload")
 
+
+    @Value("D:\\upload")
     private String fileDir;
 
     public String newForm(Model model){
