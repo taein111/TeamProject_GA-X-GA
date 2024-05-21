@@ -49,7 +49,11 @@ public class GabowatdagoService {
     @Autowired
     private UserRepository userRepository;
 
+<<<<<<< HEAD
+    @Value("D:\\DreamProject2\\BE\\gaxga\\src\\main\\resources\\static\\upload")
+=======
     @Value("D:\\upload")
+>>>>>>> 0fdca8c79d3216e26aea0b948af98f0c5022bccc
     private String fileDir;
 
     public String newForm(Model model){
