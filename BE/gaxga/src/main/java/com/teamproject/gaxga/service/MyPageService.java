@@ -29,6 +29,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -65,7 +66,7 @@ public class MyPageService {
         //가보자고
         User user = userDetail.getUser();
         Long userId = user.getUserCode();
-        String userGa = user.getGaId();
+
         Long countOfJjim = jjimRepository.countByUserId(userId);
         List<Jjim> myList = jjimRepository.findByJjim();
         model.addAttribute("jjimCount", countOfJjim);
@@ -76,10 +77,13 @@ public class MyPageService {
         //가봤다고 리스트
         List<Gabowatdago> myBoardList = gabowatdagoRepository.findByUserCode_UserCode(userId);
         model.addAttribute("myBoardList", myBoardList);
+
         List<Gabowatdago> bestBoardList = gabowatdagoRepository.findByUserCode_UserCodeOrderByLikeCountDesc(userId);
         model.addAttribute("bestBoardList", bestBoardList);
-        Long likeCounts = gabowatdagoRepository.countLikeCountByUserCode_UserCode(userId);
+        Long likeCounts = gabowatdagoRepository.sumLikeCountByUserCode(userId);
         model.addAttribute("likeCounts", likeCounts);
+
+
 
         log.info("=====================================================userId = " + userId);
         log.info("=====================================================================myList" + myList);
