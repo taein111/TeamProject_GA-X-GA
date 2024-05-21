@@ -256,21 +256,37 @@ a:visited{
   width: 100%;
   height: 80%;
   align-items: center;
+  overflow-y: auto;
 }
 #myPage_main #rightContent #myWrited .myWritedList{
   display: flex;
-  height: 25%;
+  height: 33.3%;
   align-items: center;
   width: 100%;
   text-align: center;
 }
-#myPage_main #rightContent #myWrited .myWritedList p{
-  width: 40%;
+#myPage_main #rightContent #myWrited .myWritedList a{
+  width: 100%;
 }
 #myPage_main #rightContent #myWrited .myWritedList span{
   width: 40%;
+
+}#myPage_main #rightContent #myWrited .myWritedList img{
+border-radius: 20px;
+width: 15%;
+height: 80%;
+ }
+
+#myUpdateBtn{
+  width: 10%;
+  border: none;
+  background-color: white;
+  cursor: pointer;
+  font-family: 'GmarketSans';
+  font-weight: 400;
 }
-#myPage_main #rightContent #myWrited .myWritedList button{
+
+#myDeleteBtn{
   width: 10%;
   border: none;
   background-color: white;
@@ -471,4 +487,20 @@ a:visited{
   font-size: 20px;
   font-family: 'GmarketSans';
   font-weight: 500;
+}
+
+#imageSaveBtn{
+  width: 100%;
+  height: 20%;
+  border: none;
+  font-family: 'GmarketSans';
+  font-weight: 400;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 0 0 10px 10px;
+}
+
+#imageSaveBtn:hover{
+ background-color: black;
+  color: white;
 }

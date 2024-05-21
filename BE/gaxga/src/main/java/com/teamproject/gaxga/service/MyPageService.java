@@ -1,6 +1,7 @@
 package com.teamproject.gaxga.service;
 
 import com.teamproject.gaxga.dto.JoinMembershipForm;
+import com.teamproject.gaxga.entity.Gabowatdago;
 import com.teamproject.gaxga.entity.User;
 import com.teamproject.gaxga.entity.UserDetail;
 import com.teamproject.gaxga.entity.gabojago.GP;
@@ -21,6 +22,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -70,6 +72,10 @@ public class MyPageService {
         //로그인을 한 사람의 userCode
         model.addAttribute("userCode", userId);
         model.addAttribute("myList", myList);
+
+        //가봤다고 리스트
+        List<Gabowatdago> myBoardList = gabowatdagoRepository.findByUserCode_UserCode(userId);
+        model.addAttribute("myBoardList", myBoardList);
 
         log.info("=====================================================userId = " + userId);
         log.info("=====================================================================myList" + myList);
@@ -126,10 +132,20 @@ public class MyPageService {
 
     public void updateProfileImage(Long userCode, MultipartFile file) throws Exception {
         User user = userRepository.findById(userCode).orElseThrow(() -> new Exception("User not found"));
+        // 기존 파일 이름 가져오기
+        String oldFileName = user.getGaP_Image();
+        if (oldFileName != null && !oldFileName.isEmpty()) {
+            deleteOldFile(oldFileName); // 기존 파일 삭제
+        }
         String fileName = saveFile(file);
         user.setGaP_Image(fileName);
         userRepository.save(user);
+    }
 
+    private void deleteOldFile(String fileName) throws IOException {
+        Path directoryPath = Paths.get(fileDir); //
+        Path filePath = directoryPath.resolve(fileName);
+        Files.deleteIfExists(filePath); // 파일이 존재하면 삭제
     }
 
     private String saveFile(MultipartFile file) throws Exception {
@@ -142,7 +158,6 @@ public class MyPageService {
         if (!directoryExists) {
             Files.createDirectories(directoryPath);
         }
-
         String uniqueFileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
         Path filePath = directoryPath.resolve(uniqueFileName);
         Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
