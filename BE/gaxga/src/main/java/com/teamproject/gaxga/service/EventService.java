@@ -4,13 +4,14 @@ import com.teamproject.gaxga.entity.Event;
 import com.teamproject.gaxga.repository.event.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import java.util.List;
 
 @Service
 public class EventService {
 
-    private final EventRepository eventRepository;
+    private EventRepository eventRepository;
 
     @Autowired
     public EventService(EventRepository eventRepository) {
@@ -23,8 +24,10 @@ public class EventService {
     }
 
     // 모든 이벤트 가져오기
-    public List<Event> getAllEvents() {
-        return (List<Event>) eventRepository.findAll();
+    public String getAllEvents(Model model) {
+        List<Event> AllEvent = eventRepository.findAll();
+        model.addAttribute("AllEvent", AllEvent);
+        return "public/event/event";
     }
 
     // ID로 이벤트 가져오기

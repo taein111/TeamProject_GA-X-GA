@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 public interface GpRepository extends JpaRepository<GP, Long> {
     @Override
-    ArrayList<GP> findAll();
+    List<GP> findAll();
 
     @Query(value ="SELECT P.GPid AS GPID, P.name AS NAME, P.img AS IMG, P.state AS STATE, P.text AS TEXT, P.jjimcount AS JJIMCOUNT, R.GRid AS GRID, T.GTid AS GTID " +
             "FROM GP P " +

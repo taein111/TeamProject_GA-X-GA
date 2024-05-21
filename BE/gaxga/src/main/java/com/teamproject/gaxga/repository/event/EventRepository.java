@@ -4,10 +4,11 @@ import com.teamproject.gaxga.entity.Event;
 import org.springframework.data.repository.CrudRepository;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public interface EventRepository extends CrudRepository<Event, Long> {
     @Override
-    Iterable<Event> findAll();
+    List<Event> findAll();
 
     Iterable<Event> findByStartDate (LocalDateTime startDate);
 

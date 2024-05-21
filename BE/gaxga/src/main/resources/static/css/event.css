@@ -155,8 +155,9 @@ ul {
   font-size: 30px;
   font-weight: 400;
 }
-.exit_text_bottom{
+.exit_text_bottom {
   display: flex;
+  justify-content: center;
   width: 100%;
   height: 45%;
   font-size: 30px;
@@ -165,6 +166,11 @@ ul {
   font-weight: 400;
 
 }
+.exit_text_bottom1 {
+  display: flex;
+  flex-direction: column;
+}
+
 .side_image1{
     display: flex;
     flex: none;
