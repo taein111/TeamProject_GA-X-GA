@@ -245,6 +245,7 @@ h1 {
   justify-content: space-around;
   margin-left: 10px;
   text-align: center;
+  overflow-y: auto;
 }
 
 .WaProfileB {
@@ -589,6 +590,43 @@ input[type="button"] {
   height: 20%;
   display: flex;
   flex-direction: row;
+}
+
+#deleteBtn{
+  background-color: #063F3B;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  padding: 2px;
+
+}
+
+#listBtn{
+  background-color: #063F3B;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  padding: 6px;
+}
+
+#updateBtn{
+  background-color: #063F3B;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  padding: 6px;
+}
+
+#board_deleteBtn{
+  background-color: #063F3B;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  padding: 6px;
 }
 
 .nickname-box {

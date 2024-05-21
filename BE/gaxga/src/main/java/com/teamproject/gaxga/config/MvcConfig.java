@@ -23,7 +23,7 @@ public class MvcConfig implements WebMvcConfigurer {
                /*addResourceHandler 메서드에서 설정한 URL 패턴과 실제 이미지 URL이 일치해야한다.
                 이 프로젝트에서는 @Value("C:\\Team_Project\\BE\\gaxga\\src\\main\\resources\\static\\upload")
                 경로로 주고있기 때문에, handler path에 /upload/** 로 주는것이 맞다.*/
-                .addResourceLocations("file:///D:/TeamProject-GA X GA/BE/gaxga/src/main/resources/static/upload/");
+                .addResourceLocations("file:///D:/upload/");
     }
     // 배포 시점에 사용 가능한 코드.
 //    @Override
