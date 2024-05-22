@@ -23,12 +23,8 @@ public class Event extends BaseEntity{
     @SequenceGenerator(name="event_id_seq", sequenceName = "event_id_seq", initialValue = 1, allocationSize = 1)
     private Long id;
 
-    @Column(name = "ga_id")
-    private String gaId;
-
     @Column(name = "start_date")
     private LocalDateTime startDate;
-
 
     @Column(updatable = false,name = "end_date")
     private LocalDateTime endDate;
@@ -36,9 +32,6 @@ public class Event extends BaseEntity{
     @CreatedDate
     @Column(updatable = false, name = "reg_date")
     private LocalDateTime regDate;
-
-    @JoinColumn(name ="like_count")
-    private Integer likeCount = 0;
 
     @Column(updatable = false, name = "event_flag")
     private Integer eventFlag = 0;

@@ -67,7 +67,7 @@
         </a>
 
       </div>
-      <div class="right"><img id="image" src="/img/loc/강원/강원-갈미조개.jpg" alt=""></div>
+      <div class="right"><img id="image" src="/upload/부산-다대포해수욕장.jpg" alt=""></div>
     </div>
     <script th:src="@{/js/gab_carousel2.js}"></script>
     <script th:src="@{/js/menu2.js}"></script>
@@ -81,7 +81,13 @@
             article_box.addEventListener("mouseover", function() {
                 change_box = this.querySelector("#gabowatdago_id").innerText;
                 var firstImage = change_box.split(',')[0]; // 쉼표로 분리하고 첫 번째 요소를 선택
-                image_box.src = '/upload/'+firstImage; //첫 번째 이미지 파일 이름만 사용
+
+                // 첫 번째 이미지가 비어있는지 확인하고, 비어있다면 디폴트 이미지로 설정
+                if (!firstImage) {
+                    image_box.src = '/upload/부산-다대포해수욕장.jpg'; // 디폴트 이미지 경로 설정
+                } else {
+                    image_box.src = '/upload/' + firstImage; // 첫 번째 이미지 파일 이름만 사용
+                }
             });
         });
     </script>

@@ -205,12 +205,13 @@
         </div>
         <div class="intro-area">
           <div class="post-info">
+            <div class="writer" th:text="'작성자 : '+ *{gaNick}"> </div>
             <div class="date">
               게시날짜:
-              <span th:text="*{#temporals.format(regDate, 'yyyy-MM-dd HH:mm:ss')}"></span>
+              <span th:text="*{#temporals.format(regDate, 'yyyy.MM.dd HH:mm:ss')}"></span>
             </div>
             <div class="locTag">
-              <div class="loc" th:text="*{local}">
+              <div class="loc" th:text="'지역 : '+ *{local}">
               </div>
             </div>
           </div>
@@ -252,7 +253,7 @@
           <div class="comment-container">
             <div class="input-box">
               <form class="comment-input">
-                <input style ="width: 20%; background-color: #cccccc"  id="client" type ="text" maxlength="10" th:value="${gaId}" readonly>
+                <input style ="width: 20%; background-color: #cccccc"  id="client" type ="text" maxlength="10" th:value="${gaNick}" readonly>
                 <textarea style ="width: 80%;" id="comment" type ="text" placeholder="작성자에게 댓글을 남겨주세요"></textarea>
                 <!--현재 페이지의 게시글 id 정보 전송-->
                 <input type="hidden" id="new-comment-gabowatdago_id" th:value="*{id}">

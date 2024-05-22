@@ -441,6 +441,12 @@ input[type="button"] {
   font-family: "GmarketSans3";
   color: #6A6A6A;
 }
+.writer{
+  width: 60%;
+  font-size: 18px;
+  font-family: "GmarketSans3";
+  color: #6A6A6A;
+}
 
 .like {
   width: 100%;
@@ -554,7 +560,7 @@ input[type="button"] {
   font-weight: 400;
   color: #000000;
   margin-bottom: 30px;
-  margin-left: 100px;
+  margin-left: 10px;
   margin-top: 30px;
 }
 

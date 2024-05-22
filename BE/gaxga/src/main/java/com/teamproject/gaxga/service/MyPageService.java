@@ -11,6 +11,7 @@ import com.teamproject.gaxga.repository.LikeRepository;
 import com.teamproject.gaxga.repository.UserRepository;
 import com.teamproject.gaxga.repository.gabojago.GpRepository;
 import com.teamproject.gaxga.repository.gabojago.JjimRepository;
+import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -92,10 +93,12 @@ public class MyPageService {
         return "private/accountManagement/myPage";
     }
 
+    @Transactional
     public String fixMyInfo(JoinMembershipForm joinMembershipForm){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         UserDetail userDetail = (UserDetail) auth.getPrincipal();
         User user = userDetail.getUser();
+        String oldGaNick = user.getGaNick(); // 변경 전 닉네임 저장
         log.info("userInfo : " + user.getGaNick() + " " + user.getGaPhone() + " " + user.getGaEmail() + " " + user.getGaPass());
         log.info("joinInfo : " + joinMembershipForm.getGaNick() + " " + joinMembershipForm.getGaPhone() + " " + joinMembershipForm.getGaEmail() + " " + joinMembershipForm.getGaPass());
         if(!joinMembershipForm.getGaNick().equals(user.getGaNick())){
@@ -105,6 +108,15 @@ public class MyPageService {
                 log.info("GaNick is after " + user.getGaNick());
                 user.setGaNick(joinMembershipForm.getGaNick());
                 log.info("GaNick is before " + user.getGaNick());
+                // 가봤다고 게시글 업데이트시키기
+                List<Gabowatdago> gabowatdagoEntity = gabowatdagoRepository.findByGaNick(oldGaNick);
+                System.out.println("==========================gabowatdagoEntity" + gabowatdagoEntity);
+                for (Gabowatdago gabowatdago : gabowatdagoEntity) {
+                    log.info("Updating Gabowatdago gaNick from: " + gabowatdago.getGaNick() + " to: " + joinMembershipForm.getGaNick());
+                    gabowatdago.setGaNick(joinMembershipForm.getGaNick());
+                    gabowatdagoRepository.save(gabowatdago);
+                    log.info("Updated Gabowatdago gaNick to: " + gabowatdago.getGaNick());
+                }
             }
         }
         if (!joinMembershipForm.getGaPhone().equals(user.getGaPhone())){

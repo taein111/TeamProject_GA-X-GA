@@ -55,6 +55,8 @@ public class Gabowatdago extends BaseEntity {
             this.title = gabowatdago.title;
         if(gabowatdago.local != null)
             this.local = gabowatdago.local;
+        if(gabowatdago.gaNick != null)
+            this.gaNick = gabowatdago.gaNick;
         if (gabowatdago.thema != null)
             this.thema = gabowatdago.thema;
         if (gabowatdago.image != null)

@@ -1,6 +1,8 @@
 package com.teamproject.gaxga.service;
 
 import com.teamproject.gaxga.entity.Event;
+import com.teamproject.gaxga.entity.Gabowatdago;
+import com.teamproject.gaxga.repository.GabowatdagoRepository;
 import com.teamproject.gaxga.repository.event.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +20,8 @@ public class EventService {
         this.eventRepository = eventRepository;
     }
 
+    @Autowired
+    private GabowatdagoRepository gabowatdagoRepository;
     // 이벤트 저장
     public Event saveEvent(Event event) {
         return eventRepository.save(event);
@@ -26,6 +30,9 @@ public class EventService {
     // 모든 이벤트 가져오기
     public String getAllEvents(Model model) {
         List<Event> AllEvent = eventRepository.findAll();
+        List<Gabowatdago> eventWinningList = gabowatdagoRepository.findTop3ByLikeCountAndDateRange();
+        System.out.println("=========================eventWinningList==============:" +eventWinningList);
+        model.addAttribute("Winner", eventWinningList);
         model.addAttribute("AllEvent", AllEvent);
         return "public/event/event";
     }
