@@ -186,12 +186,12 @@ public class MyPageService {
         return uniqueFileName;
     }
 
-        //        Path directoryPath = Paths.get("path/to/save/images");
+    //        Path directoryPath = Paths.get("path/to/save/images");
 //        Files.createDirectories(directoryPath);
 //        String fileName = file.getOriginalFilename();
 //        Path filePath = directoryPath.resolve(fileName);
 //        file.transferTo(filePath);
 //        return filePath.toString();
-    }
+}
 
 
