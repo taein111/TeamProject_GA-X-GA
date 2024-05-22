@@ -92,7 +92,10 @@ image_box3.addEventListener("mouseenter", function(){
 function btnClick1() {
   const myDiv = document.querySelector('.text1');
 
-  if(myDiv.style.visibility === 'hidden') {
+  const isVisible = window.getComputedStyle(myDiv).visibility === 'visible';
+
+  // 상세정보가 보이지 않는 경우에만 보이도록 설정
+  if(!isVisible) {
     myDiv.style.visibility = 'visible';
   }else {
     myDiv.style.visibility = 'hidden';
@@ -101,16 +104,20 @@ function btnClick1() {
 function btnClick2() {
   const myDiv = document.querySelector('.text2');
 
-  if(myDiv.style.visibility === 'hidden') {
+  const isVisible = window.getComputedStyle(myDiv).visibility === 'visible';
+
+  if(!isVisible) {
     myDiv.style.visibility = 'visible';
   }else {
     myDiv.style.visibility = 'hidden';
   }
 }
 function btnClick3() {
-  const myDiv = document.querySelector('.text3');
+  const myDiv = document.querySelector('.text2');
 
-  if(myDiv.style.visibility === 'hidden') {
+  const isVisible = window.getComputedStyle(myDiv).visibility === 'visible';
+
+  if(!isVisible) {
     myDiv.style.visibility = 'visible';
   }else {
     myDiv.style.visibility = 'hidden';
