@@ -16,8 +16,6 @@ public class JoinMembershipController {
     @Autowired
     private JoinMembershipService joinMembershipService;
 
-
-
     @GetMapping("/joinMembership")
     public String showJoinMembership(){
         return "public/accountManagement/joinMembership";
@@ -34,21 +32,21 @@ public class JoinMembershipController {
         }
 
         boolean success = joinMembershipService.joinPutData(joinMembershipForm);
+        boolean checkId = joinMembershipService.checkId(joinMembershipForm.getGaId());
         log.info(success ? "success" : "fail");
         if(success){
             redirectAttributes.addFlashAttribute("msg", "회원가입에 성공했습니다");
             return "redirect:/login";
 
         } else {
-            redirectAttributes.addFlashAttribute("msg", "회원가입에 실패했습니다");
-            return "redirect:/joinMembership";
+            if(checkId){
+                redirectAttributes.addFlashAttribute("msg", "중복된 아이디가 있습니다.");
+                return "redirect:/joinMembership";
+            } else{
+                redirectAttributes.addFlashAttribute("msg", "회원가입에 실패했습니다");
+                return "redirect:/joinMembership";
+            }
         }
     }
-//
-//    @GetMapping("/joinMembership/checkId")
-//    @ResponseBody
-//    public boolean checkIdDuplication(@RequestParam("userId") String userId) {
-//        log.info("======checkIdDuplication={}", userId);
-//        return joinMembershipService.checkId(userId);
-//    }
+
 }

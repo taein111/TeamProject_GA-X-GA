@@ -87,9 +87,17 @@ function sample5_execDaumPostcode() {
     }).open();
 }
 
-// 좌표 값을 hidden input에 넣는다.
-document.getElementById("latitude").value = result.y;
-document.getElementById("longitude").value = result.x;
+document.getElementById("submitButton").addEventListener("click", function(event) {
+    var latitude = document.getElementById("latitude").value;
+    var longitude = document.getElementById("longitude").value;
+
+    // 위도와 경도가 비어있는지 확인
+    if (!latitude || !longitude) {
+        event.preventDefault(); // 폼 제출 중단
+        alert("장소를 등록해주세요."); // 사용자에게 알림
+    }
+});
+
 
 
 

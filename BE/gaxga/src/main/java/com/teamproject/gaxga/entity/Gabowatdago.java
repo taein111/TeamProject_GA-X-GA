@@ -20,10 +20,12 @@ public class Gabowatdago extends BaseEntity {
     @Column
     private String gaId;
     @Column
+    private String gaNick;
+    @Column
     private String local;
     @Column
     private String thema;
-    @Column
+    @Column(nullable = true)
     private String image;
     @Column
     private String content;
@@ -77,6 +79,11 @@ public class Gabowatdago extends BaseEntity {
         this.likeCount = likeCount - 1;
     }
 
+
+    @Builder
+    public Gabowatdago(String image) {
+        this.image = image;
+    }
 
 
 }

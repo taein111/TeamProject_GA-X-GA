@@ -80,7 +80,8 @@
         article_box.forEach(function(article_box) {
             article_box.addEventListener("mouseover", function() {
                 change_box = this.querySelector("#gabowatdago_id").innerText;
-                image_box.src = change_box;
+                var firstImage = change_box.split(',')[0]; // 쉼표로 분리하고 첫 번째 요소를 선택
+                image_box.src = '/upload/'+firstImage; //첫 번째 이미지 파일 이름만 사용
             });
         });
     </script>

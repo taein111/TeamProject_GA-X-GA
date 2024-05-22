@@ -150,31 +150,34 @@
                     <!-- 여행지 -->
                     <div id="receiveLike" class="selectedArea">
                         <div id="receiveLikeArea">
-                            <div class="receiveLikeList">
-                                <p><a href="">춘천 남이섬</a></p>
-                                <span>2024-03-01</span>
-                                <button>제거</button>
+                            <div class="receiveLikeList" th:each="myList: ${myList}">
+                                <a th:href="@{'/gabojagoing/' + *{myList.gpid}}">
+                                    <img th:src="'/'+${myList.gpid.img}" style="width: 20px; height: 20px;">
+                                    <span th:text="*{myList.gpid.state}"></span>
+                                </a>
+                                <!--                                <span>2024-03-01</span>-->
+                                <!--                                <button>제거</button>-->
                             </div>
-                            <div class="receiveLikeList">
-                                <p><a href="">춘천 남이섬</a></p>
-                                <span>2024-03-01</span>
-                                <button>제거</button>
-                            </div>
-                            <div class="receiveLikeList">
-                                <p><a href="">춘천 남이섬</a></p>
-                                <span>2024-03-01</span>
-                                <button>제거</button>
-                            </div>
-                            <div class="receiveLikeList">
-                                <p><a href="">춘천 남이섬</a></p>
-                                <span>2024-03-01</span>
-                                <button>제거</button>
-                            </div>
-                            <div class="receiveLikeList">
-                                <p><a href="">춘천 남이섬</a></p>
-                                <span>2024-03-01</span>
-                                <button>제거</button>
-                            </div>
+                            <!--                            <div class="receiveLikeList">-->
+                            <!--                                <p><a href="">춘천 남이섬</a></p>-->
+                            <!--                                <span>2024-03-01</span>-->
+                            <!--                                <button>제거</button>-->
+                            <!--                            </div>-->
+                            <!--                            <div class="receiveLikeList">-->
+                            <!--                                <p><a href="">춘천 남이섬</a></p>-->
+                            <!--                                <span>2024-03-01</span>-->
+                            <!--                                <button>제거</button>-->
+                            <!--                            </div>-->
+                            <!--                            <div class="receiveLikeList">-->
+                            <!--                                <p><a href="">춘천 남이섬</a></p>-->
+                            <!--                                <span>2024-03-01</span>-->
+                            <!--                                <button>제거</button>-->
+                            <!--                            </div>-->
+                            <!--                            <div class="receiveLikeList">-->
+                            <!--                                <p><a href="">춘천 남이섬</a></p>-->
+                            <!--                                <span>2024-03-01</span>-->
+                            <!--                                <button>제거</button>-->
+                            <!--                            </div>-->
                         </div>
                         <div id="receiveLikePageList">
                             <button>&lt;</button>
@@ -188,7 +191,7 @@
                         <div class="gagaTitle">
                             <h4 style="font-family: 'GmarketSans'; font-weight: 500; color: #454545;">가보자고</h4>
                         </div>
-                        <p><i class="fa-regular fa-thumbs-up"></i>10</p>
+                        <p><i class="fa-regular fa-thumbs-up" th:text="${jjimCount}"></i></p>
 <!--                        <div class="recentWriting">-->
 <!--                            <div class="first">-->
 <!--                                <span>춘천 - 남이섬</span>-->

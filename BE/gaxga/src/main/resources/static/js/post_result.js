@@ -1,81 +1,63 @@
-const image1 = document.querySelector(".slider__img").innerText
+document.addEventListener("DOMContentLoaded", function() {
+    const sliderWrap = document.querySelector(".slider__wrap");
+    const imageNames = document.querySelector(".slider__img").innerText;
 
-let images =[
-  `../${image1}`,
-  "../img/loc/서울/서울-도봉산.jpg",
-  "../img/loc/서울/서울-북한산.jpg",
-  "../img/loc/서울/서울-롯데월드.jpg",
-  "../img/loc/서울/서울-자팡이.jpg",
-];
+    if (imageNames) {
+        const images = imageNames.split(',').map(imageName => `/upload/${encodeURIComponent(imageName.trim())}`);
+        imageSlider(sliderWrap, images);
+    } else {
+        console.error('슬라이더 이미지를 찾을 수 없습니다.');
+    }
+});
 
-function imageSlider(parent, images){
-  let currentIndex = 0;
-  // 선택자
-  let slider = {
-      parent: parent,
-      images: parent.querySelector(".slider__img"),
-      thumbnails: parent.querySelector(".slider__thumb"),
-      prevBtn: parent.querySelector(".slider__btn .prev"),
-      nextBtn: parent.querySelector(".slider__btn .next")
-  };
-  // 이미지 출력하기
-  slider.images.innerHTML = images.map((image, index) => {
-      return `<img src="${image}" alt="이미지${index}">`;
-  }).join("");
+function imageSlider(parent, images) {
+    let currentIndex = 0;
+    let slider = {
+        parent: parent,
+        images: parent.querySelector(".slider__img"),
+        thumbnails: parent.querySelector(".slider__thumb"),
+        prevBtn: parent.querySelector(".slider__btn .prev"),
+        nextBtn: parent.querySelector(".slider__btn .next")
+    };
 
-  // 이미지 활성화(active)하기
-  let imageNodes = slider.images.querySelectorAll("img");
-  imageNodes[currentIndex].classList.add("active");
+    slider.images.innerHTML = images.map((image, index) => {
+        return `<img src="${image}" alt="이미지${index}">`;
+    }).join("");
 
-  // 썸네일 이미지 출력하기
-  slider.thumbnails.innerHTML = slider.images.innerHTML;
+    let imageNodes = slider.images.querySelectorAll("img");
+    imageNodes[currentIndex].classList.add("active");
 
-  // 썸네일 활성화(active)하기
-  let thumnailNodes = slider.thumbnails.querySelectorAll("img");
-  thumnailNodes[currentIndex].classList.add("active");
+    slider.thumbnails.innerHTML = slider.images.innerHTML;
+    let thumbnailNodes = slider.thumbnails.querySelectorAll("img");
+    thumbnailNodes[currentIndex].classList.add("active");
 
-  // 썸네일 이미지 클릭하기_forEach()
-  thumnailNodes.forEach((thumb, index) => {
-      thumb.addEventListener("click", function(){
-          thumnailNodes[currentIndex].classList.remove("active");
-          thumnailNodes[index].classList.add("active");
+    thumbnailNodes.forEach((thumb, index) => {
+        thumb.addEventListener("click", function() {
+            thumbnailNodes[currentIndex].classList.remove("active");
+            thumbnailNodes[index].classList.add("active");
+            imageNodes[currentIndex].classList.remove("active");
+            currentIndex = index;
+            imageNodes[currentIndex].classList.add("active");
+        });
+    });
 
-          imageNodes[currentIndex].classList.remove("active");
-          currentIndex = index;
-          imageNodes[currentIndex].classList.add("active");
-      });
-  });
+    slider.prevBtn.addEventListener("click", () => {
+        imageNodes[currentIndex].classList.remove("active");
+        currentIndex--;
+        if (currentIndex < 0) currentIndex = images.length - 1;
+        imageNodes[currentIndex].classList.add("active");
+        thumbnailNodes[currentIndex].classList.remove("active");
+        thumbnailNodes[currentIndex].classList.add("active");
+    });
 
-  // 왼쪽 버튼 클릭하기
-  slider.prevBtn.addEventListener("click", () => {
-      imageNodes[currentIndex].classList.remove("active");
-      currentIndex--;
-      
-      // 0 4 3 2 1 0 4 3 2 1...
-      if(currentIndex < 0) currentIndex = images.length - 1;
-
-      imageNodes[currentIndex].classList.add("active");
-
-      // 썸네일 버튼 클릭하기
-      thumnailNodes[currentIndex].classList.remove("active");
-      thumnailNodes[currentIndex].classList.add("active");
-  });
-
-  // 오른쪽 버튼 클릭하기
-  slider.nextBtn.addEventListener("click", () => {
-      imageNodes[currentIndex].classList.remove("active");
-      thumnailNodes[currentIndex].classList.remove("active");
-
-      // 1 2 3 4 0 1 2 3 4...
-      currentIndex = (currentIndex + 1) % images.length;
-
-      imageNodes[currentIndex].classList.add("active");
-      thumnailNodes[currentIndex].classList.add("active");
-  });
-};
-imageSlider(document.querySelector(".slider__wrap"), images);
-
-
+    slider.nextBtn.addEventListener("click", () => {
+        imageNodes[currentIndex].classList.remove("active");
+        thumbnailNodes[currentIndex].classList.remove("active");
+        currentIndex = (currentIndex + 1) % images.length;
+        imageNodes[currentIndex].classList.add("active");
+        thumbnailNodes[currentIndex].classList.add("active");
+    });
+}
 // ------------------------------------------------------지도------------------
 
 // 지도를 표시할 div 요소
@@ -90,7 +72,7 @@ document.getElementById("test").addEventListener("click", function (){
 let mapContainer = document.getElementById('maps'),
     mapOption = {
     center: new daum.maps.LatLng(lng,lat),
-    level: 2 // 지도의 확대 레벨
+    level: 3 // 지도의 확대 레벨
 };
 
 let map = new daum.maps.Map(mapContainer, mapOption);

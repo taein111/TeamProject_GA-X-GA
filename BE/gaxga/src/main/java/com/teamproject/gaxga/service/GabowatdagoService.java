@@ -2,8 +2,6 @@ package com.teamproject.gaxga.service;
 
 import com.teamproject.gaxga.dto.CmtDto;
 import com.teamproject.gaxga.dto.GabowatdagoForm;
-import com.teamproject.gaxga.dto.LikeDto;
-import com.teamproject.gaxga.entity.FileEntity;
 import com.teamproject.gaxga.entity.Gabowatdago;
 import com.teamproject.gaxga.entity.User;
 import com.teamproject.gaxga.entity.UserDetail;
@@ -16,20 +14,27 @@ import com.teamproject.gaxga.repository.gabojago.GtRepository;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
+import java.util.UUID;
 
 @Slf4j
 @Service
+//@PropertySource("classpath:application.properties")
 public class GabowatdagoService {
     @Autowired
     private GabowatdagoRepository gabowatdagoRepository;
@@ -43,9 +48,9 @@ public class GabowatdagoService {
     private GpRepository gpRepository;
     @Autowired
     private UserRepository userRepository;
-    @Autowired
-    private FileService fileService;
 
+    @Value("D:\\TeamProject-GA X GA\\BE\\gaxga\\src\\main\\resources\\static\\upload")
+    private String fileDir;
 
     public String newForm(Model model){
         List<String> locList = grRepository.findAllNames();
@@ -65,30 +70,42 @@ public class GabowatdagoService {
     }
 
     @Transactional
-    public String create(GabowatdagoForm form, Long userCode) {
+    public String create(GabowatdagoForm form, Long userCode) throws IOException {
         //1. DTO를 엔티티로
         Gabowatdago gabowatdago = form.toEntity();
         //로그인한 사람의 userCode를 게시글 작성자 userCode로 변환해 저장
         User user = new User();
         user.setUserCode(userCode);
         gabowatdago.setUserCode(user);
-
         //2. 레퍼지토리로 엔티티를 DB에 저장
         Gabowatdago saved = gabowatdagoRepository.save(gabowatdago);
 
-        // FileService의 saveFile 메서드 호출
-        try {
-            // MultipartFile을 어떻게 얻어오는지에 따라서 인자를 넘겨주어야 합니다.
-            // 아래는 예시입니다. form.getFile()은 MultipartFile 객체를 리턴하는 것으로 가정합니다.
-            Long fileId = fileService.saveFile(form.getImage());
-            // 파일 저장에 성공한 경우 처리
-        } catch (IOException e) {
-            // 파일 저장에 실패한 경우 처리
+
+        Path directoryPath = Paths.get(fileDir);
+        boolean directoryExists = Files.exists(directoryPath) && Files.isDirectory(directoryPath);
+        if(!directoryExists){
+            Files.createDirectories(directoryPath);
         }
-        //파일업로드한 이미지 파일들의 gabowatdagoId를 게시글id에 맞게 저장
-        FileEntity file = new FileEntity();
-        file.setGabowatdagoId(gabowatdago);
+
+        List<String> fileNames = new ArrayList<>();
+        // 각 파일 처리
+        for (MultipartFile file : form.getImage()) {
+            if (!file.isEmpty()) {
+                String uniqueFileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
+                Path filePath = directoryPath.resolve(uniqueFileName);
+                Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
+                fileNames.add(uniqueFileName);
+            }
+        }
+
+        // 모든 파일 이름을 쉼표로 구분하여 하나의 문자열로 결합
+        String allFileNames = String.join(",", fileNames);
+        saved.setImage(allFileNames);
+        gabowatdagoRepository.save(saved); // 업데이트된 엔티티 저장
+
+
         return "redirect:/gabowatdago/" + saved.getId();
+
     }
     public String show(Long id, Model model) {
         //1. id를 조회해 데이터 가져오기
@@ -103,7 +120,9 @@ public class GabowatdagoService {
         String gaId = userDetail.getUser().getGaId(); // 로그인한사람 gaId 가져오기 - 수정/삭제/댓글 등 버튼 출력을 위한
         String gaNick = userDetail.getUser().getGaNick(); // 로그인한사람 gaNick 가져오기 - 여행지 추천을 안내하기 위한
         String gaEmail = userDetail.getUser().getGaEmail(); //로그인한 회원의 email 가져오기 - 로그인한 사용자 정보 표시
-        String gabowatdagoWriter = gabowatdagoEntity.getGaId();
+        Long gabowatdagoWriter = gabowatdagoEntity.getUserCode().getUserCode();
+        List<Gabowatdago> boradList = gabowatdagoRepository.findByUserCode_UserCode(gabowatdagoWriter);
+        System.out.println("=================================" + boradList);
 
         //데이터 모델에 등록하기
         model.addAttribute("gabowatdago", gabowatdagoEntity);
@@ -230,7 +249,7 @@ public class GabowatdagoService {
     }
 
     @Transactional
-    public String update(GabowatdagoForm form, Long userCode){
+    public String update(GabowatdagoForm form, Long userCode) throws IOException {
         //1. dto를 엔티티로 변환하기
         Gabowatdago gabowatdagoEntity = form.toEntity();
         //로그인한 사람의 userCode를 게시글 작성자 userCode로 변환해 저장
@@ -243,8 +262,40 @@ public class GabowatdagoService {
 
         //2-2 . 기존 데이터 값 갱신하기
         if(target != null){
+            Path directoryPath = Paths.get(fileDir);
+            boolean directoryExists = Files.exists(directoryPath) && Files.isDirectory(directoryPath);
+            if(!directoryExists){
+                Files.createDirectories(directoryPath);
+            }
+            // 수정했으니 기존 서버에 업로드되어있던 파일 삭제
+            if (target.getImage() != null && !target.getImage().isEmpty()) {
+                Arrays.stream(target.getImage().split(","))
+                        .forEach(fileName -> {
+                            try {
+                                Files.deleteIfExists(directoryPath.resolve(fileName));
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        });
+            }
+            List<String> fileNames = new ArrayList<>();
+            // 각 파일 처리
+            for (MultipartFile file : form.getImage()) {
+                if (!file.isEmpty()) {
+                    String uniqueFileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
+                    Path filePath = directoryPath.resolve(uniqueFileName);
+                    Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
+                    fileNames.add(uniqueFileName);
+                }
+            }
+            // 모든 파일 이름을 쉼표로 구분하여 하나의 문자열로 결합
+            String allFileNames = String.join(",", fileNames);
+            gabowatdagoEntity.setImage(allFileNames);
             gabowatdagoRepository.save(gabowatdagoEntity); //엔티티를 db에 저장(갱신)
         }
+
+
+
         //3. 수정 결과 페이지로 리다이렉트하기
         return "redirect:/gabowatdago/"+gabowatdagoEntity.getId();
     }

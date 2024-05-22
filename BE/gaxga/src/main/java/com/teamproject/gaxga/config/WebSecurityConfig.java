@@ -3,13 +3,10 @@ package com.teamproject.gaxga.config;
 import com.teamproject.gaxga.handler.CustomAuthenticationFailureHandler;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
@@ -32,7 +29,7 @@ public class WebSecurityConfig {
 
         http
                 .authorizeHttpRequests((auth) -> auth
-                        .requestMatchers("/css/**", "/js/**", "/images/**", "/fonts/**","terms.html", "privacy.html", "copyright.html",
+                        .requestMatchers("/css/**", "/js/**", "/img/**", "/fonts/**","terms.html", "privacy.html", "copyright.html",
                                 "/login/**","/api/**", "/findInfo/**","/joinMembership/**","/main", "/gabojago", "/gabojagoing"
                         ).permitAll()
                         .anyRequest().authenticated()); // todo. 임시로 로그인 후에는 모든 요청에 접근을 허용하게 했으나 나중에 로그인 후에 보여줄거 같은거 수정필요
