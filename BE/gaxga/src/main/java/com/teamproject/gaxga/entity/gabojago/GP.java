@@ -5,10 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.sql.Timestamp;
+import org.hibernate.annotations.CreationTimestamp;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
 @Getter
@@ -45,16 +43,14 @@ public class GP {
     @Column(nullable = false)
     private Long jjimcount;
 
+    @CreationTimestamp
+    @Column(nullable = false, updatable = false)
+    private LocalDateTime posting;
+
     public void increaseJjimCount() {
         this.jjimcount++;
     }
     public void decreseJjimCount() {
         this.jjimcount--;
     }
-
-
-    //
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "userCode")
-//    private User userCode;
 }

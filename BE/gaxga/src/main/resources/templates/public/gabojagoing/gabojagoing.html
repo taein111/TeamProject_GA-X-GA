@@ -21,9 +21,7 @@
                     </a>
                     <hr>
                 </div>
-                <div id="Update">
-                    수정된 날짜: 2024-03-18
-                </div>
+                <div id="Update" th:text="'수정된 날짜: ' + *{#temporals.format(posting, 'yyyy-MM-dd HH:mm:ss')}"></div>
             </div>
             <div id="area-No1-2">
                 <div id="relo">
@@ -33,7 +31,7 @@
                 <div id="GabojagoTag">
                     <a href="#" th:text="'#' + *{region.name}"></a>
                     <a href="#" th:text="'#' + *{thema.name}"></a>
-                    <a href="#">#청량산</a>
+                    <a href="#" th:text="'#' + *{name}"></a>
                 </div>
             </div>
             <div id="area-No1-3">
