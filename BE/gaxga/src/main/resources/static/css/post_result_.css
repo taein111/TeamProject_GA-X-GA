@@ -6,6 +6,10 @@
   box-sizing: content-box !important;
 }
 
+html::-webkit-scrollbar {
+  display: none;
+}
+
 header {
   position: sticky;
   z-index: 100;
@@ -228,6 +232,11 @@ h1 {
   border-radius: 100px;
   margin-left: 10px;
 }
+.WaImg-area img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50px;
+}
 
 .WaImg {
   width: 80%;
@@ -239,14 +248,13 @@ h1 {
 .WaList {
   height: 100%;
   width: 50%;
-  /* align-content: center; */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  margin-left: 10px;
-  text-align: center;
   overflow-y: auto;
 }
+
+.WaList::-webkit-scrollbar {
+  display: none;
+}
+
 
 .WaProfileB {
   height: 30%;
@@ -268,6 +276,17 @@ h1 {
   font-weight: 400;
   color: #6A6A6A;
   font-size: 18px;
+}
+#myBoardList{
+  text-decoration-line: none;
+  height: 33.3%;
+  display: flex;
+  place-content: center;
+}
+
+#myBoardList a{
+  text-decoration-line: none;
+  color: black;
 }
 
 .intro {
@@ -293,9 +312,10 @@ h1 {
   overflow-y: auto;
 }
 
-::-webkit-scrollbar {
+.review-list-box::-webkit-scrollbar {
   display: none;
 }
+
 
 .review-list {
   width: 100%;
@@ -352,8 +372,10 @@ h1 {
   height: 90vh;
   overflow-y: scroll;
   margin-left: 35px;
-  margin-right: 59px;
+  scrollbar-width: thin;
 }
+
+
 
 .post-title {
   height: 100%;
@@ -414,7 +436,7 @@ input[type="button"] {
 }
 
 .date {
-  width: 33%;
+  width: 60%;
   font-size: 18px;
   font-family: "GmarketSans3";
   color: #6A6A6A;
@@ -525,16 +547,15 @@ input[type="button"] {
 .text-box {
   width: 80%;
   height: 50vh;
-  text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   font-size: 20px;
   font-family: 'GmarketSans';
   font-weight: 400;
   color: #000000;
   margin-bottom: 30px;
   margin-left: 100px;
+  margin-top: 30px;
 }
 
 .comment-container {
@@ -668,6 +689,10 @@ input[type="button"] {
   height: 100%;
 }
 
+.main-box::-webkit-scrollbar {
+  display: none;
+}
+
 #maps {
   width: 80%;
   height: 40vh; /* 지도의 높이 설정 */
@@ -713,11 +738,13 @@ input[type="button"] {
   padding: 1rem 1rem;
 }
 #like_before{
-  width: 20px;
+  width: 40px;
+  height: 35px;
 }
 
 #like_after{
-  width: 20px;
+  width: 40px;
+  height: 35px;
 }
 
 .slider__thumb img{

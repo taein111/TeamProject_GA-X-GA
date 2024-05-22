@@ -187,6 +187,11 @@ a:visited{
   cursor: pointer;
   border-radius: 0 0 10px 10px;
 }
+
+#myPage_main #rightContent #profileImage input:hover {
+  background-color: black;
+  color: white;
+}
 #myPage_main #rightContent #modify{
   width: 20%;
   padding: 20px 20px 0;

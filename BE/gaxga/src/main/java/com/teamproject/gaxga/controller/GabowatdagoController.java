@@ -3,7 +3,6 @@ package com.teamproject.gaxga.controller;
 import com.teamproject.gaxga.dto.GabowatdagoForm;
 import com.teamproject.gaxga.entity.UserDetail;
 
-import com.teamproject.gaxga.service.FileService;
 import com.teamproject.gaxga.service.GabowatdagoService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -24,13 +23,6 @@ public class GabowatdagoController {
 
     @Autowired
     private GabowatdagoService gabowatdagoService;
-
-    private final FileService fileService;
-
-    @Autowired
-    public GabowatdagoController(FileService fileService) {
-        this.fileService = fileService;
-    }
 
     @GetMapping("/gabowatdagoing_p")
     public String newForm(Model model){
