@@ -21,9 +21,7 @@
                     </a>
                     <hr>
                 </div>
-                <div id="Update">
-                    수정된 날짜: 2024-03-18
-                </div>
+                <div id="Update" th:text="'수정된 날짜: ' + *{#temporals.format(posting, 'yyyy-MM-dd HH:mm:ss')}"></div>
             </div>
             <div id="area-No1-2">
                 <div id="relo">
@@ -33,7 +31,7 @@
                 <div id="GabojagoTag">
                     <a href="#" th:text="'#' + *{region.name}"></a>
                     <a href="#" th:text="'#' + *{thema.name}"></a>
-                    <a href="#">#청량산</a>
+                    <a href="#" th:text="'#' + *{name}"></a>
                 </div>
             </div>
             <div id="area-No1-3">
@@ -65,18 +63,18 @@
                     <li><a href="https://www.facebook.com/?locale=ko_KR" target="_blank"><i class="fa-brands fa-square-facebook"></a></i></li>
                     <li><a href="https://www.instagram.com/" target="_blank" id="instagram"><i class="fa-brands fa-instagram"></i></a></i></li>
                 </ul>
-                <button id="deleteStorage">스토리지 삭제</button>
+<!--                <button id="deleteStorage">스토리지 삭제</button>-->
             </div>
         </div>
     </div>
 </div>
 <script th:src="@{/js/menu2.js}"></script>
 <script th:src="@{/js/gabojago/jjim.js}"></script>
-<script>
-    const deleteStorage = document.getElementById("deleteStorage")
-    deleteStorage.addEventListener("click", function(){
-        localStorage.clear();
-    });
-</script>
+<!--<script>-->
+<!--    const deleteStorage = document.getElementById("deleteStorage")-->
+<!--    deleteStorage.addEventListener("click", function(){-->
+<!--        localStorage.clear();-->
+<!--    });-->
+<!--</script>-->
 </body>
 </html>

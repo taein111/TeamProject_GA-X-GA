@@ -46,7 +46,7 @@ jjimBefore.addEventListener("click",function(){
         },
         body: JSON.stringify(jjim)
     }).then(response => {
-        const msg = (response.ok) ? "좋아요 추가 성공" : "좋아요 추가 실패";
+        const msg = (response.ok) ? "저장 성공" : "저장 실패";
         alert(msg);
     })
 })
@@ -82,7 +82,7 @@ jjimAfter.addEventListener("click", function(){
         },
         body: JSON.stringify(jjim)
     }).then(response =>{
-        const msg = (response.ok)? "좋아요 삭제 성공" : "좋아요 삭제 실패";
+        const msg = (response.ok)? "저장 삭제 성공" : "저장 삭제 실패";
         alert(msg);
     })
 })

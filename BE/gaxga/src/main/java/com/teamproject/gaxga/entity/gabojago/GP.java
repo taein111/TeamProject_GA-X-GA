@@ -1,13 +1,11 @@
 package com.teamproject.gaxga.entity.gabojago;
 
-import com.teamproject.gaxga.entity.BaseEntity;
-import com.teamproject.gaxga.entity.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
+import org.hibernate.annotations.CreationTimestamp;
 import java.time.LocalDateTime;
 
 @Entity
@@ -45,16 +43,14 @@ public class GP {
     @Column(nullable = false)
     private Long jjimcount;
 
+    @CreationTimestamp
+    @Column(nullable = false, updatable = false)
+    private LocalDateTime posting;
+
     public void increaseJjimCount() {
         this.jjimcount++;
     }
     public void decreseJjimCount() {
         this.jjimcount--;
     }
-
-
-    //
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "userCode")
-//    private User userCode;
 }

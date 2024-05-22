@@ -17,7 +17,7 @@
                 <ul>
                     <li>
                         <div>
-                            <img th:src="${userDetail.getGaPImage()}" alt="">
+                            <img th:src="@{'/upload/'+${userInfo.gaP_Image}}" alt="">
                             <p th:text="${userDetail.getGaNick()}">홍길동 님</p>
                         </div>
                     </li>
@@ -35,8 +35,13 @@
                 <div id="top" class="content">
                     <div id="modifyProfile" class="selectedArea active">
                         <div id="profileImage">
-                            <img th:src="${userDetail.getGaPImage()}" alt="프로필 이미지">
-                            <button>프로필 사진 변경</button>
+                            <img id="myImage" th:src="@{'/upload/'+${userInfo.gaP_Image}}" alt="프로필 이미지">
+                            <form action="/updateProfileImage" method="post" enctype="multipart/form-data">
+                                <input type="button" value="프로필 사진 변경" onclick="document.getElementById('file').click();">
+                                <input type="file" name="file" id="file" style="display: none;" onchange="previewAndUpdateImage();">
+                                <input type="hidden" name="userCode" th:value="${userCode}">
+                                <button  id="imageSaveBtn" type="submit">저장하기</button>
+                            </form>
                         </div>
                         <div id="modify">
                             <p>정보 수정</p>
@@ -78,112 +83,46 @@
                     </div>
                     <div id="myWrited" class="selectedArea">
                         <div id="myWritedArea">
-                            <div class="myWritedList">
-                                <p><a href="">용인 한옥마을에서 한복 체험!</a></p>
-                                <span>2024-03-15</span>
-                                <button>수정하기</button>
-                                <button>삭제하기</button>
+                            <div class="myWritedList" th:each="myBoardList: ${myBoardList}">
+                                <img th:src="${myBoardList.image != null ? '/upload/' + #strings.arraySplit(myBoardList.image, ',')[0] : '/upload/빈하트.png'}" alt="Board Image"/>
+                                <a th:href="@{'/gabowatdago/'+*{myBoardList.id}}" th:text="*{myBoardList.title}"></a>
+                                <span th:text="*{#temporals.format(myBoardList.regDate, 'yyyy-MM-dd HH:mm:ss')}"></span>
+                                <button type="button" id="BoardDeleteBtn" th:data-Board-Id="${myBoardList.id}">삭제</button>
                             </div>
-                            <div class="myWritedList">
-                                <p><a href="">남편과 남이섬 여행기^^</a></p>
-                                <span>2024-02-18</span>
-                                <button>수정하기</button>
-                                <button>삭제하기</button>
-                            </div>
-                            <div class="myWritedList">
-                                <p><a href="">안산 대부도 고양이 실외 테마카페 방문 후기</a></p>
-                                <span>2024-01-24</span>
-                                <button>수정하기</button>
-                                <button>삭제하기</button>
-                            </div>
-                            <div class="myWritedList">
-                                <p><a href="">인천 청량산 새해맞이 등반완료!</a></p>
-                                <span>2024-01-02</span>
-                                <button>수정하기</button>
-                                <button>삭제하기</button>
-                            </div>
-                        </div>
-                        <div id="myWritedPageList">
-                            <button>&lt;</button>
-                            <button>1</button>
-                            <button>&gt;</button>
                         </div>
                     </div>
                     <!-- 베스트글 -->
                     <div id="saved" class="selectedArea">
                         <div id="savedListArea">
-                            <div class="savedList">
-                                <p><a href="">용인 한옥마을에서 한복 체험!</a></p>
-                                <span>2024-03-15</span>
-                                <span>추천<em>28</em></span>
-                                <button>수정하기</button>
-                                <button>삭제하기</button>
+                            <div class="savedList" th:each="best: ${bestBoardList}">
+                                <img th:src="${best.image != null ? '/upload/' + #strings.arraySplit(best.image, ',')[0] : '/upload/빈하트.png'}" alt="Board Image"/>
+                                <a th:href="@{'/gabowatdago/'+*{best.id}}" th:text="*{best.title}"></a>
+                                <span th:text="*{#temporals.format(best.regDate, 'yyyy-MM-dd HH:mm:ss')}"></span>
+                                <span th:text="'좋아요 ( '+ *{best.likeCount} + ' )'"></span>
+                                <button type="button" id="bestDeleteBtn" th:data-Board-Id="${best.id}">삭제</button>
                             </div>
-                            <div class="savedList">
-                                <p><a href="">남편과 남이섬 여행기^^</a></p>
-                                <span>2024-02-18</span>
-                                <span>추천<em>25</em></span>
-                                <button>수정하기</button>
-                                <button>삭제하기</button>
-                            </div>
-                            <div class="savedList">
-                                <p><a href="">안산 대부도 고양이 실외 테마카페 방문 후기</a></p>
-                                <span>2024-01-24</span>
-                                <span>추천<em>20</em></span>
-                                <button>수정하기</button>
-                                <button>삭제하기</button>
-                            </div>
-                            <div class="savedList">
-                                <p><a href="">인천 청량산 새해맞이 등반완료!</a></p>
-                                <span>2024-01-02</span>
-                                <span>추천<em>12</em></span>
-                                <button>수정하기</button>
-                                <button>삭제하기</button>
-                            </div>
-                        </div>
-                        <div id="savedPageList">
-                            <button>&lt;</button>
-                            <button>2</button>
-                            <button>&gt;</button>
                         </div>
                     </div>
                     <!-- 여행지 -->
                     <div id="receiveLike" class="selectedArea">
                         <div id="receiveLikeArea">
-                            <div class="receiveLikeList" th:each="myList: ${myList}">
-                                <a th:href="@{'/gabojagoing/' + *{myList.gpid}}">
-                                    <img th:src="'/'+${myList.gpid.img}" style="width: 20px; height: 20px;">
+                            <div class="receiveLikeList" th:if="${myList.user.userCode == userCode}" th:each="myList: ${myList}">
+                                    <img th:src="'/'+${myList.gpid.img}">
+                                <a th:href="@{'/gabojagoing/' + ${myList.gpid.id}}">
+                                    <span th:text="*{myList.gpid.name}"></span>
                                     <span th:text="*{myList.gpid.state}"></span>
                                 </a>
-                                <!--                                <span>2024-03-01</span>-->
-                                <!--                                <button>제거</button>-->
+                                                                <span>2024-03-01</span>
+                        <input type="hidden" id="jjim_input" th:value="${myList.user.userCode}">
+                        <input type="hidden" id="gabojago_id" th:value="${myList.gpid.id}">
+                                <button type="button" id="deleteBtn">삭제</button>
                             </div>
-                            <!--                            <div class="receiveLikeList">-->
-                            <!--                                <p><a href="">춘천 남이섬</a></p>-->
-                            <!--                                <span>2024-03-01</span>-->
-                            <!--                                <button>제거</button>-->
-                            <!--                            </div>-->
-                            <!--                            <div class="receiveLikeList">-->
-                            <!--                                <p><a href="">춘천 남이섬</a></p>-->
-                            <!--                                <span>2024-03-01</span>-->
-                            <!--                                <button>제거</button>-->
-                            <!--                            </div>-->
-                            <!--                            <div class="receiveLikeList">-->
-                            <!--                                <p><a href="">춘천 남이섬</a></p>-->
-                            <!--                                <span>2024-03-01</span>-->
-                            <!--                                <button>제거</button>-->
-                            <!--                            </div>-->
-                            <!--                            <div class="receiveLikeList">-->
-                            <!--                                <p><a href="">춘천 남이섬</a></p>-->
-                            <!--                                <span>2024-03-01</span>-->
-                            <!--                                <button>제거</button>-->
-                            <!--                            </div>-->
                         </div>
-                        <div id="receiveLikePageList">
-                            <button>&lt;</button>
-                            <button>3</button>
-                            <button>&gt;</button>
-                        </div>
+<!--                        <div id="receiveLikePageList">-->
+<!--                            <button>&lt;</button>-->
+<!--                            <button>3</button>-->
+<!--                            <button>&gt;</button>-->
+<!--                        </div>-->
                     </div>
                 </div>
                 <div id="middle" class="content">
@@ -207,7 +146,7 @@
                         <div class="gagaTitle">
                             <h4 style="font-family: 'GmarketSans'; font-weight: 500; color: #454545;">가봤다고</h4>
                         </div>
-                        <p><i class="fa-regular fa-heart"></i>10</p>
+                        <p><i class="fa-regular fa-heart" th:text="${likeCounts}"></i></p>
 <!--                        <div class="recentWriting">-->
 <!--                            <div class="first">-->
 <!--                                <span>춘천 - 남이섬</span>-->
@@ -243,7 +182,25 @@
 </div>
 <script src="https://kit.fontawesome.com/1e9b513c90.js" crossorigin="anonymous"></script>
 <script src="/js/myPage.js"></script>
+<script>
+    function previewAndUpdateImage() {
+        var file = document.getElementById('file').files[0];
+        var reader = new FileReader();
+
+        reader.onloadend = function() {
+            // 업데이트된 이미지 URL로 myImage의 src 속성을 설정
+            document.getElementById('myImage').src = reader.result;
+        }
+
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    }
+</script>
 <script src="/js/basicSetting.js" th:src="@{/js/basicSettings.js}"></script>
-<script src="/js/menu.js"> </script>
+<script src="/js/menu.js"></script>
+<script th:src="@{/js/gabojago/deleteJjim.js}"></script>
+<script th:src="@{/js/deleteBoard.js}"></script>
+<script th:src="@{/js/deleteBest.js}"></script>
 </body>
 </html>

@@ -1,5 +1,6 @@
 package com.teamproject.gaxga.repository.gabojago;
 
+import com.teamproject.gaxga.dto.gabojago.JjimDto;
 import com.teamproject.gaxga.entity.User;
 import com.teamproject.gaxga.entity.gabojago.GP;
 import com.teamproject.gaxga.entity.gabojago.Jjim;
@@ -23,5 +24,6 @@ public interface JjimRepository extends JpaRepository<Jjim, Long> {
             "LEFT JOIN GP P ON P.GPid = J.GPid ", nativeQuery = true)
     List<Jjim> findByJjim();
 
+    List<Jjim> findAllByUserUserCode(Long userCode);
 
 }
