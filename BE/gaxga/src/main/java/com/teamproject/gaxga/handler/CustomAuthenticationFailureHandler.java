@@ -3,15 +3,15 @@ package com.teamproject.gaxga.handler;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.*;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 
 import java.io.IOException;
 
-
+@Slf4j
 public class CustomAuthenticationFailureHandler extends SimpleUrlAuthenticationFailureHandler {
 
     @Override
@@ -27,8 +27,7 @@ public class CustomAuthenticationFailureHandler extends SimpleUrlAuthenticationF
         }
 
         setDefaultFailureUrl("/login/Result" + errorMsg);
-
+        log.info("customMsg = " + errorMsg);
         super.onAuthenticationFailure(httpServletRequest, httpServletResponse, e);
-        //httpServletResponse.getOutputStream().println(String.format(jsonPayload, e.getMessage(), Calendar.getInstance().getTime()));
     }
 }

@@ -19,8 +19,9 @@ public class LoginController {
     public String loginResult(@RequestParam(value = "error", required = false) String error,
                               @RequestParam(value = "exception", required = false) String exception,
                               Model model){
+        log.info("=======error : " + error + ", exception : " + exception);
         model.addAttribute("error", error);
         model.addAttribute("exception", exception);
-        return "public/accountManagement/login";
+        return "redirect:/login";
     }
 }
