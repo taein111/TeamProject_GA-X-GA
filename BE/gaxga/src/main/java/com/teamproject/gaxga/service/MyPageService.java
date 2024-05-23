@@ -154,13 +154,15 @@ public class MyPageService {
 
     public void updateProfileImage(Long userCode, MultipartFile file) throws Exception {
         User user = userRepository.findById(userCode).orElseThrow(() -> new Exception("User not found"));
-        // 기존 파일 이름 가져오기
-        String oldFileName = user.getGaP_Image();
-        if (oldFileName != null && !oldFileName.isEmpty()) {
-            deleteOldFile(oldFileName); // 기존 파일 삭제
+        if (file != null && !file.isEmpty()) {
+            // 기존 파일 이름 가져오기
+            String oldFileName = user.getGaP_Image();
+            if (oldFileName != null && !oldFileName.isEmpty() && !oldFileName.equals("profile.png")) {
+                deleteOldFile(oldFileName); // 기존 파일 삭제, "profile.png"는 제외
+            }
+            String fileName = saveFile(file);
+            user.setGaP_Image(fileName);
         }
-        String fileName = saveFile(file);
-        user.setGaP_Image(fileName);
         userRepository.save(user);
     }
 
@@ -174,8 +176,7 @@ public class MyPageService {
         if (file.isEmpty()) {
             throw new Exception("Failed to store empty file.");
         }
-
-        Path directoryPath = Paths.get(fileDir); // 'fileDir' should be defined as the directory you want to save the files in.
+        Path directoryPath = Paths.get(fileDir); //
         boolean directoryExists = Files.exists(directoryPath) && Files.isDirectory(directoryPath);
         if (!directoryExists) {
             Files.createDirectories(directoryPath);
@@ -185,13 +186,6 @@ public class MyPageService {
         Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
         return uniqueFileName;
     }
-
-    //        Path directoryPath = Paths.get("path/to/save/images");
-//        Files.createDirectories(directoryPath);
-//        String fileName = file.getOriginalFilename();
-//        Path filePath = directoryPath.resolve(fileName);
-//        file.transferTo(filePath);
-//        return filePath.toString();
 }
 
 

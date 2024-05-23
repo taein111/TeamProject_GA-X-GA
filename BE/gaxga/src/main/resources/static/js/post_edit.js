@@ -7,7 +7,6 @@ var day = ('0' + today.getDate()).slice(-2);
 var dateString = year + '-' + month + '-' + day;
 date.innerText = `${dateString}`;
 
-
 //----------------------------------------------------------------------지도
 // 기본 좌표 설정 (예: 서울 시청)
 var defaultLat = 37.5665;
