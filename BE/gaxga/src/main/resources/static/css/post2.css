@@ -214,18 +214,16 @@ input[type="button"]{
   background-color: #063F3B;
   color:#fff;
   cursor: pointer;
-  margin-left: 5px;
   border : none;
   border-radius: 5px;
 }
 
 #button-addon1{
-  width: 20%;
-  height: 25px;
+  width: 10%;
+  height: 30px;
   background-color: #063F3B;
   color:#fff;
   cursor: pointer;
-  margin-left: 5px;
   border : none;
   border-radius: 5px;
 }
@@ -334,7 +332,7 @@ form{
   width: 20%;
 }
 #address_Area input:not(:first-child){
-  width: 35%;
+  width: 44%;
 }
 #submit_Area input{
   font-family: 'GmarketSans';
