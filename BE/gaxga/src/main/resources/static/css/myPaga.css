@@ -322,6 +322,7 @@ height: 80%;
   width: 100%;
   align-items: center;
   height: 80%;
+  overflow-y: auto;
 }
 #myPage_main #rightContent #saved .savedList{
   display: flex;
