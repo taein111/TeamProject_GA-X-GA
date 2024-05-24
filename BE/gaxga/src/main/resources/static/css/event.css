@@ -2,16 +2,16 @@
   margin: 0;
 }
 html,body{
-	height: 100vh;
-	margin:0;
-	padding :0;
+  height: 100vh;
+  margin:0;
+  padding :0;
 
 }
 .wrap {
-    height : 100vh;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
+  height : 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 ul {
@@ -20,17 +20,18 @@ ul {
 
 .eMain{
   position: fixed;
+  width: 100%
 }
 .event_box {
-    height: 215px;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.1);
-    background-color: #000000;
-    text-align: center;
-    letter-spacing: 10px;
-    border-top: 1px solid #000000;
-    border-bottom: 1px solid #ffffff;;
-    font-size: 20px;
-    font-family: 'DMSerif';
+  height: 215px;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.1);
+  background-color: #000000;
+  text-align: center;
+  letter-spacing: 10px;
+  border-top: 1px solid #000000;
+  border-bottom: 1px solid #ffffff;;
+  font-size: 20px;
+  font-family: 'DMSerif';
 
 }
 
@@ -172,13 +173,13 @@ ul {
 }
 
 .side_image1{
-    display: flex;
-    flex: none;
-    width: 30%;
-    height:222px;
-    float:right;
-    border: 1px black;
-    cursor: pointer ;
+  display: flex;
+  flex: none;
+  width: 30%;
+  height:222px;
+  float:right;
+  border: 1px black;
+  cursor: pointer ;
 }
 .side_image2{
   display: flex;
@@ -250,16 +251,16 @@ ul {
 .ingEvent{
   height: 70px;
   width: 50%;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.1);
-    text-align: center;
-    line-height: 75px;
-    color:rgb(255, 255, 255);
-    float:left;
-    font-size: 30px;
-    letter-spacing: 3px;
-    background-color: #000000;
-    border-right: 1px solid #ffffff;
-    font-family: 'Jalnan';
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.1);
+  text-align: center;
+  line-height: 75px;
+  color:rgb(255, 255, 255);
+  float:left;
+  font-size: 30px;
+  letter-spacing: 3px;
+  background-color: #000000;
+  border-right: 1px solid #ffffff;
+  font-family: 'Jalnan';
 
 }
 .ingEvent_box{
@@ -272,15 +273,15 @@ ul {
 .exit_event{
   height: 70px;
   width: 50%;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.1);
-    background-color: #000000;
-    text-align: center;
-    line-height: 75px;
-    color:rgb(255, 255, 255);
-    float:left;
-    font-size: 30px;
-    letter-spacing: 3px;
-    font-family: 'Jalnan';
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.1);
+  background-color: #000000;
+  text-align: center;
+  line-height: 75px;
+  color:rgb(255, 255, 255);
+  float:left;
+  font-size: 30px;
+  letter-spacing: 3px;
+  font-family: 'Jalnan';
 
 }
 .exit_event:hover{
@@ -295,8 +296,8 @@ ul {
   display: none;
 }
 #num1{
-  z-index: 90; 
-  position: absolute; 
+  z-index: 90;
+  position: absolute;
   top:-1px;
   right: -6px;
   border: none;
@@ -305,8 +306,8 @@ ul {
   cursor: pointer;
 }
 #num2{
-  z-index: 89; 
-  position: absolute; 
+  z-index: 89;
+  position: absolute;
   top:-1px;
   right: -6px;
   border: none;
@@ -315,8 +316,8 @@ ul {
   cursor: pointer;
 }
 #num3{
-  z-index: 88; 
-  position: absolute; 
+  z-index: 88;
+  position: absolute;
   top:-1px;
   right: -6px;
   border: none;

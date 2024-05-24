@@ -1,56 +1,29 @@
 //마우스 오버 이미지 바꾸기
-  const ing_event=document.querySelector('.ingEvent');
-  const exit_event=document.querySelector('.exit_event');
-  const change_image = document.querySelector(".change_image");
+const ing_event=document.querySelector('.ingEvent');
+const exit_event=document.querySelector('.exit_event');
+const change_image = document.querySelector(".change_image");
 
-  const ing_box = document.querySelector('#ing_box');
-  const exit_box = document.querySelector('#exit_box');
-  const image_box1 = document.querySelector(".side_image1");
-  const image_box2 = document.querySelector(".side_image2");
-  const image_box3 = document.querySelector(".side_image3");
-  const exit_image_box1 = document.querySelector(".side_exit_image1");
-  const exit_image_box2 = document.querySelector(".side_exit_image2");
-  const exit_image_box3 = document.querySelector(".side_exit_image3");
-  const button1 = document.querySelector("#num1");
-  const button2 = document.querySelector("#num2");
-  const button3 = document.querySelector("#num3");
-  const myDiv1 = document.querySelector('.text1');
-  const myDiv2 = document.querySelector('.text2');
-  const myDiv3 = document.querySelector('.text3');
-  const exit_change = document.querySelector('#image_box2')
-  const exit_change2 = document.querySelector('#image_box3')
-  const exit_change3 = document.querySelector('#image_box4')
+const ing_box = document.querySelector('#ing_box');
+const exit_box = document.querySelector('#exit_box');
+const image_box1 = document.querySelector(".side_image1");
+const image_box2 = document.querySelector(".side_image2");
+const image_box3 = document.querySelector(".side_image3");
+const button0 = document.querySelector("#num0")
+const button1 = document.querySelector("#num1");
+const button2 = document.querySelector("#num2");
+const button3 = document.querySelector("#num3");
+const myDiv1 = document.querySelector('.text1');
+const myDiv2 = document.querySelector('.text2');
+const myDiv3 = document.querySelector('.text3');
 
-
-
-  
-  ing_event.addEventListener("click", function(){
-    ing_box.style.display="inline-block"
-    exit_box.style.display = "none";
+ing_event.addEventListener("click", function(){
+  ing_box.style.display="inline-block"
+  exit_box.style.display = "none";
 })
 
-  exit_event.addEventListener("click", function(){
-    exit_box.style.display ="inline-block";
-    ing_box.style.display ="none";
-})
-
-// 종료된 이벤트에서 마우스 오버되면 이미지랑 내용 바꾸기
-exit_image_box1.addEventListener("mouseover", function(){
-  exit_change.style.display="inline-block";
-  exit_change2.style.display="none";
-  exit_change3.style.display="none";
-})
-
-exit_image_box2.addEventListener("mouseover", function(){
-  exit_change.style.display="none";
-  exit_change2.style.display="inline-block";
-  exit_change3.style.display="none";
-})
-
-exit_image_box3.addEventListener("mouseover", function(){
-  exit_change.style.display="none";
-  exit_change2.style.display="none";
-  exit_change3.style.display="inline-block";
+exit_event.addEventListener("click", function(){
+  exit_box.style.display ="inline-block";
+  ing_box.style.display ="none";
 })
 
 // 마우스 오버되면 상세보기 끄기 / 이미지 바꾸기
@@ -124,6 +97,10 @@ function btnClick3() {
   }
 }
 
+
+
+
+/*
 // 게시글 정보 (가정)
 const posts = [
   { id: 1, userId: 1, likes: 10 },
@@ -184,3 +161,4 @@ window.onload = function() {
     updateBoard(); // 이벤트 기간 중에는 게시판 업데이트
   }
 };
+ */

@@ -5,9 +5,8 @@ import java.time.LocalDateTime;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.data.annotation.CreatedDate;
+
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 
 @Entity
@@ -16,40 +15,27 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Getter
 @Setter
 @EntityListeners(AuditingEntityListener.class)
-public class Event extends BaseEntity{
+public class Event {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "event_id_seq")
     @SequenceGenerator(name="event_id_seq", sequenceName = "event_id_seq", initialValue = 1, allocationSize = 1)
     private Long id;
 
+    @Column
+    private String name; // 이벤트의 이름
+
+    @Column
+    private String img; // 이벤트에 보여질 이미지
+
+    //leg_Date 필드가 start_date 와 중복되어 제거함
     @Column(name = "start_date")
-    private LocalDateTime startDate;
+    private LocalDateTime startDate; // 이벤트가 시작될 날짜
 
     @Column(updatable = false,name = "end_date")
-    private LocalDateTime endDate;
+    private LocalDateTime endDate; // 이벤트가 종료될 날짜
 
-    @CreatedDate
-    @Column(updatable = false, name = "reg_date")
-    private LocalDateTime regDate;
+    @Column
+    private String status; // 이벤트 상태 (진행 중인지 종료되었는지)
 
-    @Column(updatable = false, name = "event_flag")
-    private Integer eventFlag = 0;
-
-//    public LocalDateTime getRegDate() {
-//        return super.getRegDate();
-//    }
-
-    // setEventFlag 메서드
-    public void setEventFlag(LocalDateTime startDate, LocalDateTime endDate) {
-        if (regDate != null && startDate != null && endDate != null) {
-            if(regDate.isEqual(startDate) || (regDate.isAfter(startDate) && regDate.isBefore(endDate))) {
-                eventFlag = 1;
-        } else {
-                eventFlag= 0;
-        }
-    } else {
-            eventFlag = 0;
-    }
-}
 }

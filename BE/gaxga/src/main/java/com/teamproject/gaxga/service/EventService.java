@@ -33,7 +33,7 @@ public class EventService {
         List<Gabowatdago> eventWinningList = gabowatdagoRepository.findTop3ByLikeCountAndDateRange();
         System.out.println("=========================eventWinningList==============:" +eventWinningList);
         model.addAttribute("Winner", eventWinningList);
-        model.addAttribute("AllEvent", AllEvent);
+        model.addAttribute("Event", AllEvent);
         return "public/event/event";
     }
 
