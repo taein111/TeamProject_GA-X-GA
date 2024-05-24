@@ -7,9 +7,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.*;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 
 @Slf4j
 public class CustomAuthenticationFailureHandler extends SimpleUrlAuthenticationFailureHandler {
@@ -20,14 +22,19 @@ public class CustomAuthenticationFailureHandler extends SimpleUrlAuthenticationF
 
         String errorMsg;
 
-        if (e instanceof BadCredentialsException) {
-            errorMsg = "아이디 또는 비밀번호를 틀렸습니다. 다시 확인해주세요.";
-        } else{
-            errorMsg = "";
+        if (e instanceof BadCredentialsException || e instanceof InternalAuthenticationServiceException){
+            errorMsg="아이디 또는 비밀번호가 맞지 않습니다.";
+        }else if (e instanceof UsernameNotFoundException){
+            errorMsg="존재하지 않는 아이디 입니다.";
+        }
+        else{
+            errorMsg="알 수 없는 이유로 로그인이 안되고 있습니다.";
         }
 
-        setDefaultFailureUrl("/login/Result" + errorMsg);
-        log.info("customMsg = " + errorMsg);
+        String encodedErrorMsg = URLEncoder.encode(errorMsg,"UTF-8");
+
+        setDefaultFailureUrl("/login/Result?error=true&exception=" + encodedErrorMsg);
+        log.info("customMsg = " + encodedErrorMsg);
         super.onAuthenticationFailure(httpServletRequest, httpServletResponse, e);
     }
 }

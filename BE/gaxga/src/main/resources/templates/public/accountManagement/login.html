@@ -33,6 +33,9 @@
                         <input type="password" name="gaPass" id="gaPass" placeholder="비밀번호를 입력하세요." maxlength="12" autocomplete="off">
                     </div>
                 </div>
+                <div th:if="error">
+                    <p id="valid" style="color: red; font-size:12px;"><a th:text="${exception}"></a></p>
+                </div>
                 <label for="saveId">
                     <input type="checkbox" id="saveId"> 아이디 저장하기
                 </label>

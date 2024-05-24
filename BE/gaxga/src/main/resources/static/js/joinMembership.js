@@ -43,7 +43,7 @@ function validateForm() {
         document.getElementById("gaId").focus();
         return false;
     }else if (gaPass.length < 8 || gaPass.length > 12) {
-        alert("비밀번호는 4~12글자여야 합니다.");
+        alert("비밀번호는 8~12글자여야 합니다.");
         document.getElementById("gaPass").focus();
         return false;
     }else if (gaNick.length < 4 || gaNick.length > 12) {

@@ -25,9 +25,11 @@ public class UserDetailService implements UserDetailsService {
         User userData = userRepository.findByGaId(username);
 
         if (userData != null) {
-            log.info("======userData.toString()) : "+userData.toString());
+            log.info("======userData.toString()) : " + userData.toString());
             return new UserDetail(userData);
+        } else {
+            log.error("User not found with username: " + username);
+            throw new UsernameNotFoundException("User not found with username: " + username);
         }
-        return null;
     }
 }
