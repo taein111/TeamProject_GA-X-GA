@@ -22,13 +22,11 @@ public class CmtService {
     public List<CmtDto> comments(Long gabowatdagoId) {
         //댓글 조회
         List<Cmt> cmts = cmtRepository.findByGabowatdagoId(gabowatdagoId);
-        //엔티티 -> dto 변환
-        //빈 ArrayList 만들기
         List<CmtDto> dtos = new ArrayList<CmtDto>();
-        for(int i=0; i<cmts.size(); i++){ //조회한 엔티티 댓글 수 만큼 반복
-            Cmt cmt = cmts.get(i); // 조회한 댓글 엔티티 하나씩 가져와서
-            CmtDto dto = CmtDto.createCommentDto(cmt); //엔티티를 dto로 변환
-            dtos.add(dto); //변환한 dto를 dtos 리스트 변수에 삽입
+        for(int i=0; i<cmts.size(); i++){
+            Cmt cmt = cmts.get(i);
+            CmtDto dto = CmtDto.createCommentDto(cmt);
+            dtos.add(dto);
         }
         //결과 반환
         return dtos;
