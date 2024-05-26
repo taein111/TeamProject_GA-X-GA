@@ -21,7 +21,7 @@ public interface GabowatdagoRepository extends JpaRepository<Gabowatdago, Long> 
     @Query(value = "SELECT COALESCE(SUM(g.like_Count), 0) FROM gabowatdago g WHERE g.user_Code = :userCode", nativeQuery = true)
     Long sumLikeCountByUserCode(@Param("userCode") Long userCode);
 
-    //특정 기간기준 이벤트 당첨자 - likeCount 당첨자 : 중복 제거를위해 같은 userCode를 그룹화 todo 왜 새로운 게시글이 만들어지고 좋아요 1위가 되면 출력에서 제외될까
+    //특정 기간기준 이벤트 당첨자 - likeCount 당첨자 : 중복 제거를위해 같은 userCode를 그룹화 todo 왜 새로운 게시글이 만들어지고 좋아요 1위가 되면 출력에서 제외되는지 확인
     @Query(value = "SELECT * FROM (SELECT g.*, ROW_NUMBER() OVER (PARTITION BY g.user_code ORDER BY g.like_count DESC) as rn FROM gabowatdago g WHERE g.reg_date BETWEEN TO_TIMESTAMP('2024-05-22 00:00:00.000', 'YYYY-MM-DD HH24:MI:SS.FF3') AND TO_TIMESTAMP('2024-05-31 23:59:59.999', 'YYYY-MM-DD HH24:MI:SS.FF3')) sub WHERE sub.rn = 1 AND ROWNUM <= 3 ORDER BY sub.like_count DESC", nativeQuery = true)
     List<Gabowatdago> findTop3ByLikeCountAndDateRangeWithoutDuplicateWinners();
 
