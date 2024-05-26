@@ -21,13 +21,17 @@ public interface GabowatdagoRepository extends JpaRepository<Gabowatdago, Long> 
     @Query(value = "SELECT COALESCE(SUM(g.like_Count), 0) FROM gabowatdago g WHERE g.user_Code = :userCode", nativeQuery = true)
     Long sumLikeCountByUserCode(@Param("userCode") Long userCode);
 
-    //특정 기간기준 이벤트 당첨자 - likeCount 당첨자 : 중복 제거를위해 같은 userCode를 그룹화 todo 왜 새로운 게시글이 만들어지고 좋아요 1위가 되면 출력에서 제외되는지 확인
-    @Query(value = "SELECT * FROM (SELECT g.*, ROW_NUMBER() OVER (PARTITION BY g.user_code ORDER BY g.like_count DESC) as rn FROM gabowatdago g WHERE g.reg_date BETWEEN TO_TIMESTAMP('2024-05-22 00:00:00.000', 'YYYY-MM-DD HH24:MI:SS.FF3') AND TO_TIMESTAMP('2024-05-31 23:59:59.999', 'YYYY-MM-DD HH24:MI:SS.FF3')) sub WHERE sub.rn = 1 AND ROWNUM <= 3 ORDER BY sub.like_count DESC", nativeQuery = true)
+    //특정 기간기준 이벤트 당첨자 - likeCount 당첨자 : 중복 제거를위해 같은 userCode를 그룹화했으며,  당첨자 중에 like카운트가 동일한 유저가 있을 경우 먼저 게시글을 등록한 사람이 당첨되도록 선정한다.
+    @Query(value = "SELECT * FROM " +
+            "(SELECT sub.*, ROWNUM rnum FROM " +
+            "(SELECT g.*, ROW_NUMBER() OVER (PARTITION BY g.user_code ORDER BY g.like_count DESC, g.reg_date ASC) as rn FROM " +
+            "gabowatdago g WHERE g.reg_date BETWEEN TO_TIMESTAMP('2024-05-22 00:00:00.000', 'YYYY-MM-DD HH24:MI:SS.FF3') AND TO_TIMESTAMP('2024-05-31 23:59:59.999', 'YYYY-MM-DD HH24:MI:SS.FF3') " +
+            "ORDER BY g.like_count DESC, g.reg_date ASC) sub WHERE sub.rn = 1) WHERE rnum <= 3", nativeQuery = true)
     List<Gabowatdago> findTop3ByLikeCountAndDateRangeWithoutDuplicateWinners();
 
     //특정 기간 기준 이벤트 당첨자 - 게시글 수 당첨자 : todo 부적합한 열이름 수정 해야함
-    @Query(value = "SELECT * FROM (SELECT user_Code, COUNT(*) as post_count FROM gabowatdago WHERE reg_date BETWEEN TO_TIMESTAMP('2024-05-22 00:00:00.000', 'YYYY-MM-DD HH24:MI:SS.FF3') AND TO_TIMESTAMP('2024-05-31 23:59:59.999', 'YYYY-MM-DD HH24:MI:SS.FF3') GROUP BY user_code ORDER BY post_count DESC) WHERE ROWNUM <= 3", nativeQuery = true)
-    List<Gabowatdago> findTop3UsersByPostCount();
+//    @Query(value = "SELECT g.user_code, COUNT(id) as post_count FROM gabowatdago g GROUP BY g.user_code ORDER BY post_count DESC", nativeQuery = true)
+//    List<Gabowatdago> findTop3UsersByPostCount();
 
 
 
@@ -43,19 +47,29 @@ NULL이면 column2의 값을 반환하며, 둘 다 NULL이면 0을 반환
 
 /*
 *****like 이벤트 당첨자 쿼리문 해석
-1. 서브쿼리
-ROW_NUMBER() OVER (PARTITION BY g.user_code ORDER BY g.like_count DESC) as rn:
- 각 user_code 별로 데이터를 그룹화하고, 그룹 내에서 like_count가 높은 순서대로 순위를 매긴다.
-  각 그룹의 가장 높은 like_count를 가진 행은 rn 값이 1이 된다.
+ 1. 내부 서브쿼리(가장 안쪽 쿼리)
+SELECT g.*, ROW_NUMBER() OVER (PARTITION BY g.user_code ORDER BY g.like_count DESC, g.reg_date ASC) as rn
+FROM gabowatdago g
+WHERE g.reg_date BETWEEN TO_TIMESTAMP('2024-05-22 00:00:00.000', 'YYYY-MM-DD HH24:MI:SS.FF3')
+AND TO_TIMESTAMP('2024-05-31 23:59:59.999', 'YYYY-MM-DD HH24:MI:SS.FF3')
+    - gabowatdago 테이블에서 지정된 날짜 범위 내의 모든 게시물을 선택
+    - ROW_NUMBER(): 각 user_code별로 like_count가 높은 순서대로 순위를 매긴다. like_count가 같을 경우, reg_date가 빠른 게시물이 우선 순위를 갖는다
+    - 결과: 각 게시물에는 사용자 코드별로 순위(rn)가 매겨진다.
 
-TO_TIMESTAMP : 문자열을 타임 스탬프로 변환한다.
-'YYYY-MM-DD HH24:MI:SS.FF3' 포맷은 년도, 월, 일, 시간, 분, 초, 및 밀리초(3자리)를 나타낸다.
-이 함수는 지정된 기간의 시작과 끝을 정확히 표현하여, 해당 기간에 등록된 게시글만 필터링한다.
-기존에 TO_DATE를 썼었는데, 이는 regDate의 날짜-시간 포맷과 일치하지않아 TO_TIMESTAMP로 바꿨다
+ 2. 중간 서브쿼리
+SELECT sub.*, ROWNUM rnum
+FROM (...) sub
+WHERE sub.rn = 1
+    - 목적: 가장 안쪽 쿼리의 결과에서 각 사용자별로 like_count가 가장 높은 게시물(즉, rn = 1인 게시물)만을 선택
+    - ROWNUM: 오라클에서 결과의 순서에 따라 각 행에 고유 번호를 부여
 
-2. 외부커리
-WHERE sub.rn = 1 AND ROWNUM <= 3: 서브쿼리의 결과 중 rn 값이 1인 행, 즉 각 사용자별로 가장 높은 like_count를 가진 행만 선택하고,그 중에서도 상위 3개의 결과만 가져온다.
-ORDER BY sub.like_count DESC: 최종적으로 선택된 행들을 like_count의 내림차순으로 정렬한다.
+ 3. 외부 커리
+SELECT *
+FROM (...)
+WHERE rnum <= 3
+    - 목적: 중간 서브쿼리의 결과에서 ROWNUM이 3 이하인 행만을 선택하여, 전체적으로 like_count가 가장 높은 상위 3개의 게시물을 최종적으로 반환
+    - 결과: 최종 사용자에게 보여질 데이터는 각 사용자별로 like_count가 가장 높은 게시물 중에서 전체적으로 상위 3개의 게시물이다.
+
 
  */
 

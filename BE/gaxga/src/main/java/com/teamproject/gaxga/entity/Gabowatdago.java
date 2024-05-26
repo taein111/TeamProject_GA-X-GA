@@ -14,6 +14,7 @@ public class Gabowatdago extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "gabowatdago_id_seq")
     @SequenceGenerator(name="gabowatdago_id_seq", sequenceName = "gabowatdago_id_seq", initialValue = 1, allocationSize = 1)
+    @Column(name = "id")
     private Long id;
     @Column
     private String title;

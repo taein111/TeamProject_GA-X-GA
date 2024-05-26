@@ -30,9 +30,9 @@ public class EventService {
     // 모든 이벤트 가져오기
     public String getAllEvents(Model model) {
         List<Event> AllEvent = eventRepository.findAll();
-        // todo 이벤트 당첨자 순위 선정 오류 - 새로운 회원의 게시글이 좋아요 최고 달성 시 출력되지 않는 문제
         List<Gabowatdago> eventLikeWinningList = gabowatdagoRepository.findTop3ByLikeCountAndDateRangeWithoutDuplicateWinners();
-//        List<Gabowatdago> eventBoardWinningList = gabowatdagoRepository.findTop3UsersByPostCount(); todo 게시글작성 순위 선정해야함 부적합한 열이름 오류
+        //특정 기간 기준 이벤트 당첨자 - 게시글 수 당첨자 : todo 부적합한 열이름 수정 해야함
+//        List<Gabowatdago> eventBoardWinningList = gabowatdagoRepository.findTop3UsersByPostCount();
         System.out.println("=========================eventWinningList==============:" +eventLikeWinningList);
 //        System.out.println("=========================boardWinningList==============:" +eventBoardWinningList);
         model.addAttribute("Winner", eventLikeWinningList);
