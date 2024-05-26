@@ -30,9 +30,11 @@ public class EventService {
     // 모든 이벤트 가져오기
     public String getAllEvents(Model model) {
         List<Event> AllEvent = eventRepository.findAll();
-        List<Gabowatdago> eventWinningList = gabowatdagoRepository.findTop3ByLikeCountAndDateRange();
-        System.out.println("=========================eventWinningList==============:" +eventWinningList);
-        model.addAttribute("Winner", eventWinningList);
+        List<Gabowatdago> eventLikeWinningList = gabowatdagoRepository.findTop3ByLikeCountAndDateRangeWithoutDuplicateWinners();
+//        List<Gabowatdago> eventBoardWinningList = gabowatdagoRepository.findTop3UsersByPostCount(); todo 게시글작성 순위 선정해야함 부적합한 열이름 오류
+        System.out.println("=========================eventWinningList==============:" +eventLikeWinningList);
+//        System.out.println("=========================boardWinningList==============:" +eventBoardWinningList);
+        model.addAttribute("Winner", eventLikeWinningList);
         model.addAttribute("Event", AllEvent);
         return "public/event/event";
     }
