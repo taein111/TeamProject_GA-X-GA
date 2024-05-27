@@ -8,7 +8,6 @@ const exit_box = document.querySelector('#exit_box');
 const image_box1 = document.querySelector(".side_image1");
 const image_box2 = document.querySelector(".side_image2");
 const image_box3 = document.querySelector(".side_image3");
-const button0 = document.querySelector("#num0")
 const button1 = document.querySelector("#num1");
 const button2 = document.querySelector("#num2");
 const button3 = document.querySelector("#num3");
@@ -29,71 +28,70 @@ exit_event.addEventListener("click", function(){
 // 마우스 오버되면 상세보기 끄기 / 이미지 바꾸기
 image_box1.addEventListener("mouseover", function(){
   change_image.src="/img/진행중 이벤트 최종1.png"
-  myDiv2.style.visibility = "hidden"
-  myDiv3.style.visibility = "hidden"
+  myDiv2.style.display = "none"
+  myDiv3.style.display = "none"
   //마우스 오버 시 div 클래스 변경
-  button1.style.visibility ="visible"
-  button2.style.visibility ="hidden"
-  button3.style.visibility ="hidden"
+  button1.style.display ="inline-block"
+  button2.style.display ="none"
+  button3.style.display ="none"
 });
 
 image_box2.addEventListener("mouseover", function(){
   change_image.src="/img/진행중 이벤트 최종2.png"
   //마우스오버 상세정보 사라지기
-  myDiv1.style.visibility = "hidden"
-  myDiv3.style.visibility = "hidden"
-
-  //마우스오버 버튼 남기기
-  button1.style.visibility ="hidden"
-  button2.style.visibility ="visible"
-  button3.style.visibility ="hidden"
+  myDiv1.style.display = "none"
+  myDiv3.style.display = "none"
+  //마우스 오버 시 div 클래스 변경
+  button1.style.display ="none"
+  button2.style.display ="inline-block"
+  button3.style.display ="none"
 });
 image_box3.addEventListener("mouseenter", function(){
   change_image.src="/img/진행중 이벤트 최종3.png"
 
-  //마우스오버 상세정보 사라지기
-  myDiv1.style.visibility = "hidden"
-  myDiv2.style.visibility = "hidden"
-
-  //마우스오버 버튼 남기기
-  button1.style.visibility ="hidden"
-  button2.style.visibility ="hidden"
-  button3.style.visibility ="visible"
+  myDiv1.style.display = "none"
+  myDiv2.style.display = "none"
+  //마우스 오버 시 div 클래스 변경
+  button1.style.display ="none"
+  button2.style.display ="none"
+  button3.style.display ="inline-block"
 });
 
 //버튼으로 상세 정보 출력
 function btnClick1() {
   const myDiv = document.querySelector('.text1');
 
-  const isVisible = window.getComputedStyle(myDiv).visibility === 'visible';
+  const isVisible = window.getComputedStyle(myDiv).display === 'none';
 
   // 상세정보가 보이지 않는 경우에만 보이도록 설정
   if(!isVisible) {
-    myDiv.style.visibility = 'visible';
+    myDiv.style.display = 'none';
   }else {
-    myDiv.style.visibility = 'hidden';
+    myDiv.style.display = 'inline-block';
   }
 }
 function btnClick2() {
   const myDiv = document.querySelector('.text2');
 
-  const isVisible = window.getComputedStyle(myDiv).visibility === 'visible';
+  const isVisible = window.getComputedStyle(myDiv).display === 'none';
 
+  // 상세정보가 보이지 않는 경우에만 보이도록 설정
   if(!isVisible) {
-    myDiv.style.visibility = 'visible';
+    myDiv.style.display = 'none';
   }else {
-    myDiv.style.visibility = 'hidden';
+    myDiv.style.display = 'inline-block';
   }
 }
 function btnClick3() {
-  const myDiv = document.querySelector('.text2');
+  const myDiv = document.querySelector('.text3');
 
-  const isVisible = window.getComputedStyle(myDiv).visibility === 'visible';
+  const isVisible = window.getComputedStyle(myDiv).display === 'none';
 
+  // 상세정보가 보이지 않는 경우에만 보이도록 설정
   if(!isVisible) {
-    myDiv.style.visibility = 'visible';
+    myDiv.style.display = 'none';
   }else {
-    myDiv.style.visibility = 'hidden';
+    myDiv.style.display = 'inline-block';
   }
 }
 
