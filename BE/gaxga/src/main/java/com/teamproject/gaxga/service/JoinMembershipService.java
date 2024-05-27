@@ -18,16 +18,17 @@ public class JoinMembershipService {
     private UserRepository userRepository;
     public boolean joinPutData(JoinMembershipForm joinMembershipForm) {
 
-        // todo : 회원가입시 특수문자 방지
-        boolean isUser = userRepository.existsByGaId(joinMembershipForm.getGaId());
-        if (isUser) {
+        boolean isUserId = userRepository.existsByGaId(joinMembershipForm.getGaId());
+        boolean isUserNick = userRepository.existsByGaNick(joinMembershipForm.getGaNick());
+        boolean isUserPhone = userRepository.existsByGaPhone(joinMembershipForm.getGaPhone());
+        log.info("isUserId = " + isUserId + ", isUserNick = " + isUserNick + ", isUserPhone = " + isUserPhone);
+        if (isUserId || isUserNick || isUserPhone) {
             return false;
         }
         User data = new User();
 
         data.setGaId(joinMembershipForm.getGaId());
         data.setGaPass(bCryptPasswordEncoder.encode(joinMembershipForm.getGaPass()));
-        log.info("joinMembershipForm.getGaPass()" + joinMembershipForm.getGaPass() +"   data.gaPass : " + data.getGaPass());
         data.setGaNick(joinMembershipForm.getGaNick());
         data.setGaPhone(joinMembershipForm.getGaPhone());
         data.setGaAddress(joinMembershipForm.getGaAddress());

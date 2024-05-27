@@ -40,18 +40,20 @@ public class JoinMembershipController {
             redirectAttributes.addFlashAttribute("msg", "회원가입에 성공했습니다");
             return "redirect:/login";
 
-        } else if(checkId){
-            redirectAttributes.addFlashAttribute("msg", "중복된 아이디가 있습니다.");
-            return "redirect:/joinMembership";
-        } else if(checkNick){
-            redirectAttributes.addFlashAttribute("msg", "중복된 닉네임이 있습니다.");
-            return "redirect:/joinMembership";
-        } else if (checkPhone) {
-            redirectAttributes.addFlashAttribute("msg", "중복된 핸드폰 번호가 있습니다.");
-            return "redirect:/joinMembership";
-        } else{
-            redirectAttributes.addFlashAttribute("msg", "회원가입에 실패했습니다");
-            return "redirect:/joinMembership";
+        } else {
+             if(checkId){
+                redirectAttributes.addFlashAttribute("msg", "중복된 아이디가 있습니다.");
+                return "redirect:/joinMembership";
+            } else if(checkNick){
+                redirectAttributes.addFlashAttribute("msg", "중복된 닉네임이 있습니다.");
+                return "redirect:/joinMembership";
+            } else if (checkPhone) {
+                redirectAttributes.addFlashAttribute("msg", "중복된 핸드폰 번호가 있습니다.");
+                return "redirect:/joinMembership";
+            } else{
+                redirectAttributes.addFlashAttribute("msg", "회원가입에 실패했습니다");
+                return "redirect:/joinMembership";
+            }
         }
     }
 

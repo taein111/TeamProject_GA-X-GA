@@ -38,31 +38,4 @@ public class User{
 
     @Column
     private String gaP_Image;
-
-    public void patch(User user){
-        if(user.gaId != null){
-            this.gaId = user.gaId;
-        }
-        if(user.gaPass != null){
-            this.gaPass = user.gaPass;
-        }
-        if(user.gaNick != null){
-            this.gaNick = user.gaNick;
-        }
-        if(user.gaPhone != null){
-            this.gaPhone = user.gaPhone;
-        }
-        if(user.gaAddress != null){
-            this.gaAddress = user.gaAddress;
-        }
-        if(user.gaDetailAddress != null){
-            this.gaDetailAddress = user.gaDetailAddress;
-        }
-        if(user.gaEmail != null){
-            this.gaEmail = user.gaEmail;
-        }
-        if(user.gaP_Image != null){
-            this.gaP_Image = user.gaP_Image;
-        }
-    }
 }
