@@ -42,4 +42,10 @@ public class JoinMembershipService {
     public boolean checkId(String userId) {
         return userRepository.existsByGaId(userId);
     }
+    public boolean checkNick(String userNick) {
+        return userRepository.existsByGaNick(userNick);
+    }
+    public boolean checkPhone(String userPhone) {
+        return userRepository.existsByGaPhone(userPhone);
+    }
 }
