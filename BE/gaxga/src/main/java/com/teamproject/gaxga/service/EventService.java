@@ -1,5 +1,6 @@
 package com.teamproject.gaxga.service;
 
+import com.teamproject.gaxga.dto.UserPostCount;
 import com.teamproject.gaxga.entity.Event;
 import com.teamproject.gaxga.entity.Gabowatdago;
 import com.teamproject.gaxga.repository.GabowatdagoRepository;
@@ -8,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EventService {
@@ -31,10 +34,19 @@ public class EventService {
     public String getAllEvents(Model model) {
         List<Event> AllEvent = eventRepository.findAll();
         List<Gabowatdago> eventLikeWinningList = gabowatdagoRepository.findTop3ByLikeCountAndDateRangeWithoutDuplicateWinners();
-        //특정 기간 기준 이벤트 당첨자 - 게시글 수 당첨자 : todo 부적합한 열이름 수정 해야함
-//        List<Gabowatdago> eventBoardWinningList = gabowatdagoRepository.findTop3UsersByPostCount();
+        List<Object[]> eventBoardWinningList = gabowatdagoRepository.findTop3UsersByPostCountIncludingNick();
         System.out.println("=========================eventWinningList==============:" +eventLikeWinningList);
-//        System.out.println("=========================boardWinningList==============:" +eventBoardWinningList);
+        System.out.println("=========================boardWinningList==============:" + eventBoardWinningList);
+        model.addAttribute("poster", eventBoardWinningList);
+//        List<UserPostCount> userPostCounts = new ArrayList<>();
+//        for (Object[] result : eventBoardWinningList) {
+//            String gaNick = (String) result[0];
+//            Long postCount = (Long) result[1];
+//            System.out.println("===============================================gaNick: " + gaNick + ", Post Count: " + postCount);
+//            userPostCounts.add(new UserPostCount(gaNick, postCount));
+//        }
+
+
         model.addAttribute("Winner", eventLikeWinningList);
         model.addAttribute("Event", AllEvent);
         return "public/event/event";

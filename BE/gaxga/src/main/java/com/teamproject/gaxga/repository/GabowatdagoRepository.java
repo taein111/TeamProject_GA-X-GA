@@ -29,10 +29,9 @@ public interface GabowatdagoRepository extends JpaRepository<Gabowatdago, Long> 
             "ORDER BY g.like_count DESC, g.reg_date ASC) sub WHERE sub.rn = 1) WHERE rnum <= 3", nativeQuery = true)
     List<Gabowatdago> findTop3ByLikeCountAndDateRangeWithoutDuplicateWinners();
 
-    //특정 기간 기준 이벤트 당첨자 - 게시글 수 당첨자 : todo 부적합한 열이름 수정 해야함
-//    @Query(value = "SELECT g.user_code, COUNT(id) as post_count FROM gabowatdago g GROUP BY g.user_code ORDER BY post_count DESC", nativeQuery = true)
-//    List<Gabowatdago> findTop3UsersByPostCount();
-
+    //특정 기간 기준 이벤트 당첨자 - 게시글 수 당첨자 :
+    @Query(value = "SELECT g.gaNick, COUNT(g) AS postCount FROM Gabowatdago g GROUP BY g.gaNick ORDER BY postCount DESC")
+    List<Object[]> findTop3UsersByPostCountIncludingNick();
 
 
     List<Gabowatdago> findByGaNick(String gaNick);
