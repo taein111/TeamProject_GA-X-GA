@@ -38,15 +38,6 @@ public class EventService {
         System.out.println("=========================eventWinningList==============:" +eventLikeWinningList);
         System.out.println("=========================boardWinningList==============:" + eventBoardWinningList);
         model.addAttribute("poster", eventBoardWinningList);
-//        List<UserPostCount> userPostCounts = new ArrayList<>();
-//        for (Object[] result : eventBoardWinningList) {
-//            String gaNick = (String) result[0];
-//            Long postCount = (Long) result[1];
-//            System.out.println("===============================================gaNick: " + gaNick + ", Post Count: " + postCount);
-//            userPostCounts.add(new UserPostCount(gaNick, postCount));
-//        }
-
-
         model.addAttribute("Winner", eventLikeWinningList);
         model.addAttribute("Event", AllEvent);
         return "public/event/event";

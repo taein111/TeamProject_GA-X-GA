@@ -29,8 +29,11 @@ public interface GabowatdagoRepository extends JpaRepository<Gabowatdago, Long> 
             "ORDER BY g.like_count DESC, g.reg_date ASC) sub WHERE sub.rn = 1) WHERE rnum <= 3", nativeQuery = true)
     List<Gabowatdago> findTop3ByLikeCountAndDateRangeWithoutDuplicateWinners();
 
-    //특정 기간 기준 이벤트 당첨자 - 게시글 수 당첨자 :
-    @Query(value = "SELECT g.gaNick, COUNT(g) AS postCount FROM Gabowatdago g GROUP BY g.gaNick ORDER BY postCount DESC")
+    //특정 기간 기준 이벤트 당첨자 - 게시글 수 당첨자 : 가장 많은 게시글을 작성한 사람 기준, 게시글 수가 동일하면 먼저 게시글을 작성한 사람이 당첨된다.
+    @Query(value = "SELECT * FROM " +
+            "(SELECT g.ga_nick, COUNT(*) AS postCount, MIN(g.reg_date) AS earliestRegDate FROM " +
+            "Gabowatdago g WHERE g.reg_date BETWEEN TO_TIMESTAMP('2024-01-01 00:00:00.000', 'YYYY-MM-DD HH24:MI:SS.FF3') AND TO_TIMESTAMP('2024-05-31 23:59:59.999', 'YYYY-MM-DD HH24:MI:SS.FF3') " +
+            "GROUP BY g.ga_nick ORDER BY postCount DESC, earliestRegDate ASC) WHERE ROWNUM <= 3", nativeQuery = true)
     List<Object[]> findTop3UsersByPostCountIncludingNick();
 
 
@@ -72,4 +75,24 @@ WHERE rnum <= 3
 
  */
 
+    /*
+*****like 이벤트 당첨자 쿼리문 해석
+    1. 내부 쿼리 :
+    SELECT g.ga_nick, COUNT(*) AS postCount, MIN(g.reg_date) AS earliestRegDate FROM Gabowatdago g
+        - g.ga_nick : 사용자의 닉네임 선택,
+        - COUNT(*) AS postCount: 각 사용자가 작성한 게시글의 수를 계산
+        - MIN(g.reg_date) AS earliestRegDate: 각 사용자가 작성한 게시글 중 가장 이른 날짜를 찾는다.
+    GROUP BY g.ga_nick
+        - 결과를 사용자 닉네임(ga_nick)별로 그룹화한다.
+    ORDER BY postCount DESC, earliestRegDate ASC
+        - 게시글 수(postCount)를 기준으로 내림차순으로 정렬하고, 게시글 수가 같은 경우 가장 이른 게시글의 날짜
+            (earliestReaDate)를 기준으로 오름차순으로 정렬
+
+    2. 외부 커리 :
+    WHERE ROWNUM <= 3
+        - 내부 쿼리의 결과 중 상위 3개의 결과만 선택한다.
+
+   => 가장 게시글을 많이 작성한 3명의 사용자를 선정, 게시글 수가 같은 경우 더 일찍 게시글을 작성한
+        사용자를 우선하여 선발한다.
+     */
 }
