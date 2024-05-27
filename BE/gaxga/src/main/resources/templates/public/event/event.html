@@ -102,8 +102,11 @@
                         <div class="exit_text_bottom1" style="width: 33%;">
                             <span>[월간 당첨자]</span>
                             <br>
-                            <div th:each="Winner :${Winner}">
-                                <span th:text="*{Winner.gaNick}"></span>
+<!--                            <div th:each="Winner :${Winner}">-->
+<!--                                <span th:text="*{Winner.gaNick}"></span>-->
+<!--                            </div>-->
+                            <div th:each="topPoster :${poster}">
+                                <span th:text="${topPoster[0]}"></span>
                             </div>
                         </div>
                     </div>
