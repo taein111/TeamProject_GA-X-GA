@@ -86,6 +86,10 @@
                  th:class="'side_image' + ${iterStat.index + 1}">
                 <img th:src="${event.img}" th:alt="${event.name}" width="100%">
             </div>
+            <div th:each="event, iterStat : ${Event}" th:unless="${event.status == 'ONGOING'}"
+                th:class="'side_image' + ${iterStat.index + 1}">
+                <img th:src="@{/img/준비중이벤트.jpg}" alt="준비중이벤트" width="100%">
+            </div>
 
         </div>
 
@@ -101,11 +105,8 @@
                         <div class="exit_text_bottom1" style="width: 33%;">
                             <span>[월간 당첨자]</span>
                             <br>
-<!--                            <div th:each="Winner :${Winner}">-->
-<!--                                <span th:text="*{Winner.gaNick}"></span>-->
-<!--                            </div>-->
-                            <div th:each="topPoster :${poster}">
-                                <span th:text="${topPoster[0]}"></span>
+                            <div th:each="Winner :${Winner}">
+                                <span th:text="*{Winner.gaNick}"></span>
                             </div>
                         </div>
                     </div>
@@ -123,9 +124,9 @@
                         <div class="exit_text_bottom1" style="width: 33%;">
                             <span>[월간 당첨자]</span>
                             <br>
-                            <span>   인***   </span>
-                            <span>   신혱***   </span>
-                            <span>   태***   </span>
+                            <div th:each="topPoster :${poster}">
+                                <span th:text="${topPoster[0]}"></span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -160,6 +161,12 @@
 <script th:src="@{/js/event.js}"> </script>
 <script th:src="@{/js/event2.js}"> </script>
 <script th:src="@{/js/menu2.js}"> </script>
+<script>
+    function changeImage() {
+        let image = document.querySelector('.image');
+        image.style.backgroundImage = "/img/준비중이미지.jpg";
+    }
+</script>
 </body>
 </html>
 
