@@ -1,6 +1,5 @@
 package com.teamproject.gaxga.service;
 
-import com.teamproject.gaxga.dto.UserPostCount;
 import com.teamproject.gaxga.entity.Event;
 import com.teamproject.gaxga.entity.Gabowatdago;
 import com.teamproject.gaxga.repository.GabowatdagoRepository;

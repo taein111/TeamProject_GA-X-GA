@@ -61,6 +61,9 @@ public class MyPageService {
         model.addAttribute("userDetail", userDetail);
         String userName = userDetail.getUser().getGaId();
         User userInfo = userRepository.findByGaId(userName);
+        String userImage = userInfo.getGaP_Image();
+        log.info("==============================userImage = " + userImage);
+        model.addAttribute("userImage", userImage);
         model.addAttribute("userInfo", userInfo);
         log.info("==============================userInfo = " + userInfo);
 
@@ -148,6 +151,15 @@ public class MyPageService {
                 log.info("GaEmail is before " + user.getGaEmail());
             }
         }
+        if (!joinMembershipForm.getGaP_Image().equals(user.getGaP_Image())){
+            if(joinMembershipForm.getGaP_Image().isEmpty()) {
+                log.info("joinInfo : " + joinMembershipForm.getGaP_Image());
+            } else {
+                log.info("GaP_Image is after " + user.getGaP_Image());
+                user.setGaP_Image(joinMembershipForm.getGaP_Image());
+                log.info("GaP_Image is before " + user.getGaP_Image());
+            }
+        }
         userRepository.save(user);
         return "redirect:/myPage";
     }
@@ -163,6 +175,7 @@ public class MyPageService {
             String fileName = saveFile(file);
             user.setGaP_Image(fileName);
         }
+        // 파일이 비어있으면 기존 이미지 유지
         userRepository.save(user);
     }
 

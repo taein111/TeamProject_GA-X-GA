@@ -53,6 +53,7 @@
                                         <label for="nickname">닉네임</label>
                                         <span id="showNickname" th:text="${userDetail.getGaNick()}">Nickname</span>
                                         <input type="text" name="gaNick" id="nickname" class="hidden" placeholder="변경할 닉네임을 입력하세요 (4~12글자)" maxlength="12" minlength="4">
+                                        <input type="hidden" name="gaP_Image" th:value="${userImage}">
                                         <button type="button" id="modifyNickname" onclick="ModifyProfileBtn(0)"><i class="fa-solid fa-pen"></i></button>
                                         <button type="submit" id="nicknameBtn" class="hidden" onclick="modifySaveBtn(0)">저장</button>
                                     </li>
