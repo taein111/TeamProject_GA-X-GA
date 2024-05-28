@@ -294,6 +294,7 @@ ul {
 
 #exit_box{
   display: none;
+  width: 100%;
 }
 #num1{
   z-index: 90;

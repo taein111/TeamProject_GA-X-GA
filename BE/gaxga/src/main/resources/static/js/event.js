@@ -1,13 +1,15 @@
 //마우스 오버 이미지 바꾸기
 const ing_event=document.querySelector('.ingEvent');
 const exit_event=document.querySelector('.exit_event');
-const change_image = document.querySelector(".change_image");
+const change = document.querySelector(".image_box1 .change_image");
 
 const ing_box = document.querySelector('#ing_box');
 const exit_box = document.querySelector('#exit_box');
+
 const image_box1 = document.querySelector(".side_image1");
 const image_box2 = document.querySelector(".side_image2");
 const image_box3 = document.querySelector(".side_image3");
+
 const image_src1 = document.querySelector(".side_image1 img").src;
 const image_src2 = document.querySelector(".side_image2 img").src;
 const image_src3 = document.querySelector(".side_image3 img").src;
@@ -15,6 +17,7 @@ const image_src3 = document.querySelector(".side_image3 img").src;
 const button1 = document.querySelector("#num1");
 const button2 = document.querySelector("#num2");
 const button3 = document.querySelector("#num3");
+
 const myDiv1 = document.querySelector('.text1');
 const myDiv2 = document.querySelector('.text2');
 const myDiv3 = document.querySelector('.text3');
@@ -32,7 +35,7 @@ exit_event.addEventListener("click", function(){
 // 마우스 오버되면 상세보기 끄기 / 이미지 바꾸기
 image_box1.addEventListener("mouseover", function(){
   let imageSrc = decodeURIComponent(new URL(image_src1).pathname);
-  change_image.src="/img/이벤트진행중배너1L.png"
+  change.src="/img/이벤트진행중배너1L.png"
   myDiv2.style.display = "none"
   myDiv3.style.display = "none"
   //마우스 오버 시 div 클래스 변경
@@ -40,9 +43,9 @@ image_box1.addEventListener("mouseover", function(){
   button2.style.display ="none"
   button3.style.display ="none"
   if(imageSrc.includes("/img/이벤트진행중배너1s.png")){
-    change_image.src = "/img/이벤트진행중배너1L.png"
+    change.src = "/img/이벤트진행중배너1L.png"
   }else{
-  change_image.src = "/img/이벤트디폴트배너L.png"
+  change.src = "/img/이벤트디폴트배너L.png"
   button1.style.display ="none"
   button2.style.display ="none"
   button3.style.display ="none"
@@ -53,7 +56,7 @@ image_box1.addEventListener("mouseover", function(){
 image_box2.addEventListener("mouseover", function(){
   let imageSrc = decodeURIComponent(new URL(image_src2).pathname);
 
-  change_image.src="/img/진행중이벤트최종2.png"
+  change.src="/img/진행중이벤트최종2.png"
   //마우스오버 상세정보 사라지기
   myDiv1.style.display = "none"
   myDiv3.style.display = "none"
@@ -63,10 +66,10 @@ image_box2.addEventListener("mouseover", function(){
   button3.style.display ="none"
   if(imageSrc.includes("/img/작은 영수증.png")){
     console.log(imageSrc)
-    change_image.src = "/img/작은 영수증.png"
+    change.src = "/img/작은 영수증.png"
   }else{
     console.log(imageSrc)
-    change_image.src = "/img/이벤트디폴트배너L.png"
+    change.src = "/img/이벤트디폴트배너L.png"
     button1.style.display ="none"
     button2.style.display ="none"
     button3.style.display ="none"
@@ -75,7 +78,7 @@ image_box2.addEventListener("mouseover", function(){
 image_box3.addEventListener("mouseenter", function(){
   let imageSrc = decodeURIComponent(new URL(image_src3).pathname);
 
-  change_image.src="/img/이벤트진행중배너3L.png"
+  change.src="/img/이벤트진행중배너3L.png"
 
   myDiv1.style.display = "none"
   myDiv2.style.display = "none"
@@ -84,9 +87,9 @@ image_box3.addEventListener("mouseenter", function(){
   button2.style.display ="none"
   button3.style.display ="inline-block"
   if(imageSrc.includes("/img/이벤트진행중배너3s.png")){
-    change_image.src = "/img/이벤트진행중배너3L.png"
+    change.src = "/img/이벤트진행중배너3L.png"
   }else{
-    change_image.src = "/img/이벤트디폴트배너L.png"
+    change.src = "/img/이벤트디폴트배너L.png"
     button1.style.display ="none"
     button2.style.display ="none"
     button3.style.display ="none"
