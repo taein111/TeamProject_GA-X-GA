@@ -84,10 +84,8 @@ image_box3.addEventListener("mouseenter", function(){
   button2.style.display ="none"
   button3.style.display ="inline-block"
   if(imageSrc.includes("/img/이벤트진행중배너3s.png")){
-    console.log(imageSrc)
     change_image.src = "/img/이벤트진행중배너3L.png"
   }else{
-    console.log(imageSrc)
     change_image.src = "/img/이벤트디폴트배너L.png"
     button1.style.display ="none"
     button2.style.display ="none"
