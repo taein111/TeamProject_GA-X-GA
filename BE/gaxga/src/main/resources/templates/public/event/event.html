@@ -154,6 +154,10 @@
                  th:class="'side_exit_image' + ${iterStat.index + 1}">
                 <img th:src="${event.img}" th:alt="${event.name}" width="100%" style="opacity: 30%">
             </div>
+            <div th:each="event, iterStat : ${Event}" th:if="${event.status == 'ONGOING'}"
+                 th:class="'side_exit_image' + ${iterStat.index + 1}">
+                <img th:src="@{/img/이벤트디폴트배너L.png}" alt="준비중이벤트" width="100%">
+            </div>
 
         </div>
     </div>
