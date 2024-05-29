@@ -97,9 +97,12 @@
             <div id="image_box2">
                 <img class="change_image" src="/img/이벤트진행중배너1s.png" alt="1번 이벤트" width="100%" height="100%" style="display: none">
                 <div class="exit_text">
-                    <div class="exit_text_top"><span><br>&lt;청룡을 잡아라!&gt;<br><br></span>
+                    <div class="exit_text_top"  th:object="${Event[0]}">
+                        <span th:text="*{name}"></span>
+                        <br><br><br>
                         <span>이벤트 진행 기간<br><br>
-              2024.01.02 ~ 2024.01.29<br><br></span>
+                            <span th:text="*{#temporals.format(startDate, 'yyyy-MM-dd') + ' ~ ' + #temporals.format(endDate, 'yyyy-MM-dd')}"></span>
+                            <br><br></span>
                     </div>
                     <div class="exit_text_bottom">
                         <div class="exit_text_bottom1" style="width: 33%;">
@@ -116,9 +119,13 @@
             <div id="image_box3">
                 <img class="change_image" src="/img/이벤트진행중배너2L.png" alt="2번 이벤트" width="100%" height="100%" style="display: none">
                 <div class="exit_text">
-                    <div class="exit_text_top"><span><br>&lt;청룡을 잡아라!&gt;<br><br></span>
+                    <div class="exit_text_top" th:object="${Event[1]}">
+                        <span th:text="*{name}"></span>
+                        <br><br><br>
                         <span>이벤트 진행 기간<br><br>
-              2024.02.02 ~ 2024.02.29<br><br></span>
+                            <span th:text="*{#temporals.format(startDate, 'yyyy-MM-dd') + ' ~ ' + #temporals.format(endDate, 'yyyy-MM-dd')}"></span>
+                            <br><br>
+                        </span>
                     </div>
                     <div class="exit_text_bottom">
                         <div class="exit_text_bottom1" style="width: 33%;">
@@ -135,9 +142,14 @@
             <div id="image_box4">
                 <img class="change_image" src="/img/이벤트진행중배너3s.png" alt="3번 이벤트" width="100%" height="100%" style="display: none">
                 <div class="exit_text">
-                    <div class="exit_text_top"><span><br>&lt;청룡을 잡아라!&gt;<br><br></span>
-                        <span>이벤트 진행 기간<br><br>
-              2024.03.02 ~ 2024.03.29<br><br></span>
+                    <div class="exit_text_top" th:object="${Event[2]}">
+                        <span th:text="*{name}"></span>
+                        <br><br><br>
+                        <span >이벤트 진행 기간<br><br>
+                            <span th:text="*{#temporals.format(startDate, 'yyyy-MM-dd') + ' ~ ' + #temporals.format(endDate, 'yyyy-MM-dd')}">
+                            </span>
+                            <br><br>
+                        </span>
                     </div>
                     <div class="exit_text_bottom">
                         <div class="exit_text_bottom1" style="width: 100%;">
@@ -152,7 +164,7 @@
             <!-- 종료된 이벤트 -->
             <div th:each="event, iterStat : ${Event}" th:if="${event.status == 'ENDED'}"
                  th:class="'side_exit_image' + ${iterStat.index + 1}">
-                <img th:src="${event.img}" th:alt="${event.name}" width="100%">
+                <img th:src="${event.img}" th:alt="${event.name}" width="100%" style="filter: brightness(0.5)">
             </div>
             <div th:each="event, iterStat : ${Event}" th:if="${event.status == 'ONGOING'}"
                  th:class="'side_exit_image' + ${iterStat.index + 1}">
