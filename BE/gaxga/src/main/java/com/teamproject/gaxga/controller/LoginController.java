@@ -1,27 +1,32 @@
 package com.teamproject.gaxga.controller;
 
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Slf4j
 @Controller
 public class LoginController {
 
     @GetMapping("/login")
-    public String showLoginPage(){
+    public String showLoginPage(HttpServletRequest request) {
+        String username = "";
+        boolean isSaveIdChecked = false;
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if ("saveUserId".equals(cookie.getName())) {
+                    username = cookie.getValue();
+                    isSaveIdChecked = true;
+                    log.info("================Cookie found with username: {}", username);
+                    break;
+                }
+            }
+        }
+        request.setAttribute("saveUserId", username);
+        request.setAttribute("isSaveIdChecked", isSaveIdChecked);
         return "public/accountManagement/login";
-    }
-
-    @GetMapping("/login/Result")
-    public String loginResult(@RequestParam(value = "error", required = false) String error,
-                              @RequestParam(value = "exception", required = false) String exception,
-                              Model model){
-        log.info("=======error : " + error + ", exception : " + exception);
-        model.addAttribute("error", error);
-        model.addAttribute("exception", exception);
-        return "redirect:/login";
     }
 }

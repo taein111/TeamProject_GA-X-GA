@@ -19,4 +19,9 @@ public class mainController {
     public String showMain() {
         return "public/main/main2";
     }
+
+    @GetMapping("/")
+    public String showMainPage() {
+        return "public/main/main2";
+    }
 }
