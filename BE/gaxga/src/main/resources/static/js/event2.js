@@ -14,7 +14,6 @@ const image1 = document.querySelector('#image_box2 .change_image')
 const image2 = document.querySelector('#image_box3 .change_image')
 const image3 = document.querySelector('#image_box4 .change_image')
 
-
 const exit_text1 = document.querySelector('#image_box2 .exit_text')
 const exit_text2 = document.querySelector('#image_box3 .exit_text')
 const exit_text3 = document.querySelector('#image_box4 .exit_text')
@@ -30,7 +29,7 @@ exit_image_box1.addEventListener("mouseover", function(){
         exit_change1.style.display="inline-block";
         exit_change2.style.display="none";
         exit_change3.style.display="none";
-    if(imageSrc1.includes("/img/이벤트진행중배너1s.png")){
+    if(imageSrc1.includes("/img/이벤트진행중배너1L.png")){
         exit_text1.style.display = "inline-block";
         exit_text2.style.display="none"
         exit_text3.style.display="none"
@@ -42,7 +41,7 @@ exit_image_box1.addEventListener("mouseover", function(){
 
 exit_image_box2.addEventListener("mouseover", function(){
     const imageSrc2 = decodeURIComponent(new URL(exit_image2).pathname);
-        image2.src = "/img/작은 영수증.png";
+        image2.src = "/img/이벤트진행중배너2L.png";
         image1.style.display = "none";
         image2.style.display = "inline-block";
         image3.style.display = "none";
@@ -51,7 +50,7 @@ exit_image_box2.addEventListener("mouseover", function(){
         exit_change1.style.display="none";
         exit_change3.style.display="none";
 
-    if(imageSrc2.includes("/img/작은 영수증.png")){
+    if(imageSrc2.includes("/img/이벤트진행중배너2L.png")){
         exit_text1.style.display="none"
         exit_text2.style.display = "inline-block";
         exit_text3.style.display="none"
@@ -71,7 +70,7 @@ exit_image_box3.addEventListener("mouseover", function(){
         exit_change3.style.display="inline-block";
         exit_change1.style.display="none";
         exit_change2.style.display="none";
-    if(imageSrc3.includes("/img/이벤트진행중배너3s.png")){
+    if(imageSrc3.includes("/img/이벤트진행중배너3L.png")){
         exit_text1.style.display="none"
         exit_text2.style.display="none"
         exit_text3.style.display="inline-block";

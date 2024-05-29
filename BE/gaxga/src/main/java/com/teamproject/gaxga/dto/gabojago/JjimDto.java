@@ -13,7 +13,6 @@ public class JjimDto {
         private String name;
         private Long gabojagoId;
 
-
         public JjimDto(Long userId, Long gabojagoId) {
             this.userId = userId;
             this.gabojagoId = gabojagoId;

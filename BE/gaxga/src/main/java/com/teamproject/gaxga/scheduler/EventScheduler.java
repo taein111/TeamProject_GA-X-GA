@@ -16,7 +16,7 @@ public class EventScheduler {
     public EventScheduler(EventRepository eventRepository) {
         this.eventRepository = eventRepository;
     }
-    @Scheduled(fixedRate = 30000) // 30초 마다 실행
+    @Scheduled(fixedRate = 18000) // 30분 마다 실행
     public void checkAndEndEvents() {
         List<Event> events = eventRepository.findAll();
         LocalDateTime now = LocalDateTime.now();

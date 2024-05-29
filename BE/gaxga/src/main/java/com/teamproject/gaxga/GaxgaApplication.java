@@ -11,7 +11,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @Import({MvcConfig.class})
 @EnableJpaAuditing
 @SpringBootApplication
-@EnableScheduling
+@EnableScheduling // 스케줄러를 통한 자동 업데이트
 public class GaxgaApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(GaxgaApplication.class, args);

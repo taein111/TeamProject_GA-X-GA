@@ -28,7 +28,6 @@ public class GabojagoingService {
     public String show(Long id, Model model) {
         GP gabojagoingEntity = gpRepository.findById(id).orElse(null);
         Jjim jjim = jjimRepository.findById(id).orElse(null);
-        System.out.println("==============="+jjim);
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         UserDetail userDetail = (UserDetail) auth.getPrincipal();
         Long JjimDtos = userDetail.getUser().getUserCode();

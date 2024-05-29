@@ -57,15 +57,4 @@ public class JjimService {
         gpRepository.save(gp);
         jjimRepository.delete(jjim);
     }
-
-//    public Jjim jjimPost(Long jjimId) throws Exception {
-//        Jjim jjim = jjimRepository.findById(jjimId).orElseThrow(() -> new Exception("Could not found Jjim id: " + jjimId));
-//        jjim.increaseJjimCount();
-//        return jjimRepository.save(jjim);
-//    }
-//    public Jjim unjjimPost(Long jjimId) throws Exception {
-//        Jjim jjim = jjimRepository.findById(jjimId).orElseThrow(() -> new Exception("Could not found Jjim id: " + jjimId));
-//        jjim.decreseJjimCount();
-//        return jjimRepository.save(jjim);
-//    }
 }

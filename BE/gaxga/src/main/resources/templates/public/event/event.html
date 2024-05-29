@@ -19,15 +19,15 @@
             <div class="exit_event">종료된&nbsp; 이벤트</div>
         </div>
         <div id="ing_box" style="width: 100%">
-            <div class="image_box1">
-                <img class="change_image" src="img/제목 없음.png" alt="1번 이벤트" width="100%" height="100%">
+            <div class="image_box1" th:object="${Event[0]}">
+                <img class="change_image"  th:if="*{status == 'ONGOING'}" th:src="@{*{img}}" alt="1번 이벤트" width="100%" height="100%" style="display: inline-block">
+                <img class="change_image"  th:if="*{status == 'ENDED'}" th:src="@{/img/이벤트디폴트배너L.png}" alt="1번 이벤트" width="100%" height="100%">
                 <button id="num1" onclick='btnClick1()' style="display: none">
-                    <img src="/img/이벤트진행중배너1버튼.png" width="240px" height="250px"></button>
+                    <img src="/img/이벤트진행중배너1버튼.png" width="250px" height="250px"></button>
                 <button id="num2" onclick='btnClick2()' style="display: none">
-                    <img src=/img/버튼2.png width="180px" height="180px"></button>
+                    <img src="/img/이벤트진행중배너2버튼.png" width="250px" height="250px"></button>
                 <button id="num3" onclick='btnClick3()' style="display: none">
-                    <img src=/img/이벤트진행중배너3버튼.png width="240px" height="250px"></button>
-
+                    <img src="/img/이벤트진행중배너3버튼.png" width="250px" height="250px"></button>
                 <div class="text1" th:object="${Event}"><span style="font-size: 30px; font-weight: 500;" ><br>청룡을 잡아라!</span><br>
                     <span style="font-size: 15px; font-weight: 400;">
               이벤트 진행 기간<br>
@@ -114,7 +114,7 @@
             </div>
 
             <div id="image_box3">
-                <img class="change_image" src="/img/작은 영수증.png" alt="2번 이벤트" width="100%" height="100%" style="display: none">
+                <img class="change_image" src="/img/이벤트진행중배너2L.png" alt="2번 이벤트" width="100%" height="100%" style="display: none">
                 <div class="exit_text">
                     <div class="exit_text_top"><span><br>&lt;청룡을 잡아라!&gt;<br><br></span>
                         <span>이벤트 진행 기간<br><br>

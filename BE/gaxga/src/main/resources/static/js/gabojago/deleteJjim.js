@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     deleteButtons.forEach(button => {
         button.addEventListener('click', function() {
-            // event.preventDefault();
             const userId = this.closest('.receiveLikeList').querySelector("#jjim_input").value;
             const gabojagoId = this.closest('.receiveLikeList').querySelector("#gabojago_id").value;
             localStorage.removeItem(`jjimStatus_${userId}_${gabojagoId}`);
