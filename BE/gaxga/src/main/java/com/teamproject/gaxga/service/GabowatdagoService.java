@@ -270,17 +270,6 @@ public class GabowatdagoService {
             if(!directoryExists){
                 Files.createDirectories(directoryPath);
             }
-            // 수정했으니 기존 서버에 업로드되어있던 파일 삭제
-            if (target.getImage() != null && !target.getImage().isEmpty()) {
-                Arrays.stream(target.getImage().split(","))
-                        .forEach(fileName -> {
-                            try {
-                                Files.deleteIfExists(directoryPath.resolve(fileName));
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                        });
-            }
             List<String> fileNames = new ArrayList<>();
             // 각 파일 처리
             for (MultipartFile file : form.getImage()) {
@@ -293,15 +282,18 @@ public class GabowatdagoService {
             }
             // 모든 파일 이름을 쉼표로 구분하여 하나의 문자열로 결합
             String allFileNames = String.join(",", fileNames);
-            gabowatdagoEntity.setImage(allFileNames);
+            if (!fileNames.isEmpty()) { // 새 파일이 있을 경우에만 이미지 경로 갱신
+                gabowatdagoEntity.setImage(allFileNames);
+            } else { // 새 파일이 없을 경우 기존 이미지 정보 유지
+                gabowatdagoEntity.setImage(target.getImage());
+            }
             gabowatdagoRepository.save(gabowatdagoEntity); //엔티티를 db에 저장(갱신)
         }
-
-
 
         //3. 수정 결과 페이지로 리다이렉트하기
         return "redirect:/gabowatdago/"+gabowatdagoEntity.getId();
     }
+
 
     @Transactional
     public String delete(@PathVariable("id") Long id){
