@@ -1,6 +1,7 @@
 package com.teamproject.gaxga.config;
 
 import com.teamproject.gaxga.handler.CustomAuthenticationFailureHandler;
+import com.teamproject.gaxga.handler.CustomAuthenticationSuccessHandler;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
@@ -18,6 +19,8 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Slf4j
 public class WebSecurityConfig {
 
+    private final CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
+
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
 
@@ -30,7 +33,7 @@ public class WebSecurityConfig {
         http
                 .authorizeHttpRequests((auth) -> auth
                         .requestMatchers("/css/**", "/js/**", "/img/**", "/fonts/**","terms.html", "privacy.html", "copyright.html",
-                                "/login/**","/api/**", "/findInfo/**","/joinMembership/**","/main", "/gabojago", "/gabojagoing", "/event"
+                                "/login/**","/api/**", "/findInfo/**","/joinMembership/**","/main", "/gabojago", "/gabojagoing", "/", "/event"
                         ).permitAll()
                         .anyRequest().authenticated());
         http
@@ -41,6 +44,7 @@ public class WebSecurityConfig {
                         .defaultSuccessUrl("/main", true)
                         .failureUrl("/login?error=true")
                         .failureHandler(authenticationFailureHandler())
+                        .successHandler(customAuthenticationSuccessHandler)
                 );
         http
                 .logout((logout) -> logout
