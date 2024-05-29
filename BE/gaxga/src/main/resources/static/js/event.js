@@ -41,21 +41,21 @@ exit_event.addEventListener("click", function(){
     exit_change3.style.display = "inline-block";
     exit_text3.style.display = "none";
   }else if(changeImage2.includes("img/이벤트진행중배너1L.png")){
-    image1.src = "img/이벤트진행중배너1s.png";
+    image1.src = "img/이벤트진행중배너1L.png";
     image1.style.display = "inline-block"
     exit_change1.style.display = "inline-block";
     exit_change2.style.display = "none";
     exit_change3.style.display = "none";
     exit_text1.style.display = "inline-block";
   }else if(changeImage3.includes("img/이벤트진행중배너2L.png")){
-    image2.src = "img/이벤트진행중배너2s.png"
+    image2.src = "img/이벤트진행중배너2L.png"
     image2.style.display = "inline-block";
     exit_text2.style.display = "inline-block";
     exit_change1.style.display = "none";
     exit_change2.style.display = "inline-block";
     exit_change3.style.display = "none";
   } else {
-    image3.src = "img/이벤트진행중배너3s.png";
+    image3.src = "img/이벤트진행중배너3L.png";
     image3.style.display = "inline-block";
     exit_text3.style.display = "inline-block";
     exit_change1.style.display = "none";
