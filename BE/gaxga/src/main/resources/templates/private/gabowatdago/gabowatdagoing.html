@@ -263,13 +263,14 @@
               </form>
             </div>
             <div class="comment-list-box">
-              <div class="cmt_container" th:each="cmt :${cmtDtos}" style="margin: 10px; background-color: ghostwhite">
+              <div class="cmt_container" th:each="cmt :${cmts}" style="margin: 10px; background-color: ghostwhite">
                 <h5 class="cmt_title"  style="display: flex;">
                   <span style="margin-right: auto" th:text="${cmt.nickname}"></span>
                   <div>
-                    <button th:if="${gaId == gabowatdago.gaId}" type="button" id="deleteBtn"
+                    <button th:if="${gaNick == cmt.nickname}" type="button" id="deleteBtn"
                             th:data-comment-id="${cmt.id}">삭제</button>
                   </div>
+                  <span th:text="'작성 시간 : ' + ${#temporals.format(cmt.regDate, 'yyyy.MM.dd HH:mm:ss')}" style="margin-right: 5px; margin-left: 25px"></span>
                 </h5>
                 <div class="cmt-body">
                   <p class="card-title" th:text="${cmt.body}"></p>

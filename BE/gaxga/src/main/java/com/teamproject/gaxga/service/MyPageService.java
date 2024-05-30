@@ -1,11 +1,13 @@
 package com.teamproject.gaxga.service;
 
 import com.teamproject.gaxga.dto.JoinMembershipForm;
+import com.teamproject.gaxga.entity.Cmt;
 import com.teamproject.gaxga.entity.Gabowatdago;
 import com.teamproject.gaxga.entity.User;
 import com.teamproject.gaxga.entity.UserDetail;
 import com.teamproject.gaxga.entity.gabojago.GP;
 import com.teamproject.gaxga.entity.gabojago.Jjim;
+import com.teamproject.gaxga.repository.CmtRepository;
 import com.teamproject.gaxga.repository.GabowatdagoRepository;
 import com.teamproject.gaxga.repository.LikeRepository;
 import com.teamproject.gaxga.repository.UserRepository;
@@ -49,7 +51,7 @@ public class MyPageService {
     private GabowatdagoRepository gabowatdagoRepository;
 
     @Autowired
-    private GpRepository gpRepository;
+    private CmtRepository cmtRepository;
 
     @Value("D:\\upload")
     private String fileDir;
@@ -66,7 +68,6 @@ public class MyPageService {
         model.addAttribute("userImage", userImage);
         model.addAttribute("userInfo", userInfo);
         log.info("==============================userInfo = " + userInfo);
-
         //가보자고
         User user = userDetail.getUser();
         Long userId = user.getUserCode();
@@ -111,14 +112,18 @@ public class MyPageService {
                 log.info("GaNick is after " + user.getGaNick());
                 user.setGaNick(joinMembershipForm.getGaNick());
                 log.info("GaNick is before " + user.getGaNick());
-                // 가봤다고 게시글 업데이트시키기
+                // 가봤다고 게시글의 닉네임 업데이트시키기
                 List<Gabowatdago> gabowatdagoEntity = gabowatdagoRepository.findByGaNick(oldGaNick);
                 System.out.println("==========================gabowatdagoEntity" + gabowatdagoEntity);
                 for (Gabowatdago gabowatdago : gabowatdagoEntity) {
-                    log.info("Updating Gabowatdago gaNick from: " + gabowatdago.getGaNick() + " to: " + joinMembershipForm.getGaNick());
                     gabowatdago.setGaNick(joinMembershipForm.getGaNick());
                     gabowatdagoRepository.save(gabowatdago);
-                    log.info("Updated Gabowatdago gaNick to: " + gabowatdago.getGaNick());
+                }
+                //댓글 닉네임 업데이트 시키기
+                List<Cmt> cmtEntity = cmtRepository.findByNickname(oldGaNick);
+                for (Cmt cmt : cmtEntity) {
+                    cmt.setNickname(joinMembershipForm.getGaNick());
+                    cmtRepository.save(cmt);
                 }
             }
         }

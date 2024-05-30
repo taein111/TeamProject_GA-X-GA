@@ -1,8 +1,10 @@
 package com.teamproject.gaxga.controller;
 
 import com.teamproject.gaxga.dto.GabowatdagoForm;
+import com.teamproject.gaxga.entity.Gabowatdago;
 import com.teamproject.gaxga.entity.UserDetail;
 
+import com.teamproject.gaxga.repository.GabowatdagoRepository;
 import com.teamproject.gaxga.service.GabowatdagoService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -23,6 +25,8 @@ public class GabowatdagoController {
 
     @Autowired
     private GabowatdagoService gabowatdagoService;
+    @Autowired
+    private GabowatdagoRepository gabowatdagoRepository;
 
     @GetMapping("/gabowatdagoing_p")
     public String newForm(Model model){
@@ -49,7 +53,16 @@ public class GabowatdagoController {
 
     @GetMapping("/gabowatdago/{id}/edit")
     public String edit(@PathVariable("id") Long id, Model model){
-        return gabowatdagoService.edit(id, model);
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        UserDetail userDetail = (UserDetail) auth.getPrincipal(); //로그인한사람 정보 가져오기
+        Gabowatdago writerInfo = gabowatdagoRepository.findById(id).orElse(null);
+        System.out.println("========================writerInfo" + writerInfo + "=================userGaId"+ userDetail.getUser().getGaId());
+        if (userDetail.getUser().getGaId().equals(writerInfo.getGaId())){   //getmapping 으로인해 외부 사용자가 다른 사용자의 게시글 수정페이지로 접속할 수 없도록 조건 걸기
+            return gabowatdagoService.edit(id, model);
+        }else {
+            return "redirect:/gabowatdago";
+        }
+
     }
 
     @PostMapping("/gabowatdago/update")
@@ -62,6 +75,14 @@ public class GabowatdagoController {
 
     @GetMapping("gabowatdago/{id}/delete")
     public String delete(@PathVariable("id") Long id){
-        return gabowatdagoService.delete(id);
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        UserDetail userDetail = (UserDetail) auth.getPrincipal(); //로그인한사람 정보 가져오기
+        Gabowatdago writerInfo = gabowatdagoRepository.findById(id).orElse(null);
+        if (userDetail.getUser().getGaId().equals(writerInfo.getGaId())){   //getmapping 으로인해 외부 사용자가 다른 사용자의 게시글 삭제할 수 없도록 조건 걸기
+            return gabowatdagoService.delete(id);
+        }else {
+            return "redirect:/gabowatdago";
+        }
+
     }
 }

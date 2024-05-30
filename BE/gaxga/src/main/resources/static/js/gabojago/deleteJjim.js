@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             console.log(jjim);
             const url = "/api/gabojagoing/jjim";
+            if(confirm("정말 삭제하시겠습니까?")){
             fetch(url, {
                 method: "DELETE",
                 headers: {
@@ -27,13 +28,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 },
                 body: JSON.stringify(jjim)
             }).then(response => {
-                const msg = (response.ok) ? "저장 삭제 성공" : "저장 삭제 실패";
+                const msg = (response.ok) ? "삭제 성공" : "삭제 실패";
                 alert(msg);
                 if (response.ok) {
                     this.closest('.receiveLikeList').remove();
                 }
                 window.location.reload();
             });
+            }
         });
     });
 });

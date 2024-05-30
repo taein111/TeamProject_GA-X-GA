@@ -2,10 +2,12 @@ package com.teamproject.gaxga.service;
 
 import com.teamproject.gaxga.dto.CmtDto;
 import com.teamproject.gaxga.dto.GabowatdagoForm;
+import com.teamproject.gaxga.entity.Cmt;
 import com.teamproject.gaxga.entity.Gabowatdago;
 import com.teamproject.gaxga.entity.User;
 import com.teamproject.gaxga.entity.UserDetail;
 import com.teamproject.gaxga.entity.gabojago.GP;
+import com.teamproject.gaxga.repository.CmtRepository;
 import com.teamproject.gaxga.repository.GabowatdagoRepository;
 import com.teamproject.gaxga.repository.UserRepository;
 import com.teamproject.gaxga.repository.gabojago.GpRepository;
@@ -27,10 +29,12 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -48,6 +52,8 @@ public class GabowatdagoService {
     private GpRepository gpRepository;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private CmtRepository cmtRepository;
 
 
     @Value("D:\\upload")
@@ -113,7 +119,7 @@ public class GabowatdagoService {
         //게시글 엔티티
         Gabowatdago gabowatdagoEntity = gabowatdagoRepository.findById(id).orElse(null);
         //댓글 엔티티
-        List<CmtDto> cmtDtos = cmtService.comments(id);
+        List<Cmt> cmts = cmtRepository.findByGabowatdagoId(id);
         //로그인한 회원 정보
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         UserDetail userDetail = (UserDetail) auth.getPrincipal();
@@ -122,12 +128,16 @@ public class GabowatdagoService {
         String gaNick = userDetail.getUser().getGaNick(); // 로그인한사람 gaNick 가져오기 - 여행지 추천을 안내하기 위한
         String gaEmail = userDetail.getUser().getGaEmail(); //로그인한 회원의 email 가져오기 - 로그인한 사용자 정보 표시
         User userInfo = userRepository.findByGaId(gaId); // 로그인 유저의 이미지 정보 가져오기
+        System.out.println("====================gaNick" + gaNick);
+
+
+
 
         List<Gabowatdago> myBoardList = gabowatdagoRepository.findByUserCode_UserCode(loginUserCode);//로그인한 사람의 게시글 목록
 
         //데이터 모델에 등록하기
         model.addAttribute("gabowatdago", gabowatdagoEntity);
-        model.addAttribute("cmtDtos", cmtDtos);
+        model.addAttribute("cmts", cmts);
         model.addAttribute("user", loginUserCode);
         model.addAttribute("gaId", gaId);
         model.addAttribute("gaNick", gaNick);
