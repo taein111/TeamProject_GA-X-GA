@@ -20,7 +20,6 @@ public class LoginController {
                 if ("saveUserId".equals(cookie.getName())) {
                     username = cookie.getValue();
                     isSaveIdChecked = true;
-                    log.info("================Cookie found with username: {}", username);
                     break;
                 }
             }

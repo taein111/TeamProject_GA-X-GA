@@ -35,26 +35,4 @@ public class FindInfoService {
             return data;
         }
     }
-
-//    public void findPassSendEmail() throws Exception{
-//        // Mail Server 설정
-//        String charSet = "UTF-8";
-//        String hostSMTP = "smtp.naver.com";
-//        String hostSMTPid = "dlstjs940806@naver.com";
-//        String hostSMTPpwd = "wq940806";
-//        // 보내는 사람 Email, 제목, 내용
-//        String fromEmail = "dlstjs940806@naver.com";
-//        String fromName = "GA X GA";
-//        String subject = "GA X GA 임시 번호입니다.";
-//        String msg = "";
-//
-//        msg += "<p>임시 비밀번호</p>";
-//
-//        // 받는 사람 Email 주소
-//        String mail = "dlstjs940806@naver.com"; // 사용자로부터 입력받은 이메일 주소로
-//        try{
-//
-//        }
-//    }
-
 }

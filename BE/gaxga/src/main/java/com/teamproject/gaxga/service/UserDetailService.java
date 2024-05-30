@@ -21,15 +21,12 @@ public class UserDetailService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        log.info("username : " + username);
         User userData = userRepository.findByGaId(username);
 
         if (userData != null) {
-            log.info("======userData.toString()) : " + userData.toString());
             return new UserDetail(userData);
         } else {
-            log.error("User not found with username: " + username);
-            throw new UsernameNotFoundException("User not found with username: " + username);
+            throw new UsernameNotFoundException("없는 유저 이름 : " + username);
         }
     }
 }

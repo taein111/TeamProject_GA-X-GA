@@ -37,9 +37,6 @@ public class MailService {
             message.setFrom(sender);
             message.setTo(user.getGaEmail());
             message.setText(content + newPass);
-            log.info("첫번째 비밀번호 : " + user.getGaPass() + " 확인용 id : " + user.getGaId());
-
-            log.info("두번째 비밀번호 : " + user.getGaPass() + " 확인용 id : " + user.getGaId());
             mailSender.send(message);
         }
     }

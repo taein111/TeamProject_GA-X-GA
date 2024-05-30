@@ -26,13 +26,11 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
             cookie.setMaxAge(7 * 24 * 60 * 60); // 7 days
             cookie.setPath("/");
             response.addCookie(cookie);
-            log.info("================Cookie set with username: {}", gaId);
         } else {
             Cookie cookie = new Cookie("saveUserId", null);
             cookie.setMaxAge(0);
             cookie.setPath("/");
             response.addCookie(cookie);
-            log.info("==============Cookie removed");
         }
 
         response.sendRedirect("/main");

@@ -24,7 +24,6 @@ public class JoinMembershipController {
     @PostMapping("/joinMembership/create")
     public String createJoinMembership(JoinMembershipForm joinMembershipForm,
                                        RedirectAttributes redirectAttributes){
-        log.info("======" + joinMembershipForm);
         if(joinMembershipForm.getGaP_Image() == null)
         {
             User user = new User();
@@ -35,7 +34,6 @@ public class JoinMembershipController {
         boolean checkId = joinMembershipService.checkId(joinMembershipForm.getGaId());
         boolean checkNick = joinMembershipService.checkNick(joinMembershipForm.getGaNick());
         boolean checkPhone = joinMembershipService.checkPhone(joinMembershipForm.getGaPhone());
-        log.info(success ? "success" : "fail");
         if(success){
             redirectAttributes.addFlashAttribute("msg", "회원가입에 성공했습니다");
             return "redirect:/login";
