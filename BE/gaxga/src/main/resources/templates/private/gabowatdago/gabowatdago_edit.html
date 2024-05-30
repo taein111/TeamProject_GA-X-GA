@@ -16,7 +16,7 @@
             <p>후기 게시글 작성</p>
         </div>
         <div th:object="${gabowatdago}">
-            <form action="/gabowatdago/update" method="POST" id="myForm" enctype="multipart/form-data">
+            <form action="/gabowatdago/update" method="POST" id="myForm" enctype="multipart/form-data" onsubmit="return validateForm()">
                 <input name="id" type="hidden" th:value="*{id}">
                 <input name="gaNick" type="hidden" th:value="${userNick}">
                 <div class="review-name">
@@ -81,6 +81,6 @@
 <script src="/js/post_edit.js"></script>
 <script src="/js/menu.js"></script>
 <script src="/js/fileUpload_edit.js"></script>
-<script src="/js/edit_validation.js"></script>
+<script src="/js/form_validation.js"></script>
 </body>
 </html>
