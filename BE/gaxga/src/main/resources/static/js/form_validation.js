@@ -1,4 +1,5 @@
 function validateForm() {
+    //게시글 작성 지역,테마 카테고리 제한
     var localSelect = document.querySelector('select[name="local"]');
     var themaSelect = document.querySelector('select[name="thema"]');
 
@@ -7,5 +8,5 @@ function validateForm() {
         return false; // 폼 제출 방지
     }
 
-    return true; // 폼 제출 허용
+    return true // 폼 제출 허용
 }

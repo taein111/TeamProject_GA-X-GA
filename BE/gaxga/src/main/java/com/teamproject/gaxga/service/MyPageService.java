@@ -1,17 +1,15 @@
 package com.teamproject.gaxga.service;
 
 import com.teamproject.gaxga.dto.JoinMembershipForm;
-import com.teamproject.gaxga.entity.Cmt;
-import com.teamproject.gaxga.entity.Gabowatdago;
+import com.teamproject.gaxga.entity.gabowatdago.Cmt;
+import com.teamproject.gaxga.entity.gabowatdago.Gabowatdago;
 import com.teamproject.gaxga.entity.User;
 import com.teamproject.gaxga.entity.UserDetail;
-import com.teamproject.gaxga.entity.gabojago.GP;
 import com.teamproject.gaxga.entity.gabojago.Jjim;
-import com.teamproject.gaxga.repository.CmtRepository;
-import com.teamproject.gaxga.repository.GabowatdagoRepository;
-import com.teamproject.gaxga.repository.LikeRepository;
+import com.teamproject.gaxga.repository.gabowatdago.CmtRepository;
+import com.teamproject.gaxga.repository.gabowatdago.GabowatdagoRepository;
+import com.teamproject.gaxga.repository.gabowatdago.LikeRepository;
 import com.teamproject.gaxga.repository.UserRepository;
-import com.teamproject.gaxga.repository.gabojago.GpRepository;
 import com.teamproject.gaxga.repository.gabojago.JjimRepository;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
@@ -30,9 +28,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @Service

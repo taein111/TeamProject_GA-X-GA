@@ -1,7 +1,6 @@
-package com.teamproject.gaxga.repository;
+package com.teamproject.gaxga.repository.gabowatdago;
 
-import com.teamproject.gaxga.entity.Cmt;
-import lombok.Value;
+import com.teamproject.gaxga.entity.gabowatdago.Cmt;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

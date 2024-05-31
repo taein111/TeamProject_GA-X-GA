@@ -1,7 +1,7 @@
-package com.teamproject.gaxga.dto;
+package com.teamproject.gaxga.dto.gabowatdago;
 
 
-import com.teamproject.gaxga.entity.Gabowatdago;
+import com.teamproject.gaxga.entity.gabowatdago.Gabowatdago;
 import com.teamproject.gaxga.entity.User;
 import lombok.*;
 import org.springframework.web.multipart.MultipartFile;

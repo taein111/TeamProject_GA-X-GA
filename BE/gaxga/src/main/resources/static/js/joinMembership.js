@@ -55,6 +55,5 @@ function validateForm() {
         document.getElementById("gaPhone").focus();
         return false;
     }
-
     return true;
 }

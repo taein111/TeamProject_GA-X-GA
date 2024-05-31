@@ -1,9 +1,7 @@
-package com.teamproject.gaxga.controller;
+package com.teamproject.gaxga.controller.gabowatdago;
 
-import com.teamproject.gaxga.dto.CmtDto;
-import com.teamproject.gaxga.entity.Cmt;
-import com.teamproject.gaxga.entity.Gabowatdago;
-import com.teamproject.gaxga.service.CmtService;
+import com.teamproject.gaxga.dto.gabowatdago.CmtDto;
+import com.teamproject.gaxga.service.gabowatdago.CmtService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
