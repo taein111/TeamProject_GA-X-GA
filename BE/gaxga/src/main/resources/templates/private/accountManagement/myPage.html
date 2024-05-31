@@ -82,9 +82,9 @@
                             </form>
                         </div>
                     </div>
-                    <div id="myWrited" class="selectedArea">
-                        <div id="myWritedArea">
-                            <div class="myWritedList" th:each="myBoardList: ${myBoardList}">
+                    <div id="myWritten" class="selectedArea">
+                        <div id="myWrittenArea">
+                            <div class="myWrittenList" th:each="myBoardList: ${myBoardList}">
                                 <img th:src="${myBoardList.image != null ? '/upload/' + #strings.arraySplit(myBoardList.image, ',')[0] : '/upload/빈하트.png'}" alt="Board Image"/>
                                 <a th:href="@{'/gabowatdago/'+*{myBoardList.id}}" th:text="*{myBoardList.title}"></a>
                                 <span th:text="*{#temporals.format(myBoardList.regDate, 'yyyy-MM-dd HH:mm:ss')}"></span>
@@ -161,21 +161,16 @@
                     </div>
                 </div>
                 <div id="bottom" class="content">
-                    <div id="firstEvent"class="event">
-                        <img src="../img/진행중 이벤트 최종1.png" alt="">
-<!--                        <span>13xx</span>-->
-                        <span>zㅣ존***</span>
+<!--                    이곳에 최근이벤트 가져오는 ID, 이벤트로 이동하는 버튼-->
+                    <div id="ingEvent" class="event">
+                        <a th:href="@{/event}">
+                            <img src="/img/이벤트진행중배너1L.png" alt="">
+                        </a>
                     </div>
-<!--                    <div id="secondEvent"class="event">-->
-<!--                        <img src="../img/진행중 이벤트 최종2.png" alt="">-->
-<!--                        <span>13xx</span>-->
-<!--                        <span>태잉**</span>-->
-<!--                    </div>-->
-<!--                    <div id="thirdEvent" class="event">-->
-<!--                        <img src="../img/진행중 이벤트 최종3.png" alt="">-->
-<!--                        <span>13xx</span>-->
-<!--                        <span>해커제****</span>-->
-<!--                    </div>-->
+                    <div id="defaultEvent" class="event">
+                        <img src="/img/마이페이지이벤트바로가기.png" alt="">
+<!--                        <span>zㅣ존***</span>-->
+                    </div>
                 </div>
             </section>
         </div>

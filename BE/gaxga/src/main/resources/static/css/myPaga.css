@@ -474,18 +474,20 @@ height: 80%;
 
 /* 오른쪽 3개중 bottom 부분 프로필 수정 */
 #myPage_main #rightContent #bottom{
-  height: 280px;
+  position: relative;
+  display: flex;
+  height: 217px;
 }
 
 #myPage_main #rightContent #bottom .event{
   display: flex;
   width: 100%;
-  height: 72%;
+  height: 100%;
   align-items: center;
 }
 
 #myPage_main #rightContent #bottom .event img{
-  width: 50%;
+  width: 100%;
   height: 100%;
   object-fit: cover;
 }
