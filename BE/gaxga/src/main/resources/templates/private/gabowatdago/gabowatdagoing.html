@@ -252,14 +252,14 @@
           <div id="maps"></div>
           <div class="comment-container">
             <div class="input-box">
-              <form class="comment-input">
+              <form class="comment-input" onsubmit="return cmtValidation()">
                 <input style ="width: 20%; background-color: #cccccc"  id="client" type ="text" maxlength="10" th:value="${gaNick}" readonly>
                 <textarea style ="width: 80%;" id="comment" type ="text" placeholder="작성자에게 댓글을 남겨주세요"></textarea>
                 <!--현재 페이지의 게시글 id 정보 전송-->
                 <input type="hidden" id="new-comment-gabowatdago_id" th:value="*{id}">
                 <!-- 로그인한 유저의 userCode 전송-->
                 <input type="hidden" id="like_input" th:value="${user}">
-                <input id="comment-save" type="submit" value="댓글 작성">
+                <input id="comment-save" type="submit" value="댓글 작성" >
               </form>
             </div>
             <div class="comment-list-box">

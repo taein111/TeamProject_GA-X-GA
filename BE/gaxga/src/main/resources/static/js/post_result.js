@@ -91,8 +91,12 @@ marker.setMap(map);
 
 //-----------------------------------------------------------------------
 // 삭제버튼 클릭 알림창
-function delOk(){
-    return confirm('삭제하시면 복구할 수 없습니다.\n정말로 삭제하시겠습니까??');
+function delOk() {
+    if (confirm('삭제하시면 복구할 수 없습니다.\n정말로 삭제하시겠습니까?')) {
+        return true;
+    } else {
+        return false;
+    }
 }
 // 댓글  작성 기능
 const commentCreateBtn = document.querySelector("#comment-save");
@@ -114,11 +118,13 @@ commentCreateBtn.addEventListener("click", function () {
         },
         body: JSON.stringify(comment)
     }).then(response => {
-        if (response.ok) {
+        if(comment.body.trim() === ""){
+            alert("댓글 내용을 입력해주세요")
+        }else if (response.ok) {
             alert("댓글 등록 완료");
             // 댓글이 성공적으로 등록되었을 때 페이지를 새로 고침
             window.location.reload();
-        } else {
+        }else {
             alert("댓글 등록 실패");
         }
     });
@@ -134,18 +140,22 @@ commentDeleteBtns.forEach(btn => {
         console.log(`삭제 버튼 클릭 : ${commentId}번 댓글`);
         //삭제 REST API 호출
         const url = `/api/cmts/${commentId}`
-        fetch(url, {
-            method: "DELETE"
-        }).then(response => {
-            //댓글 삭제 실패 처리
-            if(!response.ok){
-                alert("댓글 삭제 실패");
-                return;
-            }
-            const msg = "댓글 삭제 완료";
-            alert(msg);
-            window.location.reload();
-        })
+        if(confirm('삭제하시면 복구할 수 없습니다.\n정말로 삭제하시겠습니까?')) {
+            fetch(url, {
+                method: "DELETE"
+            }).then(response => {
+                //댓글 삭제 실패 처리
+                if (!response.ok) {
+                    alert("댓글 삭제 실패");
+                    return;
+                }
+                const msg = "댓글 삭제 완료";
+                alert(msg);
+                window.location.reload();
+            })
+        } else{
+            return false
+        }
     });
 });
 
