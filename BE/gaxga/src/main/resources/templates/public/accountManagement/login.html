@@ -18,7 +18,7 @@
 <div id="container">
     <div id="login_main">
         <div id="top">
-            <a th:href="@{/main/main2}"><h2>GA X GA</h2></a>
+            <a th:href="@{/main}"><h2>GA X GA</h2></a>
         </div>
         <div id="middle">
             <h3>Login</h3>
@@ -26,18 +26,15 @@
                 <div id="login_area">
                     <div id="id_area">
                         <i class="fa-solid fa-user"></i>
-                        <input type="text" name="gaId" id="gaId" placeholder="아이디를 입력하세요." maxlength="12" autocomplete="username">
+                        <input type="text" name="gaId" id="gaId" placeholder="아이디를 입력하세요." maxlength="12" autocomplete="username" th:value="${saveUserId}">
                     </div>
                     <div id="password_area">
                         <i class="fa-solid fa-unlock"></i>
                         <input type="password" name="gaPass" id="gaPass" placeholder="비밀번호를 입력하세요." maxlength="12" autocomplete="off">
                     </div>
                 </div>
-                <div th:if="error">
-                    <p id="valid" style="color: red; font-size:12px;"><a th:text="${exception}"></a></p>
-                </div>
                 <label for="saveId">
-                    <input type="checkbox" id="saveId"> 아이디 저장하기
+                    <input type="checkbox" id="saveId" name="saveUserId" th:checked="${isSaveIdChecked}"> 아이디 저장하기
                 </label>
                 <input type="submit" value="로그인" id="btn">
                 <div id="findInfo">

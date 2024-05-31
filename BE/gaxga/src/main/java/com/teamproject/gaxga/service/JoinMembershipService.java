@@ -21,7 +21,6 @@ public class JoinMembershipService {
         boolean isUserId = userRepository.existsByGaId(joinMembershipForm.getGaId());
         boolean isUserNick = userRepository.existsByGaNick(joinMembershipForm.getGaNick());
         boolean isUserPhone = userRepository.existsByGaPhone(joinMembershipForm.getGaPhone());
-        log.info("isUserId = " + isUserId + ", isUserNick = " + isUserNick + ", isUserPhone = " + isUserPhone);
         if (isUserId || isUserNick || isUserPhone) {
             return false;
         }
@@ -34,7 +33,6 @@ public class JoinMembershipService {
         data.setGaAddress(joinMembershipForm.getGaAddress());
         data.setGaDetailAddress(joinMembershipForm.getGaDetailAddress());
         data.setGaEmail(joinMembershipForm.getGaEmail());
-        // todo : 나중에 프로필이미지 디폴트로 넣기
         data.setGaP_Image(joinMembershipForm.getGaP_Image());
         userRepository.save(data);
         return true;

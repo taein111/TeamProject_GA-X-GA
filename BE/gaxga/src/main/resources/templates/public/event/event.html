@@ -23,11 +23,15 @@
                 <img class="change_image"  th:if="*{status == 'ONGOING'}" th:src="@{*{img}}" alt="1번 이벤트" width="100%" height="100%" style="display: inline-block">
                 <img class="change_image"  th:if="*{status == 'ENDED'}" th:src="@{/img/이벤트디폴트배너L.png}" alt="1번 이벤트" width="100%" height="100%">
                 <button id="num1" onclick='btnClick1()' style="display: none">
-                    <img src="/img/이벤트진행중배너1버튼.png" width="250px" height="250px"></button>
+                    <img src="/img/이벤트진행중배너버튼1.png" width="143px" height="150px"></button>
                 <button id="num2" onclick='btnClick2()' style="display: none">
-                    <img src="/img/이벤트진행중배너2버튼.png" width="250px" height="250px"></button>
+                    <img src="/img/이벤트진행중배너버튼2.png" width="143px" height="150px"></button>
                 <button id="num3" onclick='btnClick3()' style="display: none">
+<<<<<<< HEAD
                     <img src="/img/이벤트진행중배너3버튼.png" width="250px" height="250px"></button>
+=======
+                    <img src="/img/이벤트진행중배너버튼3.png" width="143px" height="150px"></button>
+>>>>>>> e875a194e2f5b616e3eb87b6f7adc1bfec6f417d
                 <div class="text1" th:object="${Event[0]}">
                     <br>
                     <span style="font-size: 30px; font-weight: 500;" th:text="*{name}"><br></span><br>

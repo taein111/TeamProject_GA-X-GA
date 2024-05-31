@@ -25,14 +25,14 @@ public interface GabowatdagoRepository extends JpaRepository<Gabowatdago, Long> 
     @Query(value = "SELECT * FROM " +
             "(SELECT sub.*, ROWNUM rnum FROM " +
             "(SELECT g.*, ROW_NUMBER() OVER (PARTITION BY g.user_code ORDER BY g.like_count DESC, g.reg_date ASC) as rn FROM " +
-            "gabowatdago g WHERE g.reg_date BETWEEN TO_TIMESTAMP('2024-05-22 00:00:00.000', 'YYYY-MM-DD HH24:MI:SS.FF3') AND TO_TIMESTAMP('2024-05-31 23:59:59.999', 'YYYY-MM-DD HH24:MI:SS.FF3') " +
+            "gabowatdago g WHERE g.reg_date BETWEEN TO_TIMESTAMP('2024-05-01 00:00:00.000', 'YYYY-MM-DD HH24:MI:SS.FF3') AND TO_TIMESTAMP('2024-05-31 23:59:59.999', 'YYYY-MM-DD HH24:MI:SS.FF3') " +
             "ORDER BY g.like_count DESC, g.reg_date ASC) sub WHERE sub.rn = 1) WHERE rnum <= 3", nativeQuery = true)
     List<Gabowatdago> findTop3ByLikeCountAndDateRangeWithoutDuplicateWinners();
 
     //특정 기간 기준 이벤트 당첨자 - 게시글 수 당첨자 : 가장 많은 게시글을 작성한 사람 기준, 게시글 수가 동일하면 먼저 게시글을 작성한 사람이 당첨된다.
     @Query(value = "SELECT * FROM " +
             "(SELECT g.ga_nick, COUNT(*) AS postCount, MIN(g.reg_date) AS earliestRegDate FROM " +
-            "Gabowatdago g WHERE g.reg_date BETWEEN TO_TIMESTAMP('2024-01-01 00:00:00.000', 'YYYY-MM-DD HH24:MI:SS.FF3') AND TO_TIMESTAMP('2024-05-31 23:59:59.999', 'YYYY-MM-DD HH24:MI:SS.FF3') " +
+            "Gabowatdago g WHERE g.reg_date BETWEEN TO_TIMESTAMP('2024-05-01 00:00:00.000', 'YYYY-MM-DD HH24:MI:SS.FF3') AND TO_TIMESTAMP('2024-05-31 23:59:59.999', 'YYYY-MM-DD HH24:MI:SS.FF3') " +
             "GROUP BY g.ga_nick ORDER BY postCount DESC, earliestRegDate ASC) WHERE ROWNUM <= 3", nativeQuery = true)
     List<Object[]> findTop3UsersByPostCountIncludingNick();
 

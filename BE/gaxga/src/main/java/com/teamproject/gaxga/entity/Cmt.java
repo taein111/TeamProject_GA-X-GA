@@ -2,18 +2,17 @@ package com.teamproject.gaxga.entity;
 
 import com.teamproject.gaxga.dto.CmtDto;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.annotations.OnDelete;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 import static org.hibernate.annotations.OnDeleteAction.CASCADE;
 
 @Entity
 @Getter
+@Setter
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
@@ -33,6 +32,9 @@ public class Cmt extends BaseEntity{
     @Column
     private String body;
 
+    public LocalDateTime getRegDate() {
+        return super.getRegDate();
+    }
 
     public static Cmt createComment(CmtDto cmtDto, Gabowatdago gabowatdago) {
         //예외 발생

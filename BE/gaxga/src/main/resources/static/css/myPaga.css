@@ -173,7 +173,6 @@ a:visited{
 #myPage_main #rightContent #profileImage img{
   width: 100%;
   height: 80%;
-  object-fit: cover;
   display: block;
   border-radius: 10px 10px 0 0;
 }

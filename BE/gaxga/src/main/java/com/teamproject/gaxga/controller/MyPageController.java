@@ -34,7 +34,6 @@ public class MyPageController {
 
     @PostMapping("/myPage")
     public String fixMyInfo(JoinMembershipForm joinMembershipForm){
-        log.info("======join:"+joinMembershipForm.getGaNick());
         return myPageService.fixMyInfo(joinMembershipForm);
         
     }

@@ -18,7 +18,4 @@ public class JoinMembershipForm {
     private String gaEmail;
     private String gaP_Image;
 
-//    public JoinMembership toEntity(){
-//        return new JoinMembership(null, gaId, gaPass, gaNick, gaPhone, gaAddress, gaDetailAddress, gaEmail, gaP_Image);
-//    }
 }
