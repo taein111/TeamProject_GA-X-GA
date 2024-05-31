@@ -185,7 +185,6 @@ a:visited{
   font-weight: 400;
   font-size: 20px;
   cursor: pointer;
-  border-radius: 0 0 10px 10px;
 }
 
 #myPage_main #rightContent #profileImage input:hover {
@@ -424,6 +423,7 @@ height: 80%;
   display: flex;
   width: 100%;
   height: 206px;
+  margin: 15px 0 25px 0;
 }
 #myPage_main #rightContent #middle .gaga{
   width: 50%;
@@ -443,11 +443,11 @@ height: 80%;
 
 #myPage_main #rightContent #middle .gaga p{
   border: 1px solid #958f8f;
-  height: 68px;
+  height: 76px;
   font-family: 'GmarketSans';
   font-weight: 500;
   font-size: 40px;
-  line-height: 76px;
+  line-height: 86px;
   border-radius: 5px;
 }
 #myPage_main #rightContent #middle #gabo p{
@@ -475,15 +475,13 @@ height: 80%;
 
 /* 오른쪽 3개중 bottom 부분 프로필 수정 */
 #myPage_main #rightContent #bottom{
-  display: flex;
-  width: 100%;
-  flex-direction: column;
   height: 280px;
 }
 
 #myPage_main #rightContent #bottom .event{
   display: flex;
-  height: 33.3%;
+  width: 100%;
+  height: 72%;
   align-items: center;
 }
 
