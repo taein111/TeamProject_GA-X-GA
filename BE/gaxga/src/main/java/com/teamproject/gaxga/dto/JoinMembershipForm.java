@@ -17,5 +17,4 @@ public class JoinMembershipForm {
     private String gaDetailAddress;
     private String gaEmail;
     private String gaP_Image;
-
 }

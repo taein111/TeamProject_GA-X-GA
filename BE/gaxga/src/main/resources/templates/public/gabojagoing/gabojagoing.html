@@ -28,9 +28,21 @@
                     <div id="location" th:text="*{state}"></div>
                 </div>
                 <div id="GabojagoTag">
-                    <a href="#" th:text="'#' + *{region.name}"></a>
-                    <a href="#" th:text="'#' + *{thema.name}"></a>
-                    <a href="#" th:text="'#' + *{name}"></a>
+                    <a href="#" id="searchLink" th:data-name="*{region.name}" onclick="showModal()" th:text="'#' + *{region.name}"></a>
+
+                    <!-- 모달 -->
+                    <div id="searchModal" class="modal">
+                        <div class="modal-content">
+                            <span class="close" onclick="closeModal()">&times;</span>
+                            <p>구글로 이동하시겠습니까 네이버로 이동하시겠습니까?</p>
+                            <div class="modal-buttons">
+                                <button onclick="redirectToSearch('google')">구글</button>
+                                <button onclick="redirectToSearch('naver')">네이버</button>
+                            </div>
+                        </div>
+                    </div>
+                    <a th:href="@{'https://www.google.com/search?q=' + *{thema.name}}" target="_blank" th:text="'#' + *{thema.name}"></a>
+                    <a th:href="@{'https://www.google.com/search?q=' + *{name}}" target="_blank" th:text="'#' + *{name}"></a>
                 </div>
             </div>
             <div id="area-No1-3">
@@ -68,5 +80,41 @@
 </div>
 <script th:src="@{/js/menu2.js}"></script>
 <script th:src="@{/js/gabojago/jjim.js}"></script>
+<script>
+    // 모달 열기
+    function showModal() {
+        var modal = document.getElementById("searchModal");
+        modal.style.display = "block";
+    }
+
+    // 모달 닫기
+    function closeModal() {
+        var modal = document.getElementById("searchModal");
+        modal.style.display = "none";
+    }
+
+    // 검색 엔진 선택에 따라 리다이렉트
+    function redirectToSearch(engine) {
+        var regionName = document.getElementById('searchLink').getAttribute('data-name');
+        var searchUrl;
+
+        if (engine === 'google') {
+            searchUrl = 'https://www.google.com/search?q=' + encodeURIComponent(regionName);
+        } else if (engine === 'naver') {
+            searchUrl = 'https://search.naver.com/search.naver?query=' + encodeURIComponent(regionName);
+        }
+
+        window.open(searchUrl, '_blank');
+        closeModal();
+    }
+
+    // 모달 외부 클릭 시 닫기
+    window.onclick = function(event) {
+        var modal = document.getElementById("searchModal");
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
 </body>
 </html>
