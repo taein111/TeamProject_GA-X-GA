@@ -207,10 +207,14 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: left;
-  color: #6A6A6A;
   font-family: 'GmarketSans';
   font-weight: 600;
   margin-left: 22px;
+}
+
+.WaName a {
+  text-decoration-line: none;
+  color: #6A6A6A;
 }
 
 .WaProfile {

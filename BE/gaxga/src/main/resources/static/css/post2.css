@@ -263,6 +263,11 @@ input[type="button"]{
   justify-content: space-between;
 }
 
+.review-title a {
+  text-decoration-line: none;
+  color: #6A6A6A;
+}
+
 .review-title h2{
   font-family: 'GmarketSans';
   font-weight: 600;
