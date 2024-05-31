@@ -1,12 +1,12 @@
-package com.teamproject.gaxga.service;
+package com.teamproject.gaxga.service.gabowatdago;
 
 import com.sun.jdi.request.DuplicateRequestException;
-import com.teamproject.gaxga.dto.LikeDto;
-import com.teamproject.gaxga.entity.Gabowatdago;
-import com.teamproject.gaxga.entity.Like;
+import com.teamproject.gaxga.dto.gabowatdago.LikeDto;
+import com.teamproject.gaxga.entity.gabowatdago.Gabowatdago;
+import com.teamproject.gaxga.entity.gabowatdago.Like;
 import com.teamproject.gaxga.entity.User;
-import com.teamproject.gaxga.repository.GabowatdagoRepository;
-import com.teamproject.gaxga.repository.LikeRepository;
+import com.teamproject.gaxga.repository.gabowatdago.GabowatdagoRepository;
+import com.teamproject.gaxga.repository.gabowatdago.LikeRepository;
 import com.teamproject.gaxga.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;

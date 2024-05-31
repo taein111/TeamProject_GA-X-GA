@@ -1,16 +1,14 @@
 package com.teamproject.gaxga.service;
 
 import com.teamproject.gaxga.entity.Event;
-import com.teamproject.gaxga.entity.Gabowatdago;
-import com.teamproject.gaxga.repository.GabowatdagoRepository;
+import com.teamproject.gaxga.entity.gabowatdago.Gabowatdago;
+import com.teamproject.gaxga.repository.gabowatdago.GabowatdagoRepository;
 import com.teamproject.gaxga.repository.event.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class EventService {

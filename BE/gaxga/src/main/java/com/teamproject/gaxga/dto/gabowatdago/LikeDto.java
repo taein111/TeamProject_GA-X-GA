@@ -1,4 +1,4 @@
-package com.teamproject.gaxga.dto;
+package com.teamproject.gaxga.dto.gabowatdago;
 
 import lombok.*;
 

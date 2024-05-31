@@ -1,14 +1,13 @@
-package com.teamproject.gaxga.service;
+package com.teamproject.gaxga.service.gabowatdago;
 
-import com.teamproject.gaxga.dto.CmtDto;
-import com.teamproject.gaxga.dto.GabowatdagoForm;
-import com.teamproject.gaxga.entity.Cmt;
-import com.teamproject.gaxga.entity.Gabowatdago;
+import com.teamproject.gaxga.dto.gabowatdago.GabowatdagoForm;
+import com.teamproject.gaxga.entity.gabowatdago.Cmt;
+import com.teamproject.gaxga.entity.gabowatdago.Gabowatdago;
 import com.teamproject.gaxga.entity.User;
 import com.teamproject.gaxga.entity.UserDetail;
 import com.teamproject.gaxga.entity.gabojago.GP;
-import com.teamproject.gaxga.repository.CmtRepository;
-import com.teamproject.gaxga.repository.GabowatdagoRepository;
+import com.teamproject.gaxga.repository.gabowatdago.CmtRepository;
+import com.teamproject.gaxga.repository.gabowatdago.GabowatdagoRepository;
 import com.teamproject.gaxga.repository.UserRepository;
 import com.teamproject.gaxga.repository.gabojago.GpRepository;
 import com.teamproject.gaxga.repository.gabojago.GrRepository;
@@ -29,12 +28,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Slf4j
 @Service

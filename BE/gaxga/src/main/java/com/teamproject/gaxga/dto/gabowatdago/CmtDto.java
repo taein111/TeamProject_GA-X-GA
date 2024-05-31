@@ -1,6 +1,6 @@
-package com.teamproject.gaxga.dto;
+package com.teamproject.gaxga.dto.gabowatdago;
 
-import com.teamproject.gaxga.entity.Cmt;
+import com.teamproject.gaxga.entity.gabowatdago.Cmt;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -1,11 +1,11 @@
-package com.teamproject.gaxga.controller;
+package com.teamproject.gaxga.controller.gabowatdago;
 
-import com.teamproject.gaxga.dto.GabowatdagoForm;
-import com.teamproject.gaxga.entity.Gabowatdago;
+import com.teamproject.gaxga.dto.gabowatdago.GabowatdagoForm;
+import com.teamproject.gaxga.entity.gabowatdago.Gabowatdago;
 import com.teamproject.gaxga.entity.UserDetail;
 
-import com.teamproject.gaxga.repository.GabowatdagoRepository;
-import com.teamproject.gaxga.service.GabowatdagoService;
+import com.teamproject.gaxga.repository.gabowatdago.GabowatdagoRepository;
+import com.teamproject.gaxga.service.gabowatdago.GabowatdagoService;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

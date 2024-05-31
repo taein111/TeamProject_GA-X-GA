@@ -1,6 +1,7 @@
-package com.teamproject.gaxga.entity;
+package com.teamproject.gaxga.entity.gabowatdago;
 
-import com.teamproject.gaxga.dto.CmtDto;
+import com.teamproject.gaxga.dto.gabowatdago.CmtDto;
+import com.teamproject.gaxga.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.OnDelete;
@@ -16,7 +17,7 @@ import static org.hibernate.annotations.OnDeleteAction.CASCADE;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class Cmt extends BaseEntity{
+public class Cmt extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cmt_id_seq")
     @SequenceGenerator(name="cmt_id_seq", sequenceName = "cmt_id_seq", initialValue = 1, allocationSize = 1)

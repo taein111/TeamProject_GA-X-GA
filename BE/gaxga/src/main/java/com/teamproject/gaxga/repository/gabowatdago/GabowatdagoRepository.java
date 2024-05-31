@@ -1,13 +1,12 @@
-package com.teamproject.gaxga.repository;
+package com.teamproject.gaxga.repository.gabowatdago;
 
-import com.teamproject.gaxga.entity.Gabowatdago;
+import com.teamproject.gaxga.entity.gabowatdago.Gabowatdago;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public interface GabowatdagoRepository extends JpaRepository<Gabowatdago, Long> {
     @Override

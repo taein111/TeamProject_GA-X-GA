@@ -1,10 +1,10 @@
-package com.teamproject.gaxga.service;
+package com.teamproject.gaxga.service.gabowatdago;
 
-import com.teamproject.gaxga.dto.CmtDto;
-import com.teamproject.gaxga.entity.Cmt;
-import com.teamproject.gaxga.entity.Gabowatdago;
-import com.teamproject.gaxga.repository.CmtRepository;
-import com.teamproject.gaxga.repository.GabowatdagoRepository;
+import com.teamproject.gaxga.dto.gabowatdago.CmtDto;
+import com.teamproject.gaxga.entity.gabowatdago.Cmt;
+import com.teamproject.gaxga.entity.gabowatdago.Gabowatdago;
+import com.teamproject.gaxga.repository.gabowatdago.CmtRepository;
+import com.teamproject.gaxga.repository.gabowatdago.GabowatdagoRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

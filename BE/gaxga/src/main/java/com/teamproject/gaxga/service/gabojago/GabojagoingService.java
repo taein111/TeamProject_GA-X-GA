@@ -1,6 +1,5 @@
 package com.teamproject.gaxga.service.gabojago;
 
-import com.teamproject.gaxga.entity.Gabowatdago;
 import com.teamproject.gaxga.entity.UserDetail;
 import com.teamproject.gaxga.entity.gabojago.GP;
 import com.teamproject.gaxga.entity.gabojago.Jjim;
