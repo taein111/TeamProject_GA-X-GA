@@ -31,10 +31,13 @@ public class Jjim {
         this.gpid = gp;
         this.user = user;
     }
-//    public void getJjimCountWithDefault() {
-//        // Optional 클래스를 사용하여 jjimCount 변수가 null인 경우 기본값을 설정
-//        this.jjimCount = 0L;
-//    }
-// jjimCount가 null일 때만 0으로 초기화
+/*
+데이터베이스에서 0으로 초기화 시켜줌.
+   public void getJjimCountWithDefault() {
+       // Optional 클래스를 사용하여 jjimCount 변수가 null인 경우 기본값을 설정
+       this.jjimCount = 0L;
+   }
+jjimCount가 null일 때만 0으로 초기화
+*/
 
 }

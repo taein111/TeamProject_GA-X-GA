@@ -31,7 +31,6 @@ public class GabojagoingService {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         UserDetail userDetail = (UserDetail) auth.getPrincipal();
         Long JjimDtos = userDetail.getUser().getUserCode();
-        System.out.println(JjimDtos);
         model.addAttribute("jjim", jjim);
         model.addAttribute("gabojagoing", gabojagoingEntity);
         model.addAttribute("user", JjimDtos);
@@ -47,7 +46,6 @@ public class GabojagoingService {
         model.addAttribute("gabojagoingList", gabojagoingEntityList);
         model.addAttribute("locList", locList);
         model.addAttribute("themaList", themaList);
-
         //3. 뷰 페이지 등록하기
         return "public/gabojagoing/gabojagoing";
     }
