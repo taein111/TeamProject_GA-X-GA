@@ -1,11 +1,11 @@
-package com.teamproject.gaxga.entity;
+package com.teamproject.gaxga.entity.gabowatdago;
 
+import com.teamproject.gaxga.entity.User;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.OnDelete;
-import org.springframework.data.util.Lazy;
 
 import static org.hibernate.annotations.OnDeleteAction.CASCADE;
 

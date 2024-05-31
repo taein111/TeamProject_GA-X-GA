@@ -1,7 +1,7 @@
-package com.teamproject.gaxga.controller;
+package com.teamproject.gaxga.controller.gabowatdago;
 
-import com.teamproject.gaxga.dto.LikeDto;
-import com.teamproject.gaxga.service.LikeService;
+import com.teamproject.gaxga.dto.gabowatdago.LikeDto;
+import com.teamproject.gaxga.service.gabowatdago.LikeService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;

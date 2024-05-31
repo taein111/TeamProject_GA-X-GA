@@ -1,5 +1,7 @@
-package com.teamproject.gaxga.entity;
+package com.teamproject.gaxga.entity.gabowatdago;
 
+import com.teamproject.gaxga.entity.BaseEntity;
+import com.teamproject.gaxga.entity.User;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
