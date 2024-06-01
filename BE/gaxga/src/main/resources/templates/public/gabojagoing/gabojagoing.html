@@ -31,16 +31,16 @@
                     <a href="#" id="searchLink" th:data-name="*{region.name}" onclick="showModal()" th:text="'#' + *{region.name}"></a>
 
                     <!-- 모달 -->
-                    <div id="searchModal" class="modal">
-                        <div class="modal-content">
-                            <span class="close" onclick="closeModal()">&times;</span>
-                            <p>구글로 이동하시겠습니까 네이버로 이동하시겠습니까?</p>
-                            <div class="modal-buttons">
-                                <button onclick="redirectToSearch('google')">구글</button>
-                                <button onclick="redirectToSearch('naver')">네이버</button>
-                            </div>
-                        </div>
-                    </div>
+<!--                    <div id="searchModal" class="modal">-->
+<!--                        <div class="modal-content">-->
+<!--                            <span class="close" onclick="closeModal()">&times;</span>-->
+<!--                            <p>구글로 이동하시겠습니까 네이버로 이동하시겠습니까?</p>-->
+<!--                            <div class="modal-buttons">-->
+<!--                                <button onclick="redirectToSearch('google')">구글</button>-->
+<!--                                <button onclick="redirectToSearch('naver')">네이버</button>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
                     <a th:href="@{'https://www.google.com/search?q=' + *{thema.name}}" target="_blank" th:text="'#' + *{thema.name}"></a>
                     <a th:href="@{'https://www.google.com/search?q=' + *{name}}" target="_blank" th:text="'#' + *{name}"></a>
                 </div>
