@@ -120,6 +120,11 @@
                                 <button type="button" id="deleteBtn">삭제</button>
                             </div>
                         </div>
+<!--                        <div id="receiveLikePageList">-->
+<!--                            <button>&lt;</button>-->
+<!--                            <button>3</button>-->
+<!--                            <button>&gt;</button>-->
+<!--                        </div>-->
                     </div>
                 </div>
                 <div id="middle" class="content">
@@ -128,19 +133,50 @@
                             <h4 style="font-family: 'GmarketSans'; font-weight: 500; color: #454545;">가보자고</h4>
                         </div>
                         <p><i class="fa-regular fa-bookmark"><span th:text="${jjimCount}" style="margin-left: 10px"></span></i></p>
+<!--                        <div class="recentWriting">-->
+<!--                            <div class="first">-->
+<!--                                <span>춘천 - 남이섬</span>-->
+<!--                                <span>2024-03-16</span>-->
+<!--                            </div>-->
+<!--                            <div class="second">-->
+<!--                                <span>춘천 - 남이섬</span>-->
+<!--                                <span>2024-03-16</span>-->
+<!--                            </div>-->
+<!--                        </div>-->
                     </div>
                     <div class="gaga" id="gabowa">
                         <div class="gagaTitle">
                             <h4 style="font-family: 'GmarketSans'; font-weight: 500; color: #454545;">가봤다고</h4>
                         </div>
                         <p><i class="fa-regular fa-heart" th:text="${likeCounts}"></i></p>
+<!--                        <div class="recentWriting">-->
+<!--                            <div class="first">-->
+<!--                                <span>춘천 - 남이섬</span>-->
+<!--                                <span>2024-03-16</span>-->
+<!--                            </div>-->
+<!--                            <div class="second">-->
+<!--                                <span>춘천 - 남이섬</span>-->
+<!--                                <span>2024-03-16</span>-->
+<!--                            </div>-->
+<!--                        </div>-->
                     </div>
                 </div>
                 <div id="bottom" class="content">
                     <div id="firstEvent"class="event">
                         <img src="../img/진행중 이벤트 최종1.png" alt="">
+<!--                        <span>13xx</span>-->
                         <span>zㅣ존***</span>
                     </div>
+<!--                    <div id="secondEvent"class="event">-->
+<!--                        <img src="../img/진행중 이벤트 최종2.png" alt="">-->
+<!--                        <span>13xx</span>-->
+<!--                        <span>태잉**</span>-->
+<!--                    </div>-->
+<!--                    <div id="thirdEvent" class="event">-->
+<!--                        <img src="../img/진행중 이벤트 최종3.png" alt="">-->
+<!--                        <span>13xx</span>-->
+<!--                        <span>해커제****</span>-->
+<!--                    </div>-->
                 </div>
             </section>
         </div>
@@ -157,7 +193,7 @@
             // 업데이트된 이미지 URL로 myImage의 src 속성을 설정
             document.getElementById('myImage').src = reader.result;
         }
-git add .
+
         if (file) {
             reader.readAsDataURL(file);
         }
