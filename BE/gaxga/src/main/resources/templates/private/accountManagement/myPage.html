@@ -9,8 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>GAXGA_MYPAGE</title>
 </head>
-<body >
-<img src="/img/마이페이지배경.png" style="position: absolute" >
+<body>
 <th:block th:replace="~{public/layouts/header2 :: header}"></th:block>
 <div id="container">
     <div id="myPage_main">
@@ -84,9 +83,9 @@
                             </form>
                         </div>
                     </div>
-                    <div id="myWritten" class="selectedArea">
-                        <div id="myWrittenArea">
-                            <div class="myWrittenList" th:each="myBoardList: ${myBoardList}">
+                    <div id="myWrited" class="selectedArea">
+                        <div id="myWritedArea">
+                            <div class="myWritedList" th:each="myBoardList: ${myBoardList}">
                                 <img th:src="${myBoardList.image != null ? '/upload/' + #strings.arraySplit(myBoardList.image, ',')[0] : '/upload/빈하트.png'}" alt="Board Image"/>
                                 <a th:href="@{'/gabowatdago/'+*{myBoardList.id}}" th:text="*{myBoardList.title}"></a>
                                 <span th:text="*{#temporals.format(myBoardList.regDate, 'yyyy-MM-dd HH:mm:ss')}"></span>
@@ -121,11 +120,7 @@
                                 <button type="button" id="deleteBtn">삭제</button>
                             </div>
                         </div>
-<!--                        <div id="receiveLikePageList">-->
-<!--                            <button>&lt;</button>-->
-<!--                            <button>3</button>-->
-<!--                            <button>&gt;</button>-->
-<!--                        </div>-->
+
                     </div>
                 </div>
                 <div id="middle" class="content">
@@ -134,25 +129,18 @@
                             <h4 style="font-family: 'GmarketSans'; font-weight: 500; color: #454545;">가보자고</h4>
                         </div>
                         <p><i class="fa-regular fa-bookmark"><span th:text="${jjimCount}" style="margin-left: 10px"></span></i></p>
-
                     </div>
                     <div class="gaga" id="gabowa">
                         <div class="gagaTitle">
                             <h4 style="font-family: 'GmarketSans'; font-weight: 500; color: #454545;">가봤다고</h4>
                         </div>
                         <p><i class="fa-regular fa-heart" th:text="${likeCounts}"></i></p>
-
                     </div>
                 </div>
                 <div id="bottom" class="content">
-<!--                    이곳에 최근이벤트 가져오는 ID, 이벤트로 이동하는 버튼-->
-                    <div id="ingEvent" class="event">
-                        <a th:href="@{/event}">
-                            <img src="/img/이벤트진행중배너1L.png" alt="">
-                        </a>
-                    </div>
-                    <div id="defaultEvent" class="event">
-                        <img src="/img/마이페이지이벤트바로가기.png" alt="">
+                    <div id="firstEvent"class="event">
+                        <img src="../img/진행중 이벤트 최종1.png" alt="">
+                        <span>zㅣ존***</span>
                     </div>
                 </div>
             </section>
