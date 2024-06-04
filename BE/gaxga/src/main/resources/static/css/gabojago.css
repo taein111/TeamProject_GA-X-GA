@@ -280,17 +280,19 @@ header{
     align-items: end;
 }
 .intro .right input {
-    /* margin-top: 120px; */
-    width: 60%;
-    height: 40px;
-    background: transparent;
-    color: #fff;
+    width: 25%;
+    height: 35px;
+    background-color: transparent;
     font-size: 35px;
     line-height: 1;
-    font-weight: normal;
     text-align: center;
-    font-family: 'DMSerif';
-    font-weight: 400;
+    font-family: 'Cooper Black';
+    /*font-weight: 400;*/
+    border-right: none;
+    border-top: none;
+    border-left: none;
+    border-bottom-width: 1px;
+    margin-right: 20px;
 }
 .intro ::placeholder{
     color: #27292A;

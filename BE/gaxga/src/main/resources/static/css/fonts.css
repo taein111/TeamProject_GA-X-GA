@@ -31,3 +31,7 @@
   font-family: 'Jalnan';
   src:url('../fonts/Jalnan2TTF.ttf') format('truetype');
 }
+@font-face{
+  font-family: 'Cooper Black';
+  src:url('../fonts/COOPBL.ttf') format('truetype');
+}

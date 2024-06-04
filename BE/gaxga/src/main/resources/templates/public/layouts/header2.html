@@ -4,7 +4,9 @@
 <header class="--header" th:fragment="header">
     <div class = "mainP" id="mainPColor" >
         <div id="profile" class="element">
+           <a th:href="@{/myPage}">
             <img src="/img/profile.png" width=45px height=45px  alt="프로필">
+           </a>
         </div>
         <div id="logo" class="element" width= 45px height=45px>
             <h1><a th:href="@{/main}">GAXGA</a></h1>
@@ -43,7 +45,7 @@
                         <ul>
                             <li><a th:href="@{terms.html}">이용약관   |</a></li>
                             <li><a th:href="@{privacy.html}">   개인정보처리방침   |</a></li>
-                            <li><a th:href="@{copyright.html}">   고객센터</a></li>
+                            <li><a th:href="@{copyright.html}">   저작권정책</a></li>
                         </ul>
                     </div>
                 </div>
