@@ -118,9 +118,7 @@
                                     <br>
                                     <span th:text="*{myList.gpid.state}" id="myGpState"></span>
                                 </a>
-                                    <span th:text="*{#temporals.format(myList.gpid.posting, 'HH:mm:ss')}"></span>
-                                    <span th:text="*{#temporals.format(myList.gpid.posting, 'yyyy-MM-dd')}"></span>
-                                    <br>
+                                    <span th:text="*{#temporals.format(myList.gpid.posting, 'yyyy-MM-dd HH:mm:ss')}"></span>
 
                         <input type="hidden" id="jjim_input" th:value="${myList.user.userCode}">
                         <input type="hidden" id="gabojago_id" th:value="${myList.gpid.id}">
