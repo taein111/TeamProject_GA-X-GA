@@ -90,7 +90,7 @@
                                 <img th:src="${myBoardList.image != null ? '/upload/' + #strings.arraySplit(myBoardList.image, ',')[0] : '/upload/마이페이지 디폴트.png'}" alt="Board Image"/>
                                 <a th:href="@{'/gabowatdago/'+*{myBoardList.id}}" th:text="*{myBoardList.title}"></a>
                                 <span th:text="*{#temporals.format(myBoardList.regDate, 'yyyy-MM-dd HH:mm:ss')}"></span>
-                                <button type="button" id="BoardDeleteBtn" th:data-Board-Id="${myBoardList.id}">삭제</button>
+                                <button type="button" id="BoardDeleteBtn" th:data-Board-Id="${myBoardList.id}" style="background-color: transparent">삭제</button>
                             </div>
                         </div>
                     </div>
@@ -102,7 +102,7 @@
                                 <a th:href="@{'/gabowatdago/'+*{best.id}}" th:text="*{best.title}"></a>
                                 <span th:text="*{#temporals.format(best.regDate, 'yyyy-MM-dd HH:mm:ss')}"></span>
                                 <span th:text="'좋아요 ( '+ *{best.likeCount} + ' )'"></span>
-                                <button type="button" id="bestDeleteBtn" th:data-Board-Id="${best.id}">삭제</button>
+                                <button type="button" id="bestDeleteBtn" th:data-Board-Id="${best.id}" style="background-color: transparent">삭제</button>
                             </div>
                         </div>
                     </div>

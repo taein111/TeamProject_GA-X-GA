@@ -277,7 +277,7 @@ a:visited{
 
 }#myPage_main #rightContent #myWrited .myWritedList img{
 border-radius: 20px;
-width: 15%;
+width: 17%;
 height: 80%;
  }
 
@@ -325,7 +325,7 @@ height: 80%;
 }
 #myPage_main #rightContent #saved .savedList{
   display: flex;
-  height: 25%;
+  height: 33%;
   align-items: center;
   width: 100%;
   text-align: center;
@@ -344,11 +344,11 @@ height: 80%;
 }
 #myPage_main #rightContent #saved .savedList img{
   border-radius: 20px;
-  width: 15%;
+  width: 17%;
   height: 80%;
 }
 #myPage_main #rightContent #saved .savedList span{
-  width: 40%;
+  width: 20%;
 }
 #myPage_main #rightContent #saved #savedPageList{
   display: flex;
