@@ -90,7 +90,7 @@
                                 <img th:src="${myBoardList.image != null ? '/upload/' + #strings.arraySplit(myBoardList.image, ',')[0] : '/upload/마이페이지 디폴트.png'}" alt="Board Image"/>
                                 <a th:href="@{'/gabowatdago/'+*{myBoardList.id}}" th:text="*{myBoardList.title}"></a>
                                 <span th:text="*{#temporals.format(myBoardList.regDate, 'yyyy-MM-dd HH:mm:ss')}"></span>
-                                <button type="button" id="BoardDeleteBtn" th:data-Board-Id="${myBoardList.id}">삭제</button>
+                                <button type="button" id="BoardDeleteBtn" th:data-Board-Id="${myBoardList.id}" style="background-color: transparent">삭제</button>
                             </div>
                         </div>
                     </div>
@@ -102,7 +102,7 @@
                                 <a th:href="@{'/gabowatdago/'+*{best.id}}" th:text="*{best.title}"></a>
                                 <span th:text="*{#temporals.format(best.regDate, 'yyyy-MM-dd HH:mm:ss')}"></span>
                                 <span th:text="'좋아요 ( '+ *{best.likeCount} + ' )'"></span>
-                                <button type="button" id="bestDeleteBtn" th:data-Board-Id="${best.id}">삭제</button>
+                                <button type="button" id="bestDeleteBtn" th:data-Board-Id="${best.id}" style="background-color: transparent">삭제</button>
                             </div>
                         </div>
                     </div>
@@ -112,13 +112,17 @@
                             <div class="receiveLikeList" th:if="${myList.user.userCode == userCode}" th:each="myList: ${myList}">
                                     <img th:src="'/'+${myList.gpid.img}">
                                 <a th:href="@{'/gabojagoing/' + ${myList.gpid.id}}">
-                                    <span th:text="*{myList.gpid.name}"></span>
-                                    <span th:text="*{myList.gpid.state}"></span>
+                                    <span th:text="*{myList.gpid.region.name}" id="myGpRegion"></span>
+                                    <span th:text="*{myList.gpid.thema.name}" id="myGpTheme"></span>
+                                    <span th:text="*{myList.gpid.name}" id="myGpName"></span>
+                                    <br>
+                                    <span th:text="*{myList.gpid.state}" id="myGpState"></span>
                                 </a>
-                                                                <span>2024-03-01</span>
+                                    <span th:text="*{#temporals.format(myList.gpid.posting, 'yyyy-MM-dd HH:mm:ss')}"></span>
+
                         <input type="hidden" id="jjim_input" th:value="${myList.user.userCode}">
                         <input type="hidden" id="gabojago_id" th:value="${myList.gpid.id}">
-                                <button type="button" id="deleteBtn">삭제</button>
+                                <button type="button" id="deleteBtn" style="background-color: transparent">삭제</button>
                             </div>
                         </div>
 
@@ -140,7 +144,9 @@
                 </div>
                 <div id="bottom" class="content">
                     <div id="firstEvent" class="event">
-                        <img src="../img/이벤트진행중배너1s.png" alt="">
+                        <a th:href="@{/event}">
+                            <img src="../img/이벤트진행중배너1s.png" alt="" width="100%" height="100%">
+                        </a>
                     </div><div id="defaultEvent" class="event">
                         <img src="../img/마이페이지이벤트바로가기.png" alt="">
                     </div>
