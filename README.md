@@ -6,7 +6,7 @@
 - 이 웹페이지는 메인/ 여행지추천(가보자고) / 여행지 후기 공유(가봤다고) / 이벤트 / 마이페이지
   로 구분
 
-
+***
 ##### 웹 페이지의 목적 및 주요 기능 (요약)
 - 국내 숨겨진 명소들을 웹 페이지 방문자에게 지역별/테마별로 분류하여 소개
 - 소개 외에도 사용자들끼리 여행지 후기를 공유할 수 있도록 별도의 후기 컨셉 페이지 제작
@@ -16,18 +16,22 @@
 - 저장한 여행지 및 좋아요 누른 게시글은 마이페이지에서 확인 가능, 별도로 수정 및 삭제 가능
 - 이벤트 페이지에서는 Scheduler를 활용해 일정 시간이 지나면 이벤트가 종료될 수 있도록 하여, 당첨자를 좋아요 순, 게시글 작성 순 등으로 자동으로 추출한다.
 
-
+***
 ##### 일정
 - 2024-04-28 ~2024-05-31
 
-
+***
 ### 사용 기술 및 개발 환경
 - DB : Oracle 11g
 - Framework/Flatform : Spring Boot , Spring Security
 - Language : JAVA , Javascript, HTML5, CSS3
 - Tool : IntelliJ,GitHub, Oracle SQL Developeer, PostMan
 
+***
+### Entity Relationship Diagram
+![GA X GA DB](https://github.com/user-attachments/assets/c1d6c030-47cc-468b-97a7-bbb8856d7eff)
 
+***
 ### 내용
 ***
 - 로그인
