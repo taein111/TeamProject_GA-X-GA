@@ -14,9 +14,9 @@
 - 각 여행지 상세 페이지 / 후기 상세 페이지 에서 여행지 저장 및 좋아요 구현
 - 후기 작성 페이지에서는 파일 업로드, 상세 페이지에서는 댓글 기능 구현
 - 저장한 여행지 및 좋아요 누른 게시글은 마이페이지에서 확인 가능, 별도로 수정 및 삭제 가능
-- 이벤트 페이지에서는 Scheduler를 활용해 일정 시간이 지나면 이벤트가 종료될 수 있도록 하여, 당첨자를 좋아요 순, 게시글 작성 순 등으로 자동으로 추출한다.
+- 이벤트 페이지에서는 Scheduler를 활용해 일정 시간이 지나면 이벤트가 종료될 수 있도록 하여, 종료됨과 동시에 당첨자를 좋아요 순, 게시글 작성 순 등으로 자동으로 추출한다.
 
-***
+*** 
 ##### 일정
 - 2024-04-28 ~2024-05-31
 
@@ -35,7 +35,158 @@
 ### 내용
 ***
 - 로그인
+##### WebSecurityConfig
+```
+@Configuration
+@EnableWebSecurity
+@RequiredArgsConstructor
+@Slf4j
+public class WebSecurityConfig {
+
+    private final CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
+
+    @Bean
+    public BCryptPasswordEncoder bCryptPasswordEncoder() {
+
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+
+        http
+                .authorizeHttpRequests((auth) -> auth
+                        .requestMatchers("/css/**", "/js/**", "/img/**", "/fonts/**","terms.html", "privacy.html", "copyright.html",
+                                "/login/**","/api/**", "/findInfo/**","/joinMembership/**","/main", "/gabojago", "/gabojagoing", "/", "/event"
+                        ).permitAll()
+                        .anyRequest().authenticated());
+        http
+                .formLogin((auth) -> auth.loginPage("/login")
+                        .loginProcessingUrl("/login")
+                        .usernameParameter("gaId")
+                        .passwordParameter("gaPass")
+                        .defaultSuccessUrl("/main", true)
+                        .failureUrl("/login?error=true")
+                        .failureHandler(authenticationFailureHandler())
+                        .successHandler(customAuthenticationSuccessHandler)
+                );
+        http
+                .logout((logout) -> logout
+                        .logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
+                        .logoutSuccessUrl("/main")
+                        .invalidateHttpSession(true));
+        http
+                .csrf((auth) -> auth.disable());
+
+        return http.build();
+    }
+
+    @Bean
+    public AuthenticationFailureHandler authenticationFailureHandler() {
+        return new CustomAuthenticationFailureHandler();
+    }
+}
+```
+
+##### FindInfoContorller
+```
+@Controller
+@Slf4j
+public class FindInfoController {
+
+    @Autowired
+    private FindInfoService findInfoService;
+
+    @Autowired
+    private MailService mailService;
+
+    @GetMapping("/findInfo")
+    public String showFindInfo() {
+        return "public/accountManagement/findInfo";
+    }
+
+    @PostMapping("/findInfo/ID")
+    public String findId(User user, RedirectAttributes redirectAttributes){
+        User data = findInfoService.findUserInfoId(user);
+        if(data == null){
+            redirectAttributes.addFlashAttribute("msg", "회원정보가 없습니다.");
+            return "redirect:/findInfo";
+        } else{
+            redirectAttributes.addFlashAttribute("msg", "회원님의 ID는 : " + data.getGaId());
+            return "redirect:/findInfo";
+        }
+    }
+    @PostMapping("/findInfo/Pass")
+    public String findPass(User user, RedirectAttributes redirectAttributes){
+        User data = findInfoService.findUserInfoPass(user);
+        if(data == null){
+            redirectAttributes.addFlashAttribute("msg", "입력하신 정보가 틀립니다.");
+            return "redirect:/findInfo";
+        } else{
+            mailService.sendSimpleMail("[GA X GA] 임시 비밀번호 발송", "taein4546@gmail.com", "임시 비밀번호입니다. 마이페이지에서 비밀번호 변경해주세요", data);
+            redirectAttributes.addFlashAttribute("msg", "회원가입에 입력하신 이메일로 임시 비밀번호 보내드렸습니다.");
+            return "redirect:/login";
+        }
+    }
+}
+```
+##### Handler
+```
+@Component
+@Slf4j
+public class CustomAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
+
+    @Override
+    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
+        String saveUserId = request.getParameter("saveUserId");
+        String gaId = request.getParameter("gaId");
+
+        if ("on".equals(saveUserId)) {
+            Cookie cookie = new Cookie("saveUserId", gaId);
+            cookie.setMaxAge(7 * 24 * 60 * 60); // 7 days
+            cookie.setPath("/");
+            response.addCookie(cookie);
+        } else {
+            Cookie cookie = new Cookie("saveUserId", null);
+            cookie.setMaxAge(0);
+            cookie.setPath("/");
+            response.addCookie(cookie);
+        }
+
+        response.sendRedirect("/main");
+    }
+}
+```
+
+```
+@Slf4j
+public class CustomAuthenticationFailureHandler extends SimpleUrlAuthenticationFailureHandler {
+
+    @Override
+    public void onAuthenticationFailure(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
+        httpServletResponse.setStatus(HttpStatus.UNAUTHORIZED.value());
+
+        String errorMsg;
+
+        if (e instanceof BadCredentialsException || e instanceof InternalAuthenticationServiceException){
+            errorMsg="아이디 또는 비밀번호가 맞지 않습니다.";
+        }else if (e instanceof UsernameNotFoundException){
+            errorMsg="존재하지 않는 아이디 입니다.";
+        }
+        else{
+            errorMsg="알 수 없는 이유로 로그인이 안되고 있습니다.";
+        }
+
+        String encodedErrorMsg = URLEncoder.encode(errorMsg,"UTF-8");
+
+        setDefaultFailureUrl("/login/Result?error=true&exception=" + encodedErrorMsg);
+        log.info("customMsg = " + encodedErrorMsg);
+        super.onAuthenticationFailure(httpServletRequest, httpServletResponse, e);
+    }
+}
+```
 ***  
+
 - 댓글
 ##### DTO
   ```
