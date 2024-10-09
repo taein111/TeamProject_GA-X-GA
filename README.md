@@ -30,6 +30,14 @@
 ***
 ### Entity Relationship Diagram
 ![GA X GA DB](https://github.com/user-attachments/assets/c1d6c030-47cc-468b-97a7-bbb8856d7eff)
+- GR : 지역 카테고리 테이블
+- GT : 테마 카테고리 테이블
+- GP : 여행지 정보 테이블
+- jjim : 여행지 저장(장바구니) 테이블
+- heart(like) : 좋아요 (후기 게시글) 테이블
+- Gabowatdago : 후기 작성 게시판 테이블
+- BaseEntity : 게시글 및 댓글 등록시간 extends용 테이블
+- Event : 이벤트 페이지 테이블(진행중 / 종료된)
 
 ***
 ### 내용
