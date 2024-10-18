@@ -40,7 +40,7 @@
 
 ***
 ### 내용
-- 로그인
+- ### 로그인
 - ![image](https://github.com/user-attachments/assets/ed479514-3430-40c6-aa04-1af3d5600df6)
 
 ##### WebSecurityConfig
@@ -194,7 +194,7 @@ public class CustomAuthenticationFailureHandler extends SimpleUrlAuthenticationF
 ```
 ***  
 
-- 댓글
+- ### 댓글
 - ![image](https://github.com/user-attachments/assets/89e61f1e-bb8d-478e-8e25-5994c224b95e)
 
 ##### DTO
@@ -318,7 +318,7 @@ public class CmtService {
 
   ```
 ***
-- 좋아요
+- ### 좋아요
 - ![image](https://github.com/user-attachments/assets/8e5fbb22-1062-44fe-9c6d-16d273fcb074)
 
 ##### DTO
@@ -412,7 +412,7 @@ public class LikeService {
 
 ```
 ***
-- 여행지 저장(장바구니)
+- ### 여행지 저장(장바구니)
 - ![image](https://github.com/user-attachments/assets/181c745d-fcc3-42b5-b8bc-1fda9279882b)
 
 ##### Service
@@ -462,7 +462,7 @@ public class JjimService {
 }
 ```
 ***
-- 파일업로드
+- ### 파일업로드
 - ![image](https://github.com/user-attachments/assets/0da98f57-b6cb-443a-8cc6-5289425ccdd0)
 
 ```
@@ -541,7 +541,7 @@ public class MvcConfig implements WebMvcConfigurer {
 }
 ```
 ***
-- 이벤트 페이지 Scheduler
+- ### 이벤트 페이지 Scheduler
 ##### Entity
 ```
 @Entity
