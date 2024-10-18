@@ -41,6 +41,8 @@
 ***
 ### 내용
 - 로그인
+- ![image](https://github.com/user-attachments/assets/ed479514-3430-40c6-aa04-1af3d5600df6)
+
 ##### WebSecurityConfig
 ```
 @Configuration
@@ -193,6 +195,8 @@ public class CustomAuthenticationFailureHandler extends SimpleUrlAuthenticationF
 ***  
 
 - 댓글
+- ![image](https://github.com/user-attachments/assets/89e61f1e-bb8d-478e-8e25-5994c224b95e)
+
 ##### DTO
   ```
 @AllArgsConstructor
@@ -315,6 +319,8 @@ public class CmtService {
   ```
 ***
 - 좋아요
+- ![image](https://github.com/user-attachments/assets/8e5fbb22-1062-44fe-9c6d-16d273fcb074)
+
 ##### DTO
 ```
 @Getter
@@ -407,6 +413,8 @@ public class LikeService {
 ```
 ***
 - 여행지 저장(장바구니)
+- ![image](https://github.com/user-attachments/assets/181c745d-fcc3-42b5-b8bc-1fda9279882b)
+
 ##### Service
 ```
 @Service
@@ -455,6 +463,8 @@ public class JjimService {
 ```
 ***
 - 파일업로드
+- ![image](https://github.com/user-attachments/assets/0da98f57-b6cb-443a-8cc6-5289425ccdd0)
+
 ```
 @Transactional
     public String create(GabowatdagoForm form, Long userCode) throws IOException {
@@ -496,6 +506,7 @@ public class JjimService {
     }
 ```
 ##### 이미지 업로드 -> 등록 시 바로 출력 가능한 설정(웹에서 정적 파일을 제공하기 위해 웹서버에서 파일을 읽고 브라우저로 전달)
+
 ```
 /*이미지 업로드하여 게시글 생성하면 이미지 바로 출력가능한 설정
  웹에서 정적 파일을 제공하기 위해 서버가 해당 파일의 위치를 알고, 요청받은 url에 따라 적절한 파일 반환이 필요
