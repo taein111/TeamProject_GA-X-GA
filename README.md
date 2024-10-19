@@ -542,6 +542,10 @@ public class MvcConfig implements WebMvcConfigurer {
 ```
 ***
 - ### 이벤트 페이지 Scheduler
+- ![image](https://github.com/user-attachments/assets/91f2a613-e394-4f96-8121-1cb47a489fc5)
+- ![image](https://github.com/user-attachments/assets/edbf3616-aec3-4786-ac25-abfc7344247d)
+
+
 ##### Entity
 ```
 @Entity
