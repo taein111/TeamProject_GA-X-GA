@@ -649,3 +649,5 @@ public class EventService {
 }
 ```
 ***
+- ### 마이페이지
+![image](https://github.com/user-attachments/assets/427d468c-00e2-4acb-ab07-083c5b38348a)
